@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Música - The Wooden Groom</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <!-- Alpine.js (por si queremos agregar filtros en el futuro) -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <!-- p5.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"></script>
+</head>
+<body>
+    <!-- Fondo animado -->
+    <div id="p5-background"></div>
+
+    <main class="main-container">
+        <header>
+            <h1><a href="index.html">back home</a></h1>
+            <nav>
+                <ul>
+                    <li><a href="music.html">MÚSICA</a></li>
+                    <li><a href="shows.html">SHOWS</a></li>
+                    <li><a href="blog.html">BLOG</a></li>
+                    <li><a href="about.html">BIO</a></li>
+                    <li><a href="contact.html">CONTACTO</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <h2>DISCOGRAFÍA</h2>
+
+        <section class="music-library" x-data="musicDiscography()" x-cloak>
+            <div class="discografia-toolbar">
+                <div class="filter-group filter-group-year">
+                    <label for="filter-year">Año</label>
+                    <div class="filter-select-wrap">
+                        <select id="filter-year" x-model="filters.year">
+                            <option value="">Todos</option>
+                            <template x-for="year in yearOptions" :key="year">
+                                <option :value="year" x-text="year"></option>
+                            </template>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="filter-group filter-group-catalog">
+                    <label for="filter-catalog">Catálogo</label>
+                    <div class="filter-select-wrap">
+                        <select id="filter-catalog" x-model="filters.catalog">
+                            <option value="">Todos</option>
+                            <template x-for="catalog in catalogOptions" :key="catalog">
+                                <option :value="catalog" x-text="catalog"></option>
+                            </template>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="filter-group filter-group-series">
+                    <label for="filter-series">Serie temática</label>
+                    <div class="filter-select-wrap">
+                        <select id="filter-series" x-model="filters.series">
+                            <option value="">Todas</option>
+                            <template x-for="series in seriesOptions" :key="series">
+                                <option :value="series" x-text="series"></option>
+                            </template>
+                        </select>
+                    </div>
+                </div>
+
+                <button
+                    type="button"
+                    class="boton pequeño filter-reset"
+                    @click="resetFilters()"
+                    x-show="hasActiveFilters"
+                >
+                    Limpiar filtros
+                </button>
+            </div>
+
+            <p class="discografia-count">
+                Mostrando <span x-text="filteredReleases.length"></span> de
+                <span x-text="releases.length"></span> lanzamientos
+            </p>
+
+            <div class="discografia">
+                <template x-for="release in paginatedReleases" :key="release.id">
+                    <article class="release-item">
+                        <div class="release-cover" x-show="release.image">
+                            <img :src="release.image" :alt="`Portada ${release.title}`">
+                        </div>
+                        <div class="release-info">
+                            <h3 x-text="release.title"></h3>
+
+                            <div class="release-meta">
+                                <span class="release-year" x-text="release.year"></span>
+                                <span class="release-type" x-text="release.type"></span>
+                                <template x-if="release.catalog">
+                                    <span class="release-chip release-catalog" x-text="release.catalog"></span>
+                                </template>
+                                <template x-if="release.series">
+                                    <span class="release-chip release-series" x-text="release.series"></span>
+                                </template>
+                            </div>
+
+                            <p class="release-description" x-text="release.description"></p>
+
+                            <div class="release-links" x-show="release.links.length > 0">
+                                <template x-for="link in release.links" :key="`${release.id}-${link.label}`">
+                                    <a :href="link.url" class="boton pequeño" x-text="link.label"></a>
+                                </template>
+                            </div>
+                        </div>
+                    </article>
+                </template>
+
+                <p class="release-empty" x-show="filteredReleases.length === 0">
+                    No hay lanzamientos que coincidan con esos filtros.
+                </p>
+            </div>
+
+            <div class="discografia-pagination" x-show="filteredReleases.length > pageSize">
+                <button type="button" class="boton pequeño" @click="goToPage(currentPage - 1)" :disabled="currentPage === 1">
+                    Anterior
+                </button>
+                <span>
+                    Pagina <span x-text="currentPage"></span> de <span x-text="totalPages"></span>
+                </span>
+                <button type="button" class="boton pequeño" @click="goToPage(currentPage + 1)" :disabled="currentPage === totalPages">
+                    Siguiente
+                </button>
+            </div>
+        </section>
+
+        <!-- Nota sobre plataformas -->
+        <p style="text-align: center; margin-top: 2rem; color: #5B9E00;">
+            Archivo discográfico en construcción.
+            <br>Los enlaces a plataformas se agregarán release por release.
+        </p>
+
+        <footer>
+            <p>2011 - 2026 | CC BY - utilizalo sin restricciones ahora es parte de tu mundo, dsifrútalo</p>
+            <p>
+                <a href="https://megadoll.bandcamp.com/" target="_blank" rel="noopener noreferrer">Bandcamp</a> |
+                <a href="https://www.instagram.com/thewoodengroom/" target="_blank" rel="noopener noreferrer">Instagram</a> |
+                <a href="https://www.youtube.com/@TheWoodenGroom" target="_blank" rel="noopener noreferrer">YouTube</a>
+            </p>
+        </footer>
+    </main>
+
+    <!-- Scripts -->
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/releases-data.js"></script>
+    <script src="assets/js/music.js"></script>
+    <script src="assets/js/p5-background.js"></script>
+    <script src="assets/js/posts.js"></script> <!-- opcional, no interfiere -->
+
+    <!-- Estilos específicos para la discografía -->
+    <style>
+        [x-cloak] {
+            display: none !important;
+        }
+
+        .music-library {
+            margin: 2rem 0;
+        }
+
+        .discografia-toolbar {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1rem;
+            margin-bottom: 1rem;
+            align-items: end;
+        }
+
+        .filter-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.35rem;
+        }
+
+        .filter-select-wrap {
+            position: relative;
+        }
+
+        .filter-select-wrap::after {
+            content: ">>";
+            position: absolute;
+            right: 0.85rem;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 0.7rem;
+            letter-spacing: -0.08em;
+            pointer-events: none;
+            text-shadow: 0 0 8px currentColor;
+        }
+
+        .filter-group label {
+            color: #AEF504;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+
+        .filter-group select {
+            appearance: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            width: 100%;
+            background:
+                linear-gradient(180deg, rgba(255, 255, 255, 0.05), rgba(0, 0, 0, 0)),
+                rgba(0, 0, 0, 0.72);
+            border: 2px solid #3D3E3D;
+            color: #B2E5F2;
+            padding: 0.85rem 2.5rem 0.85rem 0.85rem;
+            font-family: inherit;
+            font-size: 0.85rem;
+            letter-spacing: 0.04em;
+            box-shadow: inset 0 0 0 1px rgba(178, 229, 242, 0.05);
+            transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s, background 0.2s;
+            cursor: pointer;
+        }
+
+        .filter-group select:hover {
+            transform: translateY(-1px);
+            background:
+                linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(0, 0, 0, 0)),
+                rgba(0, 0, 0, 0.78);
+        }
+
+        .filter-group-year label {
+            color: #0F5150;
+        }
+
+        .filter-group-year select {
+            color: #30FF00;
+            border-color: #30FF00;
+            text-shadow: 0 0 6px rgba(48, 255, 0, 0.18);
+        }
+
+        .filter-group-year .filter-select-wrap::after {
+            color: #30FF00;
+        }
+
+        .filter-group-catalog label {
+            color: #AEF504;
+        }
+
+        .filter-group-catalog select {
+            color: #30FF00;
+            border-color: #30FF00;
+            text-shadow: 0 0 6px rgba(48, 255, 0, 0.18);
+        }
+
+        .filter-group-catalog .filter-select-wrap::after {
+            color: #30FF00;
+        }
+
+        .filter-group-series label {
+            color: #E7F800;
+        }
+
+        .filter-group-series select {
+            color: #30FF00;
+            border-color: #30FF00;
+            text-shadow: 0 0 6px rgba(48, 255, 0, 0.18);
+        }
+
+        .filter-group-series .filter-select-wrap::after {
+            color: #30FF00;
+        }
+
+        #filter-year:focus,
+        #filter-catalog:focus,
+        #filter-series:focus {
+            outline: none;
+            transform: translateY(-1px);
+        }
+
+        #filter-catalog:focus {
+            box-shadow: 0 0 0 2px rgba(48, 255, 0, 0.2);
+        }
+
+        #filter-series:focus {
+            box-shadow: 0 0 0 2px rgba(48, 255, 0, 0.2);
+        }
+
+        #filter-year:focus {
+            box-shadow: 0 0 0 2px rgba(48, 255, 0, 0.2);
+        }
+
+        .filter-reset {
+            align-self: end;
+        }
+
+        .discografia-count {
+            margin: 0 0 1.25rem;
+            color: #5B9E00;
+            font-size: 0.85rem;
+        }
+
+        .discografia {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .release-item {
+            display: flex;
+            gap: 2rem;
+            background: rgba(0, 0, 0, 0.3);
+            border: 2px solid #3D3E3D;
+            padding: 1.5rem;
+            transition: border-color 0.2s;
+        }
+
+        .release-item:hover {
+            border-color: #30FF00;
+        }
+
+        .release-cover {
+            flex: 0 0 150px;
+        }
+
+        .release-cover img {
+            width: 100%;
+            height: auto;
+            border: 3px solid #5B9E00;
+            filter: grayscale(80%);
+            transition: filter 0.3s;
+        }
+
+        .release-item:hover .release-cover img {
+            filter: grayscale(0%);
+        }
+
+        .release-info {
+            flex: 1;
+        }
+
+        .release-info h3 {
+            color: #AEF504;
+            margin-bottom: 0.3rem;
+            font-size: 1.2rem;
+        }
+
+        .release-meta {
+            display: flex;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .release-year {
+            color: #30FF00;
+            font-size: 0.9rem;
+        }
+
+        .release-type {
+            color: #0F5150;
+            font-size: 0.8rem;
+            border: 1px solid #0F5150;
+            padding: 0.2rem 0.5rem;
+            border-radius: 0;
+        }
+
+        .release-chip {
+            font-size: 0.75rem;
+            padding: 0.2rem 0.5rem;
+            border: 1px solid currentColor;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .release-catalog {
+            color: #AEF504;
+        }
+
+        .release-series {
+            color: #E7F800;
+        }
+
+        .release-description {
+            margin: 1rem 0;
+            color: #B2E5F2;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        .release-links {
+            display: flex;
+            gap: 0.8rem;
+            flex-wrap: wrap;
+        }
+
+        .boton.pequeño {
+            padding: 0.4rem 0.8rem;
+            font-size: 0.7rem;
+            border-width: 1px;
+        }
+
+        .release-empty {
+            margin: 0;
+            padding: 1.25rem;
+            text-align: center;
+            border: 2px dashed #3D3E3D;
+            color: #B2E5F2;
+        }
+
+        .discografia-pagination {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+            color: #AEF504;
+            font-size: 0.75rem;
+        }
+
+        .discografia-pagination button:disabled {
+            opacity: 0.35;
+            cursor: not-allowed;
+        }
+
+        @media (max-width: 600px) {
+            .release-item {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .discografia-toolbar {
+                grid-template-columns: 1fr;
+            }
+
+            .release-cover {
+                flex: 0 0 auto;
+                max-width: 200px;
+                margin: 0 auto;
+            }
+        }
+    </style>
+</body>
+</html>

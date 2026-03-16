@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shows / Conciertos - The Wooden Groom</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <!-- Alpine.js (para ordenar/filtrar si se desea) -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <!-- p5.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"></script>
+</head>
+<body>
+    <!-- Fondo animado -->
+    <div id="p5-background"></div>
+
+    <main class="main-container" x-data="livestreamsPage()">
+        <header>
+            <h1><a href="index.html">THE WOODEN GROOM</a></h1>
+            <nav>
+                <ul>
+                    <li><a href="music.html">MÚSICA</a></li>
+                    <li><a href="shows.html">SHOWS</a></li>
+                    <li><a href="blog.html">BLOG</a></li>
+                    <li><a href="about.html">BIO</a></li>
+                    <li><a href="contact.html">CONTACTO</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <h2>LIVESTREAMS 2026</h2>
+
+        <p class="shows-intro">
+            Temporada de transmisiones en Twitch y YouTube desde diferentes estudios.
+            La ubicación exacta de cada stream será revelada unos días antes por Instagram y redes sociales.
+        </p>
+
+        <div class="shows-lista">
+            <template x-for="show in paginatedShows" :key="show.number">
+                <div class="show-item futuro">
+                    <div class="show-fecha">
+                        <span class="dia" x-text="show.day"></span>
+                        <span class="mes" x-text="show.month"></span>
+                        <span class="año" x-text="show.year"></span>
+                    </div>
+                    <div class="show-info">
+                        <h3 x-text="show.label"></h3>
+                        <p class="lugar">
+                            Livestream Twitch + YouTube
+                            <span class="tipo-sala">Estudio rotativo</span>
+                        </p>
+                        <p class="notas">Ubicación revelada unos días antes por Instagram y redes sociales.</p>
+                        <div class="show-times show-times-primary">
+                            <p><strong x-text="show.primaryTime.label + ':'"></strong> <span x-text="show.primaryTime.range"></span></p>
+                        </div>
+                        <button
+                            type="button"
+                            class="show-times-toggle"
+                            @click="toggleTimes(show.number)"
+                            x-text="isTimesOpen(show.number) ? 'ocultar horarios internacionales' : 'ver horarios internacionales'"
+                        ></button>
+                        <div class="show-times" x-show="isTimesOpen(show.number)">
+                            <template x-for="time in show.secondaryTimes" :key="time.label">
+                                <p><strong x-text="time.label + ':'"></strong> <span x-text="time.range"></span></p>
+                            </template>
+                        </div>
+                    </div>
+                    <div class="show-acciones">
+                        <span class="estado" x-text="show.weekday"></span>
+                    </div>
+                </div>
+            </template>
+        </div>
+
+        <div class="shows-pagination" x-show="shows.length > pageSize">
+            <button type="button" class="boton pequeño" @click="goToPage(currentPage - 1)" :disabled="currentPage === 1">
+                Anterior
+            </button>
+            <span>
+                Pagina <span x-text="currentPage"></span> de <span x-text="totalPages"></span>
+            </span>
+            <button type="button" class="boton pequeño" @click="goToPage(currentPage + 1)" :disabled="currentPage === totalPages">
+                Siguiente
+            </button>
+        </div>
+
+        <!-- Nota sobre booking / contacto -->
+        <div style="text-align: center; margin: 3rem 0 1rem;">
+            <p>¿Quieres organizar un livestream o abrir un estudio para una transmisión?</p>
+            <a href="contact.html" class="boton">conozcamonos un poco mejor</a>
+        </div>
+
+        <footer>
+            <p>2011 - 2026 | CC BY - utilizalo sin restricciones ahora es parte de tu mundo, dsifrútalo</p>
+            <p>
+                <a href="https://megadoll.bandcamp.com/" target="_blank" rel="noopener noreferrer">Bandcamp</a> |
+                <a href="https://www.instagram.com/thewoodengroom/" target="_blank" rel="noopener noreferrer">Instagram</a> |
+                <a href="https://www.youtube.com/@TheWoodenGroom" target="_blank" rel="noopener noreferrer">YouTube</a>
+            </p>
+        </footer>
+    </main>
+
+    <!-- Scripts -->
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/p5-background.js"></script>
+
+    <script>
+        function livestreamsPage() {
+            const monthLabels = ['ENE', 'FEB', 'MAR', 'ABR', 'MAY', 'JUN', 'JUL', 'AGO', 'SEP', 'OCT', 'NOV', 'DIC'];
+            const weekdayLabels = ['Domingo', 'Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado'];
+            const millisecondsPerDay = 24 * 60 * 60 * 1000;
+            const startUtc = Date.UTC(2026, 2, 20, 9, 0, 0);
+            const timeZones = [
+                { label: 'Osaka, Japon', zone: 'Asia/Tokyo' },
+                { label: 'Yekaterinburg, Rusia', zone: 'Asia/Yekaterinburg' },
+                { label: 'Berlin, Alemania', zone: 'Europe/Berlin' },
+                { label: 'Ottawa, Canada', zone: 'America/Toronto' },
+                { label: 'New York, USA', zone: 'America/New_York' },
+                { label: 'Miami, USA', zone: 'America/New_York' },
+                { label: 'Las Vegas, Nevada', zone: 'America/Los_Angeles' },
+                { label: 'Bogota, Colombia', zone: 'America/Bogota' }
+            ];
+            const titles = [
+                'Alas Veteranas Crocanticas (Rubia FM)',
+                'Sidra para Cuidar los Mordiscos (Web Radio)',
+                'Medio Ebria en el Ataúd (Fest)',
+                'Brishitos',
+                'Ahn Dura',
+                'Fun-Fun-Fun-Eral',
+                'Manzanas Evacuando por la Salida de Emergencias',
+                'Puré (Podcast)',
+                'Historias de Herror (parque temático con estilo de cementerio en halloween)',
+                'Aeroscopio de Las Peras',
+                'Si Se Nos Mantequilla la Copa',
+                'Ada del Reino Mermel',
+                'Matricidio Transparencias y Poesía Elegíaca',
+                'Opening del Certamen de Miss Velas Transparencias (concurso de Belleza)',
+                'Especulaciones Errores Pala y Pica',
+                'Ya Estás Hecha Horno',
+                'Lapidazos y Cuero Herrado',
+                'Big Espalding / Big Cuc Um Beer',
+                'Dientecitos FM',
+                'Yo Utilicé Prensa',
+                'Tumba Panda',
+                'Helado Forzatto',
+                'Semillas de Cáscaras de Limón',
+                'Yogurtsitos',
+                'Azadón de Manzanas Quemadas',
+                'A Almorzar!',
+                'Pesa Gio Tesa Lisa y Linda (Club París de Noche)',
+                'Perdiste',
+                'No Ganaste',
+                'Manzanas Nuclearizadas',
+                'Peras Raye',
+                'Re-TruTra',
+                'Basto de Baseball',
+                'Tacones Carbonizados',
+                'Si Se Nos Mantequilla la Espuela',
+                'Caer Delirando',
+                'Mitomaníaca Exagerando Orientando',
+                'Babear Babeer Baburn',
+                'Semillita Secuestradora',
+                'Baldosa Resbalosa',
+                'Alerta Naranja',
+                'Tiza Golosa',
+                'Perfumar la Hipocresía Frágil de Chocolate Blanco',
+                'Grasa Bebé Benigna Hilo Dental',
+                'Ahorcation',
+                'Elegancia Heredita Especita',
+                'Salsa de Tarro FM',
+                'Torra Cocinante',
+                'Evadir Manzana de Rosas',
+                'Plan Gold Benevola Grassie',
+                'La Encierro?',
+                'Quiero Comer Reliquia a los 13 (Telefono)',
+                "a Lo 'Oz!'",
+                'Afilada',
+                'Golpes Histeria la Sombra de los Placeres ya avanzada'
+            ];
+
+            function formatHour(date, zone) {
+                return new Intl.DateTimeFormat('en-US', {
+                    timeZone: zone,
+                    hour: 'numeric',
+                    minute: '2-digit',
+                    hour12: true
+                }).format(date).replace('AM', 'am').replace('PM', 'pm');
+            }
+
+            const shows = titles.map(function(title, index) {
+                const dayOffset = (Math.floor(index / 2) * 7) + (index % 2 === 1 ? 2 : 0);
+                const showStart = new Date(startUtc + (dayOffset * millisecondsPerDay));
+                const showEnd = new Date(showStart.getTime() + (60 * 60 * 1000));
+                const showMonth = monthLabels[showStart.getUTCMonth()];
+                const showTimes = timeZones.map(function(timeZone) {
+                    return {
+                        label: timeZone.label,
+                        range: `${formatHour(showStart, timeZone.zone)} - ${formatHour(showEnd, timeZone.zone)}`
+                    };
+                });
+
+                return {
+                    number: index + 1,
+                    label: title,
+                    day: showStart.getUTCDate(),
+                    month: showMonth,
+                    year: showStart.getUTCFullYear(),
+                    weekday: weekdayLabels[showStart.getUTCDay()],
+                    primaryTime: showTimes[0],
+                    secondaryTimes: showTimes.slice(1)
+                };
+            });
+
+            return {
+                shows,
+                currentPage: 1,
+                pageSize: 12,
+                openTimes: {},
+                get totalPages() {
+                    return Math.max(1, Math.ceil(this.shows.length / this.pageSize));
+                },
+                get paginatedShows() {
+                    const startIndex = (this.currentPage - 1) * this.pageSize;
+                    const endIndex = startIndex + this.pageSize;
+                    return this.shows.slice(startIndex, endIndex);
+                },
+                goToPage(page) {
+                    const nextPage = Math.min(this.totalPages, Math.max(1, page));
+
+                    if (nextPage === this.currentPage) {
+                        return;
+                    }
+
+                    this.currentPage = nextPage;
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                },
+                toggleTimes(number) {
+                    this.openTimes[number] = !this.openTimes[number];
+                },
+                isTimesOpen(number) {
+                    return Boolean(this.openTimes[number]);
+                }
+            };
+        }
+    </script>
+
+    <!-- Estilos específicos para la página de shows -->
+    <style>
+        .shows-intro {
+            margin: 1rem 0 2rem;
+            color: #B2E5F2;
+            line-height: 1.9;
+            max-width: 60rem;
+        }
+
+        .shows-lista {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .shows-pagination {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin: 2rem 0 0;
+            color: #AEF504;
+            font-size: 0.75rem;
+        }
+
+        .shows-pagination button:disabled {
+            opacity: 0.35;
+            cursor: not-allowed;
+        }
+
+        .show-item {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            background: rgba(0, 0, 0, 0.3);
+            border: 2px solid #3D3E3D;
+            padding: 1.5rem;
+            transition: border-color 0.2s;
+        }
+
+        .show-item.futuro:hover {
+            border-color: #30FF00;
+        }
+
+        .show-item.pasado {
+            opacity: 0.7;
+            border-color: #292929;
+        }
+
+        .show-fecha {
+            flex: 0 0 100px;
+            text-align: center;
+            background: #121312;
+            border: 2px solid #5B9E00;
+            padding: 0.8rem;
+        }
+
+        .show-fecha .dia {
+            display: block;
+            font-size: 2rem;
+            font-weight: bold;
+            color: #AEF504;
+            line-height: 1;
+        }
+
+        .show-fecha .mes {
+            display: block;
+            font-size: 1rem;
+            color: #30FF00;
+            text-transform: uppercase;
+        }
+
+        .show-fecha .año {
+            display: block;
+            font-size: 0.8rem;
+            color: #218984;
+        }
+
+        .show-info {
+            flex: 1;
+        }
+
+        .show-info h3 {
+            color: #E7F800;
+            margin-bottom: 0.3rem;
+            font-size: 1.1rem;
+        }
+
+        .lugar {
+            color: #B2E5F2;
+            font-size: 0.9rem;
+            margin-bottom: 0.2rem;
+        }
+
+        .tipo-sala {
+            color: #5B9E00;
+            font-size: 0.7rem;
+            border: 1px solid #5B9E00;
+            padding: 0.1rem 0.3rem;
+            margin-left: 0.5rem;
+        }
+
+        .notas {
+            color: #9DE209;
+            font-size: 0.8rem;
+            font-style: italic;
+        }
+
+        .show-times {
+            margin-top: 0.75rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+            gap: 0.45rem 0.65rem;
+        }
+
+        .show-times p {
+            margin: 0;
+            padding: 0.4rem 0.55rem;
+            color: #B2E5F2;
+            font-size: 0.64rem;
+            line-height: 1.45;
+            background: rgba(0, 0, 0, 0.28);
+            border: 1px solid rgba(91, 158, 0, 0.45);
+        }
+
+        .show-times strong {
+            color: #AEF504;
+        }
+
+        .show-times-primary {
+            grid-template-columns: minmax(220px, 320px);
+        }
+
+        .show-times-toggle {
+            margin-top: 0.65rem;
+            background: transparent;
+            border: 1px dashed #30FF00;
+            color: #30FF00;
+            font-family: inherit;
+            font-size: 0.62rem;
+            padding: 0.45rem 0.65rem;
+            text-transform: uppercase;
+            cursor: pointer;
+        }
+
+        .show-acciones {
+            flex: 0 0 auto;
+            display: flex;
+            gap: 0.5rem;
+            flex-direction: column;
+            align-items: flex-end;
+        }
+
+        .boton.pequeño {
+            padding: 0.4rem 0.8rem;
+            font-size: 0.7rem;
+            border-width: 1px;
+            min-width: 90px;
+            text-align: center;
+        }
+
+        .estado {
+            color: #AEF504;
+            font-size: 0.8rem;
+            border: 1px solid #AEF504;
+            padding: 0.2rem 0.8rem;
+            text-transform: uppercase;
+        }
+
+        /* Responsive */
+        @media (max-width: 700px) {
+            .show-item {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 1rem;
+            }
+
+            .show-fecha {
+                align-self: center;
+                width: 120px;
+            }
+
+            .show-acciones {
+                align-items: stretch;
+            }
+
+            .show-times {
+                grid-template-columns: 1fr;
+            }
+
+            .shows-pagination {
+                gap: 0.75rem;
+            }
+
+            .boton.pequeño {
+                width: 100%;
+            }
+        }
+    </style>
+</body>
+</html>

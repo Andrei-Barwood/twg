@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - Pagina no encontrada | The Wooden Groom</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <!-- Alpine.js (no es esencial aquí pero lo dejamos por consistencia) -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <!-- p5.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"></script>
+</head>
+<body>
+    <!-- Fondo animado -->
+    <div id="p5-background"></div>
+
+    <main class="main-container">
+        <header>
+            <h1><a href="index.html">THE WOODEN GROOM</a></h1>
+            <nav>
+                <ul>
+                    <li><a href="music.html">MÚSICA</a></li>
+                    <li><a href="shows.html">SHOWS</a></li>
+                    <li><a href="blog.html">BLOG</a></li>
+                    <li><a href="about.html">BIO</a></li>
+                    <li><a href="contact.html">CONTACTO</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <!-- Contenido principal de error 404 -->
+        <section class="error-404">
+            <h2 class="glitch">404</h2>
+            <h3>PÁGINA NO ENCONTRADA</h3>
+            <p>Parece que el ritmo que buscas se ha distorsionado... o nunca existió.</p>
+            <p>Puedes volver al <a href="index.html">inicio</a> o probar con estos enlaces:</p>
+            
+            <div class="opciones-404">
+                <a href="music.html" class="boton">MÚSICA</a>
+                <a href="shows.html" class="boton">SHOWS</a>
+                <a href="blog.html" class="boton">BLOG</a>
+                <a href="about.html" class="boton">BIO</a>
+                <a href="contact.html" class="boton">conozcamonos un poco mejor</a>
+            </div>
+
+            <!-- Mensaje extra con estilo glitch -->
+            <p style="margin-top: 3rem; color: #5B9E00; font-size: 0.8rem;">
+                ERROR: El breakcore no siempre es perfecto, pero siempre encuentra su camino.
+            </p>
+        </section>
+
+        <footer>
+            <p>2011 - 2026 | CC BY - utilizalo sin restricciones ahora es parte de tu mundo, dsifrútalo</p>
+            <p>
+                <a href="https://megadoll.bandcamp.com/" target="_blank" rel="noopener noreferrer">Bandcamp</a> |
+                <a href="https://www.instagram.com/thewoodengroom/" target="_blank" rel="noopener noreferrer">Instagram</a> |
+                <a href="https://www.youtube.com/@TheWoodenGroom" target="_blank" rel="noopener noreferrer">YouTube</a>
+            </p>
+        </footer>
+    </main>
+
+    <!-- Scripts -->
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/p5-background.js"></script>
+    <script src="assets/js/posts.js"></script>
+
+    <!-- Estilos específicos para la página 404 -->
+    <style>
+        .error-404 {
+            text-align: center;
+            padding: 3rem 1rem;
+            min-height: 50vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .error-404 h2 {
+            font-size: 5rem;
+            color: #30FF00;
+            margin-bottom: 1rem;
+            text-shadow: 0 0 10px #30FF00, 0 0 20px #0F5150;
+            animation: glitch 2s infinite;
+        }
+
+        .error-404 h3 {
+            color: #AEF504;
+            margin-bottom: 2rem;
+            font-size: 1.5rem;
+        }
+
+        .error-404 p {
+            color: #B2E5F2;
+            margin-bottom: 1rem;
+            font-size: 1rem;
+        }
+
+        .error-404 a {
+            color: #9DE209;
+            text-decoration: underline;
+        }
+
+        .opciones-404 {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .opciones-404 .boton {
+            min-width: 120px;
+            text-decoration: none;
+        }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            .error-404 h2 {
+                font-size: 3rem;
+            }
+            .error-404 h3 {
+                font-size: 1.2rem;
+            }
+            .opciones-404 .boton {
+                width: 100%;
+            }
+        }
+    </style>
+</body>
+</html>

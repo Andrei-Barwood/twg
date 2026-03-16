@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog - The Wooden Groom</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <!-- Alpine.js (versión completa para usar $watch y persist) -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <!-- p5.js (fondo animado) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"></script>
+</head>
+<body>
+    <!-- Fondo p5.js -->
+    <div id="p5-background"></div>
+
+    <!-- Contenido principal con fondo semitransparente -->
+    <main class="main-container" x-data="blog()" x-init="init()">
+        <header>
+            <h1><a href="index.html">THE WOODEN GROOM</a></h1>
+            <nav>
+                <ul>
+                    <li><a href="music.html">MÚSICA</a></li>
+                    <li><a href="shows.html">SHOWS</a></li>
+                    <li><a href="blog.html">BLOG</a></li>
+                    <li><a href="about.html">BIO</a></li>
+                    <li><a href="contact.html">CONTACTO</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <!-- Título de la página -->
+        <h2>BLOG / NOTICIAS</h2>
+
+        <!-- Contenido dinámico: lista de posts o post individual -->
+        <div x-show="!postSeleccionado" x-cloak>
+            <!-- Mostrar posts paginados -->
+            <template x-for="post in postsPaginados" :key="post.slug">
+                <article class="post-item" @click="verPost(post.slug)">
+                    <h3 x-text="post.title"></h3>
+                    <span class="fecha" x-text="formatearFecha(post.date)"></span>
+                    <p class="extracto" x-text="post.excerpt"></p>
+                </article>
+            </template>
+
+            <!-- Controles de paginación -->
+            <div class="paginacion">
+                <button @click="paginaActual = 1" :disabled="paginaActual === 1">« Primera</button>
+                <button @click="paginaActual = paginaActual - 1" :disabled="paginaActual === 1">Anterior</button>
+                <span>Página <span x-text="paginaActual"></span> de <span x-text="totalPaginas"></span></span>
+                <button @click="paginaActual = paginaActual + 1" :disabled="paginaActual === totalPaginas">Siguiente</button>
+                <button @click="paginaActual = totalPaginas" :disabled="paginaActual === totalPaginas">Última »</button>
+            </div>
+        </div>
+
+        <!-- Vista de post individual -->
+        <div x-show="postSeleccionado" x-cloak>
+            <button class="boton-volver" @click="volverALista">← Todos los posts</button>
+            <article class="post-completo">
+                <h3 x-text="postSeleccionado.title"></h3>
+                <span class="fecha" x-text="formatearFecha(postSeleccionado.date)"></span>
+                <img x-show="postSeleccionado.image" :src="postSeleccionado.image" alt="" class="post-imagen">
+                <div class="contenido-post" x-html="postSeleccionado.content"></div>
+            </article>
+        </div>
+
+        <footer>
+            <p>2011 - 2026 | CC BY - utilizalo sin restricciones ahora es parte de tu mundo, dsifrútalo</p>
+            <p>
+                <a href="https://megadoll.bandcamp.com/" target="_blank" rel="noopener noreferrer">Bandcamp</a> |
+                <a href="https://www.instagram.com/thewoodengroom/" target="_blank" rel="noopener noreferrer">Instagram</a> |
+                <a href="https://www.youtube.com/@TheWoodenGroom" target="_blank" rel="noopener noreferrer">YouTube</a>
+            </p>
+        </footer>
+    </main>
+
+    <!-- Scripts -->
+    <script src="assets/js/posts.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/p5-background.js"></script>
+
+    <script>
+        function blog() {
+            return {
+                // Datos
+                posts: window.posts || [],            // cargados desde posts.js
+                postsPorPagina: 5,                      // número de posts por página
+                paginaActual: 1,
+                postSeleccionado: null,                  // post actual en vista individual
+
+                // Getters
+                get totalPaginas() {
+                    return Math.ceil(this.posts.length / this.postsPorPagina);
+                },
+                get postsPaginados() {
+                    const inicio = (this.paginaActual - 1) * this.postsPorPagina;
+                    const fin = inicio + this.postsPorPagina;
+                    return this.posts.slice(inicio, fin);
+                },
+
+                // Métodos
+                init() {
+                    // Comprobar si hay un hash en la URL (ej. #mi-post)
+                    if (window.location.hash) {
+                        const slug = window.location.hash.substring(1); // quita el #
+                        this.verPost(slug);
+                    }
+
+                    // Escuchar cambios en el hash (cuando el usuario navegue con el historial)
+                    window.addEventListener('hashchange', () => {
+                        if (window.location.hash) {
+                            const slug = window.location.hash.substring(1);
+                            this.verPost(slug);
+                        } else {
+                            this.postSeleccionado = null;
+                        }
+                    });
+                },
+
+                verPost(slug) {
+                    // Buscar el post por slug
+                    const post = this.posts.find(p => p.slug === slug);
+                    if (post) {
+                        this.postSeleccionado = post;
+                        // Actualizar el hash sin recargar
+                        history.pushState(null, null, `#${slug}`);
+                    } else {
+                        // Si no existe, redirigir a lista
+                        this.volverALista();
+                    }
+                },
+
+                volverALista() {
+                    this.postSeleccionado = null;
+                    this.paginaActual = 1; // opcional: resetear a primera página
+                    // Limpiar el hash
+                    history.pushState(null, null, window.location.pathname);
+                },
+
+                formatearFecha(fechaStr) {
+                    const opciones = { year: 'numeric', month: 'long', day: 'numeric' };
+                    return new Date(fechaStr).toLocaleDateString('es-ES', opciones);
+                }
+            }
+        }
+    </script>
+
+    <!-- Estilo extra para el blog (paginación, etc.) -->
+    <style>
+        /* Aseguramos que los elementos con x-cloak no se vean hasta que Alpine cargue */
+        [x-cloak] { display: none !important; }
+
+        .paginacion {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            margin: 2rem 0;
+        }
+        .paginacion button {
+            background: transparent;
+            border: 2px solid #30FF00;
+            color: #30FF00;
+            font-family: inherit;
+            font-size: 0.8rem;
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+        }
+        .paginacion button:disabled {
+            opacity: 0.3;
+            border-color: #3D3E3D;
+            color: #3D3E3D;
+            cursor: not-allowed;
+        }
+        .paginacion span {
+            align-self: center;
+            color: #9DE209;
+            font-size: 0.8rem;
+            padding: 0 0.5rem;
+        }
+        .post-item {
+            cursor: pointer;
+            transition: all 0.1s ease;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            background: rgba(0, 56, 59, 0.2);
+            border: 2px solid #3D3E3D;
+        }
+        .post-item:hover {
+            border-color: #30FF00;
+            background: rgba(48, 255, 0, 0.1);
+        }
+        .boton-volver {
+            margin-bottom: 1.5rem;
+        }
+        .post-completo {
+            background: rgba(0, 56, 59, 0.2);
+            border: 2px solid #3D3E3D;
+            padding: 2rem;
+        }
+        .post-imagen {
+            display: block;
+            max-width: 100%;
+            height: auto;
+            margin: 1rem 0 2rem;
+            border: 2px solid #30FF00;
+        }
+        .contenido-post {
+            margin-top: 2rem;
+            line-height: 1.8;
+            color: #E7F800;
+            overflow-x: hidden;
+        }
+        /* Imágenes responsivas: todas las img dentro del contenido */
+        .contenido-post img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            box-sizing: border-box;
+            border: 2px solid #5B9E00;
+        }
+        .contenido-post h3 {
+            margin-top: 1.5rem;
+        }
+        .contenido-post ul,
+        .contenido-post ol {
+            margin-left: 2rem;
+            margin-bottom: 1.5rem;
+        }
+        .contenido-post a {
+            color: #AEF504;
+            text-decoration: underline;
+        }
+        .contenido-post .lead {
+            font-size: 0.9rem;
+            color: #E7F800;
+            border-left: 4px solid #30FF00;
+            padding-left: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        .contenido-post blockquote {
+            margin: 1.5rem 0;
+            padding: 1rem 1.5rem;
+            background: rgba(0, 56, 59, 0.4);
+            border: 2px dashed #5B9E00;
+            border-left: 4px solid #30FF00;
+        }
+        .contenido-post blockquote p {
+            margin: 0;
+            font-style: normal;
+            color: #9DE209;
+        }
+        .contenido-post iframe {
+            max-width: 100%;
+            margin: 1rem 0;
+            border: 2px solid #3D3E3D;
+        }
+        .contenido-post .post-embed {
+            margin: 2rem 0;
+            padding: 1.5rem;
+            background: rgba(0, 56, 59, 0.3);
+            border: 2px solid #30FF00;
+            box-shadow: -4px 4px 0 #0F5150;
+        }
+        .contenido-post .post-embed h3 {
+            margin-bottom: 1rem;
+        }
+        .contenido-post .embed-media {
+            width: 100%;
+            max-width: 720px;
+            margin: 0 auto;
+            overflow: hidden;
+            background: rgba(18, 19, 18, 0.7);
+            border: 2px solid #5B9E00;
+        }
+        .contenido-post .embed-media img {
+            display: block;
+            width: 100%;
+            max-width: none;
+            height: auto;
+            object-fit: cover;
+            border: 0;
+        }
+        .contenido-post .post-gallery {
+            margin: 2rem 0;
+            padding: 1.5rem;
+            background: rgba(0, 56, 59, 0.3);
+            border: 2px solid #5B9E00;
+        }
+        .contenido-post .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+        .contenido-post .gallery-grid img {
+            width: 100%;
+            aspect-ratio: 4/3;
+            object-fit: cover;
+            min-width: 0;
+            border: 2px solid #3D3E3D;
+            transition: border-color 0.1s;
+        }
+        .contenido-post .gallery-grid img:hover {
+            border-color: #30FF00;
+        }
+        .contenido-post .gallery-caption {
+            font-size: 0.7rem;
+            color: #5B9E00;
+            margin: 0;
+        }
+        .contenido-post .tracklist {
+            margin: 2rem 0;
+            padding: 1.5rem;
+            background: rgba(0, 56, 59, 0.3);
+            border-left: 4px solid #30FF00;
+        }
+        .contenido-post .tracklist h3 {
+            margin-bottom: 1rem;
+        }
+        .contenido-post .tracklist ol {
+            margin-left: 1.5rem;
+            margin-bottom: 0;
+        }
+        .contenido-post .tracklist li {
+            margin-bottom: 0.5rem;
+            font-size: 0.7rem;
+        }
+        .contenido-post .post-footer {
+            margin-top: 2rem;
+            padding-top: 1.5rem;
+            border-top: 2px dashed #3D3E3D;
+        }
+        .contenido-post .post-tags {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .contenido-post .tags-label {
+            font-size: 0.7rem;
+            color: #5B9E00;
+            margin-right: 0.5rem;
+        }
+        .contenido-post .tag {
+            font-size: 0.6rem;
+            padding: 0.3rem 0.6rem;
+            background: transparent;
+            border: 1px solid #5B9E00;
+            color: #9DE209;
+            text-decoration: none !important;
+        }
+        .contenido-post .tag:hover {
+            background: #30FF00;
+            color: #121312;
+            border-color: #30FF00;
+        }
+
+        /* Responsive: imágenes y bloques en móvil */
+        @media (max-width: 768px) {
+            .post-completo {
+                padding: 1rem;
+            }
+            .contenido-post img,
+            .contenido-post .embed-media img {
+                width: 100% !important;
+                max-width: none !important;
+                height: auto !important;
+            }
+            .contenido-post .post-embed,
+            .contenido-post .post-gallery {
+                padding: 1rem;
+                margin: 1.5rem 0;
+            }
+            .contenido-post .gallery-grid {
+                grid-template-columns: 1fr;
+                gap: 0.75rem;
+            }
+            .contenido-post .gallery-grid img {
+                aspect-ratio: 16/9;
+            }
+        }
+        @media (max-width: 600px) {
+            .contenido-post .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</body>
+</html>

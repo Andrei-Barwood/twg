@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Wooden Groom</title>
+    <!-- Hoja de estilos principal -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    <!-- Fuente Press Start 2P desde Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <!-- Alpine.js para interactividad (lo usaremos en el blog) -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <!-- p5.js para la animación de fondo -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"></script>
+</head>
+<body class="index index-page">
+
+    <!-- Contenedor donde se dibujará la animación de p5.js -->
+    <div id="p5-background"></div>
+
+    <!-- Contenido principal con fondo semitransparente (clase .main-container) -->
+    <main class="main-container">
+        <!-- Cabecera / navegación -->
+        <header>
+            <h1><a href="index.html">THE WOODEN GROOM</a></h1>
+            <nav>
+                <ul>
+                    <li><a href="music.html">MÚSICA</a></li>
+                    <li><a href="shows.html">SHOWS</a></li>
+                    <li><a href="blog.html">BLOG</a></li>
+                    <li><a href="about.html">BIO</a></li>
+                    <li><a href="contact.html">CONTACTO</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <!-- Sección hero (presentación principal) -->
+        <section class="hero">
+            <p class="hero-kicker">The Wooden Groom / sombras dulces</p>
+            <h2 class="glitch">BREAKCORE / L-Pop / Lolli Pop Music</h2>
+            <p class="hero-intro">Breakcore experimental que mezcla sintetizadores e instrumentos acústicos en un archivo dulce y oscuro: cada álbum encarna un carácter distinto y convierte la discografía en una constelación de presencias, fricción, melodía torcida y afecto incendiario.</p>
+            <p class="destacado">Nuevo lanzamiento "Preludio" del tomo "EL", parte de la serie 'The Wooden Kid' ya disponible en mi bandcamp</p>
+            <p class="hero-story">Pinnochio y Alice viven su romance como si fuera un incendio causado con el fuego salvaje mas extraño y a almorzar.</p>
+            <p class="hero-world">The Wooden Groom se mueve desde una sensibilidad contracultural: personajes intensos y contradictorios enfrentados a una cultura podrida que vende perfección sintética, aditivos postizos y una belleza tan mal definida que termina dejando alopecia, ruina íntima y autoestima en cenizas.</p>
+            <div class="hero-release-meta">
+                <span>Último lanzamiento</span>
+                <span>The Wooden Kid: EL / Preludio</span>
+            </div>
+            <div class="hero-archive">
+                <span>Series temáticas</span>
+                <span>Catálogos</span>
+                <span>Discografía en construcción</span>
+            </div>
+            <div class="acciones">
+                <a href="https://megadoll.bandcamp.com/album/the-wooden-kid-el-preludio" class="boton" target="_blank" rel="noopener noreferrer">ESCUCHAR</a>
+                <a href="shows.html" class="boton">PRÓXIMOS SHOWS</a>
+            </div>
+        </section>
+
+        <!-- Pie de página -->
+        <footer>
+            <p>2011 - 2026 | CC BY - utilizalo sin restricciones ahora es parte de tu mundo, dsifrútalo</p>
+            <p>
+                <a href="https://megadoll.bandcamp.com/" target="_blank" rel="noopener noreferrer">Bandcamp</a> |
+                <a href="https://www.instagram.com/thewoodengroom/" target="_blank" rel="noopener noreferrer">Instagram</a> |
+                <a href="https://www.youtube.com/@TheWoodenGroom" target="_blank" rel="noopener noreferrer">YouTube</a>
+            </p>
+        </footer>
+    </main>
+
+    <!-- Script principal (navegación, efectos comunes) -->
+    <script src="assets/js/main.js"></script>
+    <!-- Script de la animación p5.js -->
+    <script src="assets/js/p5-background.js"></script>
+    <script>
+        // Pequeña validación para evitar que el canvas de p5 se superponga mal
+        // (a veces p5 crea el canvas fuera del div si no se especifica parent)
+        // Esto se manejará mejor dentro de p5-background.js
+    </script>
+</body>
+</html>
