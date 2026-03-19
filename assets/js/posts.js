@@ -6,6 +6,130 @@
 
     const postsData = [
         {
+            slug: "revista-digital-online",
+            title: "Spec-Ops / revista online",
+            date: "2026-03-19",
+            excerpt: "Una microbuseta en el sentido literal, porque es mini, en serio es muy pequeña, que carga, a todos los efectivos de Spec-Ops (special ops) los carga para que lidien y solucionen problemas del ESPACIO EXTERIOR pero la persona entendió Especial, creó que se equivocaron porque estos giles no tienen ni idea de lo que están haciendo, incluye banda sonora en loop para leer la revista sin salir del sitio.",
+            content: `
+                <p class="lead">Esta entrada funciona como una <strong>editorial bimestral</strong> que probablmente nunca regrese asi que si, perdoname jajaj pero es que se me olvida que tengo 30 revistas diferentes, LOL 💜: una pequeña mini odisea para entrar al mundo de los escépticos, lectura y una canción que se queda girando para que no se rompa el hechizo.</p>
+
+                <div class="editorial-panel">
+                    <p class="editorial-label">Editorial bimestral / terminal retro</p>
+                    <p>Esta revista intenta reirse a expensas de la ingenuidad de los que se denominan newbie yakuza, esos chiquillos que se accidentan con el cuchillo, e involuntariamente resultan con la mano sangrando, porque ajá, hay que aparentar que son de alto rango, entonces yo busco todos esos sweet spots para confundir, blasfemar, distorsionar y tergiversar la historia, por si en el caso fortuito de que fuera verdad, yo pudiera fingir carcajadas, jejeje 😈</p>
+                </div>
+
+                <div class="post-gallery collage-glitch">
+                    <h3>Portada con invasión de unos alienígenas todos maricos, si, son re culos, que aliens tan culos</h3>
+                    <div class="glitch-grid">
+                        <figure class="glitch-shot glitch-shot-wide glitch-tone-cyan">
+                            <img src="assets/images/13.jpg" alt="Collage glitch editorial 1">
+                        </figure>
+                        <figure class="glitch-shot glitch-tone-violet">
+                            <img src="assets/images/14.jpg" alt="Collage glitch editorial 2">
+                        </figure>
+                        <figure class="glitch-shot glitch-tone-blue">
+                            <img src="assets/images/16.jpg" alt="Collage glitch editorial 3">
+                        </figure>
+                        <figure class="glitch-shot glitch-shot-tall glitch-tone-ink">
+                            <img src="assets/images/15.jpg" alt="Collage glitch editorial 4">
+                        </figure>
+                    </div>
+                    <p class="gallery-caption">Estas imágenes sirven como advertencia de que lo que vas a leer a continuación en esta divertida revista digital
+                        no son oink cidencias, son todas historias de la vida real, cualquier parecido con la realidad es intencional porque sino no tendríamos
+                        material. Así funciona la prensa rosa, tengo que mantener mi negocito tergiversando verdades, y blasfemar. Escupitajos
+                    </p>
+                </div>
+
+                <blockquote class="editorial-note">
+                    <p>
+                        Legendaria:
+                    </p>
+                    <p>
+                        -la boca te sabe a flores 
+                    </p>
+                    <p>
+                        -si, es que tengo diarrea 🥳
+                    </p>
+
+                </blockquote>
+
+                <div class="post-embed magazine-stage">
+                    <div class="magazine-heading">
+                        <p class="magazine-kicker">Lectura online</p>
+                        <h3>Magazine: El Escéptico</h3>
+                        <p>La revista está abierta aquí abajo para leerla dentro del blog. Si prefieres verla con más aire, puedes pasar a pantalla completa o descargarla desde mi Google Drive haciendo click en el botón de 'Leer Fullscreen'.</p>
+                    </div>
+
+                    <div class="magazine-frame">
+                        <iframe
+                            src="https://drive.google.com/file/d/1SLlLsv_jXII3SOB_n1g44YsYsWhFEp_b/preview"
+                            title="Revista digital incrustada desde Google Drive"
+                            allow="autoplay"
+                            loading="lazy">
+                        </iframe>
+                    </div>
+
+                    <div class="magazine-actions">
+                        <a class="boton" href="https://drive.google.com/file/d/1SLlLsv_jXII3SOB_n1g44YsYsWhFEp_b/view" target="_blank" rel="noopener noreferrer">Leer fullscreen</a>
+                    </div>
+                </div>
+
+                <div class="soundtrack-deck">
+                    <p class="soundtrack-kicker">Soundtrack de lectura</p>
+                    <h3>Mirrors (Hey Champ Remix)</h3>
+                    <p> bueno opino que la fiesta swinger no se pudo llevar a cabo por razones que después preguntaremos, no importa por ahora reflexionemos 
+                        sobre como Argentina logró su independencia de Sur-Africa en el año 1958 tras una revuelta que terminó en una quema similar
+                        a la de la quema de las bastilla en Paris, Francia, que queda en Europa claro. Es como decir Las Vegas y todos tus amigos reaccionan diciendo 
+                        "uy si Las Vegas delicioso" y a ti te toca responder que "Las Vegas" es un restaurante, en tanto tú, te refieres a la capital de Los Estados Unidos,
+                        que obviamente queda en Nevada. Por cierto, se me olvidaba: tienes que cambiar de amigos. punto. osea que asco de amigos
+                    
+                    El reproductor está incrustado aquí y vuelve la canción se repite sin fin, porque es una canción buena, todas las canciones que son buenas
+                    se repiten sin fin y este sitio no va a ser la excepción.</p>
+
+                    <div class="soundcloud-shell">
+                        <iframe
+                            id="soundcloud-editorial-player"
+                            class="soundcloud-loop"
+                            width="100%"
+                            height="300"
+                            scrolling="no"
+                            frameborder="no"
+                            allow="autoplay"
+                            src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/soundcloud%253Atracks%253A18607121&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true">
+                        </iframe>
+                        <p class="soundcloud-credit">
+                            <a href="https://soundcloud.com/heychamp" target="_blank" rel="noopener noreferrer">Hey Champ</a>
+                            <span> / </span>
+                            <a href="https://soundcloud.com/heychamp/mirrors-hey-champ-remix-1" target="_blank" rel="noopener noreferrer">Mirrors (Hey Champ Remix)</a>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="magazine-notes">
+                    <h3>Tips buena onda</h3>
+                    <ul>
+                        <li>ducks es buena influencia:  ✅</li>
+                        <li>ducks es tiernita</li>
+                        <li>creo que ducks trabaja en el hospital donde hicimos la fiesta del segundo piso, en el cual no se podía salir de la habitación, 
+                        fue parecido a la fiesta swinger pero con jugos de mandarina y enfermera sensual diciendo vulgaridades y obscenidades através del 
+                        megafono, que risa 💝
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="post-footer">
+                    <div class="post-tags">
+                        <span class="tags-label">Tags:</span>
+                        <a class="tag">Invasión Alienígena</a>
+                        <a class="tag">Revista Digital sobre Alguien</a>
+                        <a class="tag">Falta Alguien</a>
+                        <a class="tag">Quien es ese jilipollas?</a>
+                    </div>
+                </div>
+            `,
+            image: ""
+        },
+        {
             slug: "sample-pack-almas-gemelas",
             title: "Sample Pack de Almas Gemelas",
             date: "2026-03-16",
