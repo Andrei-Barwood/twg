@@ -297,6 +297,77 @@ nav a:hover {
     margin-top: 0.25rem;
 }
 
+.archive-spotlight {
+    display: grid;
+    grid-template-columns: minmax(0, 1.3fr) minmax(260px, 0.9fr);
+    gap: 1.5rem;
+    align-items: center;
+    margin: 0 0 3rem;
+    padding: clamp(1.4rem, 3vw, 2rem);
+    background:
+        linear-gradient(135deg, rgba(0, 56, 59, 0.82), rgba(18, 19, 18, 0.96)),
+        radial-gradient(circle at top left, rgba(231, 248, 0, 0.12), transparent 48%);
+    border: 2px solid #0F5150;
+    box-shadow: 0 0 24px rgba(15, 81, 80, 0.35);
+}
+
+.archive-spotlight-copy p,
+.archive-spotlight-copy h3 {
+    margin-bottom: 0;
+}
+
+.archive-spotlight-copy {
+    display: grid;
+    gap: 0.85rem;
+}
+
+.archive-eyebrow {
+    color: #E7F800;
+    font-size: 0.68rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+}
+
+.archive-spotlight h3 {
+    font-size: clamp(1.2rem, 3vw, 1.8rem);
+    line-height: 1.3;
+}
+
+.archive-spotlight-copy p:last-child {
+    max-width: 52ch;
+    color: #B2E5F2;
+    font-size: 0.74rem;
+    line-height: 1.9;
+}
+
+.archive-link {
+    display: grid;
+    gap: 0.55rem;
+    padding: 1.15rem 1.25rem;
+    background: rgba(0, 0, 0, 0.42);
+    border: 2px solid #30FF00;
+    border-bottom: 2px solid #30FF00;
+    box-shadow: 5px 5px 0 #0F5150;
+}
+
+.archive-link-label {
+    color: #AEF504;
+    font-size: 0.72rem;
+    text-transform: uppercase;
+}
+
+.archive-link-url {
+    color: #B2E5F2;
+    font-size: 0.7rem;
+    line-height: 1.8;
+    word-break: break-word;
+}
+
+body.index-page .archive-link:hover {
+    border-bottom: 2px solid #E7F800;
+    box-shadow: 5px 5px 0 #E7F800;
+}
+
 /* Tarjetas para posts del blog (blog.html) */
 .blog-post {
     background: rgba(0, 56, 59, 0.3); /* #00383B semitransparente */
@@ -376,6 +447,15 @@ nav a:hover {
     }
 
     .boton {
+        width: 100%;
+    }
+
+    .archive-spotlight {
+        grid-template-columns: 1fr;
+        margin-bottom: 2rem;
+    }
+
+    .archive-link {
         width: 100%;
     }
 
