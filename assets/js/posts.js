@@ -178,6 +178,95 @@
             image: ""
         },
         {
+            slug: "sample-pack-taxi-labyrinth",
+            title: "Sample Pack de Taxi Labyrinth",
+            date: "2026-03-22",
+            excerpt: "Track 02 abierto desde Taxi Labyrinth: 76 archivos WAV estéreo, La húngara menor y licencia CC BY para samplear, remezclar y construir nuevas obras.",
+            content: `
+                <p class="lead"><strong>02 - La Ausencia de Evidencias es la Evidencia [tracks]</strong><br>the wooden groom comparte aquí una apertura del track 02 de <strong>Taxi Labyrinth</strong>, dentro de la serie <strong>Graffiti Sonoro</strong>.</p>
+
+                <p>Esta carpeta no contiene la canción terminada. En su lugar, reúne los buffers del tracker exportados canal por canal: fragmentos, capas, secuencias y materiales internos de producción conservados como huella del proceso y como materia prima para nuevas obras.</p>
+
+                <p><a class="boton" href="music.html#inside-session-taxi-labyrinth">Abrir entrada en sample packs</a></p>
+                <p><a href="https://archive.org/download/la-ausencia-de-evidencias-es-la-evidencia-tracks/02%20-%20La%20Ausencia%20de%20Evidencias%20es%20la%20Evidencia%20%5Btracks%5D.zip" target="_blank" rel="noopener noreferrer">Descargar ZIP de Taxi Labyrinth →</a></p>
+
+                <h2>Contenido</h2>
+                <ul>
+                    <li>01 - amen — 25 archivos WAV</li>
+                    <li>02 - bass — 26 archivos WAV</li>
+                    <li>03 - synth — 25 archivos WAV</li>
+                    <li>Total: 76 archivos WAV estéreo</li>
+                </ul>
+
+                <h2>Formato</h2>
+                <ul>
+                    <li>WAV</li>
+                    <li>44.1 kHz</li>
+                    <li>16-bit</li>
+                    <li>Estéreo</li>
+                </ul>
+
+                <h2>Idea del archivo</h2>
+                <p><strong>La Ausencia de Evidencias es la Evidencia [tracks]</strong> funciona al mismo tiempo como documento de producción, archivo de composición y caja de herramientas creativa. No presenta una obra cerrada, sino un mapa abierto de sus partes: ritmos, bajos, síntesis y estructuras separadas para escuchar el interior de la pieza desde cerca.</p>
+
+                <p>Es una forma de compartir no solo el resultado, sino también el recorrido: la arquitectura del track, sus residuos útiles, su respiración técnica y su potencial de mutación.</p>
+
+                <h2>Licencia</h2>
+                <p>Este material se publica bajo licencia <strong>CC BY</strong>.</p>
+
+                <p>Eso significa que puedes copiar, distribuir, samplear, remezclar, transformar, adaptar y reutilizar este material en nuevas obras, incluso con fines comerciales, siempre que des la atribución correspondiente a <strong>the wooden groom</strong>.</p>
+
+                <p>La licencia permite usar estos sonidos en música, remixes, obras derivadas, cine, televisión, videojuegos, instalaciones, piezas audiovisuales y otros contextos creativos. La idea es compartir de una manera abierta y buena onda: dejar que una obra siga viviendo en otras manos, otros montajes, otros relatos y otros sistemas, sin perder el rastro de su origen.</p>
+
+                <h3>Atribución sugerida</h3>
+                <blockquote>
+                    <p>Source material by the wooden groom — 02 - La Ausencia de Evidencias es la Evidencia [tracks] from Taxi Labyrinth, series Graffiti Sonoro. Licensed under CC BY.</p>
+                </blockquote>
+
+                <h2>Invitación</h2>
+                <p>Si estos archivos te sirven para construir un track, un remix, una escena, un sistema interactivo, una secuencia para imagen o cualquier otra derivación, adelante.</p>
+
+                <p>Este archivo está aquí para ser escuchado, desmontado, reimaginado y vuelto a encender en otro lugar.</p>
+
+                <h2>Tonalidad de los stems</h2>
+                <p>Los materiales de este pack orbitan <strong>La húngara menor</strong>. En notación: <strong>A, B, C, D#, E, F, G#</strong>. Si vienes desde la menor natural, puedes pensarla como una escala menor con dos giros muy característicos: una cuarta aumentada y una séptima mayor. Ahí aparece su color: tenso, ceremonial, nocturno y un poco espectral.</p>
+
+                <h2>Lectura rápida</h2>
+                <p>Sin teoría musical, la forma simple de abordarla es esta:</p>
+                <ul>
+                    <li>A es la nota que más se siente como “centro”.</li>
+                    <li>Si quieres algo estable, apóyate en A, C y E.</li>
+                    <li>Si quieres que aparezca el color extraño y cinematográfico de esta escala, usa D# y G#.</li>
+                    <li>No hace falta que todos los stems “canten” la tonalidad de forma obvia: en muchos casos basta con que el bajo o el synth principal la sostengan.</li>
+                    <li>Si algo suena fuera de lugar, prueba moverlo hasta alguna de estas notas: A, B, C, D#, E, F, G#.</li>
+                    <li>Trata A como centro tonal y E como apoyo fuerte o punto de arrastre.</li>
+                    <li>El carácter de la escala aparece muy rápido cuando enfatizas los saltos C → D# y F → G#.</li>
+                    <li>Para melodías y arpegios, funcionan muy bien células como A-B-C-D# o E-F-G#-A.</li>
+                    <li>En bajos, suele rendir mejor una base en A o una alternancia A / E, dejando D# y G# como tensión.</li>
+                    <li>Si armonizas, conviene empezar con centros claros y voicings abiertos antes de complicar la progresión.</li>
+                    <li>Voicings útiles para pads y capas: A-C-E, A-B-C-E, A-C-D#-E, E-G#-B, F-A-C-E.</li>
+                </ul>
+
+                <h2>Cómo llevarla a música electrónica</h2>
+                <ul>
+                    <li>En breakcore, jungle o drum-heavy electronics, deja que el groove mande y usa el bajo o el synth para fijar la tonalidad.</li>
+                    <li>En acid, FM, wavetable o secuencias por pasos, programa patrones cortos de 4 a 8 notas y repítelos con automatización de filtro y acento.</li>
+                    <li>En ambient, drone o cine, trabaja con pedales largos en A y E, revelando D# y G# poco a poco.</li>
+                    <li>En videojuegos o audiovisual, piensa en A como zona estable y usa D# o G# para subir tensión, amenaza o extrañeza.</li>
+                </ul>
+
+                <h2>Tips prácticos</h2>
+                <ul>
+                    <li>Si un stem es claramente percusivo, no hace falta forzar afinación: primero manda el ritmo.</li>
+                    <li>Si un corte del amen tiene resonancia tonal, afínalo al centro A o a notas amigas como C y E.</li>
+                    <li>Si el conjunto suena demasiado estable, introduce D# en un lead, pad o efecto de transición.</li>
+                    <li>Si suena demasiado áspero, vuelve a A-C-E y deja las tensiones para momentos puntuales.</li>
+                    <li>Una buena estrategia es construir primero una versión muy simple del motivo en A, C, E y luego colorearla con B, D#, F y G#.</li>
+                </ul>
+            `,
+            image: ""
+        },
+        {
             slug: "now",
             title: "now or never",
             date: "2026-02-16",
