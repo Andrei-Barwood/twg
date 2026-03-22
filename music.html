@@ -138,7 +138,13 @@
 
                             <div class="release-links" x-show="release.links.length > 0">
                                 <template x-for="link in release.links" :key="`${release.id}-${link.label}`">
-                                    <a :href="link.url" class="boton pequeño" x-text="link.label"></a>
+                                    <a
+                                        :href="link.url"
+                                        class="boton pequeño"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        x-text="link.label"
+                                    ></a>
                                 </template>
                             </div>
 
