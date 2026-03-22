@@ -11,7 +11,7 @@
     <!-- p5.js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"></script>
 </head>
-<body>
+<body class="shows-page">
     <!-- Fondo animado -->
     <div id="p5-background"></div>
 
@@ -29,7 +29,7 @@
             </nav>
         </header>
 
-        <h2>LIVESTREAMS 2026</h2>
+        <h2 class="shows-title">LIVESTREAMS 2026</h2>
 
         <p class="shows-intro">
             Temporada de transmisiones en Twitch y YouTube desde diferentes estudios.
@@ -50,7 +50,7 @@
 
             <div class="shows-lista" x-show="upcomingShows.length > 0">
                 <template x-for="show in paginatedUpcomingShows" :key="'upcoming-' + show.number">
-                    <div class="show-item futuro">
+                    <div class="show-item futuro" :style="showThemeStyle(show)">
                         <div class="show-fecha">
                             <span class="dia" x-text="show.day"></span>
                             <span class="mes" x-text="show.month"></span>
@@ -110,7 +110,7 @@
 
             <div class="shows-lista">
                 <template x-for="show in archivedShows" :key="'archive-' + show.number">
-                    <div class="show-item pasado">
+                    <div class="show-item pasado" :style="showThemeStyle(show)">
                         <div class="show-fecha">
                             <span class="dia" x-text="show.day"></span>
                             <span class="mes" x-text="show.month"></span>
@@ -137,7 +137,7 @@
         </section>
 
         <!-- Nota sobre booking / contacto -->
-        <div style="text-align: center; margin: 3rem 0 1rem;">
+        <div class="shows-booking">
             <p>¿Quieres organizar un livestream o abrir un estudio para una transmisión?</p>
             <a href="contact.html" class="boton">conozcamonos un poco mejor</a>
         </div>
@@ -162,6 +162,32 @@
             const weekdayLabels = ['Domingo', 'Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado'];
             const millisecondsPerDay = 24 * 60 * 60 * 1000;
             const startUtc = Date.UTC(2026, 2, 20, 9, 0, 0);
+            const palette = [
+                '#D9C678',
+                '#F3F399',
+                '#EBE68E',
+                '#D4BE93',
+                '#B7935D',
+                '#D4BF95',
+                '#C2A063',
+                '#D5C08A',
+                '#C32326',
+                '#F54144',
+                '#A28056',
+                '#D3A871',
+                '#277914',
+                '#5FBB4B',
+                '#A4D96B',
+                '#FAE9C2',
+                '#5F4929',
+                '#F2B800',
+                '#8C744E',
+                '#65953B',
+                '#4C722D',
+                '#FFFFE6'
+            ];
+            const pageColorSlots = 22;
+            const cardColorSlots = 10;
             const timeZones = [
                 { label: 'Osaka, Japon', zone: 'Asia/Tokyo' },
                 { label: 'Yekaterinburg, Rusia', zone: 'Asia/Yekaterinburg' },
@@ -238,6 +264,189 @@
                 'Golpes Histeria la Sombra de los Placeres ya avanzada'
             ];
 
+            function shuffleColors(colors) {
+                const shuffled = colors.slice();
+
+                for (let index = shuffled.length - 1; index > 0; index -= 1) {
+                    const randomIndex = Math.floor(Math.random() * (index + 1));
+                    [shuffled[index], shuffled[randomIndex]] = [shuffled[randomIndex], shuffled[index]];
+                }
+
+                return shuffled;
+            }
+
+            function buildColorDeck(totalSlots) {
+                const deck = [];
+
+                while (deck.length < totalSlots) {
+                    deck.push(...shuffleColors(palette));
+                }
+
+                return deck.slice(0, totalSlots);
+            }
+
+            function hexToRgb(hex) {
+                const normalized = hex.replace('#', '');
+                const value = Number.parseInt(normalized, 16);
+
+                return {
+                    r: (value >> 16) & 255,
+                    g: (value >> 8) & 255,
+                    b: value & 255
+                };
+            }
+
+            function relativeLuminance(hex) {
+                const { r, g, b } = hexToRgb(hex);
+                const channels = [r, g, b].map((channel) => {
+                    const normalized = channel / 255;
+                    return normalized <= 0.03928
+                        ? normalized / 12.92
+                        : Math.pow((normalized + 0.055) / 1.055, 2.4);
+                });
+
+                return (0.2126 * channels[0]) + (0.7152 * channels[1]) + (0.0722 * channels[2]);
+            }
+
+            function contrastRatio(colorA, colorB) {
+                const luminanceA = relativeLuminance(colorA);
+                const luminanceB = relativeLuminance(colorB);
+                const lighter = Math.max(luminanceA, luminanceB);
+                const darker = Math.min(luminanceA, luminanceB);
+
+                return (lighter + 0.05) / (darker + 0.05);
+            }
+
+            function pickContrastColor(background, colors) {
+                let bestColor = colors[0];
+                let bestScore = -1;
+
+                colors.forEach((candidate) => {
+                    if (candidate === background) {
+                        return;
+                    }
+
+                    const score = contrastRatio(background, candidate);
+
+                    if (score > bestScore) {
+                        bestScore = score;
+                        bestColor = candidate;
+                    }
+                });
+
+                return bestColor;
+            }
+
+            function createPageTheme(colors) {
+                const [
+                    pageBg,
+                    mainBg,
+                    mainBorder,
+                    mainShadow,
+                    titleBg,
+                    introBg,
+                    introBorder,
+                    referenceBg,
+                    upcomingBandA,
+                    upcomingBandB,
+                    archiveBandA,
+                    archiveBandB,
+                    badgeBg,
+                    archiveBadgeBg,
+                    emptyBg,
+                    paginationBg,
+                    bookingBg,
+                    footerBg,
+                    ribbonA,
+                    ribbonB,
+                    ribbonC,
+                    backdropTint
+                ] = colors;
+
+                return {
+                    '--shows-page-bg': pageBg,
+                    '--shows-page-ink': pickContrastColor(pageBg, palette),
+                    '--shows-main-bg': mainBg,
+                    '--shows-main-ink': pickContrastColor(mainBg, palette),
+                    '--shows-main-border': mainBorder,
+                    '--shows-main-shadow': mainShadow,
+                    '--shows-title-bg': titleBg,
+                    '--shows-title-ink': pickContrastColor(titleBg, palette),
+                    '--shows-intro-bg': introBg,
+                    '--shows-intro-ink': pickContrastColor(introBg, palette),
+                    '--shows-intro-border': introBorder,
+                    '--shows-reference-bg': referenceBg,
+                    '--shows-reference-ink': pickContrastColor(referenceBg, palette),
+                    '--shows-upcoming-band-a': upcomingBandA,
+                    '--shows-upcoming-band-b': upcomingBandB,
+                    '--shows-upcoming-ink': pickContrastColor(upcomingBandA, palette),
+                    '--shows-archive-band-a': archiveBandA,
+                    '--shows-archive-band-b': archiveBandB,
+                    '--shows-archive-ink': pickContrastColor(archiveBandA, palette),
+                    '--shows-badge-bg': badgeBg,
+                    '--shows-badge-ink': pickContrastColor(badgeBg, palette),
+                    '--shows-archive-badge-bg': archiveBadgeBg,
+                    '--shows-archive-badge-ink': pickContrastColor(archiveBadgeBg, palette),
+                    '--shows-empty-bg': emptyBg,
+                    '--shows-empty-ink': pickContrastColor(emptyBg, palette),
+                    '--shows-pagination-bg': paginationBg,
+                    '--shows-pagination-ink': pickContrastColor(paginationBg, palette),
+                    '--shows-booking-bg': bookingBg,
+                    '--shows-booking-ink': pickContrastColor(bookingBg, palette),
+                    '--shows-footer-bg': footerBg,
+                    '--shows-footer-ink': pickContrastColor(footerBg, palette),
+                    '--shows-ribbon-a': ribbonA,
+                    '--shows-ribbon-b': ribbonB,
+                    '--shows-ribbon-c': ribbonC,
+                    '--shows-backdrop-tint': backdropTint,
+                    '--shows-link': introBorder,
+                    '--shows-link-hover-bg': ribbonB,
+                    '--shows-link-hover-ink': pickContrastColor(ribbonB, palette),
+                    '--shows-button-bg': ribbonA,
+                    '--shows-button-ink': pickContrastColor(ribbonA, palette),
+                    '--shows-button-border': ribbonB,
+                    '--shows-button-shadow': ribbonC,
+                    '--shows-nav-hover-bg': backdropTint,
+                    '--shows-nav-hover-ink': pickContrastColor(backdropTint, palette)
+                };
+            }
+
+            function createShowTheme(colors) {
+                const [
+                    surface,
+                    border,
+                    shadow,
+                    date,
+                    title,
+                    chip,
+                    note,
+                    times,
+                    toggle,
+                    state
+                ] = colors;
+
+                return {
+                    surface,
+                    surfaceInk: pickContrastColor(surface, palette),
+                    border,
+                    shadow,
+                    date,
+                    dateInk: pickContrastColor(date, palette),
+                    title,
+                    titleInk: pickContrastColor(title, palette),
+                    chip,
+                    chipInk: pickContrastColor(chip, palette),
+                    note,
+                    noteInk: pickContrastColor(note, palette),
+                    times,
+                    timesInk: pickContrastColor(times, palette),
+                    toggle,
+                    toggleInk: pickContrastColor(toggle, palette),
+                    state,
+                    stateInk: pickContrastColor(state, palette)
+                };
+            }
+
             function formatHour(date, zone) {
                 return new Intl.DateTimeFormat('en-US', {
                     timeZone: zone,
@@ -275,12 +484,15 @@
 
             return {
                 allShows: shows,
+                pageTheme: {},
                 currentPage: 1,
                 pageSize: 12,
                 openTimes: {},
                 now: Date.now(),
                 refreshHandle: null,
                 init() {
+                    this.randomizePalette();
+                    this.applyDocumentTheme();
                     this.refreshNow();
                     this.refreshHandle = window.setInterval(() => {
                         this.refreshNow();
@@ -290,6 +502,28 @@
                     if (this.refreshHandle) {
                         window.clearInterval(this.refreshHandle);
                     }
+                },
+                randomizePalette() {
+                    const deck = buildColorDeck(pageColorSlots + (this.allShows.length * cardColorSlots));
+                    let offset = 0;
+
+                    this.pageTheme = createPageTheme(deck.slice(offset, offset + pageColorSlots));
+                    offset += pageColorSlots;
+
+                    this.allShows = this.allShows.map((show) => {
+                        const theme = createShowTheme(deck.slice(offset, offset + cardColorSlots));
+                        offset += cardColorSlots;
+
+                        return {
+                            ...show,
+                            theme
+                        };
+                    });
+                },
+                applyDocumentTheme() {
+                    Object.entries(this.pageTheme).forEach(([name, value]) => {
+                        document.body.style.setProperty(name, value);
+                    });
                 },
                 refreshNow() {
                     this.now = Date.now();
@@ -340,6 +574,32 @@
                 },
                 isTimesOpen(number) {
                     return Boolean(this.openTimes[number]);
+                },
+                showThemeStyle(show) {
+                    if (!show.theme) {
+                        return {};
+                    }
+
+                    return {
+                        '--show-surface': show.theme.surface,
+                        '--show-surface-ink': show.theme.surfaceInk,
+                        '--show-border': show.theme.border,
+                        '--show-shadow': show.theme.shadow,
+                        '--show-date-bg': show.theme.date,
+                        '--show-date-ink': show.theme.dateInk,
+                        '--show-title-bg': show.theme.title,
+                        '--show-title-ink': show.theme.titleInk,
+                        '--show-chip-bg': show.theme.chip,
+                        '--show-chip-ink': show.theme.chipInk,
+                        '--show-note-bg': show.theme.note,
+                        '--show-note-ink': show.theme.noteInk,
+                        '--show-times-bg': show.theme.times,
+                        '--show-times-ink': show.theme.timesInk,
+                        '--show-toggle-bg': show.theme.toggle,
+                        '--show-toggle-ink': show.theme.toggleInk,
+                        '--show-state-bg': show.theme.state,
+                        '--show-state-ink': show.theme.stateInk
+                    };
                 }
             };
         }
@@ -347,219 +607,352 @@
 
     <!-- Estilos específicos para la página de shows -->
     <style>
-        .shows-intro {
-            margin: 1rem 0 2rem;
-            color: #B2E5F2;
-            line-height: 1.9;
-            max-width: 60rem;
+        body.shows-page {
+            background: var(--shows-page-bg, #FAE9C2);
+            color: var(--shows-page-ink, #5F4929);
         }
 
-        .shows-lista {
+        body.shows-page #p5-background {
+            position: fixed;
+            inset: 0;
+        }
+
+        body.shows-page #p5-background::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(circle at 15% 20%, var(--shows-ribbon-a, #F2B800), transparent 36%),
+                radial-gradient(circle at 85% 18%, var(--shows-ribbon-b, #C32326), transparent 32%),
+                linear-gradient(135deg, var(--shows-ribbon-c, #277914), var(--shows-backdrop-tint, #FFFFE6));
+            mix-blend-mode: soft-light;
+            opacity: 0.34;
+            pointer-events: none;
+        }
+
+        body.shows-page .main-container {
+            background: linear-gradient(180deg, var(--shows-main-bg, #FAE9C2), var(--shows-page-bg, #FFFFE6));
+            color: var(--shows-main-ink, #5F4929);
+            border-color: var(--shows-main-border, #5F4929);
+            box-shadow: 14px 14px 0 var(--shows-main-shadow, #A28056);
+        }
+
+        body.shows-page header {
+            border-bottom: 2px solid var(--shows-main-border, #5F4929);
+            padding-bottom: 1.2rem;
+        }
+
+        body.shows-page h1 a,
+        body.shows-page nav a,
+        body.shows-page footer a {
+            color: inherit;
+            border-bottom-color: currentColor;
+        }
+
+        body.shows-page nav ul {
+            border-bottom-color: var(--shows-main-border, #5F4929);
+        }
+
+        body.shows-page a {
+            color: var(--shows-link, #C32326);
+            border-bottom-color: var(--shows-link, #C32326);
+        }
+
+        body.shows-page a:hover,
+        body.shows-page .boton:hover {
+            color: var(--shows-link-hover-ink, #FFFFE6) !important;
+            background-color: var(--shows-link-hover-bg, #C32326) !important;
+            border-color: var(--shows-button-border, #5F4929) !important;
+            border-bottom-color: var(--shows-button-border, #5F4929) !important;
+        }
+
+        body.shows-page .boton {
+            background: var(--shows-button-bg, #F2B800);
+            color: var(--shows-button-ink, #5F4929);
+            border-color: var(--shows-button-border, #C32326);
+            border-bottom-color: var(--shows-button-border, #C32326);
+            box-shadow: 4px 4px 0 var(--shows-button-shadow, #277914);
+        }
+
+        body.shows-page .shows-title {
+            display: inline-block;
+            margin-bottom: 1.6rem;
+            padding: 1rem 1.25rem;
+            background: linear-gradient(135deg, var(--shows-title-bg, #D9C678), var(--shows-ribbon-a, #F2B800));
+            color: var(--shows-title-ink, #5F4929);
+            border: 2px solid var(--shows-main-border, #5F4929);
+            box-shadow: 8px 8px 0 var(--shows-main-shadow, #A28056);
+        }
+
+        body.shows-page .shows-intro {
+            margin: 1rem 0 1.4rem;
+            padding: 1.2rem 1.35rem;
+            color: var(--shows-intro-ink, #5F4929);
+            line-height: 1.9;
+            max-width: 62rem;
+            background: var(--shows-intro-bg, #FAE9C2);
+            border-left: 8px solid var(--shows-intro-border, #C32326);
+            box-shadow: 6px 6px 0 var(--shows-main-shadow, #A28056);
+        }
+
+        body.shows-page .shows-reference {
+            display: inline-block;
+            margin-bottom: 2rem;
+            padding: 0.8rem 1rem;
+            color: var(--shows-reference-ink, #5F4929);
+            font-size: 0.72rem;
+            line-height: 1.8;
+            background: var(--shows-reference-bg, #FFFFE6);
+            border: 2px solid var(--shows-main-border, #5F4929);
+            box-shadow: 4px 4px 0 var(--shows-ribbon-b, #C32326);
+        }
+
+        body.shows-page .shows-reference span {
+            color: inherit;
+        }
+
+        body.shows-page .shows-lista {
             display: flex;
             flex-direction: column;
             gap: 1.5rem;
             margin: 2rem 0;
         }
 
-        .shows-section + .shows-section {
+        body.shows-page .shows-section + .shows-section {
             margin-top: 4rem;
         }
 
-        .shows-section-header {
+        body.shows-page .shows-section-header {
             display: flex;
             align-items: center;
             justify-content: space-between;
             gap: 1rem;
             flex-wrap: wrap;
+            padding: 1rem 1.2rem;
+            border: 2px solid var(--shows-main-border, #5F4929);
+            box-shadow: 6px 6px 0 var(--shows-main-shadow, #A28056);
         }
 
-        .shows-section-header h3 {
+        body.shows-page .shows-section:not(.shows-archive) .shows-section-header {
+            background: linear-gradient(135deg, var(--shows-upcoming-band-a, #F3F399), var(--shows-upcoming-band-b, #D9C678));
+            color: var(--shows-upcoming-ink, #5F4929);
+        }
+
+        body.shows-page .shows-archive .shows-section-header {
+            background: linear-gradient(135deg, var(--shows-archive-band-a, #D4BE93), var(--shows-archive-band-b, #A28056));
+            color: var(--shows-archive-ink, #FFFFE6);
+        }
+
+        body.shows-page .shows-section-header h3 {
             margin-bottom: 0;
+            color: inherit;
         }
 
-        .shows-badge {
-            padding: 0.5rem 0.8rem;
-            border: 1px solid #30FF00;
-            color: #AEF504;
+        body.shows-page .shows-badge {
+            padding: 0.55rem 0.85rem;
+            border: 2px solid var(--shows-main-border, #5F4929);
+            color: var(--shows-badge-ink, #5F4929);
             font-size: 0.68rem;
             text-transform: uppercase;
-            background: rgba(0, 0, 0, 0.28);
+            background: var(--shows-badge-bg, #F2B800);
+            box-shadow: 3px 3px 0 var(--shows-main-shadow, #A28056);
         }
 
-        .shows-badge.archive {
-            border-color: rgba(178, 229, 242, 0.4);
-            color: rgba(178, 229, 242, 0.82);
+        body.shows-page .shows-badge.archive {
+            color: var(--shows-archive-badge-ink, #5F4929);
+            background: var(--shows-archive-badge-bg, #65953B);
+            border-color: var(--shows-main-border, #5F4929);
         }
 
-        .shows-reference {
-            margin-bottom: 2rem;
-            color: #9DE209;
-            font-size: 0.72rem;
-            line-height: 1.8;
-        }
-
-        .shows-reference span {
-            color: #B2E5F2;
-        }
-
-        .shows-empty {
+        body.shows-page .shows-empty {
             margin: 1.5rem 0 0;
             padding: 1rem 1.2rem;
-            background: rgba(0, 0, 0, 0.28);
-            border-left: 4px solid #0F5150;
+            background: var(--shows-empty-bg, #FFFFE6);
+            color: var(--shows-empty-ink, #5F4929);
+            border-left: 8px solid var(--shows-main-border, #5F4929);
+            box-shadow: 6px 6px 0 var(--shows-main-shadow, #A28056);
         }
 
-        .shows-pagination {
+        body.shows-page .shows-pagination {
             display: flex;
             justify-content: center;
             align-items: center;
             gap: 1rem;
             flex-wrap: wrap;
             margin: 2rem 0 0;
-            color: #AEF504;
+            color: var(--shows-pagination-ink, #5F4929);
             font-size: 0.75rem;
         }
 
-        .shows-pagination button:disabled {
-            opacity: 0.35;
-            cursor: not-allowed;
+        body.shows-page .shows-pagination span {
+            padding: 0.65rem 0.85rem;
+            background: var(--shows-pagination-bg, #D5C08A);
+            border: 2px solid var(--shows-main-border, #5F4929);
+            box-shadow: 4px 4px 0 var(--shows-main-shadow, #A28056);
         }
 
-        .show-item {
+        body.shows-page .shows-pagination button:disabled {
+            opacity: 0.35;
+            cursor: not-allowed;
+            box-shadow: none;
+        }
+
+        body.shows-page .show-item {
             display: flex;
             align-items: center;
             gap: 2rem;
-            background: rgba(0, 0, 0, 0.3);
-            border: 2px solid #3D3E3D;
+            position: relative;
+            overflow: hidden;
+            background: var(--show-surface, #FAE9C2);
+            color: var(--show-surface-ink, #5F4929);
+            border: 2px solid var(--show-border, #5F4929);
+            box-shadow: 8px 8px 0 var(--show-shadow, #A28056);
             padding: 1.5rem;
-            transition: border-color 0.2s;
+            transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
         }
 
-        .show-item.futuro:hover {
-            border-color: #30FF00;
+        body.shows-page .show-item::before {
+            content: '';
+            position: absolute;
+            inset: 0 auto 0 0;
+            width: 0.7rem;
+            background: var(--show-border, #5F4929);
         }
 
-        .show-item.pasado {
-            opacity: 0.46;
-            border-color: #292929;
-            background: rgba(0, 0, 0, 0.18);
-            filter: saturate(0.55);
+        body.shows-page .show-item.futuro:hover {
+            transform: translate(-4px, -4px);
+            box-shadow: 12px 12px 0 var(--show-shadow, #A28056);
         }
 
-        .show-fecha {
+        body.shows-page .show-item.pasado {
+            opacity: 0.74;
+        }
+
+        body.shows-page .show-fecha {
             flex: 0 0 100px;
             text-align: center;
-            background: #121312;
-            border: 2px solid #5B9E00;
+            background: var(--show-date-bg, #F3F399);
+            border: 2px solid var(--show-border, #5F4929);
+            box-shadow: 4px 4px 0 var(--show-shadow, #A28056);
             padding: 0.8rem;
         }
 
-        .show-fecha .dia {
+        body.shows-page .show-fecha .dia,
+        body.shows-page .show-fecha .mes,
+        body.shows-page .show-fecha .año {
             display: block;
+            color: var(--show-date-ink, #5F4929);
+        }
+
+        body.shows-page .show-fecha .dia {
             font-size: 2rem;
             font-weight: bold;
-            color: #AEF504;
             line-height: 1;
         }
 
-        .show-fecha .mes {
-            display: block;
+        body.shows-page .show-fecha .mes {
             font-size: 1rem;
-            color: #30FF00;
             text-transform: uppercase;
         }
 
-        .show-fecha .año {
-            display: block;
+        body.shows-page .show-fecha .año {
             font-size: 0.8rem;
-            color: #218984;
         }
 
-        .show-info {
+        body.shows-page .show-info {
             flex: 1;
         }
 
-        .show-info h3 {
-            color: #E7F800;
-            margin-bottom: 0.3rem;
+        body.shows-page .show-info h3 {
+            display: inline-block;
+            margin-bottom: 0.55rem;
+            padding: 0.45rem 0.7rem;
+            color: var(--show-title-ink, #FFFFE6);
+            background: var(--show-title-bg, #C32326);
+            border: 2px solid var(--show-border, #5F4929);
+            box-shadow: 4px 4px 0 var(--show-shadow, #A28056);
             font-size: 1.1rem;
         }
 
-        .show-item.pasado .show-fecha {
-            border-color: rgba(91, 158, 0, 0.35);
-            background: rgba(18, 19, 18, 0.75);
-        }
-
-        .show-item.pasado .show-info h3,
-        .show-item.pasado .lugar,
-        .show-item.pasado .notas,
-        .show-item.pasado .show-times p,
-        .show-item.pasado .estado-secundario {
-            color: rgba(178, 229, 242, 0.72);
-        }
-
-        .lugar {
-            color: #B2E5F2;
+        body.shows-page .lugar {
+            color: var(--show-surface-ink, #5F4929);
             font-size: 0.9rem;
             margin-bottom: 0.2rem;
         }
 
-        .tipo-sala {
-            color: #5B9E00;
+        body.shows-page .tipo-sala {
+            color: var(--show-chip-ink, #5F4929);
+            background: var(--show-chip-bg, #A4D96B);
             font-size: 0.7rem;
-            border: 1px solid #5B9E00;
+            border: 2px solid var(--show-border, #5F4929);
             padding: 0.1rem 0.3rem;
             margin-left: 0.5rem;
         }
 
-        .notas {
-            color: #9DE209;
+        body.shows-page .notas {
+            display: inline-block;
+            margin-top: 0.3rem;
+            padding: 0.45rem 0.65rem;
+            color: var(--show-note-ink, #5F4929);
+            background: var(--show-note-bg, #EBE68E);
             font-size: 0.8rem;
-            font-style: italic;
+            font-style: normal;
+            border: 2px solid var(--show-border, #5F4929);
+            box-shadow: 3px 3px 0 var(--show-shadow, #A28056);
         }
 
-        .show-times {
+        body.shows-page .show-times {
             margin-top: 0.75rem;
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
             gap: 0.45rem 0.65rem;
         }
 
-        .show-times p {
+        body.shows-page .show-times p {
             margin: 0;
-            padding: 0.4rem 0.55rem;
-            color: #B2E5F2;
+            padding: 0.45rem 0.55rem;
+            color: var(--show-times-ink, #5F4929);
             font-size: 0.64rem;
             line-height: 1.45;
-            background: rgba(0, 0, 0, 0.28);
-            border: 1px solid rgba(91, 158, 0, 0.45);
+            background: var(--show-times-bg, #D4BF95);
+            border: 2px solid var(--show-border, #5F4929);
+            box-shadow: 3px 3px 0 var(--show-shadow, #A28056);
         }
 
-        .show-times strong {
-            color: #AEF504;
+        body.shows-page .show-times strong {
+            color: inherit;
         }
 
-        .show-times-primary {
+        body.shows-page .show-times-primary {
             grid-template-columns: minmax(220px, 320px);
         }
 
-        .show-times-toggle {
-            margin-top: 0.65rem;
-            background: transparent;
-            border: 1px dashed #30FF00;
-            color: #30FF00;
+        body.shows-page .show-times-toggle {
+            margin-top: 0.7rem;
+            background: var(--show-toggle-bg, #F54144);
+            border: 2px solid var(--show-border, #5F4929);
+            color: var(--show-toggle-ink, #FFFFE6);
             font-family: inherit;
             font-size: 0.62rem;
-            padding: 0.45rem 0.65rem;
+            padding: 0.5rem 0.7rem;
             text-transform: uppercase;
             cursor: pointer;
+            box-shadow: 3px 3px 0 var(--show-shadow, #A28056);
         }
 
-        .archived-time {
-            opacity: 0.8;
+        body.shows-page .show-times-toggle:hover {
+            color: var(--show-toggle-ink, #FFFFE6) !important;
+            background: var(--show-toggle-bg, #F54144) !important;
+            border-color: var(--show-border, #5F4929) !important;
+            box-shadow: 5px 5px 0 var(--show-shadow, #A28056);
+            transform: translate(-2px, -2px);
         }
 
-        .show-acciones {
+        body.shows-page .archived-time {
+            opacity: 0.86;
+        }
+
+        body.shows-page .show-acciones {
             flex: 0 0 auto;
             display: flex;
             gap: 0.5rem;
@@ -567,67 +960,97 @@
             align-items: flex-end;
         }
 
-        .boton.pequeño {
+        body.shows-page .boton.pequeño {
             padding: 0.4rem 0.8rem;
             font-size: 0.7rem;
-            border-width: 1px;
+            border-width: 2px;
             min-width: 90px;
             text-align: center;
         }
 
-        .estado {
-            color: #AEF504;
+        body.shows-page .estado {
+            color: var(--show-state-ink, #FFFFE6);
+            background: var(--show-state-bg, #277914);
             font-size: 0.8rem;
-            border: 1px solid #AEF504;
-            padding: 0.2rem 0.8rem;
+            border: 2px solid var(--show-border, #5F4929);
+            padding: 0.25rem 0.8rem;
             text-transform: uppercase;
+            box-shadow: 3px 3px 0 var(--show-shadow, #A28056);
         }
 
-        .estado.archivado {
-            color: rgba(178, 229, 242, 0.78);
-            border-color: rgba(178, 229, 242, 0.35);
+        body.shows-page .estado.archivado {
+            color: var(--show-state-ink, #FFFFE6);
+            border-color: var(--show-border, #5F4929);
         }
 
-        .estado-secundario {
-            color: #5B9E00;
+        body.shows-page .estado-secundario {
+            color: var(--show-surface-ink, #5F4929);
             font-size: 0.7rem;
             text-transform: uppercase;
         }
 
-        .availability-note {
-            color: rgba(178, 229, 242, 0.72);
+        body.shows-page .availability-note {
+            color: var(--show-note-ink, #5F4929);
+            background: var(--show-note-bg, #EBE68E);
         }
 
-        /* Responsive */
+        body.shows-page .shows-booking {
+            text-align: center;
+            margin: 3rem 0 1rem;
+            padding: 1.4rem 1.2rem;
+            background: linear-gradient(135deg, var(--shows-booking-bg, #D9C678), var(--shows-ribbon-c, #277914));
+            color: var(--shows-booking-ink, #5F4929);
+            border: 2px solid var(--shows-main-border, #5F4929);
+            box-shadow: 8px 8px 0 var(--shows-main-shadow, #A28056);
+        }
+
+        body.shows-page .shows-booking p {
+            color: inherit;
+            margin-bottom: 1rem;
+        }
+
+        body.shows-page footer {
+            margin-top: 3rem;
+            padding: 1.2rem;
+            background: linear-gradient(135deg, var(--shows-footer-bg, #8C744E), var(--shows-ribbon-b, #C32326));
+            color: var(--shows-footer-ink, #FFFFE6);
+            border: 2px solid var(--shows-main-border, #5F4929);
+            box-shadow: 8px 8px 0 var(--shows-main-shadow, #A28056);
+        }
+
+        body.shows-page footer a {
+            color: inherit;
+        }
+
         @media (max-width: 700px) {
-            .shows-section-header {
+            body.shows-page .shows-section-header {
                 align-items: flex-start;
             }
 
-            .show-item {
+            body.shows-page .show-item {
                 flex-direction: column;
                 align-items: stretch;
                 gap: 1rem;
             }
 
-            .show-fecha {
+            body.shows-page .show-fecha {
                 align-self: center;
                 width: 120px;
             }
 
-            .show-acciones {
+            body.shows-page .show-acciones {
                 align-items: stretch;
             }
 
-            .show-times {
+            body.shows-page .show-times {
                 grid-template-columns: 1fr;
             }
 
-            .shows-pagination {
+            body.shows-page .shows-pagination {
                 gap: 0.75rem;
             }
 
-            .boton.pequeño {
+            body.shows-page .boton.pequeño {
                 width: 100%;
             }
         }

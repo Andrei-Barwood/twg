@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Música - The Wooden Groom</title>
     <link rel="stylesheet" href="assets/css/style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&amp;display=swap" rel="stylesheet">
     <!-- Alpine.js (por si queremos agregar filtros en el futuro) -->
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <!-- p5.js -->
@@ -84,6 +84,27 @@
                 <span x-text="releases.length"></span> lanzamientos
             </p>
 
+                <article class="inside-session-intro">
+                    <div class="inside-session-intro-copy">
+                        <p class="inside-session-kicker">Inside the Session</p>
+                        <h3>sample packs</h3>
+                        <p>
+                            Esta subsección de la discografía reunirá los stems de cada sesión de Renoise, los metadatos técnicos, capturas del proyecto,
+                            notas personales y algunos extras de diseño sonoro cuando existan.
+                        </p>
+                        <p>
+                            Para encontrarlos desde los filtros, usa <strong>Catálogo &gt; sample packs</strong> o <strong>Serie temática &gt; remixes</strong>.
+                        </p>
+                        <p class="inside-session-intro-status" x-text="insideSessionStatusText"></p>
+                    </div>
+
+                <div class="inside-session-intro-aside">
+                    <span>Descarga directa en ZIP con todos los canales por separado</span>
+                    <span>BPM, tonalidad, versión de Renoise, preset destacado y contexto de producción</span>
+                    <span>Licencia CC BY: derivaciones libres, incluso comerciales, con atribución</span>
+                </div>
+            </article>
+
             <div class="discografia">
                 <template x-for="release in paginatedReleases" :key="release.id">
                     <article class="release-item">
@@ -102,6 +123,15 @@
                                 <template x-if="release.series">
                                     <span class="release-chip release-series" x-text="release.series"></span>
                                 </template>
+                                <template x-if="release.insideSession">
+                                    <a
+                                        class="release-chip release-sample-pack"
+                                        :href="insideSessionLink(release.id)"
+                                        @click.prevent="revealInsideSession(release.id)"
+                                    >
+                                        sample pack
+                                    </a>
+                                </template>
                             </div>
 
                             <p class="release-description" x-text="release.description"></p>
@@ -111,6 +141,182 @@
                                     <a :href="link.url" class="boton pequeño" x-text="link.label"></a>
                                 </template>
                             </div>
+
+                            <template x-if="release.insideSession">
+                                <div class="inside-session-quick-tools">
+                                    <div class="inside-session-quick-actions">
+                                        <button
+                                            type="button"
+                                            class="boton pequeño"
+                                            @click="revealInsideSession(release.id)"
+                                        >
+                                            Explorar stems
+                                        </button>
+                                        <button
+                                            type="button"
+                                            class="boton pequeño inside-session-copy"
+                                            @click="copyInsideSessionLink(release.id)"
+                                        >
+                                            Copiar enlace
+                                        </button>
+                                    </div>
+                                    <p
+                                        class="inside-session-copy-feedback"
+                                        x-show="copiedInsideSessionId === release.id"
+                                    >
+                                        Enlace copiado.
+                                    </p>
+                                </div>
+                            </template>
+
+                            <template x-if="release.insideSession">
+                                <details
+                                    class="inside-session-panel"
+                                    :id="insideSessionAnchorId(release)"
+                                    :open="expandedInsideSessionId === release.id"
+                                    @toggle="handleInsideSessionToggle(release.id, $event)"
+                                >
+                                    <summary class="inside-session-summary">
+                                        <div class="inside-session-summary-copy">
+                                            <span class="inside-session-badge" x-text="release.insideSession.title"></span>
+                                            <span class="inside-session-status" x-text="release.insideSession.statusLabel"></span>
+                                            <p class="inside-session-summary-text" x-text="release.insideSession.summary"></p>
+                                        </div>
+                                        <span class="inside-session-trigger">Explorar stems</span>
+                                    </summary>
+
+                                    <div class="inside-session-content">
+                                        <div class="inside-session-actions" x-show="release.insideSession.downloadUrl">
+                                            <a
+                                                :href="release.insideSession.downloadUrl"
+                                                class="boton pequeño"
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                x-text="release.insideSession.downloadLabel"
+                                            ></a>
+                                            <p
+                                                class="inside-session-download-note"
+                                                x-show="release.insideSession.downloadNote"
+                                                x-text="release.insideSession.downloadNote"
+                                            ></p>
+                                        </div>
+
+                                        <div class="inside-session-grid" x-show="release.insideSession.metadata.length > 0">
+                                            <template x-for="item in release.insideSession.metadata" :key="`${release.id}-meta-${item.label}`">
+                                                <div class="inside-session-stat">
+                                                    <span class="inside-session-stat-label" x-text="item.label"></span>
+                                                    <span class="inside-session-stat-value" x-text="item.value"></span>
+                                                </div>
+                                            </template>
+                                        </div>
+
+                                        <section class="inside-session-block" x-show="release.insideSession.noteParagraphs.length > 0">
+                                            <h4 x-text="release.insideSession.noteTitle"></h4>
+                                            <template x-for="paragraph in release.insideSession.noteParagraphs" :key="`${release.id}-note-${paragraph.slice(0, 32)}`">
+                                                <p x-text="paragraph"></p>
+                                            </template>
+                                        </section>
+
+                                        <div class="inside-session-embeds" x-show="release.insideSession.embeds.length > 0">
+                                            <template x-for="embed in release.insideSession.embeds" :key="`${release.id}-embed-${embed.embedUrl}`">
+                                                <section class="inside-session-block">
+                                                    <div class="inside-session-block-head">
+                                                        <h4 x-text="embed.title"></h4>
+                                                        <p
+                                                            x-show="embed.description"
+                                                            x-text="embed.description"
+                                                        ></p>
+                                                    </div>
+
+                                                    <div class="inside-session-embed" :style="`--embed-height: ${embed.height};`">
+                                                        <iframe
+                                                            :src="embed.embedUrl"
+                                                            :title="`${embed.title} ${release.title}`"
+                                                            loading="lazy"
+                                                            seamless
+                                                            :allowfullscreen="embed.allowFullscreen ? 'allowfullscreen' : null"
+                                                        ></iframe>
+                                                    </div>
+                                                </section>
+                                            </template>
+                                        </div>
+
+                                        <section class="inside-session-block" x-show="release.insideSession.screenshots.length > 0">
+                                            <h4 x-text="release.insideSession.screenshotsTitle"></h4>
+
+                                            <div class="inside-session-gallery">
+                                                <template x-for="image in release.insideSession.screenshots" :key="`${release.id}-shot-${image.src}`">
+                                                    <figure class="inside-session-shot">
+                                                        <img :src="image.src" :alt="image.alt" loading="lazy">
+                                                        <figcaption x-show="image.caption" x-text="image.caption"></figcaption>
+                                                    </figure>
+                                                </template>
+                                            </div>
+                                        </section>
+
+                                        <template x-if="release.insideSession.preset">
+                                            <section class="inside-session-block inside-session-preset">
+                                                <h4>Preset destacado</h4>
+                                                <p class="inside-session-preset-title" x-text="release.insideSession.preset.title"></p>
+                                                <p
+                                                    class="inside-session-preset-instrument"
+                                                    x-show="release.insideSession.preset.instrument"
+                                                    x-text="release.insideSession.preset.instrument"
+                                                ></p>
+                                                <p
+                                                    x-show="release.insideSession.preset.description"
+                                                    x-text="release.insideSession.preset.description"
+                                                ></p>
+                                            </section>
+                                        </template>
+
+                                        <div class="inside-session-footer">
+                                            <section class="inside-session-block inside-session-license">
+                                                <h4 x-text="release.insideSession.license.name"></h4>
+                                                <p
+                                                    x-show="release.insideSession.license.summary"
+                                                    x-text="release.insideSession.license.summary"
+                                                ></p>
+                                                <p
+                                                    x-show="release.insideSession.license.manifesto"
+                                                    x-text="release.insideSession.license.manifesto"
+                                                ></p>
+                                                <a
+                                                    x-show="release.insideSession.license.url"
+                                                    :href="release.insideSession.license.url"
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                >
+                                                    Ver licencia
+                                                </a>
+                                            </section>
+
+                                            <section class="inside-session-block inside-session-remix">
+                                                <h4 x-text="release.insideSession.callToAction.title"></h4>
+                                                <p
+                                                    x-show="release.insideSession.callToAction.body"
+                                                    x-text="release.insideSession.callToAction.body"
+                                                ></p>
+
+                                                <div class="inside-session-contact-links">
+                                                    <a
+                                                        x-show="release.insideSession.callToAction.email"
+                                                        :href="`mailto:${release.insideSession.callToAction.email}`"
+                                                        x-text="release.insideSession.callToAction.email"
+                                                    ></a>
+                                                    <a
+                                                        x-show="release.insideSession.callToAction.youtubeUrl"
+                                                        :href="release.insideSession.callToAction.youtubeUrl"
+                                                        target="_blank"
+                                                        rel="noopener noreferrer"
+                                                        x-text="release.insideSession.callToAction.youtubeLabel"
+                                                    ></a>
+                                                </div>
+                                            </section>
+                                        </div>
+                                    </div>
+                                </details>
+                            </template>
                         </div>
                     </article>
                 </template>
@@ -134,9 +340,9 @@
         </section>
 
         <!-- Nota sobre plataformas -->
-        <p style="text-align: center; margin-top: 2rem; color: #5B9E00;">
+        <p style="text-align: center; margin-top: 2rem; color: var(--text-strong);">
             Archivo discográfico en construcción.
-            <br>Los enlaces a plataformas se agregarán release por release.
+            <br>Los enlaces a plataformas y los packs de Inside the Session se agregarán release por release.
         </p>
 
         <footer>
@@ -300,6 +506,63 @@
             font-size: 0.85rem;
         }
 
+        .inside-session-intro {
+            display: grid;
+            grid-template-columns: minmax(0, 1.3fr) minmax(260px, 0.9fr);
+            gap: 1.5rem;
+            margin: 0 0 1.75rem;
+            padding: 1.35rem;
+            background:
+                linear-gradient(135deg, rgba(0, 56, 59, 0.68), rgba(18, 19, 18, 0.96)),
+                radial-gradient(circle at top left, rgba(231, 248, 0, 0.12), transparent 45%);
+            border: 2px solid #0F5150;
+            box-shadow: 0 0 22px rgba(15, 81, 80, 0.3);
+        }
+
+        .inside-session-intro-copy {
+            display: grid;
+            gap: 0.8rem;
+        }
+
+        .inside-session-kicker {
+            margin: 0;
+            color: #30FF00;
+            font-size: 0.68rem;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+        }
+
+        .inside-session-intro h3 {
+            margin-bottom: 0;
+            font-size: clamp(1.15rem, 3vw, 1.7rem);
+        }
+
+        .inside-session-intro-copy p {
+            margin-bottom: 0;
+            font-size: 0.72rem;
+            line-height: 1.85;
+        }
+
+        .inside-session-intro-status {
+            color: #E7F800;
+        }
+
+        .inside-session-intro-aside {
+            display: grid;
+            gap: 0.8rem;
+            align-content: start;
+        }
+
+        .inside-session-intro-aside span {
+            display: block;
+            padding: 0.9rem 1rem;
+            background: rgba(0, 0, 0, 0.36);
+            border: 1px solid #30FF00;
+            color: #B2E5F2;
+            font-size: 0.66rem;
+            line-height: 1.75;
+        }
+
         .discografia {
             display: flex;
             flex-direction: column;
@@ -381,6 +644,24 @@
             color: #E7F800;
         }
 
+        .release-sample-pack {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            color: #30FF00;
+            background: rgba(15, 81, 80, 0.2);
+            border-bottom: 1px solid currentColor;
+            text-decoration: none;
+            transition: transform 0.2s, background 0.2s, color 0.2s;
+        }
+
+        .release-sample-pack:hover {
+            transform: translateY(-1px);
+            background: rgba(48, 255, 0, 0.14);
+            border: 1px solid currentColor !important;
+            border-bottom: 1px solid currentColor !important;
+        }
+
         .release-description {
             margin: 1rem 0;
             color: #B2E5F2;
@@ -392,6 +673,248 @@
             display: flex;
             gap: 0.8rem;
             flex-wrap: wrap;
+        }
+
+        .inside-session-quick-tools {
+            display: grid;
+            gap: 0.55rem;
+            margin-top: 1rem;
+        }
+
+        .inside-session-quick-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+        }
+
+        .inside-session-panel {
+            margin-top: 1.25rem;
+            background: rgba(0, 0, 0, 0.26);
+            border: 2px solid #0F5150;
+            box-shadow: inset 0 0 0 1px rgba(48, 255, 0, 0.06);
+        }
+
+        .inside-session-summary {
+            display: flex;
+            justify-content: space-between;
+            gap: 1rem;
+            align-items: flex-start;
+            padding: 1rem 1.1rem;
+            cursor: pointer;
+            list-style: none;
+        }
+
+        .inside-session-summary::-webkit-details-marker {
+            display: none;
+        }
+
+        .inside-session-summary-copy {
+            display: grid;
+            gap: 0.55rem;
+        }
+
+        .inside-session-badge {
+            color: #AEF504;
+            font-size: 0.68rem;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+        }
+
+        .inside-session-status {
+            display: inline-flex;
+            width: fit-content;
+            padding: 0.28rem 0.55rem;
+            border: 1px solid #30FF00;
+            color: #30FF00;
+            font-size: 0.62rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+
+        .inside-session-summary-text {
+            margin: 0;
+            color: #B2E5F2;
+            font-size: 0.72rem;
+            line-height: 1.8;
+        }
+
+        .inside-session-trigger {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 42px;
+            padding: 0.7rem 0.95rem;
+            background: rgba(0, 0, 0, 0.42);
+            border: 1px solid #AEF504;
+            color: #E7F800;
+            font-size: 0.66rem;
+            text-transform: uppercase;
+            line-height: 1.4;
+            white-space: nowrap;
+        }
+
+        .inside-session-panel[open] .inside-session-trigger {
+            border-color: #30FF00;
+            color: #30FF00;
+        }
+
+        .inside-session-content {
+            display: grid;
+            gap: 1rem;
+            padding: 0 1.1rem 1.1rem;
+        }
+
+        .inside-session-actions {
+            display: grid;
+            gap: 0.7rem;
+        }
+
+        .inside-session-copy {
+            background: rgba(255, 255, 255, 0.74);
+        }
+
+        .inside-session-download-note {
+            margin: 0;
+            color: #E7F800;
+            font-size: 0.66rem;
+            line-height: 1.75;
+        }
+
+        .inside-session-copy-feedback {
+            margin: 0;
+            color: var(--heading);
+            font-size: 0.62rem;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+        }
+
+        .inside-session-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 0.8rem;
+        }
+
+        .inside-session-stat {
+            display: grid;
+            gap: 0.35rem;
+            padding: 0.9rem;
+            background: rgba(0, 0, 0, 0.34);
+            border: 1px solid #3D3E3D;
+        }
+
+        .inside-session-stat-label {
+            color: #5B9E00;
+            font-size: 0.6rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+
+        .inside-session-stat-value {
+            color: #AEF504;
+            font-size: 0.72rem;
+            line-height: 1.5;
+        }
+
+        .inside-session-block {
+            display: grid;
+            gap: 0.7rem;
+            padding: 1rem;
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(15, 81, 80, 0.9);
+        }
+
+        .inside-session-block h4 {
+            margin: 0;
+            color: #AEF504;
+            font-size: 0.76rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+
+        .inside-session-block p {
+            margin: 0;
+            color: #B2E5F2;
+            font-size: 0.7rem;
+            line-height: 1.85;
+        }
+
+        .inside-session-block-head {
+            display: grid;
+            gap: 0.55rem;
+        }
+
+        .inside-session-embeds {
+            display: grid;
+            gap: 1rem;
+        }
+
+        .inside-session-embed {
+            overflow: hidden;
+            border: 1px solid #30FF00;
+            background: rgba(0, 0, 0, 0.75);
+        }
+
+        .inside-session-embed iframe {
+            display: block;
+            width: 100%;
+            height: var(--embed-height, 120px);
+            border: 0;
+        }
+
+        .inside-session-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 0.8rem;
+        }
+
+        .inside-session-shot {
+            display: grid;
+            gap: 0.45rem;
+            margin: 0;
+        }
+
+        .inside-session-shot img {
+            display: block;
+            width: 100%;
+            height: auto;
+            border: 2px solid #0F5150;
+            background: rgba(0, 0, 0, 0.6);
+        }
+
+        .inside-session-shot figcaption {
+            color: #5B9E00;
+            font-size: 0.6rem;
+            line-height: 1.65;
+        }
+
+        .inside-session-preset-title {
+            color: #E7F800 !important;
+            text-transform: uppercase;
+        }
+
+        .inside-session-preset-instrument {
+            color: #30FF00 !important;
+            font-size: 0.62rem !important;
+            text-transform: uppercase;
+        }
+
+        .inside-session-footer {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1rem;
+        }
+
+        .inside-session-license a,
+        .inside-session-contact-links a {
+            width: fit-content;
+            font-size: 0.66rem;
+            line-height: 1.7;
+        }
+
+        .inside-session-contact-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
         }
 
         .boton.pequeño {
@@ -424,7 +947,212 @@
             cursor: not-allowed;
         }
 
+        /* Nueva temporada */
+        .filter-select-wrap::after {
+            color: var(--shadow);
+        }
+
+        .filter-group label {
+            color: var(--heading);
+        }
+
+        .filter-group select {
+            background:
+                linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(247, 255, 188, 0.82)),
+                rgba(255, 255, 255, 0.88);
+            border: 2px solid var(--border-muted);
+            color: var(--text-main);
+            box-shadow: inset 0 0 0 1px rgba(182, 129, 69, 0.08);
+        }
+
+        .filter-group select:hover {
+            background:
+                linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(247, 255, 188, 0.9)),
+                rgba(255, 255, 255, 0.92);
+        }
+
+        .filter-group-year label,
+        .filter-group-catalog label,
+        .filter-group-series label {
+            color: var(--heading);
+        }
+
+        .filter-group-year select,
+        .filter-group-catalog select,
+        .filter-group-series select,
+        .filter-group-year .filter-select-wrap::after,
+        .filter-group-catalog .filter-select-wrap::after,
+        .filter-group-series .filter-select-wrap::after {
+            color: var(--accent);
+            border-color: var(--border);
+            text-shadow: 0 0 6px rgba(244, 154, 67, 0.16);
+        }
+
+        #filter-year:focus,
+        #filter-catalog:focus,
+        #filter-series:focus,
+        #filter-year:focus,
+        #filter-catalog:focus,
+        #filter-series:focus {
+            box-shadow: 0 0 0 2px rgba(244, 154, 67, 0.18);
+        }
+
+        .discografia-count {
+            color: var(--text-strong);
+        }
+
+        .inside-session-intro {
+            background:
+                linear-gradient(135deg, rgba(255, 255, 255, 0.94), rgba(247, 255, 188, 0.86)),
+                radial-gradient(circle at top left, rgba(244, 154, 67, 0.14), transparent 45%);
+            border-color: var(--border);
+            box-shadow: 0 0 22px rgba(210, 151, 82, 0.18);
+        }
+
+        .inside-session-kicker {
+            color: var(--accent);
+        }
+
+        .inside-session-intro-status {
+            color: var(--link);
+        }
+
+        .inside-session-intro-aside span {
+            background: rgba(255, 255, 255, 0.66);
+            border-color: var(--border);
+            color: var(--text-main);
+        }
+
+        .release-item {
+            background: rgba(255, 255, 255, 0.68);
+            border-color: var(--border-muted);
+        }
+
+        .release-item:hover {
+            border-color: var(--accent);
+        }
+
+        .release-cover img {
+            border-color: var(--border);
+        }
+
+        .release-info h3 {
+            color: var(--heading);
+        }
+
+        .release-year {
+            color: var(--accent);
+        }
+
+        .release-type {
+            color: var(--text-soft);
+            border-color: var(--border-muted);
+        }
+
+        .release-catalog {
+            color: var(--link);
+        }
+
+        .release-series {
+            color: var(--accent);
+        }
+
+        .release-sample-pack {
+            color: var(--link-strong);
+            background: rgba(244, 154, 67, 0.16);
+        }
+
+        .release-sample-pack:hover {
+            background: rgba(240, 87, 92, 0.18) !important;
+            color: var(--season-white) !important;
+            border: 1px solid var(--border-strong) !important;
+            border-bottom-color: var(--border-strong) !important;
+        }
+
+        .release-description {
+            color: var(--text-main);
+        }
+
+        .inside-session-panel {
+            background: rgba(255, 255, 255, 0.64);
+            border-color: var(--border);
+            box-shadow: inset 0 0 0 1px rgba(210, 151, 82, 0.08);
+        }
+
+        .inside-session-badge,
+        .inside-session-block h4,
+        .inside-session-stat-value {
+            color: var(--heading);
+        }
+
+        .inside-session-status {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        .inside-session-summary-text,
+        .inside-session-block p,
+        .release-empty {
+            color: var(--text-main);
+        }
+
+        .inside-session-trigger {
+            background: rgba(255, 255, 255, 0.74);
+            border-color: var(--link);
+            color: var(--link);
+        }
+
+        .inside-session-panel[open] .inside-session-trigger {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        .inside-session-download-note {
+            color: var(--link);
+        }
+
+        .inside-session-stat,
+        .inside-session-block {
+            background: rgba(255, 255, 255, 0.58);
+            border-color: var(--border-muted);
+        }
+
+        .inside-session-stat-label,
+        .inside-session-shot figcaption {
+            color: var(--text-soft);
+        }
+
+        .inside-session-embed {
+            border-color: var(--accent);
+            background: rgba(255, 255, 255, 0.88);
+        }
+
+        .inside-session-shot img {
+            border-color: var(--border);
+            background: rgba(255, 255, 255, 0.82);
+        }
+
+        .inside-session-preset-title {
+            color: var(--link) !important;
+        }
+
+        .inside-session-preset-instrument {
+            color: var(--accent) !important;
+        }
+
+        .release-empty {
+            border-color: var(--border-muted);
+        }
+
+        .discografia-pagination {
+            color: var(--heading);
+        }
+
         @media (max-width: 600px) {
+            .inside-session-intro {
+                grid-template-columns: 1fr;
+            }
+
             .release-item {
                 flex-direction: column;
                 gap: 1rem;
@@ -438,6 +1166,21 @@
                 flex: 0 0 auto;
                 max-width: 200px;
                 margin: 0 auto;
+            }
+
+            .inside-session-summary {
+                flex-direction: column;
+            }
+
+            .inside-session-trigger {
+                width: 100%;
+                white-space: normal;
+            }
+
+            .inside-session-grid,
+            .inside-session-gallery,
+            .inside-session-footer {
+                grid-template-columns: 1fr;
             }
         }
     </style>

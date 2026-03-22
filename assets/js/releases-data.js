@@ -1,7 +1,91 @@
 (function() {
     'use strict';
 
+    const insideSessionLicense = {
+        name: "CC BY",
+        url: "https://creativecommons.org/licenses/by/4.0/",
+        summary: "Puedes samplear, remezclar, derivar y usar este material incluso en contextos comerciales, siempre con atribución.",
+        manifesto: "Creo que la autogestión y el contenido open source generan culturas más ricas, más productivas y económicamente más estables que las que nacen desde una mentalidad conservadora rígida."
+    };
+
+    const insideSessionCallToAction = {
+        title: "Haz algo con estos stems",
+        body: "Si haces un remix, un edit, una sesión de estudio o cualquier mutación rara y bonita, envíamela por correo o etiquétame en YouTube.",
+        email: "contacto@megadoll.club",
+        youtubeUrl: "https://www.youtube.com/@TheWoodenGroom",
+        youtubeLabel: "@TheWoodenGroom"
+    };
+
+    function createInsideSession(config) {
+        const options = config || {};
+
+        return {
+            title: options.title || "Inside the Session",
+            summary: options.summary || "Descarga directa del paquete completo de stems, nota personal, screenshots de Renoise y extras de producción.",
+            statusLabel: options.statusLabel || "Disponible para explorar",
+            metadata: Array.isArray(options.metadata) ? options.metadata : [],
+            downloadUrl: options.downloadUrl || "",
+            downloadLabel: options.downloadLabel || "Descarga directa (ZIP)",
+            downloadNote: options.downloadNote || "",
+            embeds: Array.isArray(options.embeds) ? options.embeds : [],
+            preview: options.preview || null,
+            noteTitle: options.noteTitle || "Nota personal",
+            noteParagraphs: Array.isArray(options.noteParagraphs) ? options.noteParagraphs : [],
+            screenshotsTitle: options.screenshotsTitle || "Screenshots de la sesión",
+            screenshots: Array.isArray(options.screenshots) ? options.screenshots : [],
+            preset: options.preset || null,
+            license: {
+                ...insideSessionLicense,
+                ...(options.license || {})
+            },
+            callToAction: {
+                ...insideSessionCallToAction,
+                ...(options.callToAction || {})
+            }
+        };
+    }
+
     // Datos volcados desde la plantilla de discografia.
+    // Para activar un pack por release, agrega:
+    // insideSession: createInsideSession({
+    //     metadata: [
+    //         { label: "BPM", value: "160" },
+    //         { label: "Tonalidad", value: "Fm" },
+    //         { label: "Renoise", value: "3.5.x" }
+    //     ],
+    //     downloadUrl: "https://...",
+    //     downloadNote: "El ZIP completo trae más canales que el preview.",
+    //     embeds: [
+    //         {
+    //             title: "Album en Bandcamp",
+    //             embedUrl: "https://bandcamp.com/EmbeddedPlayer/...",
+    //             description: "Contexto del release dentro de Bandcamp.",
+    //             height: "42px"
+    //         },
+    //         {
+    //             title: "Preview en Bandcamp",
+    //             embedUrl: "https://bandcamp.com/VideoEmbed?track=...",
+    //             description: "Muestra pequeña frente al ZIP completo.",
+    //             height: "435px",
+    //             allowFullscreen: true
+    //         }
+    //     ],
+    //     noteParagraphs: [
+    //         "Texto de la nota personal."
+    //     ],
+    //     screenshots: [
+    //         {
+    //             src: "assets/images/inside-the-session/nombre-release/captura-01.jpg",
+    //             alt: "Renoise abierto en nombre-release",
+    //             caption: "Vista general de la sesión"
+    //         }
+    //     ],
+    //     preset: {
+    //         title: "Arco de Choque",
+    //         instrument: "Bass Master de Loopmasters",
+    //         description: "Breve descripción de uso."
+    //     }
+    // })
     window.musicReleases = [
         {
             id: "yellow-voices",
@@ -218,6 +302,100 @@
             image: "",
             description: "No recuerdo bien pero creo que mi primer beso fue a los 6 años en una fuente de agua re bonita de piedra amarilla, nos estábamos rumbiando y empezó a llover, era una temperatura deli",
             links: []
+        },
+        {
+            id: "taxi-labyrinth",
+            title: "Taxi Labyrinth",
+            year: "2026",
+            type: "Album",
+            catalog: "GRFF_001",
+            series: "Sound Graffiti",
+            status: "Publicado",
+            image: "",
+            description: "\"creepy\": a mi una vez un taxista, intenté hackearle el taxímetro con un iPod nano chirrete en modo chirrete y se dió cuenta y no comprendía que mierdas le pasaba al puto contador. El tipo iba histérico y se desesperó tanto que le metió la segunda a la caja de cambios y me llevó en sgunda hasta mi casa con ese vehículo ardiendo en temperatura y el mansito sorprendido porque él aceleraba a fondo y el contador del taxímetro no avanzaba abruptamente, y yo por mi parte con el iPod nano de chirri jugando vortex para un lado, y luego jugando vortex para el otro, un cague de risa parce. Disfrútalo!",
+            links: [
+                {
+                    label: "Bandcamp",
+                    url: "https://megadoll.bandcamp.com/album/taxi-labyrinth"
+                }
+            ],
+            insideSession: createInsideSession({
+                summary: "Stems del track 2 \"La Ausencia de Evidencias es la Evidencia\". El preview incrustado es solo una muestra; la descarga ZIP trae muchos más archivos y canales por separado.",
+                statusLabel: "Track 2 disponible",
+                metadata: [
+                    {
+                        label: "BPM",
+                        value: "116"
+                    },
+                    {
+                        label: "TPL",
+                        value: "12"
+                    },
+                    {
+                        label: "Pulso",
+                        value: "También funciona a 4/4, pero algunas unidades se convierten en cuatrillos, doscillos o síncopas; la marca de tiempo fuerte no es ternaria, es compuesta (como quien dice 'no corras')."
+                    },
+                    {
+                        label: "Tonalidad",
+                        value: "La Húngara Menor"
+                    },
+                    {
+                        label: "Renoise",
+                        value: "3.5"
+                    },
+                    {
+                        label: "Render",
+                        value: "44.1 kHz / 16-bit"
+                    },
+                    {
+                        label: "Compatibilidad",
+                        value: "Los stems corren en cualquier DAW o sampler porque el render usa el estándar de CD."
+                    }
+                ],
+                downloadUrl: "https://archive.org/download/la-ausencia-de-evidencias-es-la-evidencia-tracks/02%20-%20La%20Ausencia%20de%20Evidencias%20es%20la%20Evidencia%20%5Btracks%5D.zip",
+                downloadNote: "La descarga directa contiene el paquete completo de stems. Los embeds de Bandcamp son solo una ventana pequeña frente al ZIP entero.",
+                embeds: [
+                    {
+                        title: "Álbum en Bandcamp",
+                        embedUrl: "https://bandcamp.com/EmbeddedPlayer/album=3611659809/size=small/bgcol=ffffff/linkcol=0687f5/transparent=true/",
+                        description: "Vista incrustada del álbum donde vive este material.",
+                        height: "42px"
+                    },
+                    {
+                        title: "Preview en Bandcamp",
+                        embedUrl: "https://bandcamp.com/VideoEmbed?track=1020403504&bgcol=ffffff&linkcol=0687f5",
+                        description: "Preview del track dentro del perfil del álbum. La descarga ZIP es bastante más grande que esta muestra.",
+                        height: "435px",
+                        allowFullscreen: true
+                    }
+                ],
+                noteTitle: "Nota personal",
+                noteParagraphs: [
+                    "Considero que se trata de un iPod nano en modo chirrete, y la verdad aún no lo supero.",
+                    "Track 2.",
+                    "\"Falta que la brújula se nos dañe y ahí sí quedaríamos mejor que nunca!\"",
+                    "\"No, estos no vienen equipados con brújula digital, sensor GPS ni con giroscopio metálico, no se preocupe.\"",
+                    "\"Mire, si se daña esta mierda usted me paga.\"",
+                    "\"Yo cobro lo que a mí se me dé la regalada gana.\""
+                ],
+                screenshots: [
+                    {
+                        src: "assets/images/20.jpg",
+                        alt: "Screenshot de Renoise para Taxi Labyrinth 01",
+                        caption: "Vista de la sesión 01"
+                    },
+                    {
+                        src: "assets/images/19.jpg",
+                        alt: "Screenshot de Renoise para Taxi Labyrinth 02",
+                        caption: "Vista de la sesión 02"
+                    },
+                    {
+                        src: "assets/images/18.jpg",
+                        alt: "Screenshot de Renoise para Taxi Labyrinth 03",
+                        caption: "Vista de la sesión 03"
+                    }
+                ]
+            })
         }
     ];
 })();

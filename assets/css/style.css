@@ -3,6 +3,53 @@
 /* Importar fuente Press Start 2P */
 @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 
+:root {
+    --season-olive: #ACC849;
+    --season-lime: #D2EA91;
+    --season-leaf: #A4C040;
+    --season-soft-leaf: #BDD56C;
+    --season-aqua: #ADD9D5;
+    --season-white: #FFFFFF;
+    --season-wheat: #D6C77C;
+    --season-cream: #FAFBD8;
+    --season-barn: #B73232;
+    --season-coral: #F0575C;
+    --season-rose: #EC565C;
+    --season-orange: #F49A43;
+    --season-honey: #FFCD60;
+    --season-glow: #F7FFBC;
+    --season-sage-deep: #9AA596;
+    --season-sage: #A2AF9D;
+    --season-sage-soft: #B2BEAC;
+    --season-umber: #B68145;
+    --season-clay: #D29752;
+    --season-amber: #E4A95A;
+    --season-peach: #FBB963;
+    --season-tangerine: #F58950;
+    --season-apricot: #FABA63;
+    --season-red: #EB575A;
+    --season-olive-deep: #7CA42A;
+
+    --bg-base: var(--season-cream);
+    --bg-panel: rgba(255, 255, 255, 0.82);
+    --bg-panel-soft: rgba(247, 255, 188, 0.78);
+    --bg-wash: rgba(173, 217, 213, 0.22);
+    --text-main: var(--season-umber);
+    --text-soft: var(--season-sage-deep);
+    --text-strong: var(--season-olive-deep);
+    --heading: var(--season-barn);
+    --link: var(--season-red);
+    --link-strong: var(--season-coral);
+    --accent: var(--season-orange);
+    --accent-soft: var(--season-honey);
+    --accent-warm: var(--season-peach);
+    --border: var(--season-olive);
+    --border-strong: var(--season-olive-deep);
+    --border-muted: var(--season-sage);
+    --shadow: var(--season-clay);
+    --shadow-deep: var(--season-umber);
+}
+
 /* Reset básico */
 * {
     margin: 0;
@@ -13,8 +60,8 @@
 body {
     font-family: 'Press Start 2P', cursive;
     line-height: 1.6;
-    color: #B2E5F2; /* un color claro de la paleta para texto general */
-    background-color: #121312; /* color base oscuro, aunque el fondo lo cubrirá p5.js */
+    color: var(--text-main);
+    background-color: var(--bg-base);
     min-height: 100vh;
     position: relative;
     overflow-x: hidden;
@@ -36,9 +83,9 @@ body {
     max-width: 1200px;
     margin: 0 auto;
     padding: 2rem;
-    background-color: rgba(18, 19, 18, 0.95); /* #121312 con opacidad */
-    border: 2px solid #5B9E00; /* borde verde de la paleta */
-    box-shadow: 0 0 20px rgba(94, 255, 0, 0.3);
+    background-color: rgba(255, 255, 255, 0.86);
+    border: 2px solid var(--border-strong);
+    box-shadow: 0 0 20px rgba(210, 151, 82, 0.24);
     backdrop-filter: blur(2px); /* pequeño difuminado para dar sensación de glitch */
 }
 
@@ -48,9 +95,9 @@ body.index-page .main-container {
 
 /* Tipografías y colores de texto */
 h1, h2, h3 {
-    color: #9DE209;
+    color: var(--heading);
     margin-bottom: 1rem;
-    text-shadow: 2px 2px 0 #00383B;
+    text-shadow: 2px 2px 0 rgba(182, 129, 69, 0.18);
     letter-spacing: -0.05em;
 }
 
@@ -60,22 +107,22 @@ h3 { font-size: 1.5rem; }
 
 p {
     margin-bottom: 1rem;
-    color: #B2E5F2;
+    color: var(--text-main);
 }
 
 a {
-    color: #AEF504;
+    color: var(--link);
     text-decoration: none;
-    border-bottom: 1px dashed #30FF00;
+    border-bottom: 1px dashed var(--accent);
     transition: none; /* sin transición suave, cambio instantáneo */
 }
 
 /* Efectos específicos para el index */
 body.index-page a:hover,
 body.index-page button:hover {
-    color: #121312;
-    background-color: #30FF00;
-    border-bottom: 2px solid #E7F800;
+    color: var(--season-white);
+    background-color: var(--accent);
+    border-bottom: 2px solid var(--accent-soft);
     transform: scale(1.05); /* pequeño crecimiento instantáneo */
 }
 
@@ -83,10 +130,10 @@ body.index-page button:hover {
 body:not(.index-page) a:hover,
 body:not(.index-page) button:hover {
     /* Inversión de colores extrema */
-    color: #121312 !important;
-    background-color: #E7F800 !important;
-    border: 2px solid #5B9E00 !important;
-    box-shadow: 0 0 15px #30FF00;
+    color: var(--season-white) !important;
+    background-color: var(--link) !important;
+    border: 2px solid var(--border-strong) !important;
+    box-shadow: 0 0 15px rgba(240, 87, 92, 0.18);
     text-decoration: line-through; /* toque glitch */
 }
 
@@ -96,18 +143,18 @@ body:not(.index-page) button:hover {
 }
 
 @keyframes blink-random {
-    0%, 100% { opacity: 1; color: #B2E5F2; }
-    25% { opacity: 0.3; color: #E7F800; }
-    50% { opacity: 1; color: #30FF00; }
-    75% { opacity: 0.8; color: #5B9E00; }
+    0%, 100% { opacity: 1; color: var(--text-main); }
+    25% { opacity: 0.3; color: var(--accent-soft); }
+    50% { opacity: 1; color: var(--link); }
+    75% { opacity: 0.8; color: var(--text-strong); }
 }
 
 /* Botones y elementos de formulario (si los hay) */
 button, .button {
     font-family: 'Press Start 2P', cursive;
-    background: #292929;
-    color: #9DE209;
-    border: 2px solid #3D3E3D;
+    background: var(--bg-panel-soft);
+    color: var(--heading);
+    border: 2px solid var(--border-muted);
     padding: 0.8rem 1.5rem;
     cursor: pointer;
     text-transform: uppercase;
@@ -120,11 +167,11 @@ button, .button {
     justify-content: center;
     min-height: 52px;
     padding: 0.9rem 1.4rem;
-    background: linear-gradient(180deg, rgba(14, 19, 14, 0.96), rgba(0, 0, 0, 0.92));
-    color: #AEF504;
-    border: 2px solid #30FF00;
-    border-bottom: 2px solid #30FF00;
-    box-shadow: 4px 4px 0 #0F5150;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.94), rgba(247, 255, 188, 0.88));
+    color: var(--heading);
+    border: 2px solid var(--accent);
+    border-bottom: 2px solid var(--accent);
+    box-shadow: 4px 4px 0 var(--shadow);
     text-transform: uppercase;
     font-size: 0.78rem;
     line-height: 1.4;
@@ -138,7 +185,7 @@ nav ul {
     gap: 1.5rem;
     flex-wrap: wrap;
     margin-bottom: 2rem;
-    border-bottom: 2px solid #0F5150;
+    border-bottom: 2px solid var(--border-muted);
     padding-bottom: 1rem;
 }
 
@@ -163,11 +210,11 @@ nav a:hover {
     justify-content: center;
     gap: 1.25rem;
     background:
-        radial-gradient(circle at top right, rgba(48, 255, 0, 0.14), transparent 34%),
-        radial-gradient(circle at bottom left, rgba(15, 81, 80, 0.35), transparent 40%),
-        linear-gradient(135deg, rgba(18, 19, 18, 0.95), rgba(0, 56, 59, 0.82));
-    border: 2px solid #30FF00;
-    box-shadow: 0 0 30px rgba(48, 255, 0, 0.18), inset 0 0 0 1px rgba(231, 248, 0, 0.08);
+        radial-gradient(circle at top right, rgba(255, 205, 96, 0.26), transparent 34%),
+        radial-gradient(circle at bottom left, rgba(173, 217, 213, 0.34), transparent 40%),
+        linear-gradient(135deg, rgba(250, 251, 216, 0.98), rgba(255, 255, 255, 0.88));
+    border: 2px solid var(--border);
+    box-shadow: 0 0 30px rgba(210, 151, 82, 0.18), inset 0 0 0 1px rgba(255, 255, 255, 0.55);
 }
 
 .hero::before,
@@ -179,7 +226,7 @@ nav a:hover {
 
 .hero::before {
     inset: 1rem;
-    border: 1px solid rgba(231, 248, 0, 0.15);
+    border: 1px solid rgba(182, 129, 69, 0.16);
 }
 
 .hero::after {
@@ -187,7 +234,7 @@ nav a:hover {
     height: 180px;
     right: -40px;
     top: -40px;
-    background: radial-gradient(circle, rgba(231, 248, 0, 0.22), transparent 70%);
+    background: radial-gradient(circle, rgba(240, 87, 92, 0.18), transparent 70%);
     filter: blur(6px);
 }
 
@@ -198,7 +245,7 @@ nav a:hover {
 
 .hero-kicker {
     margin-bottom: 0;
-    color: #30FF00;
+    color: var(--accent);
     font-size: 0.72rem;
     letter-spacing: 0.16em;
     text-transform: uppercase;
@@ -209,19 +256,19 @@ nav a:hover {
     margin-bottom: 0;
     font-size: clamp(2.5rem, 7vw, 5rem);
     line-height: 1.05;
-    text-shadow: 3px 3px 0 #00383B, 0 0 18px rgba(48, 255, 0, 0.2);
+    text-shadow: 3px 3px 0 rgba(182, 129, 69, 0.22), 0 0 18px rgba(240, 87, 92, 0.12);
 }
 
 .destacado {
     max-width: 62ch;
     margin-bottom: 0;
     padding: 1rem 1.2rem;
-    background: rgba(0, 0, 0, 0.34);
-    border-left: 4px solid #E7F800;
-    color: #B2E5F2;
+    background: rgba(255, 255, 255, 0.62);
+    border-left: 4px solid var(--accent);
+    color: var(--text-main);
     font-size: 0.82rem;
     line-height: 1.9;
-    box-shadow: 0 0 0 1px rgba(48, 255, 0, 0.08);
+    box-shadow: 0 0 0 1px rgba(182, 129, 69, 0.08);
 }
 
 .hero-intro,
@@ -232,19 +279,19 @@ nav a:hover {
 }
 
 .hero-intro {
-    color: #B2E5F2;
+    color: var(--text-main);
     font-size: 0.8rem;
     line-height: 1.9;
 }
 
 .hero-story {
-    color: #E7F800;
+    color: var(--link);
     font-size: 0.78rem;
     line-height: 1.8;
 }
 
 .hero-world {
-    color: #AEF504;
+    color: var(--text-strong);
     font-size: 0.72rem;
     line-height: 1.85;
 }
@@ -266,16 +313,16 @@ nav a:hover {
     align-items: center;
     min-height: 42px;
     padding: 0.55rem 0.85rem;
-    background: rgba(0, 0, 0, 0.42);
-    border: 1px solid #0F5150;
-    color: #AEF504;
+    background: rgba(255, 255, 255, 0.62);
+    border: 1px solid var(--border-muted);
+    color: var(--heading);
     font-size: 0.68rem;
     text-transform: uppercase;
 }
 
 .hero-release-meta span:last-child {
-    color: #E7F800;
-    border-color: #AEF504;
+    color: var(--accent);
+    border-color: var(--link);
 }
 
 .hero-archive span {
@@ -283,9 +330,9 @@ nav a:hover {
     align-items: center;
     min-height: 38px;
     padding: 0.5rem 0.8rem;
-    background: rgba(0, 0, 0, 0.28);
-    border: 1px dashed #30FF00;
-    color: #B2E5F2;
+    background: rgba(255, 255, 255, 0.52);
+    border: 1px dashed var(--border-strong);
+    color: var(--text-main);
     font-size: 0.64rem;
     text-transform: uppercase;
 }
@@ -305,10 +352,10 @@ nav a:hover {
     margin: 0 0 3rem;
     padding: clamp(1.4rem, 3vw, 2rem);
     background:
-        linear-gradient(135deg, rgba(0, 56, 59, 0.82), rgba(18, 19, 18, 0.96)),
-        radial-gradient(circle at top left, rgba(231, 248, 0, 0.12), transparent 48%);
-    border: 2px solid #0F5150;
-    box-shadow: 0 0 24px rgba(15, 81, 80, 0.35);
+        linear-gradient(135deg, rgba(255, 255, 255, 0.92), rgba(247, 255, 188, 0.84)),
+        radial-gradient(circle at top left, rgba(244, 154, 67, 0.14), transparent 48%);
+    border: 2px solid var(--border-muted);
+    box-shadow: 0 0 24px rgba(210, 151, 82, 0.2);
 }
 
 .archive-spotlight-copy p,
@@ -322,7 +369,7 @@ nav a:hover {
 }
 
 .archive-eyebrow {
-    color: #E7F800;
+    color: var(--accent);
     font-size: 0.68rem;
     letter-spacing: 0.18em;
     text-transform: uppercase;
@@ -335,7 +382,7 @@ nav a:hover {
 
 .archive-spotlight-copy p:last-child {
     max-width: 52ch;
-    color: #B2E5F2;
+    color: var(--text-main);
     font-size: 0.74rem;
     line-height: 1.9;
 }
@@ -344,47 +391,47 @@ nav a:hover {
     display: grid;
     gap: 0.55rem;
     padding: 1.15rem 1.25rem;
-    background: rgba(0, 0, 0, 0.42);
-    border: 2px solid #30FF00;
-    border-bottom: 2px solid #30FF00;
-    box-shadow: 5px 5px 0 #0F5150;
+    background: rgba(255, 255, 255, 0.72);
+    border: 2px solid var(--accent);
+    border-bottom: 2px solid var(--accent);
+    box-shadow: 5px 5px 0 var(--shadow);
 }
 
 .archive-link-label {
-    color: #AEF504;
+    color: var(--heading);
     font-size: 0.72rem;
     text-transform: uppercase;
 }
 
 .archive-link-url {
-    color: #B2E5F2;
+    color: var(--text-main);
     font-size: 0.7rem;
     line-height: 1.8;
     word-break: break-word;
 }
 
 body.index-page .archive-link:hover {
-    border-bottom: 2px solid #E7F800;
-    box-shadow: 5px 5px 0 #E7F800;
+    border-bottom: 2px solid var(--accent-soft);
+    box-shadow: 5px 5px 0 var(--accent-soft);
 }
 
 /* Tarjetas para posts del blog (blog.html) */
 .blog-post {
-    background: rgba(0, 56, 59, 0.3); /* #00383B semitransparente */
-    border-left: 4px solid #30FF00;
+    background: rgba(173, 217, 213, 0.2);
+    border-left: 4px solid var(--accent);
     padding: 1.5rem;
     margin-bottom: 2rem;
     border-radius: 0;
-    box-shadow: -5px 5px 0 #0F5150;
+    box-shadow: -5px 5px 0 var(--shadow);
 }
 
 .blog-post h3 a {
-    color: #E7F800;
+    color: var(--heading);
 }
 
 .blog-post .date {
     font-size: 0.7rem;
-    color: #5B9E00;
+    color: var(--text-strong);
     margin-bottom: 1rem;
 }
 
@@ -489,13 +536,13 @@ body.index-page .archive-link:hover {
 
 /* Estilo para el post individual */
 .single-post {
-    background: rgba(18, 19, 18, 0.9);
+    background: rgba(255, 255, 255, 0.88);
     padding: 2rem;
-    border: 2px solid #9DE209;
+    border: 2px solid var(--border);
 }
 
 .back-link {
     display: inline-block;
     margin-bottom: 2rem;
-    color: #30FF00;
+    color: var(--accent);
 }

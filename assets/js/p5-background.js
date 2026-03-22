@@ -10,7 +10,7 @@
     const MIN_SIZE = 15;
 
     // Colores de la paleta (se usarán para cambios abruptos)
-    const COLORS = ['#164E62', '#51B14B', '#218984', '#30FF00', '#9DE209', '#AEF504', '#E7F800', '#B2E5F2', '#5B9E00', '#00383B', '#093534', '#0F5150'];
+    const COLORS = ['#ACC849', '#D2EA91', '#A4C040', '#BDD56C', '#ADD9D5', '#D6C77C', '#FAFBD8', '#B73232', '#F0575C', '#F49A43', '#FFCD60', '#7CA42A'];
 
     let cubes = [];
     let glitchIntensity = 0; // 0 a 1, para efectos globales
@@ -92,7 +92,7 @@
 
                 // Dibujar
                 p.fill(cube.color);
-                p.stroke(255, 150);
+                p.stroke(255, 255, 255, 120);
                 p.strokeWeight(1);
                 p.box(cube.size);
 
@@ -103,7 +103,7 @@
             if (scanlines || p.random() < 0.1 * glitchIntensity) {
                 p.push();
                 p.resetMatrix(); // trabajar en 2D sobre el canvas
-                p.stroke(255, 255, 255, 50);
+                p.stroke(183, 50, 50, 36);
                 p.strokeWeight(1);
                 for (let i = 0; i < p.height; i += 8) {
                     if (p.random() < 0.3) {
@@ -117,7 +117,7 @@
             if (p.random() < 0.05 * glitchIntensity) {
                 p.push();
                 p.resetMatrix();
-                p.fill(255, 255, 255, 20);
+                p.fill(250, 251, 216, 26);
                 p.rect(0, 0, p.width, p.height);
                 p.pop();
             }
