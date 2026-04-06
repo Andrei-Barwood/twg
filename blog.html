@@ -67,7 +67,6 @@
         </div>
 
         <footer>
-            <p>2011 - 2026 | CC BY - utilizalo sin restricciones ahora es parte de tu mundo, dsifrútalo</p>
             <p>
                 <a href="https://megadoll.bandcamp.com/" target="_blank" rel="noopener noreferrer">Bandcamp</a> |
                 <a href="https://www.instagram.com/thewoodengroom/" target="_blank" rel="noopener noreferrer">Instagram</a> |
@@ -85,7 +84,8 @@
         function blog() {
             return {
                 // Datos
-                posts: window.posts || [],            // cargados desde posts.js
+                posts: window.visiblePosts || window.posts || [], // cargados desde posts.js
+                allPosts: window.posts || [],         // incluye posts ocultos pero enrutable por hash
                 postsPorPagina: 5,                      // número de posts por página
                 paginaActual: 1,
                 postSeleccionado: null,                  // post actual en vista individual
@@ -121,7 +121,7 @@
 
                 verPost(slug) {
                     // Buscar el post por slug
-                    const post = this.posts.find(p => p.slug === slug);
+                    const post = this.allPosts.find(p => p.slug === slug);
                     if (post) {
                         this.postSeleccionado = post;
                         // Actualizar el hash sin recargar

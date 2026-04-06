@@ -435,6 +435,357 @@ body.index-page .archive-link:hover {
     margin-bottom: 1rem;
 }
 
+.post-completo {
+    padding: clamp(1.2rem, 2.5vw, 2rem);
+    background: rgba(255, 255, 255, 0.76);
+    border: 2px solid var(--border-muted);
+    box-shadow: -6px 6px 0 rgba(182, 129, 69, 0.18);
+}
+
+.fecha {
+    display: inline-block;
+    margin-bottom: 1.2rem;
+    color: var(--text-strong);
+    font-size: 0.7rem;
+}
+
+.post-imagen {
+    width: 100%;
+    height: auto;
+    display: block;
+    margin: 1.5rem 0;
+    border: 2px solid var(--border);
+    box-shadow: 4px 4px 0 rgba(182, 129, 69, 0.18);
+}
+
+.contenido-post {
+    display: grid;
+    gap: 1rem;
+}
+
+.contenido-post p,
+.contenido-post li,
+.contenido-post figcaption,
+.contenido-post blockquote,
+.contenido-post td,
+.contenido-post th {
+    font-size: 0.76rem;
+    line-height: 1.95;
+}
+
+.contenido-post .lead {
+    font-size: 0.82rem;
+    line-height: 1.95;
+    color: var(--text-strong);
+}
+
+.contenido-post h2,
+.contenido-post h3 {
+    margin-top: 0.8rem;
+}
+
+.contenido-post ul,
+.contenido-post ol {
+    margin: 0 0 1rem 1.4rem;
+}
+
+.contenido-post li {
+    margin-bottom: 0.75rem;
+}
+
+.contenido-post blockquote {
+    margin: 0;
+    padding: 1rem 1.2rem;
+    background: rgba(255, 255, 255, 0.7);
+    border-left: 4px solid var(--accent);
+    box-shadow: 0 0 0 1px rgba(182, 129, 69, 0.08);
+}
+
+.contenido-post iframe,
+.contenido-post img,
+.contenido-post table {
+    max-width: 100%;
+}
+
+.contenido-post table {
+    border-collapse: collapse;
+}
+
+.contenido-post th,
+.contenido-post td {
+    padding: 0.7rem;
+    border: 1px solid rgba(164, 192, 64, 0.42);
+    background: rgba(255, 255, 255, 0.58);
+    text-align: left;
+}
+
+.sample-diary-post {
+    display: grid;
+    gap: 1.35rem;
+}
+
+.sample-diary-intro {
+    display: grid;
+    gap: 0.9rem;
+    padding: clamp(1.2rem, 2.4vw, 1.8rem);
+    background:
+        linear-gradient(135deg, rgba(255, 255, 255, 0.94), rgba(247, 255, 188, 0.76)),
+        radial-gradient(circle at top right, rgba(240, 87, 92, 0.12), transparent 40%);
+    border: 2px solid var(--border);
+    box-shadow: 6px 6px 0 rgba(182, 129, 69, 0.18);
+}
+
+.sample-diary-kicker {
+    margin-bottom: 0;
+    color: var(--accent);
+    font-size: 0.68rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+}
+
+.sample-diary-meta {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 0.75rem;
+}
+
+.sample-diary-meta span {
+    min-height: 64px;
+    padding: 0.85rem 0.95rem;
+    background: rgba(255, 255, 255, 0.72);
+    border: 1px dashed var(--border-strong);
+    color: var(--heading);
+    font-size: 0.62rem;
+    line-height: 1.8;
+    text-transform: uppercase;
+}
+
+.sample-diary-sections {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1rem;
+}
+
+.sample-diary-entry {
+    display: grid;
+    gap: 0.55rem;
+    align-content: start;
+    padding: 1rem 1rem 1.1rem;
+    background: rgba(255, 255, 255, 0.72);
+    border: 2px solid rgba(164, 192, 64, 0.38);
+    box-shadow: -4px 4px 0 rgba(182, 129, 69, 0.16);
+}
+
+.sample-diary-entry h3 {
+    margin: 0 0 0.25rem;
+    font-size: 1rem;
+    line-height: 1.35;
+}
+
+.sample-diary-entry p {
+    margin-bottom: 0;
+}
+
+.sample-diary-placeholder {
+    display: grid;
+    gap: 0.75rem;
+    margin: 0;
+    padding: 1rem;
+    background: rgba(173, 217, 213, 0.12);
+    border: 2px dashed var(--border-strong);
+}
+
+.sample-diary-break {
+    grid-column: 1 / -1;
+}
+
+.sample-diary-image-slot {
+    display: grid;
+    place-items: center;
+    min-height: 240px;
+    padding: 1.2rem;
+    background:
+        repeating-linear-gradient(
+            135deg,
+            rgba(255, 255, 255, 0.88),
+            rgba(255, 255, 255, 0.88) 18px,
+            rgba(250, 251, 216, 0.82) 18px,
+            rgba(250, 251, 216, 0.82) 36px
+        );
+    border: 2px solid rgba(164, 192, 64, 0.36);
+    color: var(--heading);
+    font-size: 0.74rem;
+    line-height: 1.9;
+    text-align: center;
+}
+
+.sample-diary-photo {
+    display: block;
+    width: 100%;
+    height: auto;
+    border: 2px solid rgba(164, 192, 64, 0.36);
+    background: rgba(255, 255, 255, 0.82);
+    box-shadow: 4px 4px 0 rgba(182, 129, 69, 0.16);
+}
+
+.sample-diary-placeholder figcaption {
+    margin-bottom: 0;
+    color: var(--text-soft);
+}
+
+.sample-diary-note {
+    padding: 1rem 1.1rem;
+    background: rgba(255, 255, 255, 0.68);
+    border-left: 4px solid var(--accent);
+}
+
+.sample-pack-custom {
+    display: grid;
+    gap: 1rem;
+    padding: clamp(1.1rem, 2.3vw, 1.6rem);
+    color: #f2e5d8;
+    background:
+        radial-gradient(circle at top right, rgba(247, 66, 56, 0.18), transparent 34%),
+        linear-gradient(135deg, rgba(36, 16, 21, 0.98), rgba(57, 29, 56, 0.96) 54%, rgba(112, 10, 22, 0.94));
+    border: 1px solid rgba(200, 171, 152, 0.34);
+    box-shadow: 8px 8px 0 rgba(4, 1, 1, 0.18);
+}
+
+.sample-pack-custom .sample-diary-kicker {
+    color: #c8ab98;
+}
+
+.sample-pack-custom h3,
+.sample-pack-custom h4 {
+    margin: 0;
+    color: #e7dec8;
+}
+
+.sample-pack-custom p,
+.sample-pack-custom li {
+    margin-bottom: 0;
+    color: rgba(231, 222, 200, 0.92);
+}
+
+.sample-pack-custom ul {
+    margin: 0;
+    padding-left: 1.15rem;
+}
+
+.sample-pack-custom-header {
+    display: grid;
+    gap: 0.7rem;
+}
+
+.sample-pack-custom-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    align-items: center;
+}
+
+.sample-pack-custom-status {
+    display: inline-flex;
+    align-items: center;
+    min-height: 40px;
+    padding: 0.55rem 0.85rem;
+    border: 1px dashed rgba(231, 222, 200, 0.32);
+    background: rgba(231, 222, 200, 0.08);
+    color: #e7dec8;
+    font-size: 0.66rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+}
+
+.sample-pack-custom-preview {
+    display: grid;
+    gap: 0.75rem;
+    padding: 1rem;
+    border: 1px solid rgba(200, 171, 152, 0.22);
+    background: rgba(4, 1, 1, 0.16);
+}
+
+.sample-pack-custom-embed {
+    position: relative;
+    width: min(100%, 560px);
+    aspect-ratio: 560 / 435;
+}
+
+.sample-pack-custom-embed iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+.sample-pack-custom-meta {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+    gap: 0.7rem;
+}
+
+.sample-pack-custom-meta span {
+    min-height: 58px;
+    padding: 0.8rem 0.9rem;
+    border: 1px solid rgba(200, 171, 152, 0.26);
+    background: rgba(231, 222, 200, 0.08);
+    color: #f2e5d8;
+    font-size: 0.64rem;
+    line-height: 1.8;
+    text-transform: uppercase;
+}
+
+.sample-pack-custom-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 0.9rem;
+}
+
+.sample-pack-custom-card {
+    display: grid;
+    gap: 0.7rem;
+    align-content: start;
+    padding: 1rem;
+    border: 1px solid rgba(200, 171, 152, 0.22);
+    background: rgba(4, 1, 1, 0.16);
+}
+
+.sample-pack-custom blockquote {
+    background: rgba(231, 222, 200, 0.08);
+    border-left-color: #f74238;
+}
+
+.post-footer {
+    padding-top: 0.5rem;
+    border-top: 2px solid rgba(164, 192, 64, 0.28);
+}
+
+.post-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.55rem;
+    align-items: center;
+}
+
+.tags-label {
+    color: var(--text-strong);
+    font-size: 0.68rem;
+    text-transform: uppercase;
+}
+
+.tag {
+    display: inline-flex;
+    align-items: center;
+    min-height: 34px;
+    padding: 0.4rem 0.7rem;
+    border: 1px solid var(--border);
+    background: rgba(255, 255, 255, 0.78);
+    color: var(--heading);
+    font-size: 0.64rem;
+    line-height: 1.6;
+}
+
 /* Responsive para móviles */
 @media (max-width: 768px) {
     .main-container {
@@ -504,6 +855,57 @@ body.index-page .archive-link:hover {
 
     .archive-link {
         width: 100%;
+    }
+
+    .post-completo {
+        padding: 1rem;
+    }
+
+    .contenido-post p,
+    .contenido-post li,
+    .contenido-post figcaption,
+    .contenido-post blockquote,
+    .contenido-post td,
+    .contenido-post th,
+    .contenido-post .lead {
+        font-size: 0.68rem;
+        line-height: 1.85;
+    }
+
+    .sample-diary-meta {
+        grid-template-columns: 1fr;
+    }
+
+    .sample-diary-sections {
+        grid-template-columns: 1fr;
+    }
+
+    .sample-diary-entry {
+        padding: 0.9rem;
+    }
+
+    .sample-diary-image-slot {
+        min-height: 180px;
+        font-size: 0.66rem;
+        line-height: 1.75;
+    }
+
+    .sample-diary-photo {
+        box-shadow: 3px 3px 0 rgba(182, 129, 69, 0.14);
+    }
+
+    .sample-pack-custom-actions {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .sample-pack-custom-meta,
+    .sample-pack-custom-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .post-tags {
+        align-items: stretch;
     }
 
     /* Reducir efectos de parpadeo en móvil para rendimiento */

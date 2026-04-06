@@ -6,6 +6,949 @@
 
     const postsData = [
         {
+            slug: "sample-diary-la-dama-dicroica-vol-02",
+            title: "Sample Pack de Dicroismo",
+            date: "2026-03-29",
+            excerpt: "Entrada editorial de moda gótica kawaii XXL con 96 definiciones diferentes de inocente rubia a cuatro en el borde pando del pantano, para Dicroismo [BreakCore Sample Pack].",
+            content: `
+                <div class="sample-diary-post">
+                    <section class="sample-pack-custom sample-diary-break">
+                        <div class="sample-pack-custom-header">
+                            <p class="sample-diary-kicker">Sample Pack Insert / kawaii goth buena onda</p>
+                            <h3>Dicroismo [BreakCore Sample Pack]</h3>
+                            <p>Quise abrir la entrada como una ficha de catálogo utilizable de verdad: misma vibra cute noir, pero con datos técnicos, modales de showroom y un archivo listo para salir a jugar con otros samplers.</p>
+                            <p><strong>Dicroismo</strong> está armado como un mini archivo de producción amable y oscuro a la vez: amen breaks listos para hacer slice, líneas de bajo para rebotar el pulso y synths para mantener ese color raro y precioso que no quiere sonar igual a nada más.</p>
+                        </div>
+
+                        <div class="sample-pack-custom-actions">
+                            <a class="boton" href="https://archive.org/download/dicroismo-break-core-sample-pack/Dicroismo%20-%20%28BreakCore%20Sample%20pack%29.zip" target="_blank" rel="noopener noreferrer">Descargar ZIP de Dicroismo</a>
+                            <span class="sample-pack-custom-status">Preview Bandcamp activo</span>
+                        </div>
+
+                        <section class="sample-pack-custom-preview">
+                            <h4>Preview Bandcamp</h4>
+                            <div class="sample-pack-custom-embed">
+                                <iframe
+                                    src="https://bandcamp.com/VideoEmbed?track=1922966536&bgcol=ffffff&linkcol=0687f5"
+                                    title="Preview Bandcamp de Dicroismo"
+                                    mozallowfullscreen="1"
+                                    webkitallowfullscreen="1"
+                                    allowfullscreen="1"
+                                    seamless>
+                                </iframe>
+                            </div>
+                        </section>
+
+                        <div class="sample-pack-custom-meta">
+                            <span>Catálogo: DICRO_116</span>
+                            <span>BPM: 116 / TPL: 12</span>
+                            <span>Tonalidad guía: C# aumentada</span>
+                            <span>Formato: WAV 44.1 kHz / 16-bit</span>
+                            <span>Origen: sesión hecha en Renoise</span>
+                            <span>Compatibilidad: cualquier sampler</span>
+                        </div>
+
+                        <div class="sample-pack-custom-grid">
+                            <section class="sample-pack-custom-card">
+                                <h4>Contenido</h4>
+                                <ul>
+                                    <li>03 directorios principales dentro del pack.</li>
+                                    <li>Amen breaks listos para slice y reorganización rítmica.</li>
+                                    <li>Synths preparados para estirar, afinar o re-samplear.</li>
+                                    <li>Líneas de bajo en WAV para reconstruir groove o reharmonizar.</li>
+                                </ul>
+                            </section>
+
+                            <section class="sample-pack-custom-card">
+                                <h4>Formato</h4>
+                                <ul>
+                                    <li>Archivos WAV.</li>
+                                    <li>44.1 kHz.</li>
+                                    <li>16 bits.</li>
+                                    <li>Exportados originalmente desde Renoise, pero pensados para moverse bien en cualquier sampler.</li>
+                                </ul>
+                            </section>
+
+                            <section class="sample-pack-custom-card">
+                                <h4>Idea del archivo</h4>
+                                <p>No quería que esta mitad del blog se sintiera como una ficha fría, sino como un sample pack con personalidad: técnico cuando hace falta, pero todavía adorable, oscuro y buena onda.</p>
+                                <p>Está pensado para cortar, mutar, volver a vestir y mezclar sin perder ese pulso dicroico que hace que una misma idea pueda verse y sonar en dos direcciones al mismo tiempo.</p>
+                            </section>
+
+                            <section class="sample-pack-custom-card">
+                                <h4>Lectura tonal rápida</h4>
+                                <p>Si vas a agregar material nuevo, toma <strong>C# aumentada</strong> como el color central del pack. No hace falta usarla de forma rígida; basta con tratarla como una guía para que los synths, los bajos y cualquier capa extra sigan respirando dentro del mismo universo.</p>
+                                <p>La escala C# aumentada es una escala hexatónica simétrica de seis notas: <strong>C#, D, F, F#, A y A#</strong>. Su estructura se repite con mucha regularidad, así que suena brillante, extraña y estable a la vez. Esa mezcla de orden y rareza le da al pack un color entre lo dulce y lo inquietante, perfecto para breaks, bajos y synths que quieren convivir sin volverse planos.</p>
+                                <p>En producción electrónica eso funciona muy bien como punto de amarre: dejas que los breaks hagan el caos bonito y usas la tonalidad para que el conjunto siga sonando unido.</p>
+                            </section>
+                        </div>
+                    </section>
+
+                    <div class="sample-diary-intro">
+                        <p class="sample-diary-kicker">Sample Diary Vol. 02 / editorial de estilo</p>
+                        <p class="lead">Hoy quise escribir a <strong>la Dama Dicroica</strong> como si fuera un pack de texturas raras, siluetas gigantes y esmaltes de luz cambiante. Me gustan las cosas que se ven y se sienten únicas porque le enseñan al ojo a salirse del molde sin dejar de ser tierno. Esta entrada junta 96 formas muy lindas e ingenuas (ingenua en términos de metodos naturales para aliviar) que orbitan el dicroísmo, la dulzura torcida y la elegancia enorme. Todo está pensado como una página de sample pack convertida en diario de moda gótica kawaii.</p>
+                        <p>Mi debilidad personal son las figuras exageradas: cuellos inmensos, lazos teatrales, flequillos con sombra propia y vestidos que parecen ocupar una habitación entera. Cuando algo tiene demasiada forma, demasiada textura o demasiado brillo, se vuelve imposible de olvidar. La Dama Dicroica funciona así: es una presencia que no cabe en lo correcto porque nació para verse única. Por eso este post la mira como objeto de colección, moodboard viviente y pequeña reina torcida con brillo de vitrina encantada.</p>
+                    </div>
+
+                    <div class="sample-diary-meta">
+                        <span>Formato: sample diary XXL / 96 fichas</span>
+                        <span>Paleta: nácar, azabache, neón triste</span>
+                        <span>Silueta: muñeca noir de proporciones enormes</span>
+                        <span>Textura guía: dicroísmo con dulzura malcriada</span>
+                    </div>
+
+                    <figure class="sample-diary-placeholder">
+                        <img src="assets/images/21.jpg" alt="Portada editorial de La Dama Dicroica con silueta XL" class="sample-diary-photo">
+                    </figure>
+
+                    <div class="sample-diary-sections">
+                        <section class="sample-diary-entry">
+                            <h3>01. Dicroísmo</h3>
+                            <p>La Dama Dicroica no lleva color: lo duplica.</p>
+                            <p>La luz se le queda pensando encima como si no supiera en cuál versión quedarse.</p>
+                            <p>Me encantan las cosas que cambian sin perder su firma.</p>
+                            <p>Salirse del molde se ve precioso cuando la diferencia brilla en dos direcciones.</p>
+                        </section>
+
+                        <section class="sample-diary-entry">
+                            <h3>02. Tornasol</h3>
+                            <p>Su acabado parece moverse incluso cuando posa quieta.</p>
+                            <p>Hay algo muy dulce en una superficie que nunca termina de decidirse.</p>
+                            <p>Yo siempre miro primero lo que parpadea raro.</p>
+                            <p>Lo único suele empezar con un color que se niega a ser uno solo.</p>
+                        </section>
+
+                        <section class="sample-diary-entry">
+                            <h3>03. Prisma</h3>
+                            <p>Su silueta reparte destellos como si administrara un pequeño imperio de reflejos.</p>
+                            <p>Cada ángulo suyo inventa una mini historia nueva.</p>
+                            <p>Me gustan las figuras grandes porque multiplican la lectura del look.</p>
+                            <p>Un prisma bonito siempre convence al ojo de mirar dos veces.</p>
+                        </section>
+
+                        <section class="sample-diary-entry">
+                            <h3>04. Halo</h3>
+                            <p>La Dama Dicroica tiene un contorno que parece encendido desde adentro.</p>
+                            <p>No es un brillo santo, es un brillo travieso con modales perfectos.</p>
+                            <p>Yo adoro cuando la luz parece un accesorio más.</p>
+                            <p>Un halo raro vuelve inolvidable hasta el silencio.</p>
+                        </section>
+
+                        <section class="sample-diary-entry">
+                            <h3>05. Charol</h3>
+                            <p>Hay algo en ella que se ve recién pulido y feliz de ser oscuro.</p>
+                            <p>El brillo duro le da una elegancia malcriada muy bonita.</p>
+                            <p>Me gustan las superficies que parecen poder reflejar una ciudad entera.</p>
+                            <p>El charol siempre hace que lo tierno camine con más autoridad.</p>
+                        </section>
+
+                        <section class="sample-diary-entry">
+                            <h3>06. Tul</h3>
+                            <p>Su suavidad nunca se siente pequeña.</p>
+                            <p>Parece nube negra cosida a una fantasía enorme.</p>
+                            <p>Yo defiendo las piezas que ocupan mucho aire y aun así flotan.</p>
+                            <p>El tul es precioso cuando decide volverse arquitectura.</p>
+                        </section>
+
+                        <section class="sample-diary-entry">
+                            <h3>07. Eclipse</h3>
+                            <p>La Dama Dicroica oscurece la escena con una educación impecable.</p>
+                            <p>Todo alrededor se vuelve telón cuando ella aparece.</p>
+                            <p>Me encantan las presencias que no gritan y aun así mandan.</p>
+                            <p>Un eclipse kawaii sigue siendo eclipse, solo que con mejor peinado.</p>
+                        </section>
+
+                        <section class="sample-diary-entry">
+                            <h3>08. Nácar</h3>
+                            <p>Su delicadeza parece barnizada con luna derretida.</p>
+                            <p>Hay tristeza bonita en ese brillo suave que no deja de verse caro.</p>
+                            <p>Yo siempre caigo ante lo que parece reliquia tierna.</p>
+                            <p>El nácar rompe el molde con pura sutileza luminosa.</p>
+                        </section>
+
+                        <section class="sample-diary-entry">
+                            <h3>09. Sombra</h3>
+                            <p>En la Dama Dicroica la sombra no es ausencia, es maquillaje del ambiente.</p>
+                            <p>Hasta lo oscuro a su alrededor parece bien peinado.</p>
+                            <p>Me gusta cuando un look trae su propio clima.</p>
+                            <p>Una buena sombra hace que el encanto tenga profundidad.</p>
+                        </section>
+
+                        <section class="sample-diary-entry">
+                            <h3>10. Espejismo</h3>
+                            <p>Su ternura tiene el truco de parecer simple hasta que te atrapa.</p>
+                            <p>Hay un segundo nivel en todo lo que proyecta.</p>
+                            <p>Yo confío mucho en lo que primero engaña al ojo y luego lo premia.</p>
+                            <p>Un espejismo bien vestido también puede ser verdad estética.</p>
+                        </section>
+
+                        <section class="sample-diary-entry">
+                            <h3>11. Relicario</h3>
+                            <p>La Dama Dicroica se ve como si guardara secretos doblados con cinta negra.</p>
+                            <p>Su belleza tiene algo de objeto íntimo y ceremonial.</p>
+                            <p>Me gustan las cosas que parecen haber sido heredadas por una dinastía rara.</p>
+                            <p>Un relicario visual siempre vuelve precioso el misterio.</p>
+                        </section>
+
+                        <section class="sample-diary-entry">
+                            <h3>12. Satén</h3>
+                            <p>Su brillo suave parece deslizarse incluso en las zonas oscuras.</p>
+                            <p>Todo en ella tiene una caída elegante y un poquito caprichosa.</p>
+                            <p>Yo amo las texturas que parecen caricias con agenda propia.</p>
+                            <p>El satén hace que la noche se vea domesticada y glamorosa.</p>
+                        </section>
+
+                        <figure class="sample-diary-placeholder sample-diary-break">
+                            <img src="assets/images/22.jpg" alt="Close-up editorial de La Dama Dicroica con acabado tornasol" class="sample-diary-photo">
+                        </figure>
+
+                        <section class="sample-diary-entry">
+                            <h3>13. Azabache</h3>
+                            <p>Su negro no se ve vacío, se ve lleno de intención.</p>
+                            <p>Es la clase de oscuridad que sabe exactamente cómo posar.</p>
+                            <p>Me gusta cuando el color más serio decide volverse joya.</p>
+                            <p>El azabache hace que lo raro se vea digno de vitrina.</p>
+                        </section>
+
+                        <section class="sample-diary-entry">
+                            <h3>14. Orquídea</h3>
+                            <p>Hay una extrañeza floral en su manera de existir.</p>
+                            <p>Se siente delicada, rara y perfectamente consciente de ello.</p>
+                            <p>Yo adoro las formas que parecen cultivadas para no parecerse a nada.</p>
+                            <p>Una orquídea oscura siempre gana frente a lo correcto.</p>
+                        </section>
+
+                        <section class="sample-diary-entry">
+                            <h3>15. Campanada</h3>
+                            <p>La Dama Dicroica entra como si alguien hubiera anunciado la hora del encanto torcido.</p>
+                            <p>Su presencia suena aunque el cuarto esté quieto.</p>
+                            <p>Me gustan los looks que llegan con ceremonia incluida.</p>
+                            <p>Una buena campanada convierte el detalle en evento.</p>
+                        </section>
+
+                        <section class="sample-diary-entry">
+                            <h3>16. Laberinto</h3>
+                            <p>Cada capa de su estética abre un pasillo más profundo.</p>
+                            <p>Nada en ella se termina en la primera mirada.</p>
+                            <p>Yo siempre prefiero lo que obliga al ojo a dar vueltas.</p>
+                            <p>Un laberinto bonito es una forma elegante de escapar del molde.</p>
+                        </section>
+
+                        <section class="sample-diary-entry">
+                            <h3>17. Holograma</h3>
+                            <p>Parece real, fantástica y apenas tocable al mismo tiempo.</p>
+                            <p>La luz le cambia la historia cada pocos segundos.</p>
+                            <p>Me enamoran las imágenes que nunca se fijan del todo.</p>
+                            <p>Un holograma tierno también sabe intimidar si brilla bien.</p>
+                        </section>
+
+                        <section class="sample-diary-entry">
+                            <h3>18. Cristal</h3>
+                            <p>La Dama Dicroica parece hecha de algo que canta cuando la luz lo toca.</p>
+                            <p>Tiene fragilidad visual y fuerza de objeto afilado.</p>
+                            <p>Me gustan muchísimo las cosas que parecen delicadas y no lo son.</p>
+                            <p>El cristal vuelve noble hasta la amenaza más pequeña.</p>
+                        </section>
+
+                        <section class="sample-diary-entry">
+                            <h3>19. Voluta</h3>
+                            <p>Su movimiento se siente dibujado en curvas largas y deliciosamente teatrales.</p>
+                            <p>Nada cae recto cuando ella decide habitar una silueta.</p>
+                            <p>Yo amo las formas que se enroscan como humo caro.</p>
+                            <p>Una voluta convierte la exageración en danza.</p>
+                        </section>
+
+                        <section class="sample-diary-entry">
+                            <h3>20. Quimera</h3>
+                            <p>La Dama Dicroica junta dulzura, filo, nostalgia y glamour sin pedir permiso.</p>
+                            <p>Lo imposible en ella no se discute, se admira.</p>
+                            <p>Me gusta cuando una figura parece armada con piezas incompatibles.</p>
+                            <p>Las quimeras mejor vestidas siempre se salen del molde primero.</p>
+                        </section>
+
+                        <section class="sample-diary-entry">
+                            <h3>21. Bengala</h3>
+                            <p>Su brillo no es estable y por eso mismo se vuelve precioso.</p>
+                            <p>Hay fiesta en su oscuridad, pero una fiesta educada y nocturna.</p>
+                            <p>Yo adoro las luces que parecen celebrar algo secreto.</p>
+                            <p>Una bengala chic dura poco y aun así deja marca.</p>
+                        </section>
+
+                        <section class="sample-diary-entry">
+                            <h3>22. Tempestad</h3>
+                            <p>La Dama Dicroica trae clima propio, y casi siempre viene con glamour.</p>
+                            <p>Su dramatismo parece organizado por una costurera paciente.</p>
+                            <p>Me gustan las cosas grandes porque también permiten que el ánimo se vea.</p>
+                            <p>Una tempestad kawaii sigue siendo tempestad, solo que con lazo.</p>
+                        </section>
+
+                        <section class="sample-diary-entry">
+                            <h3>23. Serpentina</h3>
+                            <p>Hay algo juguetón en su rareza que se retuerce con mucha gracia.</p>
+                            <p>Nunca cae en línea recta cuando puede hacer un gesto extra.</p>
+                            <p>Yo adoro lo decorativo cuando se pone un poquito insolente.</p>
+                            <p>La serpentina vuelve festiva hasta la melancolía.</p>
+                        </section>
+
+                        <section class="sample-diary-entry">
+                            <h3>24. Corona</h3>
+                            <p>Ella no parece llevar autoridad encima, parece fabricarla.</p>
+                            <p>Cada detalle suyo tiene modales de pequeña soberana nocturna.</p>
+                            <p>Me gustan las piezas que levantan la cabeza de quien las usa.</p>
+                            <p>Una corona bonita le recuerda al mundo que el molde no manda.</p>
+                        </section>
+
+                        <figure class="sample-diary-placeholder sample-diary-break">
+                            <img src="assets/images/23.jpg" alt="Moodboard editorial con accesorios XL de La Dama Dicroica" class="sample-diary-photo">
+                        </figure>
+
+                        <section class="sample-diary-entry">
+                            <h3>25. Perfume</h3>
+                            <p>La Dama Dicroica deja una impresión que sigue flotando después del vistazo.</p>
+                            <p>Su estilo parece oler a flores negras y azúcar tostada.</p>
+                            <p>Yo valoro muchísimo lo que permanece sin necesidad de explicarse.</p>
+                            <p>Un perfume visual convierte la imagen en recuerdo.</p>
+                        </section>
+
+                        <section class="sample-diary-entry">
+                            <h3>26. Amuleto</h3>
+                            <p>Se ve como un objeto que protege y embruja en la misma medida.</p>
+                            <p>Su encanto tiene algo portátil, secreto y afortunado.</p>
+                            <p>Me fascinan las cosas pequeñas que cargan una energía inmensa.</p>
+                            <p>Un amuleto raro siempre encuentra cómo romper la costumbre.</p>
+                        </section>
+
+                        <section class="sample-diary-entry">
+                            <h3>27. Relámpago</h3>
+                            <p>Hay momentos en que su look golpea la vista y luego la deja pensando.</p>
+                            <p>Todo ocurre rápido, limpio y con mucha elegancia.</p>
+                            <p>Me gusta cuando una imagen entra como destello y no como discurso.</p>
+                            <p>Un relámpago hermoso puede durar un segundo y aun así quedarse días.</p>
+                        </section>
+
+                        <section class="sample-diary-entry">
+                            <h3>28. Vitrina</h3>
+                            <p>La Dama Dicroica parece curada para ser contemplada desde todos los lados.</p>
+                            <p>Tiene esa perfección inquietante de las cosas demasiado bonitas para ser casuales.</p>
+                            <p>Yo amo los objetos visuales que se sienten colección y capricho al mismo tiempo.</p>
+                            <p>Una vitrina bien iluminada siempre le gana al estándar.</p>
+                        </section>
+
+                        <section class="sample-diary-entry">
+                            <h3>29. Candelabro</h3>
+                            <p>Su brillo tiene varias alturas y todas conversan entre sí.</p>
+                            <p>No es una sola luz: son muchas pequeñas voluntades elegantes.</p>
+                            <p>Me encantan las figuras grandes porque admiten adornos gigantes sin pedir perdón.</p>
+                            <p>Un candelabro oscuro convierte el exceso en nobleza.</p>
+                        </section>
+
+                        <section class="sample-diary-entry">
+                            <h3>30. Corsé</h3>
+                            <p>Hay estructura en su presencia, pero nunca rigidez.</p>
+                            <p>Todo parece contenido con precisión para que la fantasía no se derrame antes de tiempo.</p>
+                            <p>Yo adoro cuando una silueta abraza el caos y lo afina.</p>
+                            <p>Un corsé bien pensado hace que el dramatismo respire mejor.</p>
+                        </section>
+
+                        <section class="sample-diary-entry">
+                            <h3>31. Murmullo</h3>
+                            <p>La Dama Dicroica no necesita volumen cuando tiene magnetismo.</p>
+                            <p>Su estética habla bajito y aun así domina la conversación.</p>
+                            <p>Me gustan muchísimo las piezas que hipnotizan en vez de competir.</p>
+                            <p>Un murmullo bonito dura más que un grito.</p>
+                        </section>
+
+                        <section class="sample-diary-entry">
+                            <h3>32. Bisagra</h3>
+                            <p>Ella vive en la unión exacta entre dulzura y rareza.</p>
+                            <p>Cada gesto suyo parece abrir una puerta hacia otra versión de sí misma.</p>
+                            <p>Yo siempre busco cosas que no sean una sola cosa.</p>
+                            <p>La bisagra es pequeña, pero decide el movimiento entero.</p>
+                        </section>
+
+                        <section class="sample-diary-entry">
+                            <h3>33. Esmalte</h3>
+                            <p>Su acabado parece sellado con brillo paciente y un poquito perverso.</p>
+                            <p>Nada se le ve a medio hacer, ni siquiera la oscuridad.</p>
+                            <p>Me encantan las superficies que parecen terminadas a mano.</p>
+                            <p>El esmalte convierte la fantasía en objeto de colección.</p>
+                        </section>
+
+                        <section class="sample-diary-entry">
+                            <h3>34. Ruleta</h3>
+                            <p>Mirarla es aceptar que algo va a girar a favor del asombro.</p>
+                            <p>Nunca sabes si primero llega la ternura o el filo.</p>
+                            <p>Yo disfruto mucho los looks que apuestan por lo improbable.</p>
+                            <p>Una ruleta elegante vuelve divertido el riesgo estético.</p>
+                        </section>
+
+                        <section class="sample-diary-entry">
+                            <h3>35. Fantasma</h3>
+                            <p>La Dama Dicroica flota con esa seguridad deliciosa de lo que no necesita tocar el suelo.</p>
+                            <p>Tiene una presencia pálida, fina y perfectamente consciente de su efecto.</p>
+                            <p>Me gustan las figuras que parecen llegar desde otra habitación del cuento.</p>
+                            <p>Un fantasma kawaii no asusta: embruja bonito.</p>
+                        </section>
+
+                        <section class="sample-diary-entry">
+                            <h3>36. Caramelo</h3>
+                            <p>Su dulzura siempre viene con una sombra deliciosa detrás.</p>
+                            <p>Se siente pegajosa en el mejor sentido: una vez la ves, se queda.</p>
+                            <p>Yo no confío en lo tierno si no tiene algo raro.</p>
+                            <p>El caramelo oscuro es la forma más linda de sabotear la normalidad.</p>
+                        </section>
+
+                        <figure class="sample-diary-placeholder sample-diary-break">
+                            <img src="assets/images/24.jpg" alt="Composición editorial de La Dama Dicroica con postura y textura de outfit" class="sample-diary-photo">
+                        </figure>
+
+                        <section class="sample-diary-entry">
+                            <h3>37. Navaja</h3>
+                            <p>Hay líneas suyas que cortan el aire con una limpieza de lujo.</p>
+                            <p>El filo en ella no interrumpe la ternura; la enmarca.</p>
+                            <p>Me gusta muchísimo cuando lo suave tiene borde.</p>
+                            <p>Una navaja bien dibujada enseña que la delicadeza también puede mandar.</p>
+                        </section>
+
+                        <section class="sample-diary-entry">
+                            <h3>38. Penumbra</h3>
+                            <p>La Dama Dicroica vive en ese punto exacto donde lo bonito comienza a dar un poquito de miedo.</p>
+                            <p>Su mundo nunca se ve apagado, solo deliciosamente a media luz.</p>
+                            <p>Yo adoro los espacios visuales que no se resuelven del todo.</p>
+                            <p>La penumbra vuelve íntimo hasta el exceso.</p>
+                        </section>
+
+                        <section class="sample-diary-entry">
+                            <h3>39. Catástrofe</h3>
+                            <p>Pero una catástrofe peinada, perfumada y visualmente impecable.</p>
+                            <p>Todo en ella parece a punto de salirse de control con mucha clase.</p>
+                            <p>Me encantan los looks que parecen accidentes felices del gusto.</p>
+                            <p>La catástrofe estética es otra forma de libertad.</p>
+                        </section>
+
+                        <section class="sample-diary-entry">
+                            <h3>40. Diamante</h3>
+                            <p>Su brillo tiene dureza y eso lo vuelve todavía más bonito.</p>
+                            <p>No intenta agradar a cualquiera, solo refracta con autoridad.</p>
+                            <p>Yo siempre termino amando lo que parece indestructible y precioso a la vez.</p>
+                            <p>Un diamante raro no cabe en vitrinas pequeñas ni ideas tímidas.</p>
+                        </section>
+
+                        <section class="sample-diary-entry">
+                            <h3>41. Satélite</h3>
+                            <p>La Dama Dicroica parece girar con órbita propia aunque esté quieta.</p>
+                            <p>Todo lo demás a su alrededor termina acomodándose a ese centro extraño.</p>
+                            <p>Me gustan las cosas que inventan su propio sistema.</p>
+                            <p>Un satélite bonito demuestra que la distancia también puede ser tierna.</p>
+                        </section>
+
+                        <section class="sample-diary-entry">
+                            <h3>42. Neblina</h3>
+                            <p>Hay una suavidad borrosa en su estética que la vuelve imposible de cerrar.</p>
+                            <p>Nada se le ve del todo, y justo por eso todo se siente más grande.</p>
+                            <p>Yo adoro cuando una imagen deja espacio para imaginar más volumen del que muestra.</p>
+                            <p>La neblina es una gran aliada de lo único.</p>
+                        </section>
+
+                        <section class="sample-diary-entry">
+                            <h3>43. Encaje</h3>
+                            <p>Su delicadeza parece bordada con paciencia, sombra y un poquito de mala idea.</p>
+                            <p>Cada detalle se siente minúsculo, pero el efecto final es inmenso.</p>
+                            <p>Me encantan las cosas hechas de pequeños gestos que terminan ocupando toda la escena.</p>
+                            <p>El encaje es perfecto cuando decide no ser tímido.</p>
+                        </section>
+
+                        <section class="sample-diary-entry">
+                            <h3>44. Tótem</h3>
+                            <p>La Dama Dicroica también tiene algo de figura protectora y ceremonial.</p>
+                            <p>Parece un símbolo bonito que organiza el espacio alrededor.</p>
+                            <p>Me gustan las formas altas, firmes y ligeramente extrañas.</p>
+                            <p>Un tótem elegante enseña que la singularidad puede ser arquitectura.</p>
+                        </section>
+
+                        <section class="sample-diary-entry">
+                            <h3>45. Fulgor</h3>
+                            <p>Hay momentos en que su look no solo brilla, respira luz.</p>
+                            <p>Ese resplandor suyo tiene algo infantil y a la vez perfectamente calculado.</p>
+                            <p>Yo adoro cuando el brillo parece estar vivo.</p>
+                            <p>El fulgor vuelve emocionante hasta la quietud.</p>
+                        </section>
+
+                        <section class="sample-diary-entry">
+                            <h3>46. Reverberación</h3>
+                            <p>Después de verla, la imagen sigue repitiéndose en la cabeza con otros matices.</p>
+                            <p>Su estética tiene eco, y ese eco también viste bonito.</p>
+                            <p>Me encantan las cosas que no terminan cuando sales de la página.</p>
+                            <p>La reverberación es la prueba de que lo único sí deja rastro físico.</p>
+                        </section>
+
+                        <section class="sample-diary-entry">
+                            <h3>47. Pluma</h3>
+                            <p>Su ligereza nunca parece débil.</p>
+                            <p>Todo flota en ella con una disciplina muy linda.</p>
+                            <p>Yo prefiero el volumen que sabe moverse como aire entrenado.</p>
+                            <p>Una pluma oscura puede ocupar muchísimo espacio sin perder gracia.</p>
+                        </section>
+
+                        <section class="sample-diary-entry">
+                            <h3>48. Reina</h3>
+                            <p>Al final la Dama Dicroica se resume en esto: una pequeña reina de brillo doble y capricho impecable.</p>
+                            <p>Su ternura manda porque no intenta parecer inofensiva, intenta parecer única.</p>
+                            <p>Yo siempre voy a elegir lo que se ve demasiado especial para entrar en serie.</p>
+                            <p>Una reina kawaii de medianoche no sigue moldes; los colecciona y luego los deja atrás.</p>
+                        </section>
+
+                        <section class="sample-diary-entry sample-diary-break">
+                            <h3>Plancha II. Catálogo Noir de Texturas Raras</h3>
+                            <p>Quise abrir una segunda plancha como si la entrada se desplegara sobre una mesa de showroom y siguiera creciendo.</p>
+                            <p>Esta mitad baja menos al personaje y sube más al material, al acabado y a la ingeniería emocional del look.</p>
+                            <p>Me gusta tratar la moda como muestrario raro: algo que se toca con los ojos y se recuerda con la piel.</p>
+                            <p>Aquí todo se vuelve más fashion noir, más editorial y más catálogo de superficies que no quieren parecerse a nadie.</p>
+                        </section>
+
+                        <section class="sample-diary-entry">
+                            <h3>49. Moiré</h3>
+                            <p>Su imagen vibra como una tela que nunca termina de quedarse quieta.</p>
+                            <p>Las ondas del acabado hacen que el ojo dude y se enamore al mismo tiempo.</p>
+                            <p>Yo adoro cuando una superficie parece tener movimiento propio.</p>
+                            <p>El moiré convierte la rareza en lujo óptico.</p>
+                        </section>
+
+                        <section class="sample-diary-entry">
+                            <h3>50. Tafetán</h3>
+                            <p>Hay rigidez bonita en su presencia, como si cada pliegue supiera guardar postura.</p>
+                            <p>Todo cruje visualmente de una forma fina, seca y muy de editorial nocturno.</p>
+                            <p>Me gustan las telas con carácter porque obligan a la silueta a responder.</p>
+                            <p>El tafetán hace que el drama suene nítido.</p>
+                        </section>
+
+                        <section class="sample-diary-entry">
+                            <h3>51. Organza</h3>
+                            <p>Su transparencia no revela, edita.</p>
+                            <p>Hay una arquitectura suave en ese casi-ver que vuelve el look más grande.</p>
+                            <p>Yo siempre elijo lo etéreo cuando también sabe sostener forma.</p>
+                            <p>La organza es humo con modales de atelier.</p>
+                        </section>
+
+                        <section class="sample-diary-entry">
+                            <h3>52. Brocado</h3>
+                            <p>La Dama Dicroica también puede verse como tapiz aristocrático con agenda oscura.</p>
+                            <p>Su ornamentación no decora: impone linaje visual.</p>
+                            <p>Me encantan los tejidos que parecen haber heredado una casa entera.</p>
+                            <p>El brocado convierte la memoria en superficie.</p>
+                        </section>
+
+                        <section class="sample-diary-entry">
+                            <h3>53. Terciopelo</h3>
+                            <p>Su oscuridad tiene profundidad táctil incluso cuando solo se mira.</p>
+                            <p>Es una sombra rica, espesa y elegantemente absorbente.</p>
+                            <p>Yo tengo debilidad por todo lo que parece tragarse la luz con educación.</p>
+                            <p>El terciopelo vuelve suntuosa hasta la melancolía.</p>
+                        </section>
+
+                        <section class="sample-diary-entry">
+                            <h3>54. Laca</h3>
+                            <p>Hay algo sellado y perfecto en su acabado, como si lo hubieran pulido con paciencia cruel y bonita.</p>
+                            <p>Todo se le ve definitivo, brillante y un poquito intocable.</p>
+                            <p>Me gustan las superficies que parecen haber dicho la última palabra.</p>
+                            <p>La laca deja a la fantasía en estado premium.</p>
+                        </section>
+
+                        <section class="sample-diary-entry">
+                            <h3>55. Pátina</h3>
+                            <p>Su belleza no parece nueva, parece bien envejecida.</p>
+                            <p>Tiene ese desgaste precioso de las cosas que ganaron carácter con el tiempo.</p>
+                            <p>Yo adoro cuando el acabado guarda historia sin perder elegancia.</p>
+                            <p>La pátina hace que lo raro se vea vivido y caro.</p>
+                        </section>
+
+                        <section class="sample-diary-entry">
+                            <h3>56. Granulado</h3>
+                            <p>Su imagen también sabe verse en polvo fino, como maquillaje de archivo revelado tarde.</p>
+                            <p>Hay una aspereza delicada en esa textura casi fotográfica.</p>
+                            <p>Me fascina cuando una superficie tiene grano porque respira memoria.</p>
+                            <p>El granulado pone nervio donde antes había liso.</p>
+                        </section>
+
+                        <section class="sample-diary-entry">
+                            <h3>57. Acetato</h3>
+                            <p>La transparencia dura le sienta precioso.</p>
+                            <p>Es un material que deja pasar la luz, pero nunca la deja mandar sola.</p>
+                            <p>Yo amo todo lo translúcido que conserva borde afilado.</p>
+                            <p>El acetato vuelve futurista hasta el gesto más tierno.</p>
+                        </section>
+
+                        <section class="sample-diary-entry">
+                            <h3>58. Vinilo</h3>
+                            <p>Su brillo puede volverse líquido, urbano y perfectamente insolente.</p>
+                            <p>Hay una humedad elegante en esa superficie que parece recién salida de la noche.</p>
+                            <p>Me gustan los materiales que saben posar bajo letreros encendidos.</p>
+                            <p>El vinilo hace que la oscuridad tenga pulso de pasarela.</p>
+                        </section>
+
+                        <section class="sample-diary-entry">
+                            <h3>59. Raso</h3>
+                            <p>Su línea se desliza como una idea demasiado fina para quedarse quieta.</p>
+                            <p>Todo en ese brillo parece haber sido peinado a contrapelo del mundo común.</p>
+                            <p>Yo adoro los tejidos que se ven suaves y ambiciosos.</p>
+                            <p>El raso siempre trae elegancia con hambre de escena.</p>
+                        </section>
+
+                        <section class="sample-diary-entry">
+                            <h3>60. Pasamanería</h3>
+                            <p>Hay un gusto exquisito por el borde trabajado en toda su estética.</p>
+                            <p>Los remates parecen pequeños decretos decorativos.</p>
+                            <p>Me encantan los detalles que se toman demasiado en serio.</p>
+                            <p>La pasamanería hace que el exceso tenga disciplina.</p>
+                        </section>
+
+                        <section class="sample-diary-entry">
+                            <h3>61. Filigrana</h3>
+                            <p>Su detalle fino se siente metálico aunque esté hecho de sombra.</p>
+                            <p>Cada mini trazo parece diseñado por alguien incapaz de conformarse.</p>
+                            <p>Yo siempre miro de cerca lo que promete trabajo minucioso.</p>
+                            <p>La filigrana es paciencia convertida en lujo nervioso.</p>
+                        </section>
+
+                        <section class="sample-diary-entry">
+                            <h3>62. Aplique</h3>
+                            <p>La Dama Dicroica funciona también como un gran cuerpo base listo para recibir ornamentos imposibles.</p>
+                            <p>Lo añadido en ella nunca sobra; organiza el ritmo visual.</p>
+                            <p>Me gusta cuando un look se construye por injertos bellísimos.</p>
+                            <p>El aplique le da volumen narrativo a la superficie.</p>
+                        </section>
+
+                        <section class="sample-diary-entry">
+                            <h3>63. Plisado</h3>
+                            <p>Hay orden secreto en la manera en que sus capas podrían abrirse.</p>
+                            <p>Cada pliegue imaginario parece guardar una pequeña decisión estética.</p>
+                            <p>Yo adoro las formas repetidas cuando aún conservan misterio.</p>
+                            <p>El plisado vuelve elegante la multiplicación.</p>
+                        </section>
+
+                        <section class="sample-diary-entry">
+                            <h3>64. Frunce</h3>
+                            <p>Su silueta también tiene algo de tensión recogida con ternura.</p>
+                            <p>La materia se junta, se concentra y de pronto respira mejor.</p>
+                            <p>Me encantan los gestos textiles que parecen apretar emoción.</p>
+                            <p>El frunce hace que lo dulce gane densidad.</p>
+                        </section>
+
+                        <section class="sample-diary-entry">
+                            <h3>65. Bastidor</h3>
+                            <p>Detrás de todo su encanto se intuye una estructura que sostiene la fantasía sin aplastarla.</p>
+                            <p>Hay ingeniería suave en la forma en que el look parece mantenerse entero.</p>
+                            <p>Yo respeto mucho las piezas que saben construir soporte invisible.</p>
+                            <p>El bastidor convierte el sueño en objeto posible.</p>
+                        </section>
+
+                        <section class="sample-diary-entry">
+                            <h3>66. Barniz</h3>
+                            <p>Su acabado puede verse húmedo, brillante y casi recién sellado.</p>
+                            <p>Todo reluce con una capa final de decisión impecable.</p>
+                            <p>Me gustan las superficies que parecen haber sido terminadas una última vez.</p>
+                            <p>El barniz le pone ceremonia al brillo.</p>
+                        </section>
+
+                        <section class="sample-diary-entry">
+                            <h3>67. Lacre</h3>
+                            <p>La Dama Dicroica tiene algo de carta prohibida cerrada con un sello perfecto.</p>
+                            <p>Su estética parece prometer contenido delicado y ligeramente peligroso.</p>
+                            <p>Yo adoro los acabados que sugieren secreto formalizado.</p>
+                            <p>El lacre hace oficial hasta el capricho.</p>
+                        </section>
+
+                        <section class="sample-diary-entry">
+                            <h3>68. Cenefa</h3>
+                            <p>El borde en ella no remata, dirige.</p>
+                            <p>Hay autoridad decorativa en cada límite bien pensado.</p>
+                            <p>Me fascinan las orillas cuando entienden que también son argumento.</p>
+                            <p>La cenefa vuelve más fuerte todo lo que toca.</p>
+                        </section>
+
+                        <section class="sample-diary-entry">
+                            <h3>69. Forro</h3>
+                            <p>Incluso lo que no se ve en su mundo se imagina lujoso.</p>
+                            <p>Hay una ética interior del acabado que me parece irresistible.</p>
+                            <p>Yo amo cuando una prenda parece preciosa por dentro también.</p>
+                            <p>El forro es ternura privada con disciplina de atelier.</p>
+                        </section>
+
+                        <section class="sample-diary-entry">
+                            <h3>70. Trama</h3>
+                            <p>Su look no se compone solo de materiales, sino de relaciones entre ellos.</p>
+                            <p>Cada textura parece contarle algo a la siguiente.</p>
+                            <p>Me encanta cuando la superficie se comporta como narración.</p>
+                            <p>La trama hace que el vestido piense.</p>
+                        </section>
+
+                        <section class="sample-diary-entry">
+                            <h3>71. Urdimbre</h3>
+                            <p>Hay una columna íntima de tensión sosteniendo toda la fantasía.</p>
+                            <p>Lo vertical en ella no se ve rígido, se ve necesario.</p>
+                            <p>Yo admiro los sistemas ocultos que dejan lucirse a la belleza.</p>
+                            <p>La urdimbre es la espina dorsal del glamour.</p>
+                        </section>
+
+                        <section class="sample-diary-entry">
+                            <h3>72. Jacquard</h3>
+                            <p>Su complejidad podría perfectamente venir tejida desde el origen.</p>
+                            <p>Hay dibujos que no están encima, sino naciendo con la propia materia.</p>
+                            <p>Me vuelven loca los textiles que parecen recordar algo antiguo y futurista a la vez.</p>
+                            <p>El jacquard hace que el patrón parezca destino.</p>
+                        </section>
+
+                        <figure class="sample-diary-placeholder sample-diary-break">
+                            <img src="assets/images/26.jpg" alt="Plancha textil y macro de materiales de La Dama Dicroica" class="sample-diary-photo">
+                        </figure>
+
+                        <section class="sample-diary-entry">
+                            <h3>73. Chiffon</h3>
+                            <p>Su ligereza puede volverse casi respiración.</p>
+                            <p>La tela imagina aire y luego decide quedarse sobre la piel del look.</p>
+                            <p>Yo adoro lo que apenas pesa y aun así cambia toda la silueta.</p>
+                            <p>El chiffon es delicadeza con vocación de fantasma elegante.</p>
+                        </section>
+
+                        <section class="sample-diary-entry">
+                            <h3>74. Guipur</h3>
+                            <p>Aquí el encaje deja de ser tímido y se vuelve estructura ornamental.</p>
+                            <p>Todo parece más firme, más recortado y más decidido.</p>
+                            <p>Me encantan las tramas que se sostienen como si hubieran aprendido a defenderse solas.</p>
+                            <p>El guipur es encaje con columna vertebral.</p>
+                        </section>
+
+                        <section class="sample-diary-entry">
+                            <h3>75. Pespunte</h3>
+                            <p>Las líneas pequeñas que fijan el mundo también merecen portada.</p>
+                            <p>En la Dama Dicroica hasta la costura imaginaria parece parte del guion.</p>
+                            <p>Yo amo los detalles que hacen visible el cuidado.</p>
+                            <p>El pespunte convierte la precisión en estilo.</p>
+                        </section>
+
+                        <section class="sample-diary-entry">
+                            <h3>76. Ribete</h3>
+                            <p>El contorno en ella está demasiado bien resuelto para pasar desapercibido.</p>
+                            <p>Hay una finura afilada en esa línea que lo recorta todo mejor.</p>
+                            <p>Me gustan los bordes cuando se vuelven argumento visual.</p>
+                            <p>El ribete hace que la silueta pronuncie bien su nombre.</p>
+                        </section>
+
+                        <section class="sample-diary-entry">
+                            <h3>77. Galón</h3>
+                            <p>Su estética también sabe jugar a lo ceremonial.</p>
+                            <p>Algunas franjas parecen condecoraciones de un ejército pequeño y encantado.</p>
+                            <p>Yo adoro los adornos que se permiten un poco de autoridad.</p>
+                            <p>El galón pone jerarquía donde antes había solo forma.</p>
+                        </section>
+
+                        <section class="sample-diary-entry">
+                            <h3>78. Hebilla</h3>
+                            <p>Hay algo en ella que sujeta el exceso con muchísima elegancia.</p>
+                            <p>El gesto de cerrar nunca se siente limitante, se siente exacto.</p>
+                            <p>Me gustan las piezas que encuentran belleza en el mecanismo.</p>
+                            <p>La hebilla hace chic hasta la obediencia.</p>
+                        </section>
+
+                        <section class="sample-diary-entry">
+                            <h3>79. Broche</h3>
+                            <p>El punto de unión en su mundo siempre parece un momento dramático en miniatura.</p>
+                            <p>Algo hace clic y de pronto todo queda completo.</p>
+                            <p>Yo adoro los detalles pequeños que sellan el look entero.</p>
+                            <p>El broche convierte la decisión en joya.</p>
+                        </section>
+
+                        <section class="sample-diary-entry">
+                            <h3>80. Tulipa</h3>
+                            <p>Su forma también puede abrirse como un pétalo con disciplina geométrica.</p>
+                            <p>No es una flor ingenua, es una flor que entiende de escena.</p>
+                            <p>Me encantan las siluetas botánicas cuando entran al noir sin perder dulzura.</p>
+                            <p>La tulipa vuelve arquitectónica la ternura.</p>
+                        </section>
+
+                        <section class="sample-diary-entry">
+                            <h3>81. Esquirla</h3>
+                            <p>De pronto aparece un destello cortado, mínimo y ferozmente bonito.</p>
+                            <p>Hay fragmentos que mejoran la imagen precisamente porque no buscan redondearse.</p>
+                            <p>Yo siempre me quedo con lo que brilla desde el borde roto.</p>
+                            <p>La esquirla hace del accidente una firma.</p>
+                        </section>
+
+                        <section class="sample-diary-entry">
+                            <h3>82. Mercurio</h3>
+                            <p>Su brillo puede volverse metálico y líquido al mismo tiempo.</p>
+                            <p>Nada termina de fijarse cuando entra esa fluidez plateada.</p>
+                            <p>Me atraen muchísimo las superficies que parecen a punto de correrse.</p>
+                            <p>El mercurio le da a la elegancia una pequeña fiebre futurista.</p>
+                        </section>
+
+                        <section class="sample-diary-entry">
+                            <h3>83. Tinta</h3>
+                            <p>Hay zonas de su estética que se sienten absorbidas, saturadas y deliciosamente escritas.</p>
+                            <p>Como si el look hubiera sido redactado en negro profundo sobre una página de luz.</p>
+                            <p>Yo adoro cuando el color parece pensamiento concentrado.</p>
+                            <p>La tinta vuelve literaria la superficie.</p>
+                        </section>
+
+                        <section class="sample-diary-entry">
+                            <h3>84. Óxido</h3>
+                            <p>La belleza en ella también sabe oxidarse con gracia.</p>
+                            <p>Hay un desgaste fino que no ensucia, solo vuelve más interesante el brillo.</p>
+                            <p>Me fascinan los acabados que parecen haber sobrevivido algo.</p>
+                            <p>El óxido pone memoria roja sobre la noche.</p>
+                        </section>
+
+                        <section class="sample-diary-entry">
+                            <h3>85. Carbón</h3>
+                            <p>Su negro mate puede verse poroso, suave y tremendamente rico.</p>
+                            <p>No refleja tanto como absorbe, y en eso encuentra su poder.</p>
+                            <p>Yo amo las superficies que vuelven espeso el silencio.</p>
+                            <p>El carbón hace que la sombra tenga cuerpo.</p>
+                        </section>
+
+                        <section class="sample-diary-entry">
+                            <h3>86. Mármol</h3>
+                            <p>En algún ángulo parece esculpida y fría, pero nunca distante.</p>
+                            <p>La veta imaginaria le da a la calma una complejidad preciosa.</p>
+                            <p>Me gustan las superficies pétreas cuando guardan suavidad en secreto.</p>
+                            <p>El mármol vuelve solemne hasta el gesto más dulce.</p>
+                        </section>
+
+                        <section class="sample-diary-entry">
+                            <h3>87. Ónice</h3>
+                            <p>Su oscuridad puede compactarse en piedra lisa y ceremonial.</p>
+                            <p>Hay un lujo silencioso en ese negro que no necesita explicar nada.</p>
+                            <p>Yo siempre miro primero lo que parece gema cerrada.</p>
+                            <p>El ónice es noche comprimida en objeto precioso.</p>
+                        </section>
+
+                        <section class="sample-diary-entry">
+                            <h3>88. Pizarra</h3>
+                            <p>Su mate también sabe verse seco, mineral y perfectamente elegante.</p>
+                            <p>Parece una superficie lista para recibir trazos blancos, ideas nuevas o un gesto de tiza lujosa.</p>
+                            <p>Me gusta cuando lo oscuro también parece soporte.</p>
+                            <p>La pizarra convierte el fondo en propuesta.</p>
+                        </section>
+
+                        <section class="sample-diary-entry">
+                            <h3>89. Craquelado</h3>
+                            <p>Las pequeñas grietas imaginarias le añaden una nobleza extraña y preciosa.</p>
+                            <p>Nada se rompe del todo; simplemente se vuelve más narrativo.</p>
+                            <p>Yo adoro las superficies que permiten ver el paso del tiempo como diseño.</p>
+                            <p>El craquelado hace chic la fractura fina.</p>
+                        </section>
+
+                        <section class="sample-diary-entry">
+                            <h3>90. Cromo</h3>
+                            <p>Hay momentos en que su look refleja el mundo con frialdad impecable.</p>
+                            <p>Ese brillo duro vuelve más filosa la ternura.</p>
+                            <p>Me encantan los acabados que parecen diseño industrial enamorado de la noche.</p>
+                            <p>El cromo pone velocidad en la superficie.</p>
+                        </section>
+
+                        <section class="sample-diary-entry">
+                            <h3>91. Celofán</h3>
+                            <p>Su dulzura también puede verse artificial, brillante y deliciosamente consciente de sí misma.</p>
+                            <p>Hay algo de regalo raro en ese tipo de transparencia sonora y crujiente.</p>
+                            <p>Yo adoro los materiales que no intentan parecer naturales para ser bellos.</p>
+                            <p>El celofán hace pop incluso dentro del noir.</p>
+                        </section>
+
+                        <section class="sample-diary-entry">
+                            <h3>92. Resina</h3>
+                            <p>Su brillo puede atrapar luz como si quisiera conservarla en pausa.</p>
+                            <p>Todo parece suspendido, encapsulado y un poco eterno.</p>
+                            <p>Me gustan muchísimo las superficies que parecen guardar algo dentro.</p>
+                            <p>La resina vuelve coleccionable cualquier destello.</p>
+                        </section>
+
+                        <section class="sample-diary-entry">
+                            <h3>93. Anverso</h3>
+                            <p>La Dama Dicroica tiene un frente perfectamente consciente de su tesis visual.</p>
+                            <p>Lo que muestra primero ya viene editado, curado y listo para quedarse.</p>
+                            <p>Yo respeto mucho los looks que saben presentar su cara principal con claridad rara.</p>
+                            <p>El anverso convierte la primera impresión en manifiesto.</p>
+                        </section>
+
+                        <section class="sample-diary-entry">
+                            <h3>94. Forja</h3>
+                            <p>También hay metal imaginario en la manera en que sostiene su identidad.</p>
+                            <p>No todo en ella es blando; algunas partes parecen haber sido trabajadas a fuego lento y elegante.</p>
+                            <p>Me encantan las piezas que conservan fuerza sin perder refinamiento.</p>
+                            <p>La forja le pone columna al encanto.</p>
+                        </section>
+
+                        <section class="sample-diary-entry">
+                            <h3>95. Muestrario</h3>
+                            <p>Al final todo este post funciona como una carpeta de pruebas hermosas alrededor de su figura.</p>
+                            <p>Cada palabra es una muestra, una lámina, un recorte de superficie o un posible acabado.</p>
+                            <p>Me gusta pensar el estilo como un archivo vivo de posibilidades raras.</p>
+                            <p>El muestrario hace que la moda se lea como colección de mundos.</p>
+                        </section>
+
+                        <section class="sample-diary-entry">
+                            <h3>96. Muesca</h3>
+                            <p>Y para cerrar, me quedo con la pequeña marca que deja lo singular cuando pasa.</p>
+                            <p>No hace falta una herida grande; basta un corte delicado en la memoria del ojo.</p>
+                            <p>Yo amo todo lo que deja señal sin necesidad de estridencia.</p>
+                            <p>La muesca es la firma mínima de una presencia imposible de repetir.</p>
+                        </section>
+                    </div>
+
+                    <figure class="sample-diary-placeholder">
+                        <img src="assets/images/25.jpg" alt="Cierre editorial de La Dama Dicroica en collage final" class="sample-diary-photo">
+                    </figure>
+
+                    <div class="post-footer">
+                        <div class="post-tags">
+                            <span class="tags-label">Tags:</span>
+                            <a class="tag">Sample Diary</a>
+                            <a class="tag">Moda Gótica Kawaii</a>
+                            <a class="tag">Dicroísmo</a>
+                            <a class="tag">BreakCore Sample Pack</a>
+                            <a class="tag">Fashion Noir</a>
+                            <a class="tag">Texturas Raras</a>
+                            <a class="tag">La Dama Dicroica</a>
+                        </div>
+                    </div>
+                </div>
+            `,
+            image: ""
+        },
+        {
+            slug: "revista-especial-google-drive",
+            title: "The Bride / Messy Edit.",
+            date: "2026-03-24",
+            excerpt: "problemas saborizando los problemas digestivos, pero es natural 🥳👊",
+            content: `
+                <div class="post-embed">
+                    <iframe
+                        src="https://drive.google.com/file/d/1O-hgAIBrimOYx8D1K90rYJpw3haJYRSO/preview"
+                        title="El Escéptico incrustado desde Google Drive"
+                        width="100%"
+                        height="760"
+                        allow="autoplay"
+                        loading="lazy">
+                    </iframe>
+                    <p>
+                        <a class="boton" href="https://drive.google.com/file/d/1O-hgAIBrimOYx8D1K90rYJpw3haJYRSO/view?usp=sharing" target="_blank" rel="noopener noreferrer">
+                            Abrir fullscreen
+                        </a>
+                    </p>
+                </div>
+
+                <div class="post-footer">
+                    <div class="post-tags">
+                        <span class="tags-label">Tags:</span>
+                        <a class="tag">El Escéptico</a>
+                        <a class="tag">Lectura Directa</a>
+                        <a class="tag">Archivo</a>
+                    </div>
+                </div>
+            `,
+            image: ""
+        },
+        {
             slug: "revista-digital-online",
             title: "Spec-Ops / revista online",
             date: "2026-03-19",
@@ -138,6 +1081,9 @@
                 <p class="lead">Ya está disponible el sample pack de <strong>Almas Gemelas</strong>, un archivo abierto para escuchar el EP desde adentro, capa por capa, buffer por buffer, y convertirlo en otra cosa si te nace hacerlo.</p>
 
                 <p>Este material corresponde al lanzamiento 22 dentro del bloque de 26 lanzamientos redactados entre 2025 y 2026 por Andrew Walter III Kaamo 'D La Simmetrie bajo el proyecto musical <strong>The Wooden Groom</strong>. Lo bonito de este pack es que no está pensado solo como souvenir o documento de archivo: está preparado para que lo uses de verdad.</p>
+
+                <h2>Preview Bandcamp</h2>
+                <iframe style="border: 0; width: 560px; height: 435px;" src="https://bandcamp.com/VideoEmbed?track=1922966536&bgcol=ffffff&linkcol=0687f5" mozallowfullscreen="1" webkitallowfullscreen="1" allowfullscreen="1" seamless></iframe>
 
                 <h2>¿Qué trae este pack?</h2>
                 <p><strong>Serie Almas Gemelas</strong> contiene los stems por canal del EP <strong>Almas Gemelas</strong>. No incluye las mezclas finales ni los temas en su forma estéreo terminada. Lo que encuentras aquí es el material fuente exportado desde <strong>Renoise</strong>, organizado como buffers de tracker canal por canal, en archivos <strong>.wav de 44.1 kHz y 16 bits</strong>.</p>
@@ -726,9 +1672,12 @@ connects your everyday self to the grand dance of the stars, turning simple sitt
     // Ordenar por fecha descendente (más reciente primero)
     postsData.sort((a, b) => new Date(b.date) - new Date(a.date));
 
-    // Exponer globalmente para que Alpine.js pueda acceder a los posts
+    const hiddenPostSlugs = new Set(['now', 'welcome']);
+
+    // Mantener todos los posts enrutable por hash, pero ocultar algunos del listado público.
     window.posts = postsData;
+    window.visiblePosts = postsData.filter((post) => !hiddenPostSlugs.has(post.slug));
 
     // Opcional: también podríamos dejarlo disponible como variable global
-    console.log('📝 Posts cargados:', postsData.length);
+    console.log('📝 Posts cargados:', window.visiblePosts.length, 'visibles de', window.posts.length);
 })();

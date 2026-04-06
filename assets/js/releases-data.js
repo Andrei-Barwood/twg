@@ -304,6 +304,84 @@
             links: []
         },
         {
+            id: "almas-gemelas-tracks",
+            title: "Almas Gemelas [tracks]",
+            year: "2026",
+            type: "Sample Pack",
+            catalog: "ALMGM_022",
+            series: "Almas Gemelas",
+            status: "Publicado",
+            image: "",
+            description: "Archivo abierto del EP Almas Gemelas: stems por canal exportados desde Renoise, licencia CC BY y una guía tonal en Do Aumentada (exátona) para remezclar, montar piezas audiovisuales o reconstruir la obra desde adentro.",
+            links: [
+                {
+                    label: "Entrada blog",
+                    url: "blog.html#sample-pack-almas-gemelas"
+                }
+            ],
+            insideSession: createInsideSession({
+                title: "Inside the Session / Almas Gemelas",
+                summary: "Stems abiertos del EP Almas Gemelas. El ZIP trae los buffers por canal exportados desde Renoise y una guía tonal para trabajar nuevo material sin perder el color del release.",
+                statusLabel: "Pack completo disponible",
+                metadata: [
+                    {
+                        label: "Formato",
+                        value: "WAV / 44.1 kHz / 16-bit"
+                    },
+                    {
+                        label: "Fuente",
+                        value: "Buffers de Renoise exportados canal por canal"
+                    },
+                    {
+                        label: "Incluye",
+                        value: "Stems individuales de instrumento y capas estructurales"
+                    },
+                    {
+                        label: "No incluye",
+                        value: "Las mezclas finales en estéreo del EP"
+                    },
+                    {
+                        label: "Escala guía",
+                        value: "Do Aumentada (exátona)"
+                    },
+                    {
+                        label: "Notas",
+                        value: "C, Eb, E, G, G#, B"
+                    },
+                    {
+                        label: "Uso sugerido",
+                        value: "Remixes, audiovisual, videojuegos, cine, TV, podcasts e instalaciones"
+                    }
+                ],
+                downloadUrl: "https://archive.org/download/serie-almas-gemelas-01/22%20-%20%5Btracks%5D%20Serie%20Almas%20Gemelas.zip",
+                downloadLabel: "Descarga el sample pack (ZIP)",
+                downloadNote: "El ZIP contiene el material fuente del EP. No trae la mezcla final: la idea es trabajar el archivo abierto y reconstruirlo desde sus partes.",
+                embeds: [
+                    {
+                        title: "Preview en Bandcamp",
+                        embedUrl: "https://bandcamp.com/VideoEmbed?track=1922966536&bgcol=ffffff&linkcol=0687f5",
+                        description: "Muestra breve del sample pack frente al ZIP completo.",
+                        height: "435px",
+                        allowFullscreen: true
+                    }
+                ],
+                noteTitle: "Archivo abierto",
+                noteParagraphs: [
+                    "Este lanzamiento corresponde al sample pack de Almas Gemelas y está pensado como un archivo operativo, no solo como souvenir del release.",
+                    "Los stems salen de Renoise canal por canal. En varios casos, pads y sintetizadores comparten muestra por buffer, así que el trabajo se parece más a rearmar una pieza desde adentro que a remezclar pistas estéreo ya cerradas.",
+                    "Si quieres añadir material nuevo sin salirte del color del EP, la guía más útil es trabajar solo con C, Eb, E, G, G# y B en todas las octavas. Esa colección concentra la ambigüedad armónica de Almas Gemelas y ayuda a mantener coherencia tímbrica y melódica.",
+                    "También me interesa como documento de preservación: un archivo vivo para mutaciones raras y obras derivadas en audio, video, instalaciones o cualquier otra forma de montaje."
+                ],
+                license: {
+                    manifesto: "La idea es abrir el archivo, no cerrarlo. Compartir stems y buffers tiene sentido cuando el material puede seguir viviendo en otras manos, otros montajes y otros sistemas."
+                },
+                callToAction: {
+                    title: "Haz algo con Almas Gemelas",
+                    body: "Si haces una remezcla, una escena para videojuego, una pieza audiovisual, un montaje para cine o cualquier mutación rara a partir de estos stems, mándamela o etiquétame."
+                }
+            })
+        },
+        {
             id: "taxi-labyrinth",
             title: "Taxi Labyrinth",
             year: "2026",
