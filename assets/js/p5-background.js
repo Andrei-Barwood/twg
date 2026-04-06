@@ -5,12 +5,17 @@
     'use strict';
 
     const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || window.innerWidth < 600;
+    const isShowsPage = document.body.classList.contains('shows-page') || window.location.pathname.endsWith('/shows.html');
     const NUM_CUBES = isMobile ? 20 : 50; // más cubos para más caos
     const MAX_SIZE = isMobile ? 100 : 250;
     const MIN_SIZE = 15;
 
     // Colores de la paleta (se usarán para cambios abruptos)
-    const COLORS = ['#ACC849', '#D2EA91', '#A4C040', '#BDD56C', '#ADD9D5', '#D6C77C', '#FAFBD8', '#B73232', '#F0575C', '#F49A43', '#FFCD60', '#7CA42A'];
+    const COLORS = isShowsPage
+        ? ['#ACC849', '#D2EA91', '#A4C040', '#BDD56C', '#ADD9D5', '#D6C77C', '#FAFBD8', '#B73232', '#F0575C', '#F49A43', '#FFCD60', '#7CA42A']
+        : ['#39182B', '#6A3554', '#7B3B61', '#A75B76', '#AF718B', '#866B90', '#BCA9D3', '#D8CBE6', '#93CDF5', '#C4E5F9', '#F16AA6', '#F2A2D3', '#F9D5EC'];
+    const scanlineColor = isShowsPage ? [183, 50, 50, 36] : [123, 59, 97, 34];
+    const flashColor = isShowsPage ? [250, 251, 216, 26] : [249, 213, 236, 28];
 
     let cubes = [];
     let glitchIntensity = 0; // 0 a 1, para efectos globales
@@ -103,7 +108,7 @@
             if (scanlines || p.random() < 0.1 * glitchIntensity) {
                 p.push();
                 p.resetMatrix(); // trabajar en 2D sobre el canvas
-                p.stroke(183, 50, 50, 36);
+                p.stroke(...scanlineColor);
                 p.strokeWeight(1);
                 for (let i = 0; i < p.height; i += 8) {
                     if (p.random() < 0.3) {
@@ -117,7 +122,7 @@
             if (p.random() < 0.05 * glitchIntensity) {
                 p.push();
                 p.resetMatrix();
-                p.fill(250, 251, 216, 26);
+                p.fill(...flashColor);
                 p.rect(0, 0, p.width, p.height);
                 p.pop();
             }
