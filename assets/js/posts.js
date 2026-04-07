@@ -5,6 +5,104 @@
     'use strict';
 
     const postsData = [
+        ...(window.extraPosts || []),
+        {
+            slug: "kansas-city-lago-pando",
+            title: "Kansas City",
+            date: "2026-04-06",
+            excerpt: "Una lectura fanfic y delicada de Kansas City en clave Gangstar Vegas: adolescentes promedio, neón, promesas eternas, minerales dulces y un lago pando lleno de estrellas y esporas de amor.",
+            content: `
+                <p class="lead">Siempre he sentido que el cover de <strong>Kansas City</strong> por <strong>Sneaky Sound System</strong> no canta una ciudad como quien lee un mapa: la canta como quien aprieta una mano en mitad del ruido y descubre que una calle puede ser promesa, refugio y vértigo al mismo tiempo. Yo la escucho así: como una canción sobre ir hacia un lugar donde el amor no se vuelve más fácil, pero sí más brillante, más decidido, más dispuesto a caminar con zapatos gastados y los ojos encendidos.</p>
+
+                <div class="editorial-panel">
+                    <p class="editorial-label">Fanfic delicado / Gangstar Vegas de terciopelo</p>
+                    <p>En esta lectura, <strong>Las Vegas</strong> no es solamente la ciudad del exceso: es el decorado perfecto para la historia más típica y más inmensa del mundo. Dos adolescentes promedio se conocen entre letreros nerviosos, calor de asfalto, piscinas de motel, autos que parecen ir demasiado rápido y una noche que nunca termina de cerrarse. Todo alrededor presume caos, pero ellos hacen algo todavía más temerario: se juran amor eterno con una dulzura tan tranquila que la ciudad entera, por un instante, parece aprender modales.</p>
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/1KRD-X0F0Ds?si=w3muRhf55T6vx-FL" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div>
+
+                <p>La vibra de <em>Gangstar Vegas</em> siempre me ha parecido eso: una ciudad que tiembla por fuera y seduce por dentro. Helicópteros lejanos, vidrio, desierto, anuncios con labios luminosos, callejones que huelen a perfume cansado y a gasolina tibia. Pero en medio de ese teatro un poco roto aparece la escena más simple: un chico y una chica saliendo de una tienda con una bebida demasiado fría, mirándose como si ya se hubieran esperado muchísimo. No se presentan como héroes. No hacen nada extraordinario. Son solamente dos muchachos promedio descubriendo que el mundo puede ponerse enorme cuando una persona te mira con paciencia.</p>
+
+                <p>Ella lleva en la muñeca un brillo barato que parece joya verdadera bajo la luz rosa del casino. Él no sabe bien qué decir, así que sonríe como sonríen los que todavía no entienden que ya se enamoraron. Caminan por el borde de la avenida con esa mezcla tan de Las Vegas entre inocencia y sobresalto: a un lado la promesa del lujo, al otro la certeza de que todo podría caerse de golpe. Y aun así siguen caminando. La canción, en mi cabeza, les va abriendo el camino como una tela suave: no les promete seguridad, les promete impulso. Les dice que hay ciudades que no salvan a nadie, pero sí enseñan a besar el destino sin cerrar los ojos.</p>
+
+                <blockquote>
+                    <p>No era un amor ruidoso. Era peor y más lindo: un amor que sabía quedarse. Un amor con modales de neón mojado, con hambre de carretera, con la educación mínima para no romper la noche y la fuerza exacta para no dejarse romper por ella.</p>
+                </blockquote>
+
+                <h2>Diez palabras para una piel encendida</h2>
+                <p>Antes de seguir la historia quiero dejar la pequeña lista de sustantivos que ellos usan como si fueran amuletos. No hablan como científicos, ni falta que les hace. Hablan como dos personas enamoradas que inventan un idioma para sostener la belleza cuando el mundo se pone áspero. Ellos creen que hay minerales fuertes y minerales dulces, y que sus nombres pueden dar calor al cuerpo, descanso al rostro y un resplandor terco a la piel cuando la madrugada empieza a morder.</p>
+
+                <ol>
+                    <li><strong>Cuarzo</strong></li>
+                    <li><strong>Sal</strong></li>
+                    <li><strong>Mica</strong></li>
+                    <li><strong>Nácar</strong></li>
+                    <li><strong>Cristal</strong></li>
+                    <li><strong>Yeso</strong></li>
+                    <li><strong>Talco</strong></li>
+                    <li><strong>Mármol</strong></li>
+                    <li><strong>Ámbar</strong></li>
+                    <li><strong>Perla</strong></li>
+                </ol>
+
+                <p>Las dicen casi en secreto, como quien recita una receta casera contra el cansancio del mundo: <strong>cuarzo</strong> para que el corazón se ponga firme sin endurecerse; <strong>sal</strong> para que el cuerpo recuerde la marea; <strong>mica</strong> para que la piel devuelva la luz con un poquito de travesura; <strong>nácar</strong> para parecer dormidos dentro de una concha tibia; <strong>cristal</strong> para no mentirse; <strong>yeso</strong> para reparar lo frágil sin drama; <strong>talco</strong> para la suavidad que no pide permiso; <strong>mármol</strong> para la elegancia de mantenerse de pie; <strong>ámbar</strong> para calentarse como si adentro hubiera una tarde guardada; <strong>perla</strong> para volverse hermosos con paciencia, capa por capa, sin espectáculo y sin sangre fría, solamente con una obsesión dulce por verse vivos.</p>
+
+                <p>Ella le dice, ya en la edad en que todavía todo se confiesa a media voz, que existen minerales más fuertes que la van a poner más hermosa y la van a hacer sentirse tan cálida como las estrellas del cielo. No lo dice con vanidad de vitrina. Lo dice con una fe casi doméstica, como si la belleza fuera una fogata pequeña que se alimenta de cuidado, descanso, agua, besos en la frente y palabras hermosas repetidas hasta que el espejo por fin aprende. Él no se burla. Le responde que la acompañará a encontrar cada uno de esos nombres, aunque toque cruzar toda la ciudad tomados de la mano y seguir caminando hasta el fin del mundo.</p>
+
+                <h2>Cuando tenían cuatro años</h2>
+                <p>Pero entonces la historia se parte con suavidad y retrocede.</p>
+
+                <p>Ahora ellos tienen cuatro años. No saben nada de casinos ni de asfalto caliente. No saben nada del vértigo de Las Vegas ni del temblor raro que deja una canción cuando dice ciudad y en realidad quiere decir destino. Están en un patio donde el tiempo todavía cabe dentro de un vaso de plástico. Hay sol en las rodillas, una pared con dibujos torcidos y una piedra clarita que parece tesoro porque a esa edad todo lo que brilla un poco ya merece juramento.</p>
+
+                <p>Ella habla primero con una voz chiquita, redonda, toda hecha de confianza recién aprendida:</p>
+
+                <blockquote>
+                    <p>Hola. Yo te vi. Tú eres bonito porque te sientas despacito. ¿Quieres venir aquí? Yo tengo una piedrita. Es blanca y suave. Si tú quieres, es de los dos. No la tires, porque es una estrella bebé. Yo quiero conocerte. Podemos sentarnos y no pelear. Podemos mirar la nube grandota. Si tú quieres, cuando seamos grandes yo te voy a guardar un jugo.</p>
+                </blockquote>
+
+                <p>Él, con esa dignidad pequeñísima y seria que solo tienen los niños cuando están siendo buenos de verdad, se sienta a su lado y le contesta como si estuviera firmando el acuerdo más importante del universo:</p>
+
+                <blockquote>
+                    <p>Yo sí quiero. Yo te conozco un poquito porque tienes cara de amiga linda. Yo no corro rápido si tú no quieres. Mira, mi mano es chiquita pero cabe contigo. Después podemos jugar a que el piso es agua. Y si te caes yo te espero. Yo también te quiero conocer mucho. Muchísimo. Como hasta la tarde. Como hasta mañana.</p>
+                </blockquote>
+
+                <p>En esa edad el amor no tiene ninguna pretensión. No sabe seducir, no sabe prometer para impresionar, no sabe hacer poses. Solamente sabe acercarse. Compartir una piedrita. Guardar un asiento. Ofrecer medio jugo. Decir <em>quédate</em> con la gramática más pequeña del mundo. Y qué cosa tan delicada esa: antes de jurarse eternidad en una ciudad encendida, ellos ya se habían elegido en la forma más pura posible, con la voz toda redonda, con el corazón sin teatro, con el deseo sencillo de conocerse mejor porque sí, porque el otro daba paz.</p>
+
+                <h2>Regreso al presente</h2>
+                <p>La noche vuelve de golpe, pero no regresa sola: trae los años encima. Ya no tienen cuatro. Ya han aprendido el peso de algunas despedidas, el precio del cansancio, la mentira de ciertas luces y la manera en que una ciudad puede volverse feroz sin dejar de ser preciosa. Las Vegas sigue ahí con su desorden hermoso. Sin embargo, ellos ahora son adultos y caminan dentro de ese mismo ruido con una lentitud nueva, más sabida, más íntima.</p>
+
+                <p>Él le acomoda el pelo detrás de la oreja con una paciencia que no necesita anunciarse. Ella levanta la mirada y la calle completa parece bajar la voz. Hay algo sensualmente limpio en ese momento: no la vulgaridad del exceso, sino la cercanía tibia de dos cuerpos que se conocen desde la raíz de la ternura. El deseo ya no entra corriendo, entra respirando. Se mueve como seda calentada por el pecho. Se posa en la clavícula, en la curva del cuello, en la pausa exacta antes de un beso, en la mano que se queda quieta sobre la cintura como si supiera que tocar también puede ser una manera de cuidar.</p>
+
+                <p>Ella piensa en su piel con una obsesión delicada. Quiere verla luminosa, descansada, suave como si toda la noche hubiera sido hecha para protegerla. Quiere una belleza cálida, no cruel. Una belleza de estrella cercana, no de cuchillo. Se imagina bebiendo la fuerza tranquila del cuarzo, la dulzura húmeda del nácar, la pulcritud del cristal, el resplandor lento del ámbar. Se imagina el cuerpo entero encendido por dentro, no para mostrarse, sino para sentirse viva. Como si cada poro pudiera abrir una ventana mínima y desde ahí respirar constelaciones pequeñas.</p>
+
+                <p>Él la escucha decir esas cosas y en vez de reírse la mira con la devoción exacta que merece una fantasía bien dicha. Le contesta que sí, que hay noches en que uno puede ponerse más hermoso solo por haber sido mirado con amor. Le dice que su piel ya parece guardar una luz propia, pero que si de todas formas quiere volverse todavía más brillante, él la acompañará. Que le sostendrá la mano en cada avenida, en cada ascensor de hotel, en cada escalera que huela a cloro, en cada borde del amanecer. Que no le promete una ciudad mejor, pero sí una compañía tan suave y tan firme como una perla llevada en el bolsillo.</p>
+
+                <div class="soundtrack-deck">
+                    <p class="soundtrack-kicker">Lectura sentimental de la canción</p>
+                    <p>Por eso me gusta pensar que <strong>Kansas City</strong>, en esta versión tan bonita, habla menos de llegar a un sitio y más de <strong>cómo se llega</strong>: con el corazón medio roto pero dispuesto, con la ciudad temblando alrededor, con la certeza de que el amor verdadero no necesita un paisaje puro para florecer. A veces le basta una avenida nerviosa, un letrero rosa, un motel cualquiera y dos personas que todavía se miran como si acabaran de encontrarse en un patio infantil.</p>
+                    <p>La canción no les limpia el mundo: les da una dirección. Les deja una calle abierta. Les recuerda que incluso dentro de una ciudad hecha de riesgo y deseo todavía cabe la delicadeza. Y eso, para mí, es un mensaje bellísimo: no esperar un escenario perfecto para amar, sino volver precioso el escenario que tocó.</p>
+                </div>
+
+                <h2>Ingerir todas las estrellas del cielo</h2>
+                <p>Y entonces llega esa otra imagen, la que más me gusta cuidar porque se siente como una oración chiquita, rarísima y dulce: <strong>ingerir todas las estrellas del cielo y sentirme liberando estrellas y esporas del amor en un lago pando</strong>.</p>
+
+                <p>Yo la extiendo así: imagino una noche en la que ella levanta el rostro y bebe la luz con una sed preciosa. No una sed triste, no una sed de vacío, sino una sed de plenitud. Quiere tragarse el cielo entero para que ya no exista distancia entre su piel y las constelaciones. Quiere que cada estrella le baje por la garganta como un sorbo tibio y la deje encendida por dentro. Quiere que el pecho se le llene de puntitos de oro suave, de polvito celeste, de esa alegría que no grita pero sí resplandece. Y cuando por fin siente que el cuerpo no puede guardar tanta hermosura, se inclina sobre el lago pando y empieza a liberar, muy despacio, estrellas pequeñas y esporas de amor.</p>
+
+                <p>El lago no se asusta. El lago entiende. Es pando, sí, blando, receptivo, un espejo cansado y amoroso donde la luz no rebota con dureza sino con ternura. Cada espora cae como si besara el agua. Cada estrella mínima se abre sobre la superficie y deja círculos de claridad tibia, como cuando una emoción buena por fin encuentra dónde descansar. No hay escándalo. No hay gran explosión. Todo ocurre con una delicadeza casi vegetal, como si el amor también pudiera florecer en forma de polen luminoso.</p>
+
+                <p>Ella siente entonces que la belleza no era una meta de vitrina sino una respiración. Que volverse más hermosa no consistía en endurecerse, sino en aprender a irradiar calor sin perder suavidad. Que la piel más bella es la que parece recordar el tacto de las estrellas sin presumirlo demasiado. Que hay una forma muy noble de obsesionarse con la luz: dejar que te vuelva más amable, más tibia, más capaz de acariciar el mundo sin arrugarlo.</p>
+
+                <p>Él se acerca por detrás, apoya apenas la frente en su hombro y mira con ella la superficie llena de esporas brillantes. No interrumpe. Solo acompaña. Y eso también es amor adulto: saber cuándo besar, cuándo hablar, cuándo callar y cuándo quedarse contemplando la belleza de la otra persona como si fuera un pequeño milagro doméstico que te tocó custodiar.</p>
+
+                <p>Desde la orilla, Las Vegas ya no parece una amenaza ni un parque de excesos. Parece una constelación terrestre observando otra constelación más íntima nacer sobre el agua. Ellos siguen tomados de la mano como cuando eran niños y compartían una piedra blanca, solo que ahora saben más cosas: saben del cansancio, del deseo, de la nostalgia, de la temperatura exacta de una madrugada después de bailar, del perfume que deja una nuca querida, del valor inmenso de no soltarse en medio del ruido.</p>
+
+                <blockquote>
+                    <p>Tomados de la mano hasta el fin del mundo, sí, pero no como una consigna ruidosa. Más bien como una costumbre fina: caminar juntos hasta que la noche aprenda a ser suave, hasta que la ciudad deje de temblar, hasta que la piel se llene de luz suficiente para parecer estrella sin dejar de ser cuerpo amado.</p>
+                </blockquote>
+
+                <p>Si esa es la promesa secreta que yo encuentro en <strong>Kansas City</strong>, entonces la abrazo completa: ir hacia la ciudad, atravesar el desorden, recordar la infancia, cuidar la piel como si fuera un jardín nocturno, beber la fuerza de los minerales dulces imaginarios, dejar caer amor sobre el agua y seguir. Seguir con delicadeza. Seguir con hambre de belleza. Seguir como siguen los que no quieren escándalo sino permanencia. Seguir como dos muchachos promedio de Las Vegas que, contra todo pronóstico, hicieron del caos una cuna de neón para jurarse algo imposible y después cumplirlo con una ternura impecable.</p>
+            `,
+            image: ""
+        },
         {
             slug: "sample-diary-la-dama-dicroica-vol-02",
             title: "Sample Pack de Dicroismo",
