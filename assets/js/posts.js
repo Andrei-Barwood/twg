@@ -7,6 +7,315 @@
     const postsData = [
         ...(window.extraPosts || []),
         {
+            slug: "frayed-ends-almas-gemelas",
+            title: "Frayed Ends / Almas Gemelas",
+            date: "2026-04-09",
+            excerpt: "Copia literal de la guia de composicion breakcore melancolico para Almas Gemelas, montada como entrada editorial con paleta tomada del HTML original.",
+            themeClass: "theme-frayed-ends",
+            content: `
+                <div class="frayed-ends-post">
+
+                  <section class="page">
+                    <div class="cover">
+                      <img src="assets/images/almas-gemelas-frayed-ends.png" alt="Portada del album">
+                      <div>
+                        <div class="eyebrow">Guia de produccion y composicion</div>
+                        <h1>Breakcore Melancolico con Color Sinfonico</h1>
+                        <p class="lead">Metodo para escribir un album de tension fragil, violencia ritmica y lirismo orquestal usando un set minimo: dos sintetizadores tipo keys, un pad, Loopmasters Bass Master y Amen break.</p>
+                        <div class="box">
+                          <p><strong>Objetivo sonoro:</strong> lograr que cada tema suene como un recuerdo noble que se rompe en tiempo real. La emocion no debe venir solo de la armonia, sino del contraste entre masa sinfonica imaginaria y bateria fragmentada.</p>
+                        </div>
+                        <div class="box">
+                          <p><strong>Enfoque:</strong> tecnicas romanticas europeas, recursos de bloque, politonalidad sugerida, ostinati desplazados, cromatismo expresivo, acentos de ballet moderno y orquestacion imaginada traducida a cinco elementos electronicos.</p>
+                        </div>
+                        <p class="small">Documento de trabajo para composicion, arreglo y mezcla preliminar.</p>
+                      </div>
+                    </div>
+                    <div class="footer">
+                      <span>Almas Gemelas</span>
+                      <span>Guia de composicion</span>
+                    </div>
+                  </section>
+
+                  <section class="page">
+                    <h2>1. Paleta Base</h2>
+                    <div class="grid-2">
+                      <div>
+                        <h3>Distribucion instrumental</h3>
+                        <ul>
+                          <li><strong>Key A:</strong> voz principal. Timbre de piano espectral, clavecin sintetico y campana suave.</li>
+                          <li><strong>Key B:</strong> contrapunto o refuerzo del desarrollo melodico intervalico (terceras, sextas), (cuartas, segundas y septimas) y acordes mordidos.</li>
+                          <li><strong>Pad:</strong> cuerda coral suspendida. Debe sugerir seccion sinfonica, no solo relleno.</li>
+                          <li><strong>Bass Master:</strong> bajo de arco imaginario, tuba agresiva o contrabajo col legno convertido en sub.</li>
+                          <li><strong>Amen break:</strong> motor dramatico. Alterna version intacta, microcortes y fantasma granular.</li>
+                        </ul>
+                      </div>
+                      <div>
+                        <h3>Colores orquestales traducidos</h3>
+                        <ul>
+                          <li><strong>Cuerdas altas:</strong> Key A con ataque medio, poco release y filtro abierto solo en picos.</li>
+                          <li><strong>Violas / maderas oscuras:</strong> Key B una octava abajo con poco brillo y vibrato lento.</li>
+                          <li><strong>Metales velados:</strong> Pad con saturacion leve y automatizacion de formante o filtro peaking.</li>
+                          <li><strong>Contrabajos:</strong> Bass Master con transient corto, capa sub centrada y cola amortiguada.</li>
+                          <li><strong>Percusion orquestal:</strong> Amen filtrado en bandas para simular caja, timbal y platillo roto.</li>
+                        </ul>
+                      </div>
+                    </div>
+                    <h3>Reglas de estilo</h3>
+                    <div class="box">
+                      <p>Trabaja siempre con <strong>dos planos afectivos</strong>: un plano noble y cantable arriba, y un plano mecanico o herido abajo. Si ambos planos expresan lo mismo, el tema pierde profundidad.</p>
+                      <p>La armonia debe oscilar entre <strong>modalidad oscura</strong>, cromatismo de arrastre y choques de segundas menores o tritonos. El breakcore entra mejor cuando el material melodico ya contiene friccion interna.</p>
+                    </div>
+                    <h3>Mapa dinamico recomendado</h3>
+                    <ul>
+                      <li>Inicio: pad y Key A exponen el motivo sin bateria completa.</li>
+                      <li>Primer quiebre: entra Amen en version casi entera para fijar identidad.</li>
+                      <li>Desmembramiento: slices irregulares, silencios secos y respuestas del bajo.</li>
+                      <li>Climax: acordes en bloques, pad ancho, bajo en pedal, Amen hiperfragmentado.</li>
+                      <li>Posclimax: regreso del motivo con menos notas y mas aire.</li>
+                    </ul>
+                    <div class="footer">
+                      <span>Paleta instrumental</span>
+                      <span>2</span>
+                    </div>
+                  </section>
+
+                  <section class="page">
+                    <h2>2. Tutorial Paso a Paso</h2>
+                    <p>Este procedimiento sirve para replicar el lenguaje del album con un set reducido. Ajusta tempo entre <strong>168 y 198 BPM</strong>. Si el tema necesita mas gravedad emocional, baja la densidad de slices en vez de bajar mucho el tempo.</p>
+                    <div class="recipe">
+                      <div>
+                        <div class="step">
+                          <div class="label">Paso 1</div>
+                          <strong>Escribe un nucleo de 4 compases en Key A.</strong>
+                          <p>Usa una celula corta de 3 a 5 notas. La mejor opcion es una linea que combine salto amplio y resolucion por semitono: por ejemplo, sexta menor ascendente seguida de descenso cromatico.</p>
+                        </div>
+                        <div class="step">
+                          <div class="label">Paso 2</div>
+                          <strong>Duplica la idea en Key B como sombra deformada.</strong>
+                          <p>No armonices bonito. Desplaza una nota del acorde, usa cuartas, segundas o una tercera que llegue tarde. Key B debe sonar como memoria lateral, no como acompañamiento perfecto.</p>
+                        </div>
+                        <div class="step">
+                          <div class="label">Paso 3</div>
+                          <strong>Construye el pad como seccion de cuerdas imaginaria.</strong>
+                          <p>Sostiene fundamentales y extensiones lentas. Automatiza apertura de filtro solo al final de frases. Piensa en arco largo, no en sustain fijo.</p>
+                        </div>
+                        <div class="step">
+                          <div class="label">Paso 4</div>
+                          <strong>Diseña el bajo por funcion dramatica.</strong>
+                          <p>Bass Master debe alternar entre pedal obstinado, respuesta sincopada y salto en octava. En versos tensos, deja huecos para que el break respire; en climas, sostiene la gravedad.</p>
+                        </div>
+                        <div class="step">
+                          <div class="label">Paso 5</div>
+                          <strong>Presenta el Amen break sin triturarlo del todo.</strong>
+                          <p>Primero deja 1 o 2 compases relativamente legibles. El oyente necesita reconocer el cuerpo del groove antes de aceptar su destruccion.</p>
+                        </div>
+                        <div class="step">
+                          <div class="label">Paso 6</div>
+                          <strong>Fragmenta por capas, no por caos total.</strong>
+                          <p>Separa kick, snare, ghost hits y hats. Reordena solo una capa a la vez. Si destruyes todo simultaneamente, el resultado pierde direccion expresiva.</p>
+                        </div>
+                      </div>
+                      <div>
+                        <div class="step">
+                          <div class="label">Paso 7</div>
+                          <strong>Introduce respiraciones sin bateria.</strong>
+                          <p>Corta el Amen por medio compas o un compas entero y deja que Key A, Key B y pad hagan la carga emocional. Ese vacio hace que el regreso del break golpee mas fuerte.</p>
+                        </div>
+                        <div class="step">
+                          <div class="label">Paso 8</div>
+                          <strong>Convierte la orquestacion en automatizacion.</strong>
+                          <p>Sube resonancia para simular metales que emergen, baja agudos para sugerir sordina, abre stereo del pad en climas y cierralo en frases intimistas.</p>
+                        </div>
+                        <div class="step">
+                          <div class="label">Paso 9</div>
+                          <strong>Usa disonancias con destino claro.</strong>
+                          <p>Segunda menor, tritono y novena menor funcionan mejor si apuntan a una nota pivote del motivo principal. La violencia debe sentirse inevitable.</p>
+                        </div>
+                        <div class="step">
+                          <div class="label">Paso 10</div>
+                          <strong>Escribe un climax por acumulacion de bloques.</strong>
+                          <p>Haz que pad y keys ataquen juntos en acordes verticales mientras el bajo sostiene pedal y el Amen multiplica subdivisiones. Esta es la traduccion electronica del tutti sinfonico.</p>
+                        </div>
+                        <div class="step">
+                          <div class="label">Paso 11</div>
+                          <strong>Desarma despues del climax.</strong>
+                          <p>Quita primero hats y ghosts, luego bajo, y deja el tema desnudo con Key A solo o Key A + pad. La melancolia aparece cuando sobrevive el motivo despues del impacto.</p>
+                        </div>
+                        <div class="step">
+                          <div class="label">Paso 12</div>
+                          <strong>Mezcla por jerarquia dramatica.</strong>
+                          <p>En cada seccion decide quien narra: motivo, masa armonica, bajo o break. Todo lo demas se subordina. Un album asi gana cohesion cuando cada pista comparte una misma filosofia de prioridad emocional.</p>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="footer">
+                      <span>Tutorial practico</span>
+                      <span>3</span>
+                    </div>
+                  </section>
+
+                  <section class="page">
+                    <h2>3. Tecnicas por Tema</h2>
+
+                    <div class="track">
+                      <h3>01 - Velas Gemelas</h3>
+                      <p>Atmosfera: duelo suspendido, nobleza quebrada, dos luces que tiemblan al mismo tiempo. Mantener una gravedad elegante, con impulso rítmico contenido en la primera mitad.</p>
+
+                      <div class="tech">
+                        <strong>1. Doble melodía en espejo roto.</strong>
+                        <p>Key A expone el motivo. Key B lo repite dos pulsos después con una nota cambiada por semitono o tritono. Es una adaptación de la imitación romántica, pero aquí la respuesta debe sonar herida. El pad sostiene quintas vacías para no cerrar demasiado la armonía.</p>
+                      </div>
+                      <div class="tech">
+                        <strong>2. Pedal elegíaco de bajo.</strong>
+                        <p>Bass Master sostiene una misma fundamental durante 2 o 4 compases mientras las keys cambian por encima. Recurso cercano a Mahler: la armonía se mueve, pero el suelo emocional no cede. El Amen entra en cortes suaves para no romper la sensación de vigilia.</p>
+                      </div>
+                      <div class="tech">
+                        <strong>3. Cadencia evitada con resolución lateral.</strong>
+                        <p>Cuando parezca llegar la tónica, desplaza la resolución a sexta o segunda. Esa decepción controlada prolonga la tristeza. En breakcore funciona muy bien si el snare principal cae donde el oído esperaba reposo.</p>
+                      </div>
+                      <div class="tech">
+                        <strong>4. Crescendo de bloque coral.</strong>
+                        <p>Pad + Key B construyen acordes amplios en registros medios, mientras Key A mantiene una línea aguda casi infantil. Traduce el color de coro y cuerdas sinfónicas: densidad abajo, fragilidad arriba. Deja el Amen más denso solo en el último tercio.</p>
+                      </div>
+                    </div>
+
+                    <div class="track">
+                      <h3>02 - Dicroismo</h3>
+                      <p>Atmosfera: belleza con dos caras simultáneas. Una mitad serena; la otra, filosa. El tema debe cambiar de color sin perder identidad motivica.</p>
+
+                      <div class="tech">
+                        <strong>1. Bitonalidad sugerida por estratos.</strong>
+                        <p>Key A trabaja en un centro modal oscuro; Key B insinúa otro centro a distancia de tercera o tritono. No hace falta modular formalmente: basta con que ambos planos parezcan mirar a distintas gravedades. Hereda la tensión de Stravinsky, pero reducida a dos voces principales.</p>
+                      </div>
+                      <div class="tech">
+                        <strong>2. Ostinato asimétrico 3+3+2 sobre pulso recto.</strong>
+                        <p>Haz que el bajo o Key B repitan una célula de ocho corcheas repartidas 3+3+2, mientras el Amen conserva sensación de 4/4. El oyente siente un desajuste interno elegante, como dos superficies con brillo diferente.</p>
+                      </div>
+                      <div class="tech">
+                        <strong>3. Cambio de timbre como modulación emocional.</strong>
+                        <p>Sin cambiar notas, abre el filtro de Key A, reduce brillo en pad y endurece transient del bajo. Una variación orquestal puede nacer del color, no de la armonía. Úsalo para pasar de contemplación a amenaza en un solo compás.</p>
+                      </div>
+                      <div class="tech">
+                        <strong>4. Break en falso espejo.</strong>
+                        <p>Toma un compás de Amen y en el siguiente reorganiza solo la segunda mitad. La primera cara del compás es estable; la segunda revela fractura. Este gesto refleja el título sin verbalizarlo.</p>
+                      </div>
+                    </div>
+
+                    <div class="footer">
+                      <span>Tecnicas por tema I</span>
+                      <span>4</span>
+                    </div>
+                  </section>
+
+                  <section class="page">
+                    <div class="track">
+                      <h3>03 - Lacerancia</h3>
+                      <p>Atmosfera: dolor expuesto, abrasión íntima, impulso de avance a pesar de la herida. Este tema puede ser el más físico del álbum.</p>
+
+                      <div class="tech">
+                        <strong>1. Cromatismo de desgarro.</strong>
+                        <p>Haz que Key A ascienda o descienda por semitonos en el final de cada frase, incluso si el acorde debajo no lo justifica del todo. Es un recurso central del expresionismo tardorromántico: la línea se hiere para intensificar el gesto.</p>
+                      </div>
+                      <div class="tech">
+                        <strong>2. Acordes mordidos en ataque corto.</strong>
+                        <p>Programa Key B con poca cola y dispara acordes de tres o cuatro notas como si fueran ataques de metales o cuerdas tocadas con violencia. Entra solo en síncopas o respuestas al snare. La sensación debe ser de carne rasgada, no de colchón armónico.</p>
+                      </div>
+                      <div class="tech">
+                        <strong>3. Bajo como contragolpe.</strong>
+                        <p>En lugar de doblar cada kick, Bass Master responde después del golpe fuerte. Esta reacción tardía crea una sensación de espasmo. Piensa en el bajo como músculo reflejo más que como cimiento métrico.</p>
+                      </div>
+                      <div class="tech">
+                        <strong>4. Silencio incisional.</strong>
+                        <p>Interrumpe el break un octavo antes de la caída más intensa. Ese vacío mínimo funciona como corte quirúrgico. Cuando el Amen vuelve, el golpe parece más crudo que si nunca se hubiera detenido.</p>
+                      </div>
+                    </div>
+
+                    <div class="track">
+                      <h3>04 - Alambre de Puas</h3>
+                      <p>Atmosfera: tensión punzante, frialdad motriz, avance con resistencia. Debe sentirse más seco, más angular y más nervioso que los temas vecinos.</p>
+
+                      <div class="tech">
+                        <strong>1. Motivo en intervalos espinosos.</strong>
+                        <p>Construye el tema con cuartas aumentadas, segundas menores y séptimas que resuelven tarde. El motivo no debe cantar de forma redonda; debe enganchar y raspar. Muy útil si Key A usa un timbre brillante pero delgado.</p>
+                      </div>
+                      <div class="tech">
+                        <strong>2. Staccato de bloque al estilo de ballet mecanico.</strong>
+                        <p>Pad casi ausente, Key A y Key B disparan acordes secos juntos. Esto traduce ataques orquestales en bloque inspirados en modernismo ruso. El Amen puede acompañar con hats recortados y snares adelantados.</p>
+                      </div>
+                      <div class="tech">
+                        <strong>3. Contrapunto por fricción de registro.</strong>
+                        <p>Key A muy arriba, Bass Master muy abajo y Key B en medio estrecho. Evita rellenar demasiado el centro con pad. El vacío central hace que los extremos se sientan como alambres tensados en direcciones opuestas.</p>
+                      </div>
+                      <div class="tech">
+                        <strong>4. Amen segmentado por cuchillas.</strong>
+                        <p>Corta el break en grupos de 1/16 y conserva solo ataques filosos: cajas, ghost notes y hats abiertos breves. Reordena por impulso, no por simetría. La percusión debe pinchar tanto como la armonía.</p>
+                      </div>
+                    </div>
+
+                    <div class="footer">
+                      <span>Tecnicas por tema II</span>
+                      <span>5</span>
+                    </div>
+                  </section>
+
+                  <section class="page">
+                    <div class="track">
+                      <h3>05 - Polifrenia</h3>
+                      <p>Atmosfera: múltiples voces afectivas coexistiendo. Debe sonar como si varias identidades del mismo recuerdo estuvieran activas al mismo tiempo.</p>
+
+                      <div class="tech">
+                        <strong>1. Heterofonia controlada.</strong>
+                        <p>Haz que Key A, Key B y pad toquen esencialmente el mismo contorno, pero con entradas y notas accesorias distintas. Esta técnica, frecuente en masas orquestales complejas, crea espesura psicológica sin exigir muchos instrumentos.</p>
+                      </div>
+                      <div class="tech">
+                        <strong>2. Poliacento sobre un unico tema.</strong>
+                        <p>El motivo principal puede conservar sus alturas, pero cambia los acentos entre instrumentos: Key A marca el pulso, Key B entra contratiempo y el Amen refuerza otra jerarquía. El resultado es una personalidad rítmica múltiple.</p>
+                      </div>
+                      <div class="tech">
+                        <strong>3. Cadena de modulaciones parciales.</strong>
+                        <p>No modules por completo. Desplaza una sola nota pivote cada 4 u 8 compases para que la armonía parezca mudarse por habitaciones conectadas. La sensación psicológica es más compleja que una simple repetición en bucle.</p>
+                      </div>
+                      <div class="tech">
+                        <strong>4. Recapitulacion desdoblada.</strong>
+                        <p>Al final, devuelve el motivo de apertura en Key A casi intacto, pero deja que Key B lo contradiga y que el break se desarme debajo. El cierre no unifica: revela coexistencia. Esa ambigüedad deja una firma fuerte para el álbum.</p>
+                      </div>
+                    </div>
+
+                    <h2>4. Recursos de Arreglo para Todo el Album</h2>
+                    <ul>
+                      <li><strong>Unidad motivica:</strong> recicla un contorno de 3 notas entre temas, aunque cambie el ritmo o la tonalidad.</li>
+                      <li><strong>Unidad textural:</strong> define una misma reverb principal para keys y pad, como si el álbum ocurriera en un solo espacio emocional.</li>
+                      <li><strong>Unidad percusiva:</strong> conserva un Amen principal y deriva variantes, en vez de cambiar de break en cada tema.</li>
+                      <li><strong>Unidad dramática:</strong> todos los climas deben sentirse ganados por acumulación, no regalados por volumen.</li>
+                    </ul>
+
+                    <h3>Cadena de trabajo recomendada</h3>
+                    <div class="box mono">
+                      <p>1. Motivo en Key A<br>
+                      2. Deformacion en Key B<br>
+                      3. Sostén orquestal en Pad<br>
+                      4. Funcion dramatica del Bass Master<br>
+                      5. Amen legible<br>
+                      6. Amen fracturado<br>
+                      7. Climax en bloques<br>
+                      8. Decadencia final</p>
+                    </div>
+
+                    <h3>Cierre</h3>
+                    <p>La clave del álbum no está en sonar solo rápido o solo triste. Está en escribir materiales que ya contengan contradicción: ternura y amenaza, nobleza y ruina, canto y corte. Si el motivo puede sobrevivir cuando todo lo demás se fractura, la identidad del disco queda sellada.</p>
+
+                    <div class="footer">
+                      <span>Cierre y cohesion</span>
+                      <span>6</span>
+                    </div>
+                  </section>
+
+                </div>
+            `,
+            image: ""
+        },
+        {
             slug: "kansas-city-lago-pando",
             title: "Kansas City",
             date: "2026-04-06",
@@ -80,6 +389,7 @@
                     <p class="soundtrack-kicker">Lectura sentimental de la canción</p>
                     <p>Por eso me gusta pensar que <strong>Kansas City</strong>, en esta versión tan bonita, habla menos de llegar a un sitio y más de <strong>cómo se llega</strong>: con el corazón medio roto pero dispuesto, con la ciudad temblando alrededor, con la certeza de que el amor verdadero no necesita un paisaje puro para florecer. A veces le basta una avenida nerviosa, un letrero rosa, un motel cualquiera y dos personas que todavía se miran como si acabaran de encontrarse en un patio infantil.</p>
                     <p>La canción no les limpia el mundo: les da una dirección. Les deja una calle abierta. Les recuerda que incluso dentro de una ciudad hecha de riesgo y deseo todavía cabe la delicadeza. Y eso, para mí, es un mensaje bellísimo: no esperar un escenario perfecto para amar, sino volver precioso el escenario que tocó.</p>
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/-7n87c80Mco?si=55zS6ZAoa0MZQx9A" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                 </div>
 
                 <h2>Ingerir todas las estrellas del cielo</h2>
