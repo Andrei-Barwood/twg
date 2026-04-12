@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blog - The Wooden Groom</title>
     <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/blog-theme-tim-breakcore.css">
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
     <!-- Alpine.js (versión completa para usar $watch y persist) -->
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
@@ -25,6 +26,7 @@
                     <li><a href="music.html">MÚSICA</a></li>
                     <li><a href="shows.html">SHOWS</a></li>
                     <li><a href="blog.html">BLOG</a></li>
+                    <li><a href="scale-generator.html">ESCALAS</a></li>
                     <li><a href="about.html">BIO</a></li>
                     <li><a href="contact.html">CONTACTO</a></li>
                 </ul>
@@ -77,6 +79,7 @@
 
     <!-- Scripts -->
     <script src="assets/js/posts-gangstar-vegas-tokyo.js"></script>
+    <script src="assets/js/posts-tim-breakcore.js"></script>
     <script src="assets/js/posts.js"></script>
     <script src="assets/js/main.js"></script>
     <script src="assets/js/p5-background.js"></script>
@@ -103,31 +106,82 @@
 
                 // Métodos
                 init() {
-                    // Comprobar si hay un hash en la URL (ej. #mi-post)
-                    if (window.location.hash) {
-                        const slug = window.location.hash.substring(1); // quita el #
-                        this.verPost(slug);
-                    }
+                    this.gestionarHash();
 
                     // Escuchar cambios en el hash (cuando el usuario navegue con el historial)
                     window.addEventListener('hashchange', () => {
-                        if (window.location.hash) {
-                            const slug = window.location.hash.substring(1);
-                            this.verPost(slug);
-                        } else {
-                            this.postSeleccionado = null;
-                        }
+                        this.gestionarHash();
                     });
                 },
 
-                verPost(slug) {
+                gestionarHash() {
+                    const hash = decodeURIComponent(window.location.hash.substring(1));
+
+                    if (!hash) {
+                        this.postSeleccionado = null;
+                        return;
+                    }
+
+                    if (this.postSeleccionado && this.postContieneAncla(this.postSeleccionado, hash)) {
+                        this.$nextTick(() => this.desplazarAAncla(hash));
+                        return;
+                    }
+
+                    const postPorSlug = this.buscarPostPorSlug(hash);
+                    if (postPorSlug) {
+                        this.verPost(hash, { actualizarHash: false });
+                        return;
+                    }
+
+                    const postPorAncla = this.buscarPostPorAncla(hash);
+                    if (postPorAncla) {
+                        this.verPost(postPorAncla.slug, { actualizarHash: false, anchorId: hash });
+                        return;
+                    }
+
+                    if (!this.postSeleccionado) {
+                        this.volverALista();
+                    }
+                },
+
+                buscarPostPorSlug(slug) {
+                    return this.allPosts.find(p => p.slug === slug) || null;
+                },
+
+                postContieneAncla(post, anchorId) {
+                    if (!post || !post.content) return false;
+
+                    return post.content.includes(`id="${anchorId}"`) || post.content.includes(`id='${anchorId}'`);
+                },
+
+                buscarPostPorAncla(anchorId) {
+                    return this.allPosts.find(post => this.postContieneAncla(post, anchorId)) || null;
+                },
+
+                desplazarAAncla(anchorId) {
+                    const destino = document.getElementById(anchorId);
+                    if (!destino) return;
+
+                    destino.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                },
+
+                verPost(slug, opciones = {}) {
+                    const { actualizarHash = true, anchorId = null } = opciones;
                     // Buscar el post por slug
-                    const post = this.allPosts.find(p => p.slug === slug);
+                    const post = this.buscarPostPorSlug(slug);
                     if (post) {
                         this.postSeleccionado = post;
                         // Actualizar el hash sin recargar
-                        history.pushState(null, null, `#${slug}`);
-                        this.$nextTick(() => this.configurarWidgetsPost());
+                        if (actualizarHash) {
+                            history.pushState(null, null, `#${slug}`);
+                        }
+                        this.$nextTick(() => {
+                            this.configurarWidgetsPost();
+
+                            if (anchorId) {
+                                this.desplazarAAncla(anchorId);
+                            }
+                        });
                     } else {
                         // Si no existe, redirigir a lista
                         this.volverALista();

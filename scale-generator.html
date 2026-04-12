@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Generador de escalas y acordes de The Wooden Groom, adaptado al lenguaje visual actual del sitio.">
+    <title>Scale Generator - The Wooden Groom</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/composition-suite.css">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"></script>
+</head>
+<body class="composition-page scale-generator-page">
+    <div id="p5-background"></div>
+
+    <main class="main-container">
+        <header>
+            <h1><a href="index.html">THE WOODEN GROOM</a></h1>
+            <nav>
+                <ul>
+                    <li><a href="music.html">MÚSICA</a></li>
+                    <li><a href="shows.html">SHOWS</a></li>
+                    <li><a href="blog.html">BLOG</a></li>
+                    <li><a href="scale-generator.html">ESCALAS</a></li>
+                    <li><a href="about.html">BIO</a></li>
+                    <li><a href="contact.html">CONTACTO</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <section class="composition-hero">
+            <div class="composition-hero-copy">
+                <p class="composition-kicker">Exclusive Tool / Harmony Engine</p>
+                <h2>Scale Generator</h2>
+                <p class="composition-lead">
+                    Página exclusiva para el generador de escalas y acordes: una herramienta limpia para probar modos exóticos, voicings y rutas de conducción de voces sin cargar otros bloques editoriales alrededor.
+                </p>
+                <p class="composition-note">
+                    Elige la escala, el tipo de stack y la nota raíz. La salida traduce el resultado a lectura musical, arreglo y uso práctico dentro de una DAW o un tracker.
+                </p>
+                <div class="composition-actions">
+                    <a href="#generator" class="boton">IR AL GENERADOR</a>
+                    <a href="music.html" class="boton">VOLVER A MÚSICA</a>
+                </div>
+            </div>
+
+            <aside class="composition-hero-meta">
+                <span>Paleta azul, rosa, rojo, crema y amarillo integrada al sitio</span>
+                <span>Escalas exóticas con lectura inmediata por grados</span>
+                <span>Voicings seventh, ninth, suspended y R&amp;B</span>
+                <span>Consejos breves de conducción para partitura, DAW y tracker</span>
+            </aside>
+        </section>
+
+        <section class="composition-generator" id="generator" aria-labelledby="generator-title">
+            <div class="composition-section-head">
+                <p class="section-kicker">Tool 01</p>
+                <h3 id="generator-title">Scale &amp; Chord Generator</h3>
+                <p>
+                    Usa `#` para sostenidos y `b` para bemoles. El resultado sugiere notas de la escala, stacks por grado y una lógica rápida para desarrollar el material en producción.
+                </p>
+            </div>
+
+            <div class="generator-layout">
+                <form id="generator-form" class="generator-form">
+                    <div class="generator-field">
+                        <label for="scale">Escala</label>
+                        <select id="scale" name="scale">
+                            <option value="hungarian_minor">Hungarian Minor</option>
+                            <option value="phrygian_dominant">Phrygian Dominant</option>
+                            <option value="augmented">Augmented</option>
+                            <option value="minor_pentatonic">Minor Pentatonic</option>
+                            <option value="major_pentatonic">Major Pentatonic</option>
+                            <option value="neutral_pentatonic">Neutral Pentatonic</option>
+                        </select>
+                    </div>
+
+                    <fieldset class="generator-field generator-radio-group">
+                        <legend>Tipo de acorde</legend>
+                        <label><input type="radio" name="chord_type" value="seventh" checked> Seventh</label>
+                        <label><input type="radio" name="chord_type" value="ninth"> Ninth</label>
+                        <label><input type="radio" name="chord_type" value="suspended"> Suspended</label>
+                        <label><input type="radio" name="chord_type" value="rnb"> R&amp;B</label>
+                    </fieldset>
+
+                    <div class="generator-field">
+                        <label for="root">Nota raíz</label>
+                        <input type="text" id="root" name="root" value="C" spellcheck="false" autocomplete="off">
+                    </div>
+
+                    <button type="submit" class="boton">GENERAR</button>
+                </form>
+
+                <div id="output" class="generator-output" aria-live="polite"></div>
+            </div>
+        </section>
+
+        <section class="composition-framework" aria-labelledby="generator-notes-title">
+            <div class="composition-section-head">
+                <p class="section-kicker">Reading Notes</p>
+                <h3 id="generator-notes-title">Cómo leer el resultado</h3>
+                <p>
+                    La idea no es solo listar acordes: cada salida propone una forma de pensar el material para escribir, arreglar y secuenciar con intención.
+                </p>
+            </div>
+
+            <div class="generator-grid">
+                <article class="chord-card">
+                    <h4>1. Escoge el color antes que la complejidad</h4>
+                    <p>Empieza por el modo y no por el número de notas. Si el color ya está claro, la armonía se vuelve más fácil de expandir sin perder identidad.</p>
+                </article>
+                <article class="chord-card">
+                    <h4>2. Trata cada grado como función dramática</h4>
+                    <p>Los grados no son solo posiciones. Cada uno puede ser centro, desvío, bisagra, empuje o repliegue, y esa lectura acelera mucho el arreglo.</p>
+                </article>
+                <article class="chord-card">
+                    <h4>3. Lleva el voicing por capas</h4>
+                    <p>Separa raíz, cuerpo y extensión en distintos planos si trabajas en DAW o tracker. Así puedes deformar el ritmo sin destruir la legibilidad armónica.</p>
+                </article>
+            </div>
+        </section>
+
+        <footer>
+            <p>
+                <a href="https://megadoll.bandcamp.com/" target="_blank" rel="noopener noreferrer">Bandcamp</a> |
+                <a href="https://www.instagram.com/thewoodengroom/" target="_blank" rel="noopener noreferrer">Instagram</a> |
+                <a href="https://www.youtube.com/@TheWoodenGroom" target="_blank" rel="noopener noreferrer">YouTube</a>
+            </p>
+        </footer>
+    </main>
+
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/p5-background.js"></script>
+    <script src="assets/js/composition-suite.js"></script>
+</body>
+</html>

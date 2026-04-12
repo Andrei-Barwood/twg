@@ -23,6 +23,7 @@
                     <li><a href="music.html">MÚSICA</a></li>
                     <li><a href="shows.html">SHOWS</a></li>
                     <li><a href="blog.html">BLOG</a></li>
+                    <li><a href="scale-generator.html">ESCALAS</a></li>
                     <li><a href="about.html">BIO</a></li>
                     <li><a href="contact.html">CONTACTO</a></li>
                 </ul>
@@ -102,14 +103,14 @@
             </div>
         </section>
 
-        <section class="shows-section shows-archive" x-show="archivedShows.length > 0">
+        <section class="shows-section shows-archive" id="shows-archive-section" x-show="archivedShows.length > 0">
             <div class="shows-section-header">
                 <h3>Archivo de eventos pasados</h3>
                 <span class="shows-badge archive" x-text="archivedShows.length + ' finalizados'"></span>
             </div>
 
             <div class="shows-lista">
-                <template x-for="show in archivedShows" :key="'archive-' + show.number">
+                <template x-for="show in paginatedArchivedShows" :key="'archive-' + show.number">
                     <div class="show-item pasado" :style="showThemeStyle(show)">
                         <div class="show-fecha">
                             <span class="dia" x-text="show.day"></span>
@@ -133,6 +134,26 @@
                         </div>
                     </div>
                 </template>
+            </div>
+
+            <div class="shows-pagination archive-pagination" x-show="archivedShows.length > archivePageSize">
+                <button
+                    type="button"
+                    class="boton pequeño"
+                    @click="goToArchivePage(archiveCurrentPage - 1)"
+                    :disabled="archiveCurrentPage === 1"
+                >
+                    Anterior
+                </button>
+                <span x-text="archiveRangeLabel"></span>
+                <button
+                    type="button"
+                    class="boton pequeño"
+                    @click="goToArchivePage(archiveCurrentPage + 1)"
+                    :disabled="archiveCurrentPage === archiveTotalPages"
+                >
+                    Siguiente
+                </button>
             </div>
         </section>
 
@@ -486,6 +507,8 @@
                 pageTheme: {},
                 currentPage: 1,
                 pageSize: 4,
+                archiveCurrentPage: 1,
+                archivePageSize: 3,
                 openTimes: {},
                 now: Date.now(),
                 refreshHandle: null,
@@ -530,6 +553,10 @@
                     if (this.currentPage > this.totalPages) {
                         this.currentPage = this.totalPages;
                     }
+
+                    if (this.archiveCurrentPage > this.archiveTotalPages) {
+                        this.archiveCurrentPage = this.archiveTotalPages;
+                    }
                 },
                 get currentDateLabel() {
                     return new Intl.DateTimeFormat('es-CL', {
@@ -558,6 +585,20 @@
                     const endIndex = startIndex + this.pageSize;
                     return this.upcomingShows.slice(startIndex, endIndex);
                 },
+                get archiveTotalPages() {
+                    return Math.max(1, Math.ceil(this.archivedShows.length / this.archivePageSize));
+                },
+                get paginatedArchivedShows() {
+                    const startIndex = (this.archiveCurrentPage - 1) * this.archivePageSize;
+                    const endIndex = startIndex + this.archivePageSize;
+                    return this.archivedShows.slice(startIndex, endIndex);
+                },
+                get archiveRangeLabel() {
+                    const startIndex = ((this.archiveCurrentPage - 1) * this.archivePageSize) + 1;
+                    const endIndex = Math.min(this.archiveCurrentPage * this.archivePageSize, this.archivedShows.length);
+
+                    return `Mostrando ${startIndex}-${endIndex} de ${this.archivedShows.length} finalizados · Pagina ${this.archiveCurrentPage} de ${this.archiveTotalPages}`;
+                },
                 goToPage(page) {
                     const nextPage = Math.min(this.totalPages, Math.max(1, page));
 
@@ -567,6 +608,20 @@
 
                     this.currentPage = nextPage;
                     window.scrollTo({ top: 0, behavior: 'smooth' });
+                },
+                goToArchivePage(page) {
+                    const nextPage = Math.min(this.archiveTotalPages, Math.max(1, page));
+
+                    if (nextPage === this.archiveCurrentPage) {
+                        return;
+                    }
+
+                    this.archiveCurrentPage = nextPage;
+
+                    const archiveSection = document.getElementById('shows-archive-section');
+                    if (archiveSection) {
+                        archiveSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
                 },
                 toggleTimes(number) {
                     this.openTimes[number] = !this.openTimes[number];
@@ -788,6 +843,10 @@
             background: var(--shows-pagination-bg, #D5C08A);
             border: 2px solid var(--shows-main-border, #5F4929);
             box-shadow: 4px 4px 0 var(--shows-main-shadow, #A28056);
+        }
+
+        body.shows-page .archive-pagination {
+            margin-top: 1.6rem;
         }
 
         body.shows-page .shows-pagination button:disabled {

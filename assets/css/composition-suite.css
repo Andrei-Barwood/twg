@@ -1,0 +1,618 @@
+:root {
+    --suite-sky-1: #6BABDA;
+    --suite-sky-2: #9BDBF5;
+    --suite-sky-3: #5C96C9;
+    --suite-sky-4: #8CC7E7;
+    --suite-cyan: #1B98D1;
+    --suite-red: #EC4141;
+    --suite-orange: #EF7135;
+    --suite-cream: #FAF5AB;
+    --suite-green: #5FBB4E;
+    --suite-purple: #632E86;
+    --suite-wine: #580D36;
+    --suite-magenta: #BC1D75;
+    --suite-rose: #D9539D;
+    --suite-pink: #FCB6DF;
+    --suite-white: #FFFFFF;
+    --suite-yellow: #FDE85F;
+    --suite-ink: #32133E;
+    --suite-ink-soft: #5A2E63;
+    --suite-shadow: rgba(88, 13, 54, 0.18);
+}
+
+body.composition-page {
+    background:
+        radial-gradient(circle at top left, rgba(155, 219, 245, 0.58), transparent 30%),
+        radial-gradient(circle at top right, rgba(252, 182, 223, 0.42), transparent 28%),
+        radial-gradient(circle at bottom right, rgba(93, 187, 78, 0.2), transparent 24%),
+        linear-gradient(180deg, rgba(250, 245, 171, 0.86), rgba(255, 255, 255, 0.92) 42%, rgba(140, 199, 231, 0.56));
+    color: var(--suite-ink);
+}
+
+body.composition-page #p5-background::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(circle at 12% 15%, rgba(27, 152, 209, 0.18), transparent 34%),
+        radial-gradient(circle at 82% 14%, rgba(217, 83, 157, 0.18), transparent 30%),
+        radial-gradient(circle at 50% 100%, rgba(253, 232, 95, 0.22), transparent 30%);
+    pointer-events: none;
+}
+
+body.composition-page .main-container {
+    background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.94), rgba(250, 245, 171, 0.72)),
+        radial-gradient(circle at top left, rgba(155, 219, 245, 0.28), transparent 40%);
+    border-color: var(--suite-purple);
+    box-shadow: 0 0 30px rgba(27, 152, 209, 0.15), 10px 10px 0 rgba(188, 29, 117, 0.16);
+}
+
+body.composition-page header {
+    border-bottom: 2px solid rgba(99, 46, 134, 0.3);
+}
+
+body.composition-page h1 a,
+body.composition-page nav a,
+body.composition-page footer a {
+    color: var(--suite-wine);
+}
+
+body.composition-page nav ul {
+    border-bottom-color: rgba(99, 46, 134, 0.32);
+}
+
+body.composition-page a {
+    color: var(--suite-magenta);
+    border-bottom-color: rgba(188, 29, 117, 0.4);
+}
+
+body.composition-page a:hover,
+body.composition-page .boton:hover {
+    color: var(--suite-white) !important;
+    background-color: var(--suite-magenta) !important;
+    border-color: var(--suite-wine) !important;
+    border-bottom-color: var(--suite-wine) !important;
+}
+
+body.composition-page .boton {
+    background: linear-gradient(180deg, rgba(253, 232, 95, 0.98), rgba(239, 113, 53, 0.88));
+    color: var(--suite-wine);
+    border-color: var(--suite-red);
+    border-bottom-color: var(--suite-red);
+    box-shadow: 4px 4px 0 rgba(99, 46, 134, 0.28);
+}
+
+body.composition-page h2,
+body.composition-page h3 {
+    color: var(--suite-wine);
+    text-shadow: 2px 2px 0 rgba(27, 152, 209, 0.12);
+}
+
+.composition-hero {
+    display: grid;
+    grid-template-columns: minmax(0, 1.35fr) minmax(250px, 0.85fr);
+    gap: 1.25rem;
+    align-items: stretch;
+    margin: 1.5rem 0 2.5rem;
+    padding: clamp(1.25rem, 3vw, 2rem);
+    background:
+        radial-gradient(circle at top right, rgba(27, 152, 209, 0.22), transparent 34%),
+        radial-gradient(circle at bottom left, rgba(252, 182, 223, 0.24), transparent 42%),
+        linear-gradient(135deg, rgba(255, 255, 255, 0.92), rgba(250, 245, 171, 0.88));
+    border: 2px solid rgba(99, 46, 134, 0.34);
+    box-shadow: 8px 8px 0 rgba(188, 29, 117, 0.16);
+}
+
+.composition-hero-copy,
+.composition-hero-meta,
+.generator-form,
+.generator-output,
+.framework-nav,
+.framework-category,
+.mechanic-card,
+.framework-footer {
+    box-shadow: 6px 6px 0 var(--suite-shadow);
+}
+
+.composition-kicker,
+.section-kicker {
+    margin-bottom: 0;
+    color: var(--suite-cyan);
+    font-size: 0.64rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+}
+
+.composition-hero h2 {
+    margin: 0.7rem 0 1rem;
+    font-size: clamp(2rem, 5vw, 3.2rem);
+    line-height: 1.08;
+}
+
+.composition-lead,
+.composition-note,
+.composition-section-head p,
+.framework-footer p {
+    max-width: 70ch;
+    margin-bottom: 0;
+    color: var(--suite-ink);
+    font-size: 0.72rem;
+    line-height: 1.95;
+}
+
+.composition-note {
+    margin-top: 0.95rem;
+    padding: 0.95rem 1rem;
+    background: rgba(255, 255, 255, 0.68);
+    border-left: 6px solid var(--suite-red);
+}
+
+.composition-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.9rem;
+    margin-top: 1.2rem;
+}
+
+.composition-hero-meta {
+    display: grid;
+    gap: 0.8rem;
+    align-content: start;
+    padding: 1rem;
+    background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.78), rgba(140, 199, 231, 0.26)),
+        radial-gradient(circle at top left, rgba(253, 232, 95, 0.22), transparent 40%);
+    border: 2px solid rgba(27, 152, 209, 0.26);
+}
+
+.composition-hero-meta span {
+    padding: 0.75rem 0.8rem;
+    background: rgba(255, 255, 255, 0.72);
+    border: 1px solid rgba(99, 46, 134, 0.18);
+    color: var(--suite-ink-soft);
+    font-size: 0.66rem;
+    line-height: 1.8;
+}
+
+.composition-generator,
+.composition-framework {
+    margin-top: 3rem;
+}
+
+.composition-section-head {
+    display: grid;
+    gap: 0.7rem;
+    margin-bottom: 1.25rem;
+}
+
+.composition-section-head h3 {
+    margin-bottom: 0;
+    font-size: clamp(1.2rem, 3vw, 1.8rem);
+}
+
+.generator-layout {
+    display: grid;
+    grid-template-columns: minmax(300px, 0.9fr) minmax(0, 1.1fr);
+    gap: 1rem;
+}
+
+.generator-form,
+.generator-output,
+.framework-nav,
+.framework-category,
+.framework-footer {
+    padding: 1.1rem;
+    background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(250, 245, 171, 0.78)),
+        radial-gradient(circle at top right, rgba(107, 171, 218, 0.18), transparent 42%);
+    border: 2px solid rgba(99, 46, 134, 0.28);
+}
+
+.generator-form {
+    display: grid;
+    gap: 1rem;
+    align-content: start;
+}
+
+.generator-field {
+    display: grid;
+    gap: 0.5rem;
+}
+
+.generator-field label,
+.generator-field legend {
+    color: var(--suite-wine);
+    font-size: 0.64rem;
+    line-height: 1.7;
+}
+
+.generator-radio-group {
+    padding: 0.85rem;
+    border: 2px solid rgba(27, 152, 209, 0.22);
+    background: rgba(255, 255, 255, 0.68);
+}
+
+.generator-radio-group label {
+    display: flex;
+    align-items: center;
+    gap: 0.55rem;
+    margin-top: 0.55rem;
+    font-size: 0.62rem;
+}
+
+.generator-radio-group input[type="radio"] {
+    accent-color: var(--suite-red);
+}
+
+.generator-form select,
+.generator-form input[type="text"] {
+    width: 100%;
+    padding: 0.9rem 1rem;
+    border: 2px solid rgba(27, 152, 209, 0.32);
+    background: rgba(255, 255, 255, 0.86);
+    color: var(--suite-ink);
+    font-family: inherit;
+    font-size: 0.7rem;
+    line-height: 1.8;
+}
+
+.generator-output {
+    display: grid;
+    gap: 1rem;
+    align-content: start;
+    min-height: 100%;
+}
+
+.generator-output.is-empty {
+    place-items: center;
+}
+
+.generator-error {
+    display: grid;
+    gap: 0.85rem;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.76);
+    border: 2px solid rgba(236, 65, 65, 0.48);
+    color: var(--suite-wine);
+}
+
+.generator-error p {
+    margin-bottom: 0;
+    font-size: 0.62rem;
+    line-height: 1.9;
+}
+
+.generator-placeholder {
+    padding: 1.2rem;
+    background: rgba(255, 255, 255, 0.7);
+    border: 2px dashed rgba(27, 152, 209, 0.34);
+    color: var(--suite-ink-soft);
+    font-size: 0.68rem;
+    line-height: 1.9;
+    text-align: center;
+}
+
+.output-overview {
+    display: grid;
+    gap: 0.8rem;
+}
+
+.output-section {
+    display: grid;
+    gap: 0.9rem;
+}
+
+.output-title {
+    margin: 0;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    color: var(--suite-wine);
+}
+
+.output-description {
+    margin: 0;
+    color: var(--suite-ink);
+    font-size: 0.66rem;
+    line-height: 1.9;
+}
+
+.scale-chips,
+.generator-stats,
+.framework-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.65rem;
+}
+
+.chip,
+.generator-stat,
+.framework-link {
+    display: inline-flex;
+    align-items: center;
+    min-height: 42px;
+    padding: 0.55rem 0.8rem;
+    background: rgba(255, 255, 255, 0.84);
+    border: 2px solid rgba(99, 46, 134, 0.24);
+    color: var(--suite-wine);
+    font-size: 0.6rem;
+    line-height: 1.7;
+    text-transform: uppercase;
+}
+
+.chip strong,
+.generator-stat strong {
+    color: var(--suite-magenta);
+}
+
+.generator-grid,
+.mechanics-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 0.9rem;
+}
+
+.chord-card {
+    display: grid;
+    gap: 0.7rem;
+    padding: 1rem;
+    background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.94), rgba(140, 199, 231, 0.22)),
+        radial-gradient(circle at top right, rgba(252, 182, 223, 0.2), transparent 42%);
+    border: 2px solid rgba(27, 152, 209, 0.2);
+    box-shadow: 5px 5px 0 rgba(27, 152, 209, 0.12);
+}
+
+.chord-card h4,
+.mechanic-card h4 {
+    margin-bottom: 0;
+    color: var(--suite-wine);
+    font-size: 0.76rem;
+    line-height: 1.6;
+}
+
+.chord-card p,
+.mechanic-card p,
+.mechanic-card li {
+    margin-bottom: 0;
+    color: var(--suite-ink);
+    font-size: 0.6rem;
+    line-height: 1.9;
+}
+
+.chord-notes {
+    color: var(--suite-cyan);
+    font-size: 0.62rem;
+}
+
+.framework-nav {
+    margin-bottom: 1rem;
+    background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(252, 182, 223, 0.26)),
+        radial-gradient(circle at top left, rgba(107, 171, 218, 0.2), transparent 45%);
+}
+
+.framework-link {
+    display: inline-grid;
+    gap: 0.18rem;
+    text-decoration: none;
+    border-bottom: none;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.framework-link-count {
+    color: var(--suite-ink-soft);
+    font-size: 0.52rem;
+    line-height: 1.55;
+}
+
+.framework-link:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 4px 4px 0 rgba(88, 13, 54, 0.18);
+}
+
+.framework-content {
+    display: grid;
+    gap: 1.1rem;
+}
+
+.framework-category {
+    background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.94), rgba(250, 245, 171, 0.72)),
+        radial-gradient(circle at bottom right, rgba(140, 199, 231, 0.18), transparent 38%);
+    scroll-margin-top: 1.5rem;
+}
+
+.framework-category-head {
+    display: grid;
+    gap: 0.6rem;
+    margin-bottom: 1rem;
+    padding-bottom: 0.95rem;
+    border-bottom: 2px solid rgba(99, 46, 134, 0.2);
+}
+
+.framework-category-head h4 {
+    margin-bottom: 0;
+    color: var(--suite-wine);
+    font-size: 0.92rem;
+    line-height: 1.5;
+}
+
+.framework-category-head p {
+    margin-bottom: 0;
+    color: var(--suite-ink-soft);
+    font-size: 0.64rem;
+    line-height: 1.85;
+}
+
+.category-header {
+    background:
+        linear-gradient(135deg, rgba(255, 255, 255, 0.94), var(--mechanic-soft, rgba(155, 219, 245, 0.26))),
+        radial-gradient(circle at top right, rgba(253, 232, 95, 0.18), transparent 40%);
+}
+
+.category-title {
+    margin-bottom: 0;
+}
+
+.mechanics-grid {
+    grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+}
+
+.mechanic-card {
+    position: relative;
+    display: grid;
+    gap: 0.8rem;
+    align-content: start;
+    padding: 1rem;
+    background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(255, 255, 255, 0.76)),
+        radial-gradient(circle at top right, var(--mechanic-soft, rgba(107, 171, 218, 0.22)), transparent 40%);
+    border: 2px solid var(--mechanic-accent, rgba(27, 152, 209, 0.28));
+    box-shadow: 6px 6px 0 rgba(99, 46, 134, 0.14);
+}
+
+.mechanic-card::before {
+    content: "";
+    position: absolute;
+    inset: 0 auto 0 0;
+    width: 0.5rem;
+    background: linear-gradient(180deg, var(--mechanic-accent, var(--suite-cyan)), var(--mechanic-strong, var(--suite-red)));
+}
+
+.mechanic-head {
+    display: grid;
+    gap: 0.4rem;
+    padding-left: 0.7rem;
+}
+
+.mechanic-name {
+    color: var(--suite-wine);
+    font-size: 0.76rem;
+    line-height: 1.6;
+}
+
+.mechanic-number {
+    color: var(--mechanic-strong, var(--suite-red));
+    font-size: 0.58rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+.mechanic-title {
+    color: var(--suite-wine);
+    font-size: 0.76rem;
+    line-height: 1.6;
+}
+
+.game-mechanic,
+.composition-technique,
+.renoise-implementation,
+.mechanic-block {
+    display: grid;
+    gap: 0.45rem;
+    padding: 0.8rem;
+    background: rgba(255, 255, 255, 0.78);
+    border: 1px solid rgba(99, 46, 134, 0.16);
+}
+
+.game-mechanic {
+    border-left: 4px solid var(--mechanic-accent, var(--suite-cyan));
+}
+
+.composition-technique {
+    border-left: 4px solid var(--mechanic-strong, var(--suite-magenta));
+}
+
+.renoise-implementation {
+    border-left: 4px solid var(--suite-green);
+}
+
+.mechanic-label {
+    color: var(--mechanic-strong, var(--suite-magenta));
+    font-size: 0.56rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+.label {
+    color: var(--mechanic-strong, var(--suite-magenta));
+    font-size: 0.56rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+.mechanic-ref {
+    color: var(--suite-ink-soft);
+    font-size: 0.56rem;
+    line-height: 1.85;
+}
+
+.composer-ref {
+    color: var(--suite-ink-soft);
+    font-size: 0.56rem;
+    line-height: 1.85;
+}
+
+.framework-footer {
+    margin-top: 1rem;
+    text-align: center;
+    background:
+        linear-gradient(135deg, rgba(255, 255, 255, 0.94), rgba(155, 219, 245, 0.36)),
+        radial-gradient(circle at top right, rgba(253, 232, 95, 0.22), transparent 40%);
+}
+
+@media (max-width: 980px) {
+    .composition-hero,
+    .generator-layout {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 720px) {
+    .composition-hero,
+    .generator-form,
+    .generator-output,
+    .framework-nav,
+    .framework-category,
+    .framework-footer {
+        padding: 0.95rem;
+    }
+
+    .composition-hero h2 {
+        font-size: 1.6rem;
+    }
+
+    .composition-lead,
+    .composition-note,
+    .composition-section-head p,
+    .framework-footer p,
+    .mechanic-card p,
+    .mechanic-card li,
+    .chord-card p {
+        font-size: 0.56rem;
+    }
+
+    .composition-actions,
+    .scale-chips,
+    .generator-stats,
+    .framework-nav {
+        gap: 0.5rem;
+    }
+
+    .composition-actions .boton,
+    .generator-form .boton {
+        width: 100%;
+    }
+
+    .chip,
+    .generator-stat,
+    .framework-link {
+        width: 100%;
+    }
+
+    .generator-form select,
+    .generator-form input[type="text"] {
+        font-size: 0.62rem;
+    }
+}

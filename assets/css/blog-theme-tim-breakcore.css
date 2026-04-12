@@ -1,0 +1,451 @@
+.post-item.theme-tim-breakcore,
+.post-completo.theme-tim-breakcore,
+.boton-volver.theme-tim-breakcore {
+    --tim-bg: #FFFFAE;
+    --tim-bg2: #FACC83;
+    --tim-paper: #F8EA62;
+    --tim-card: #FBBE33;
+    --tim-card2: #DDCE52;
+    --tim-accent: #ED7B00;
+    --tim-accent2: #CF6E00;
+    --tim-deep: #422300;
+    --tim-gold: #A89E0E;
+    --tim-olive: #BEB205;
+    --tim-rust: #AA4400;
+    --tim-cream: #FFF8C7;
+    --tim-line: rgba(66, 35, 0, 0.18);
+    --tim-shadow: rgba(170, 68, 0, 0.14);
+}
+
+.post-item.theme-tim-breakcore {
+    position: relative;
+    overflow: hidden;
+    padding-top: 3rem;
+    background:
+        radial-gradient(circle at top left, rgba(248, 234, 98, 0.72), transparent 36%),
+        radial-gradient(circle at top right, rgba(250, 204, 131, 0.82), transparent 32%),
+        linear-gradient(180deg, rgba(255, 255, 174, 0.96), rgba(255, 248, 199, 0.98) 58%, rgba(250, 204, 131, 0.96));
+    border-color: rgba(66, 35, 0, 0.28);
+    box-shadow: 0 18px 40px rgba(170, 68, 0, 0.12), inset 0 0 0 1px rgba(255, 255, 255, 0.45);
+}
+
+.post-item.theme-tim-breakcore::before {
+    content: "TIM / 87 EPs";
+    position: absolute;
+    top: 0.9rem;
+    left: 1rem;
+    display: inline-flex;
+    align-items: center;
+    min-height: 32px;
+    padding: 0.3rem 0.8rem;
+    background: linear-gradient(135deg, var(--tim-accent), var(--tim-card));
+    color: var(--tim-cream);
+    border: 1px solid rgba(66, 35, 0, 0.24);
+    box-shadow: 4px 4px 0 rgba(170, 68, 0, 0.16);
+    font-size: 0.56rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.post-item.theme-tim-breakcore h3,
+.post-completo.theme-tim-breakcore > h3 {
+    color: var(--tim-deep);
+    text-shadow: none;
+}
+
+.post-item.theme-tim-breakcore .fecha,
+.post-completo.theme-tim-breakcore > .fecha {
+    color: rgba(66, 35, 0, 0.78);
+}
+
+.post-item.theme-tim-breakcore .extracto {
+    color: var(--tim-deep);
+}
+
+.post-item.theme-tim-breakcore:hover {
+    border-color: var(--tim-accent);
+    background:
+        radial-gradient(circle at top left, rgba(248, 234, 98, 0.82), transparent 36%),
+        radial-gradient(circle at top right, rgba(250, 204, 131, 0.9), transparent 32%),
+        linear-gradient(180deg, rgba(255, 255, 182, 0.98), rgba(255, 248, 199, 0.99) 58%, rgba(250, 204, 131, 0.98));
+    box-shadow: 0 22px 44px rgba(170, 68, 0, 0.16), inset 0 0 0 1px rgba(237, 123, 0, 0.14);
+}
+
+.boton-volver.theme-tim-breakcore {
+    background: linear-gradient(145deg, rgba(255, 255, 174, 0.96), rgba(250, 204, 131, 0.92));
+    color: var(--tim-deep);
+    border: 2px solid rgba(66, 35, 0, 0.22);
+    box-shadow: 4px 4px 0 rgba(170, 68, 0, 0.16);
+}
+
+.boton-volver.theme-tim-breakcore:hover {
+    color: var(--tim-cream) !important;
+    background: var(--tim-accent) !important;
+    border-color: var(--tim-accent) !important;
+    box-shadow: 0 0 20px rgba(237, 123, 0, 0.24);
+    text-decoration: none;
+}
+
+.post-completo.theme-tim-breakcore {
+    background:
+        radial-gradient(circle at top left, rgba(248, 234, 98, 0.34), transparent 26%),
+        radial-gradient(circle at top right, rgba(250, 204, 131, 0.42), transparent 28%),
+        linear-gradient(180deg, rgba(255, 255, 174, 0.98), rgba(255, 248, 199, 0.98) 52%, rgba(250, 204, 131, 0.96));
+    border-color: rgba(66, 35, 0, 0.2);
+    box-shadow: 0 28px 54px rgba(170, 68, 0, 0.14), inset 0 0 0 1px rgba(255, 255, 255, 0.42);
+}
+
+.post-completo.theme-tim-breakcore .contenido-post,
+.post-completo.theme-tim-breakcore .contenido-post p,
+.post-completo.theme-tim-breakcore .contenido-post li,
+.post-completo.theme-tim-breakcore .contenido-post strong,
+.post-completo.theme-tim-breakcore .contenido-post em,
+.post-completo.theme-tim-breakcore .contenido-post span {
+    color: var(--tim-deep);
+}
+
+.post-completo.theme-tim-breakcore .contenido-post a {
+    color: var(--tim-rust);
+    border-bottom: 1px solid rgba(170, 68, 0, 0.28);
+}
+
+.post-completo.theme-tim-breakcore .contenido-post a:hover {
+    color: var(--tim-rust) !important;
+    background: rgba(250, 190, 51, 0.3) !important;
+    border-color: transparent !important;
+    box-shadow: none;
+    text-decoration: none;
+}
+
+.post-completo.theme-tim-breakcore .contenido-post .tim87-post,
+.post-completo.theme-tim-breakcore .contenido-post .tim87-post * {
+    box-sizing: border-box;
+}
+
+.post-completo.theme-tim-breakcore .contenido-post .tim87-post {
+    display: block;
+    border: 2px solid rgba(66, 35, 0, 0.16);
+    border-radius: 24px;
+    background:
+        radial-gradient(circle at top left, var(--tim-paper), transparent 33%),
+        radial-gradient(circle at top right, var(--tim-bg2), transparent 28%),
+        linear-gradient(180deg, var(--tim-bg), var(--tim-cream) 55%, var(--tim-bg2));
+    color: var(--tim-deep);
+    font-family: inherit;
+    font-size: 0.72rem;
+    line-height: 1.9;
+    box-shadow: 0 20px 44px var(--tim-shadow);
+}
+
+.post-completo.theme-tim-breakcore .contenido-post .tim87-post .wrap {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.post-completo.theme-tim-breakcore .contenido-post .tim87-post h1,
+.post-completo.theme-tim-breakcore .contenido-post .tim87-post h2,
+.post-completo.theme-tim-breakcore .contenido-post .tim87-post h3,
+.post-completo.theme-tim-breakcore .contenido-post .tim87-post h4 {
+    margin: 0 0 0.75rem;
+    color: var(--tim-deep);
+    line-height: 1.45;
+    text-shadow: none;
+    font-family: inherit;
+}
+
+.post-completo.theme-tim-breakcore .contenido-post .tim87-post h1 {
+    font-size: clamp(1.5rem, 4vw, 2.4rem);
+    letter-spacing: -0.06em;
+}
+
+.post-completo.theme-tim-breakcore .contenido-post .tim87-post h2 {
+    font-size: clamp(0.9rem, 2vw, 1.15rem);
+    margin-top: 2rem;
+}
+
+.post-completo.theme-tim-breakcore .contenido-post .tim87-post h3 {
+    font-size: clamp(0.76rem, 1.7vw, 0.92rem);
+}
+
+.post-completo.theme-tim-breakcore .contenido-post .tim87-post h4 {
+    font-size: 0.68rem;
+}
+
+.post-completo.theme-tim-breakcore .contenido-post .tim87-post p {
+    margin: 0 0 0.95rem;
+    font-size: 0.66rem;
+    line-height: 1.95;
+}
+
+.post-completo.theme-tim-breakcore .contenido-post .tim87-post strong {
+    color: var(--tim-rust);
+}
+
+.post-completo.theme-tim-breakcore .contenido-post .tim87-post .small {
+    font-size: 0.58rem;
+    opacity: 0.9;
+}
+
+.post-completo.theme-tim-breakcore .contenido-post .tim87-post header {
+    padding: 2.5rem 1.25rem 2rem;
+    border-bottom: 4px solid var(--tim-accent);
+    background: linear-gradient(135deg, rgba(248, 234, 98, 0.94), rgba(250, 204, 131, 0.96));
+    position: sticky;
+    top: 0.75rem;
+    z-index: 4;
+    backdrop-filter: blur(6px);
+}
+
+.post-completo.theme-tim-breakcore .contenido-post .tim87-post .hero-grid {
+    display: grid;
+    grid-template-columns: 1.35fr 0.95fr;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.post-completo.theme-tim-breakcore .contenido-post .tim87-post .card,
+.post-completo.theme-tim-breakcore .contenido-post .tim87-post .panel,
+.post-completo.theme-tim-breakcore .contenido-post .tim87-post .level-card {
+    background: rgba(255, 255, 255, 0.56);
+    border: 2px solid var(--tim-line);
+    box-shadow: 0 10px 30px rgba(170, 68, 0, 0.1);
+    border-radius: 20px;
+}
+
+.post-completo.theme-tim-breakcore .contenido-post .tim87-post .card {
+    padding: 1.1rem;
+}
+
+.post-completo.theme-tim-breakcore .contenido-post .tim87-post .panel {
+    padding: 1rem 1.05rem;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.58), rgba(255, 250, 210, 0.74));
+}
+
+.post-completo.theme-tim-breakcore .contenido-post .tim87-post .tag {
+    display: inline-block;
+    padding: 0.34rem 0.72rem;
+    margin: 0.15rem 0.35rem 0.15rem 0;
+    border-radius: 999px;
+    background: linear-gradient(180deg, var(--tim-card), var(--tim-card2));
+    color: var(--tim-deep);
+    font-size: 0.55rem;
+    border: 1px solid rgba(66, 35, 0, 0.2);
+}
+
+.post-completo.theme-tim-breakcore .contenido-post .tim87-post nav.toc {
+    padding: 1.25rem;
+    margin-top: 0;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.46), rgba(250, 190, 51, 0.24));
+    border-top: 2px solid rgba(66, 35, 0, 0.14);
+    border-bottom: 2px solid rgba(66, 35, 0, 0.14);
+}
+
+.post-completo.theme-tim-breakcore .contenido-post .tim87-post .toc-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 0.55rem 0.8rem;
+}
+
+.post-completo.theme-tim-breakcore .contenido-post .tim87-post .toc-grid a {
+    display: block;
+    padding: 0;
+    color: var(--tim-rust);
+    font-size: 0.53rem;
+    font-weight: 700;
+    line-height: 1.7;
+    text-decoration: none;
+    border-bottom: 0;
+}
+
+.post-completo.theme-tim-breakcore .contenido-post .tim87-post main {
+    padding: 1.5rem 1.25rem 3rem;
+}
+
+.post-completo.theme-tim-breakcore .contenido-post .tim87-post .section-intro {
+    margin-bottom: 1rem;
+}
+
+.post-completo.theme-tim-breakcore .contenido-post .tim87-post .grid {
+    display: grid;
+    gap: 1rem;
+}
+
+.post-completo.theme-tim-breakcore .contenido-post .tim87-post .grid.two {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.post-completo.theme-tim-breakcore .contenido-post .tim87-post .level-card {
+    padding: 1rem;
+    margin: 1rem 0 1.15rem;
+    background: linear-gradient(180deg, rgba(248, 234, 98, 0.34), rgba(255, 255, 255, 0.66));
+}
+
+.post-completo.theme-tim-breakcore .contenido-post .tim87-post .level-head {
+    margin-bottom: 0.75rem;
+}
+
+.post-completo.theme-tim-breakcore .contenido-post .tim87-post .badge {
+    display: inline-block;
+    padding: 0.24rem 0.62rem;
+    border-radius: 999px;
+    background: linear-gradient(180deg, var(--tim-accent), var(--tim-accent2));
+    color: var(--tim-cream);
+    font-size: 0.5rem;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.65rem;
+    box-shadow: 0 0 0 1px rgba(66, 35, 0, 0.16);
+}
+
+.post-completo.theme-tim-breakcore .contenido-post .tim87-post .mood {
+    color: rgba(66, 35, 0, 0.88);
+}
+
+.post-completo.theme-tim-breakcore .contenido-post .tim87-post .ep-template {
+    margin: 0.1rem 0 0;
+    color: var(--tim-rust);
+    font-size: 0.56rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+}
+
+.post-completo.theme-tim-breakcore .contenido-post .tim87-post .track-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.9rem;
+    margin-top: 0.9rem;
+    align-items: start;
+}
+
+.post-completo.theme-tim-breakcore .contenido-post .tim87-post .track {
+    display: grid;
+    align-content: start;
+    gap: 0.55rem;
+    background: linear-gradient(180deg, rgba(255, 250, 210, 0.95), rgba(250, 190, 51, 0.24));
+    border: 1px solid rgba(66, 35, 0, 0.16);
+    border-radius: 16px;
+    padding: 0.95rem;
+}
+
+.post-completo.theme-tim-breakcore .contenido-post .tim87-post .track h4 {
+    color: var(--tim-rust);
+    margin-bottom: 0.2rem;
+}
+
+.post-completo.theme-tim-breakcore .contenido-post .tim87-post .track p {
+    margin: 0;
+    font-size: 0.58rem;
+    line-height: 1.95;
+}
+
+.post-completo.theme-tim-breakcore .contenido-post .tim87-post .track .track-lead {
+    font-size: 0.6rem;
+    color: var(--tim-deep);
+}
+
+.post-completo.theme-tim-breakcore .contenido-post .tim87-post .track .track-steps {
+    margin: 0.15rem 0 0 1rem;
+    padding: 0;
+}
+
+.post-completo.theme-tim-breakcore .contenido-post .tim87-post .track .track-steps li {
+    margin-bottom: 0.45rem;
+    font-size: 0.56rem;
+    line-height: 1.95;
+}
+
+.post-completo.theme-tim-breakcore .contenido-post .tim87-post ol,
+.post-completo.theme-tim-breakcore .contenido-post .tim87-post ul {
+    margin: 0 0 1rem 1.3rem;
+    padding: 0;
+}
+
+.post-completo.theme-tim-breakcore .contenido-post .tim87-post li {
+    margin-bottom: 0.5rem;
+    font-size: 0.62rem;
+    line-height: 1.9;
+}
+
+.post-completo.theme-tim-breakcore .contenido-post .tim87-post .steps ol {
+    margin: 0;
+    padding-left: 1.25rem;
+}
+
+.post-completo.theme-tim-breakcore .contenido-post .tim87-post .steps li {
+    margin-bottom: 0.45rem;
+}
+
+.post-completo.theme-tim-breakcore .contenido-post .tim87-post .note {
+    border-left: 4px solid var(--tim-accent2);
+    padding-left: 0.9rem;
+}
+
+.post-completo.theme-tim-breakcore .contenido-post .tim87-post footer {
+    padding: 2rem 1.25rem 4rem;
+    color: var(--tim-deep);
+}
+
+.post-completo.theme-tim-breakcore .contenido-post .tim87-post section[id^="nivel-"] {
+    scroll-margin-top: 8rem;
+}
+
+@media (max-width: 980px) {
+    .post-completo.theme-tim-breakcore .contenido-post .tim87-post .hero-grid,
+    .post-completo.theme-tim-breakcore .contenido-post .tim87-post .grid.two,
+    .post-completo.theme-tim-breakcore .contenido-post .tim87-post .track-grid,
+    .post-completo.theme-tim-breakcore .contenido-post .tim87-post .toc-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 720px) {
+    .post-item.theme-tim-breakcore::before {
+        position: static;
+        margin-bottom: 1rem;
+    }
+
+    .post-item.theme-tim-breakcore {
+        padding-top: 1.4rem;
+    }
+
+    .post-completo.theme-tim-breakcore .contenido-post .tim87-post {
+        border-radius: 18px;
+        font-size: 0.68rem;
+    }
+
+    .post-completo.theme-tim-breakcore .contenido-post .tim87-post header {
+        position: static;
+        padding: 1.5rem 1rem 1.25rem;
+    }
+
+    .post-completo.theme-tim-breakcore .contenido-post .tim87-post main,
+    .post-completo.theme-tim-breakcore .contenido-post .tim87-post footer,
+    .post-completo.theme-tim-breakcore .contenido-post .tim87-post nav.toc {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+
+    .post-completo.theme-tim-breakcore .contenido-post .tim87-post .hero-grid,
+    .post-completo.theme-tim-breakcore .contenido-post .tim87-post .grid.two,
+    .post-completo.theme-tim-breakcore .contenido-post .tim87-post .track-grid,
+    .post-completo.theme-tim-breakcore .contenido-post .tim87-post .toc-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .post-completo.theme-tim-breakcore .contenido-post .tim87-post h1 {
+        font-size: 1.25rem;
+    }
+
+    .post-completo.theme-tim-breakcore .contenido-post .tim87-post h2 {
+        font-size: 0.82rem;
+    }
+
+    .post-completo.theme-tim-breakcore .contenido-post .tim87-post h3 {
+        font-size: 0.72rem;
+    }
+
+    .post-completo.theme-tim-breakcore .contenido-post .tim87-post p,
+    .post-completo.theme-tim-breakcore .contenido-post .tim87-post li,
+    .post-completo.theme-tim-breakcore .contenido-post .tim87-post .toc-grid a {
+        font-size: 0.58rem;
+    }
+}
