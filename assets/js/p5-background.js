@@ -5,6 +5,8 @@
     'use strict';
 
     const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || window.innerWidth < 600;
+    const prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const hasP5 = typeof window.p5 === 'function';
     const isShowsPage = document.body.classList.contains('shows-page') || window.location.pathname.endsWith('/shows.html');
     const NUM_CUBES = isMobile ? 20 : 50; // más cubos para más caos
     const MAX_SIZE = isMobile ? 100 : 250;
@@ -13,14 +15,23 @@
     // Colores de la paleta (se usarán para cambios abruptos)
     const COLORS = isShowsPage
         ? ['#ACC849', '#D2EA91', '#A4C040', '#BDD56C', '#ADD9D5', '#D6C77C', '#FAFBD8', '#B73232', '#F0575C', '#F49A43', '#FFCD60', '#7CA42A']
-        : ['#39182B', '#6A3554', '#7B3B61', '#A75B76', '#AF718B', '#866B90', '#BCA9D3', '#D8CBE6', '#93CDF5', '#C4E5F9', '#F16AA6', '#F2A2D3', '#F9D5EC'];
-    const scanlineColor = isShowsPage ? [183, 50, 50, 36] : [123, 59, 97, 34];
-    const flashColor = isShowsPage ? [250, 251, 216, 26] : [249, 213, 236, 28];
+        : ['#452261', '#784497', '#3C1B53', '#653A81', '#AA86C5', '#FFFFFF', '#9877B1', '#E4E4E4', '#3B7351', '#84DD92', '#3B7351', '#84DD92', '#65C092', '#275D48', '#70BD7B', '#5AA574', '#000000'];
+    const scanlineColor = isShowsPage ? [183, 50, 50, 36] : [69, 34, 97, 34];
+    const flashColor = isShowsPage ? [250, 251, 216, 26] : [132, 221, 146, 28];
 
     let cubes = [];
     let glitchIntensity = 0; // 0 a 1, para efectos globales
     let lastGlitchFrame = 0;
     let scanlines = false;
+
+    if (isMobile || prefersReducedMotion || !hasP5) {
+        document.body.classList.add('mobile-static-background');
+        const background = document.getElementById('p5-background');
+        if (background) {
+            background.setAttribute('aria-hidden', 'true');
+        }
+        return;
+    }
 
     const sketch = (p) => {
         p.setup = () => {

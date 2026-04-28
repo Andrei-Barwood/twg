@@ -4,50 +4,66 @@
 @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 
 :root {
-    --season-olive: #D89DCA;
-    --season-lime: #F9D5EC;
-    --season-leaf: #93CDF5;
-    --season-soft-leaf: #C4E5F9;
-    --season-aqua: #D8F0FC;
-    --season-white: #FFF9FD;
-    --season-wheat: #E7B8D6;
-    --season-cream: #FFF1FA;
-    --season-barn: #7B3B61;
-    --season-coral: #F16AA6;
-    --season-rose: #E35F9D;
-    --season-orange: #AF718B;
-    --season-honey: #F2A2D3;
-    --season-glow: #F9D5EC;
-    --season-sage-deep: #866B90;
-    --season-sage: #BCA9D3;
-    --season-sage-soft: #D8CBE6;
-    --season-umber: #5B2C46;
-    --season-clay: #A75B76;
-    --season-amber: #93CDF5;
-    --season-peach: #F6B3DD;
-    --season-tangerine: #F7B0C7;
-    --season-apricot: #F2C5E3;
-    --season-red: #CB5C96;
-    --season-olive-deep: #6A3554;
+    --palette-purple-950: #3C1B53;
+    --palette-purple-900: #452261;
+    --palette-purple-800: #653A81;
+    --palette-purple-700: #784497;
+    --palette-purple-300: #9877B1;
+    --palette-purple-200: #AA86C5;
+    --palette-white: #FFFFFF;
+    --palette-ice: #E4E4E4;
+    --palette-green-900: #275D48;
+    --palette-green-800: #3B7351;
+    --palette-green-600: #5AA574;
+    --palette-green-500: #65C092;
+    --palette-green-400: #70BD7B;
+    --palette-green-300: #84DD92;
+    --palette-black: #000000;
 
-    --bg-base: var(--season-cream);
-    --bg-panel: rgba(255, 249, 253, 0.84);
-    --bg-panel-soft: rgba(249, 213, 236, 0.76);
-    --bg-wash: rgba(147, 205, 245, 0.18);
-    --text-main: var(--season-umber);
-    --text-soft: var(--season-sage-deep);
-    --text-strong: var(--season-olive-deep);
-    --heading: var(--season-barn);
-    --link: var(--season-red);
-    --link-strong: var(--season-coral);
-    --accent: var(--season-coral);
-    --accent-soft: var(--season-honey);
-    --accent-warm: var(--season-soft-leaf);
-    --border: var(--season-wheat);
-    --border-strong: var(--season-olive-deep);
-    --border-muted: var(--season-sage);
-    --shadow: var(--season-clay);
-    --shadow-deep: var(--season-umber);
+    --season-olive: var(--palette-purple-200);
+    --season-lime: var(--palette-ice);
+    --season-leaf: var(--palette-green-300);
+    --season-soft-leaf: var(--palette-green-500);
+    --season-aqua: var(--palette-green-400);
+    --season-white: var(--palette-white);
+    --season-wheat: var(--palette-purple-300);
+    --season-cream: var(--palette-ice);
+    --season-barn: var(--palette-purple-900);
+    --season-coral: var(--palette-green-800);
+    --season-rose: var(--palette-green-400);
+    --season-orange: var(--palette-purple-800);
+    --season-honey: var(--palette-purple-200);
+    --season-glow: var(--palette-green-300);
+    --season-sage-deep: var(--palette-purple-800);
+    --season-sage: var(--palette-purple-300);
+    --season-sage-soft: var(--palette-purple-200);
+    --season-umber: var(--palette-purple-950);
+    --season-clay: var(--palette-purple-700);
+    --season-amber: var(--palette-green-500);
+    --season-peach: var(--palette-purple-200);
+    --season-tangerine: var(--palette-green-400);
+    --season-apricot: var(--palette-ice);
+    --season-red: var(--palette-green-800);
+    --season-olive-deep: var(--palette-purple-900);
+
+    --bg-base: var(--palette-ice);
+    --bg-panel: rgba(255, 255, 255, 0.88);
+    --bg-panel-soft: rgba(170, 134, 197, 0.3);
+    --bg-wash: rgba(132, 221, 146, 0.16);
+    --text-main: var(--palette-purple-950);
+    --text-soft: var(--palette-purple-800);
+    --text-strong: var(--palette-purple-900);
+    --heading: var(--palette-purple-900);
+    --link: var(--palette-green-800);
+    --link-strong: var(--palette-green-900);
+    --accent: var(--palette-green-800);
+    --accent-soft: var(--palette-green-300);
+    --accent-warm: var(--palette-green-500);
+    --border: var(--palette-purple-200);
+    --border-strong: var(--palette-purple-900);
+    --border-muted: var(--palette-purple-300);
+    --shadow: var(--palette-purple-700);
+    --shadow-deep: var(--palette-purple-950);
 }
 
 /* Reset básico */
@@ -78,14 +94,20 @@ body {
     pointer-events: none; /* para que no interfiera con clics */
 }
 
+body.mobile-static-background #p5-background {
+    background:
+        linear-gradient(150deg, rgba(255, 255, 255, 0.96), rgba(228, 228, 228, 0.88) 42%, rgba(170, 134, 197, 0.34)),
+        linear-gradient(30deg, rgba(132, 221, 146, 0.16), rgba(101, 192, 146, 0.18));
+}
+
 /* Contenedor principal para el contenido */
 .main-container {
     max-width: 1200px;
     margin: 0 auto;
     padding: 2rem;
-    background-color: rgba(255, 249, 253, 0.88);
+    background-color: var(--bg-panel);
     border: 2px solid var(--border-strong);
-    box-shadow: 0 0 20px rgba(167, 91, 118, 0.22);
+    box-shadow: 0 0 20px rgba(120, 68, 151, 0.22);
     backdrop-filter: blur(2px); /* pequeño difuminado para dar sensación de glitch */
 }
 
@@ -97,7 +119,7 @@ body.index-page .main-container {
 h1, h2, h3 {
     color: var(--heading);
     margin-bottom: 1rem;
-    text-shadow: 2px 2px 0 rgba(106, 53, 84, 0.16);
+    text-shadow: 2px 2px 0 rgba(69, 34, 97, 0.16);
     letter-spacing: -0.05em;
 }
 
@@ -133,7 +155,7 @@ body:not(.index-page) button:hover {
     color: var(--season-white) !important;
     background-color: var(--link) !important;
     border: 2px solid var(--border-strong) !important;
-    box-shadow: 0 0 15px rgba(241, 106, 166, 0.18);
+    box-shadow: 0 0 15px rgba(59, 115, 81, 0.18);
     text-decoration: line-through; /* toque glitch */
 }
 
@@ -167,7 +189,7 @@ button, .button {
     justify-content: center;
     min-height: 52px;
     padding: 0.9rem 1.4rem;
-    background: linear-gradient(180deg, rgba(255, 250, 252, 0.96), rgba(249, 213, 236, 0.9));
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(170, 134, 197, 0.9));
     color: var(--heading);
     border: 2px solid var(--accent);
     border-bottom: 2px solid var(--accent);
@@ -210,11 +232,11 @@ nav a:hover {
     justify-content: center;
     gap: 1.25rem;
     background:
-        radial-gradient(circle at top right, rgba(242, 162, 211, 0.26), transparent 34%),
-        radial-gradient(circle at bottom left, rgba(147, 205, 245, 0.3), transparent 40%),
-        linear-gradient(135deg, rgba(255, 241, 250, 0.98), rgba(255, 250, 252, 0.9));
+        radial-gradient(circle at top right, rgba(170, 134, 197, 0.26), transparent 34%),
+        radial-gradient(circle at bottom left, rgba(101, 192, 146, 0.3), transparent 40%),
+        linear-gradient(135deg, rgba(228, 228, 228, 0.98), rgba(255, 255, 255, 0.9));
     border: 2px solid var(--border);
-    box-shadow: 0 0 30px rgba(167, 91, 118, 0.18), inset 0 0 0 1px rgba(255, 255, 255, 0.55);
+    box-shadow: 0 0 30px rgba(120, 68, 151, 0.18), inset 0 0 0 1px rgba(255, 255, 255, 0.55);
 }
 
 .hero::before,
@@ -226,7 +248,7 @@ nav a:hover {
 
 .hero::before {
     inset: 1rem;
-    border: 1px solid rgba(106, 53, 84, 0.14);
+    border: 1px solid rgba(69, 34, 97, 0.14);
 }
 
 .hero::after {
@@ -234,7 +256,7 @@ nav a:hover {
     height: 180px;
     right: -40px;
     top: -40px;
-    background: radial-gradient(circle, rgba(241, 106, 166, 0.18), transparent 70%);
+    background: radial-gradient(circle, rgba(59, 115, 81, 0.18), transparent 70%);
     filter: blur(6px);
 }
 
@@ -256,19 +278,19 @@ nav a:hover {
     margin-bottom: 0;
     font-size: clamp(2.5rem, 7vw, 5rem);
     line-height: 1.05;
-    text-shadow: 3px 3px 0 rgba(106, 53, 84, 0.2), 0 0 18px rgba(241, 106, 166, 0.14);
+    text-shadow: 3px 3px 0 rgba(69, 34, 97, 0.2), 0 0 18px rgba(59, 115, 81, 0.14);
 }
 
 .destacado {
     max-width: 62ch;
     margin-bottom: 0;
     padding: 1rem 1.2rem;
-    background: rgba(255, 249, 253, 0.7);
+    background: rgba(255, 255, 255, 0.7);
     border-left: 4px solid var(--accent);
     color: var(--text-main);
     font-size: 0.82rem;
     line-height: 1.9;
-    box-shadow: 0 0 0 1px rgba(106, 53, 84, 0.08);
+    box-shadow: 0 0 0 1px rgba(69, 34, 97, 0.08);
 }
 
 .hero-intro,
@@ -313,7 +335,7 @@ nav a:hover {
     align-items: center;
     min-height: 42px;
     padding: 0.55rem 0.85rem;
-    background: rgba(255, 249, 253, 0.7);
+    background: rgba(255, 255, 255, 0.7);
     border: 1px solid var(--border-muted);
     color: var(--heading);
     font-size: 0.68rem;
@@ -330,7 +352,7 @@ nav a:hover {
     align-items: center;
     min-height: 38px;
     padding: 0.5rem 0.8rem;
-    background: rgba(255, 249, 253, 0.58);
+    background: rgba(255, 255, 255, 0.58);
     border: 1px dashed var(--border-strong);
     color: var(--text-main);
     font-size: 0.64rem;
@@ -352,10 +374,10 @@ nav a:hover {
     margin: 0 0 3rem;
     padding: clamp(1.4rem, 3vw, 2rem);
     background:
-        linear-gradient(135deg, rgba(255, 250, 252, 0.94), rgba(249, 213, 236, 0.84)),
-        radial-gradient(circle at top left, rgba(147, 205, 245, 0.14), transparent 48%);
+        linear-gradient(135deg, rgba(255, 255, 255, 0.94), rgba(170, 134, 197, 0.84)),
+        radial-gradient(circle at top left, rgba(101, 192, 146, 0.14), transparent 48%);
     border: 2px solid var(--border-muted);
-    box-shadow: 0 0 24px rgba(167, 91, 118, 0.18);
+    box-shadow: 0 0 24px rgba(120, 68, 151, 0.18);
 }
 
 .archive-spotlight-copy p,
@@ -391,7 +413,7 @@ nav a:hover {
     display: grid;
     gap: 0.55rem;
     padding: 1.15rem 1.25rem;
-    background: rgba(255, 249, 253, 0.74);
+    background: rgba(255, 255, 255, 0.74);
     border: 2px solid var(--accent);
     border-bottom: 2px solid var(--accent);
     box-shadow: 5px 5px 0 var(--shadow);
@@ -417,7 +439,7 @@ body.index-page .archive-link:hover {
 
 /* Tarjetas para posts del blog (blog.html) */
 .blog-post {
-    background: rgba(147, 205, 245, 0.16);
+    background: rgba(101, 192, 146, 0.16);
     border-left: 4px solid var(--accent);
     padding: 1.5rem;
     margin-bottom: 2rem;
@@ -437,9 +459,9 @@ body.index-page .archive-link:hover {
 
 .post-completo {
     padding: clamp(1.2rem, 2.5vw, 2rem);
-    background: rgba(255, 249, 253, 0.78);
+    background: rgba(255, 255, 255, 0.78);
     border: 2px solid var(--border-muted);
-    box-shadow: -6px 6px 0 rgba(106, 53, 84, 0.16);
+    box-shadow: -6px 6px 0 rgba(69, 34, 97, 0.16);
 }
 
 .fecha {
@@ -455,7 +477,7 @@ body.index-page .archive-link:hover {
     display: block;
     margin: 1.5rem 0;
     border: 2px solid var(--border);
-    box-shadow: 4px 4px 0 rgba(106, 53, 84, 0.16);
+    box-shadow: 4px 4px 0 rgba(69, 34, 97, 0.16);
 }
 
 .contenido-post {
@@ -496,9 +518,9 @@ body.index-page .archive-link:hover {
 .contenido-post blockquote {
     margin: 0;
     padding: 1rem 1.2rem;
-    background: rgba(255, 249, 253, 0.72);
+    background: rgba(255, 255, 255, 0.72);
     border-left: 4px solid var(--accent);
-    box-shadow: 0 0 0 1px rgba(106, 53, 84, 0.08);
+    box-shadow: 0 0 0 1px rgba(69, 34, 97, 0.08);
 }
 
 .contenido-post iframe,
@@ -514,8 +536,8 @@ body.index-page .archive-link:hover {
 .contenido-post th,
 .contenido-post td {
     padding: 0.7rem;
-    border: 1px solid rgba(188, 169, 211, 0.52);
-    background: rgba(255, 249, 253, 0.6);
+    border: 1px solid rgba(152, 119, 177, 0.52);
+    background: rgba(255, 255, 255, 0.6);
     text-align: left;
 }
 
@@ -529,10 +551,10 @@ body.index-page .archive-link:hover {
     gap: 0.9rem;
     padding: clamp(1.2rem, 2.4vw, 1.8rem);
     background:
-        linear-gradient(135deg, rgba(255, 250, 252, 0.94), rgba(249, 213, 236, 0.78)),
-        radial-gradient(circle at top right, rgba(147, 205, 245, 0.16), transparent 40%);
+        linear-gradient(135deg, rgba(255, 255, 255, 0.94), rgba(170, 134, 197, 0.78)),
+        radial-gradient(circle at top right, rgba(101, 192, 146, 0.16), transparent 40%);
     border: 2px solid var(--border);
-    box-shadow: 6px 6px 0 rgba(106, 53, 84, 0.16);
+    box-shadow: 6px 6px 0 rgba(69, 34, 97, 0.16);
 }
 
 .sample-diary-kicker {
@@ -552,7 +574,7 @@ body.index-page .archive-link:hover {
 .sample-diary-meta span {
     min-height: 64px;
     padding: 0.85rem 0.95rem;
-    background: rgba(255, 249, 253, 0.72);
+    background: rgba(255, 255, 255, 0.72);
     border: 1px dashed var(--border-strong);
     color: var(--heading);
     font-size: 0.62rem;
@@ -571,9 +593,9 @@ body.index-page .archive-link:hover {
     gap: 0.55rem;
     align-content: start;
     padding: 1rem 1rem 1.1rem;
-    background: rgba(255, 249, 253, 0.72);
-    border: 2px solid rgba(188, 169, 211, 0.38);
-    box-shadow: -4px 4px 0 rgba(106, 53, 84, 0.14);
+    background: rgba(255, 255, 255, 0.72);
+    border: 2px solid rgba(152, 119, 177, 0.38);
+    box-shadow: -4px 4px 0 rgba(69, 34, 97, 0.14);
 }
 
 .sample-diary-entry h3 {
@@ -591,7 +613,7 @@ body.index-page .archive-link:hover {
     gap: 0.75rem;
     margin: 0;
     padding: 1rem;
-    background: rgba(147, 205, 245, 0.12);
+    background: rgba(101, 192, 146, 0.12);
     border: 2px dashed var(--border-strong);
 }
 
@@ -607,12 +629,12 @@ body.index-page .archive-link:hover {
     background:
         repeating-linear-gradient(
             135deg,
-            rgba(255, 250, 252, 0.9),
-            rgba(255, 250, 252, 0.9) 18px,
-            rgba(249, 213, 236, 0.82) 18px,
-            rgba(249, 213, 236, 0.82) 36px
+            rgba(255, 255, 255, 0.9),
+            rgba(255, 255, 255, 0.9) 18px,
+            rgba(170, 134, 197, 0.82) 18px,
+            rgba(170, 134, 197, 0.82) 36px
         );
-    border: 2px solid rgba(188, 169, 211, 0.36);
+    border: 2px solid rgba(152, 119, 177, 0.36);
     color: var(--heading);
     font-size: 0.74rem;
     line-height: 1.9;
@@ -623,9 +645,9 @@ body.index-page .archive-link:hover {
     display: block;
     width: 100%;
     height: auto;
-    border: 2px solid rgba(188, 169, 211, 0.36);
-    background: rgba(255, 249, 253, 0.84);
-    box-shadow: 4px 4px 0 rgba(106, 53, 84, 0.14);
+    border: 2px solid rgba(152, 119, 177, 0.36);
+    background: rgba(255, 255, 255, 0.84);
+    box-shadow: 4px 4px 0 rgba(69, 34, 97, 0.14);
 }
 
 .sample-diary-placeholder figcaption {
@@ -635,7 +657,7 @@ body.index-page .archive-link:hover {
 
 .sample-diary-note {
     padding: 1rem 1.1rem;
-    background: rgba(255, 249, 253, 0.7);
+    background: rgba(255, 255, 255, 0.7);
     border-left: 4px solid var(--accent);
 }
 
@@ -643,28 +665,28 @@ body.index-page .archive-link:hover {
     display: grid;
     gap: 1rem;
     padding: clamp(1.1rem, 2.3vw, 1.6rem);
-    color: #fff1fa;
+    color: #E4E4E4;
     background:
-        radial-gradient(circle at top right, rgba(241, 106, 166, 0.22), transparent 34%),
-        linear-gradient(135deg, rgba(57, 24, 43, 0.98), rgba(106, 53, 84, 0.96) 54%, rgba(167, 91, 118, 0.94));
-    border: 1px solid rgba(242, 162, 211, 0.34);
-    box-shadow: 8px 8px 0 rgba(57, 24, 43, 0.18);
+        radial-gradient(circle at top right, rgba(59, 115, 81, 0.22), transparent 34%),
+        linear-gradient(135deg, rgba(60, 27, 83, 0.98), rgba(69, 34, 97, 0.96) 54%, rgba(120, 68, 151, 0.94));
+    border: 1px solid rgba(170, 134, 197, 0.34);
+    box-shadow: 8px 8px 0 rgba(60, 27, 83, 0.18);
 }
 
 .sample-pack-custom .sample-diary-kicker {
-    color: #f6b3dd;
+    color: #9877B1;
 }
 
 .sample-pack-custom h3,
 .sample-pack-custom h4 {
     margin: 0;
-    color: #fff9fd;
+    color: #FFFFFF;
 }
 
 .sample-pack-custom p,
 .sample-pack-custom li {
     margin-bottom: 0;
-    color: rgba(255, 241, 250, 0.92);
+    color: rgba(228, 228, 228, 0.92);
 }
 
 .sample-pack-custom ul {
@@ -689,9 +711,9 @@ body.index-page .archive-link:hover {
     align-items: center;
     min-height: 40px;
     padding: 0.55rem 0.85rem;
-    border: 1px dashed rgba(255, 241, 250, 0.32);
-    background: rgba(255, 241, 250, 0.08);
-    color: #fff1fa;
+    border: 1px dashed rgba(228, 228, 228, 0.32);
+    background: rgba(228, 228, 228, 0.08);
+    color: #E4E4E4;
     font-size: 0.66rem;
     letter-spacing: 0.06em;
     text-transform: uppercase;
@@ -701,8 +723,8 @@ body.index-page .archive-link:hover {
     display: grid;
     gap: 0.75rem;
     padding: 1rem;
-    border: 1px solid rgba(242, 162, 211, 0.22);
-    background: rgba(57, 24, 43, 0.18);
+    border: 1px solid rgba(170, 134, 197, 0.22);
+    background: rgba(60, 27, 83, 0.18);
 }
 
 .sample-pack-custom-embed {
@@ -728,9 +750,9 @@ body.index-page .archive-link:hover {
 .sample-pack-custom-meta span {
     min-height: 58px;
     padding: 0.8rem 0.9rem;
-    border: 1px solid rgba(242, 162, 211, 0.26);
-    background: rgba(255, 241, 250, 0.08);
-    color: #fff1fa;
+    border: 1px solid rgba(170, 134, 197, 0.26);
+    background: rgba(228, 228, 228, 0.08);
+    color: #E4E4E4;
     font-size: 0.64rem;
     line-height: 1.8;
     text-transform: uppercase;
@@ -747,18 +769,18 @@ body.index-page .archive-link:hover {
     gap: 0.7rem;
     align-content: start;
     padding: 1rem;
-    border: 1px solid rgba(242, 162, 211, 0.22);
-    background: rgba(57, 24, 43, 0.18);
+    border: 1px solid rgba(170, 134, 197, 0.22);
+    background: rgba(60, 27, 83, 0.18);
 }
 
 .sample-pack-custom blockquote {
-    background: rgba(255, 241, 250, 0.08);
+    background: rgba(228, 228, 228, 0.08);
     border-left-color: var(--accent);
 }
 
 .post-footer {
     padding-top: 0.5rem;
-    border-top: 2px solid rgba(188, 169, 211, 0.3);
+    border-top: 2px solid rgba(152, 119, 177, 0.3);
 }
 
 .post-tags {
@@ -780,7 +802,7 @@ body.index-page .archive-link:hover {
     min-height: 34px;
     padding: 0.4rem 0.7rem;
     border: 1px solid var(--border);
-    background: rgba(255, 249, 253, 0.8);
+    background: rgba(255, 255, 255, 0.8);
     color: var(--heading);
     font-size: 0.64rem;
     line-height: 1.6;
@@ -788,10 +810,16 @@ body.index-page .archive-link:hover {
 
 /* Responsive para móviles */
 @media (max-width: 768px) {
+    body {
+        background:
+            linear-gradient(155deg, var(--season-cream), var(--season-lime) 48%, var(--season-soft-leaf));
+    }
+
     .main-container {
         padding: 1rem;
         max-width: 100%;
         border-width: 1px;
+        backdrop-filter: none;
     }
 
     h1 { font-size: 1.8rem; }
@@ -891,7 +919,7 @@ body.index-page .archive-link:hover {
     }
 
     .sample-diary-photo {
-        box-shadow: 3px 3px 0 rgba(106, 53, 84, 0.14);
+        box-shadow: 3px 3px 0 rgba(69, 34, 97, 0.14);
     }
 
     .sample-pack-custom-actions {
@@ -914,6 +942,9 @@ body.index-page .archive-link:hover {
     }
 
     /* La animación de p5.js se simplificará desde el sketch */
+    .glitch-text {
+        animation: none;
+    }
 }
 
 /* Utilidades para glitch manual */

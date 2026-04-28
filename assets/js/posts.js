@@ -1446,7 +1446,7 @@
                             scrolling="no"
                             frameborder="no"
                             allow="autoplay"
-                            src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/soundcloud%253Atracks%253A18607121&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true">
+                            src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/soundcloud%253Atracks%253A18607121&color=%2384DD92&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true">
                         </iframe>
                         <p class="soundcloud-credit">
                             <a href="https://soundcloud.com/heychamp" target="_blank" rel="noopener noreferrer">Hey Champ</a>
@@ -1630,11 +1630,11 @@
                 <p>play this song in repeat please</p>
 
 <iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay" 
-src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/soundcloud%253Atracks%253A329444710&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe><div 
-style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida 
+src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/soundcloud%253Atracks%253A329444710&color=%2384DD92&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe><div 
+style="font-size: 10px; color: #E4E4E4;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida 
 Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;"><a href="https://soundcloud.com/messerek" title="messerek" target="_blank" 
-style="color: #cccccc; text-decoration: none;">messerek</a> · <a href="https://soundcloud.com/messerek/annie-songs-remind-me-of-you" title="Annie - Songs Remind Me of You (The 
-Swiss &amp; Donnie Sloan Remix)" target="_blank" style="color: #cccccc; text-decoration: none;">Annie - Songs Remind Me of You (The Swiss &amp; Donnie Sloan Remix)</a></div>
+style="color: #E4E4E4; text-decoration: none;">messerek</a> · <a href="https://soundcloud.com/messerek/annie-songs-remind-me-of-you" title="Annie - Songs Remind Me of You (The 
+Swiss &amp; Donnie Sloan Remix)" target="_blank" style="color: #E4E4E4; text-decoration: none;">Annie - Songs Remind Me of You (The Swiss &amp; Donnie Sloan Remix)</a></div>
 
                 <h2>thinking you got what it takes?</h2>
                 <p>heya! is usual to get this excited for something new? what if its 8+ you might be up for the challenge right?, i am of the theory that states that
@@ -1977,7 +1977,7 @@ connects your everyday self to the grand dance of the stars, turning simple sitt
                 <p class="lead">Welcome to the first installment of Underground Sessions, my monthly deep dive into the darker, more experimental corners of electronic music. This mix represents a journey through 90 minutes of pure, unfiltered DJ energy.</p>
                 <p>play this song in repeat please</p>
 
-                <iframe width="100%" height="166" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/soundcloud%253Atracks%253A1195151866&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></iframe><div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;"><a href="https://soundcloud.com/user-677433751" title="locknload" target="_blank" style="color: #cccccc; text-decoration: none;">locknload</a> · <a href="https://soundcloud.com/user-677433751/wax-tailor-the-games-you-play" title="Wax Tailor - The Games You Play" target="_blank" style="color: #cccccc; text-decoration: none;">Wax Tailor - The Games You Play</a></div>
+                <iframe width="100%" height="166" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/soundcloud%253Atracks%253A1195151866&color=%2384DD92&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></iframe><div style="font-size: 10px; color: #E4E4E4;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;"><a href="https://soundcloud.com/user-677433751" title="locknload" target="_blank" style="color: #E4E4E4; text-decoration: none;">locknload</a> · <a href="https://soundcloud.com/user-677433751/wax-tailor-the-games-you-play" title="Wax Tailor - The Games You Play" target="_blank" style="color: #E4E4E4; text-decoration: none;">Wax Tailor - The Games You Play</a></div>
                 <h2>Welcome</h2>
                 <p>For this session, I wanted to explore the tension differences between industrial soundscapes and hypnotic grooves. The result is a question ¿what is a family business? watch uncle fetid in the adams family, is not a joke, each family has a fetid uncle, some are made of pure fetid ideas and fetid people.</p>
 

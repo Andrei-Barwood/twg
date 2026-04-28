@@ -106,13 +106,13 @@
         'Sombra o repliegue',
         'Resolución oblicua'
     ];
-    const VIVID_PALETTE = ['#6BABDA', '#5C96C9', '#1B98D1', '#EC4141', '#EF7135', '#5FBB4E', '#632E86', '#580D36', '#BC1D75', '#D9539D', '#FDE85F'];
+    const VIVID_PALETTE = ['#65C092', '#5AA574', '#65C092', '#3B7351', '#70BD7B', '#84DD92', '#653A81', '#3C1B53', '#784497', '#AA86C5', '#84DD92'];
     const CATEGORY_THEMES = [
-        { accent: '#1B98D1', strong: '#EC4141', soft: '#9BDBF5' },
-        { accent: '#BC1D75', strong: '#632E86', soft: '#FCB6DF' },
-        { accent: '#5FBB4E', strong: '#1B98D1', soft: '#8CC7E7' },
-        { accent: '#EF7135', strong: '#FDE85F', soft: '#FAF5AB' },
-        { accent: '#632E86', strong: '#D9539D', soft: '#9BDBF5' }
+        { accent: '#65C092', strong: '#3B7351', soft: '#E4E4E4' },
+        { accent: '#784497', strong: '#653A81', soft: '#AA86C5' },
+        { accent: '#84DD92', strong: '#65C092', soft: '#65C092' },
+        { accent: '#70BD7B', strong: '#84DD92', soft: '#E4E4E4' },
+        { accent: '#653A81', strong: '#AA86C5', soft: '#E4E4E4' }
     ];
 
     function escapeHtml(value) {

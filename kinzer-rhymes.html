@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kinzer Rhymes - The Wooden Groom</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/kinzer-rhymes.css">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&amp;display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"></script>
+</head>
+<body class="kinzer-rhymes-page">
+    <div id="p5-background"></div>
+
+    <main class="main-container kinzer-shell">
+        <header>
+            <h1><a href="index.html">back home</a></h1>
+            <nav>
+                <ul>
+                    <li><a href="music.html">MÚSICA</a></li>
+                    <li><a href="shows.html">SHOWS</a></li>
+                    <li><a href="blog.html">BLOG</a></li>
+                    <li><a href="scale-generator.html">ESCALAS</a></li>
+                    <li><a href="kinzer-rhymes.html">KINZER</a></li>
+                    <li><a href="about.html">BIO</a></li>
+                    <li><a href="contact.html">CONTACTO</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <section class="kinzer-hero">
+            <p class="kinzer-kicker">Kinzer Rhymes / bloc orbital</p>
+            <h2>SLANGS PARA LETRAS</h2>
+            <p>Diccionario de rimas, slangs orbitales, diss sci-fi, familias Doom y señales Kaamo/Shima para escribir barras con textura de nave, bajo pesado y cariño técnico.</p>
+            <div class="kinzer-counts" aria-live="polite">
+                <span><strong id="kinzer-entry-count">0</strong> slangs</span>
+                <span><strong id="kinzer-family-count">0</strong> familias</span>
+                <span><strong id="kinzer-mode-count">0</strong> modos</span>
+                <span><strong id="kinzer-draft-count">0</strong> letras</span>
+            </div>
+        </section>
+
+        <section class="kinzer-app" aria-label="Aplicación Kinzer Rhymes">
+            <div class="kinzer-editor">
+                <div class="kinzer-title-row">
+                    <input id="kinzer-title" class="kinzer-title-input" value="Borrador orbital" aria-label="Título de la letra">
+                    <span id="kinzer-save-state">local</span>
+                </div>
+                <textarea id="kinzer-lyrics" spellcheck="false" aria-label="Editor de letras">pulso de casco en la ruta de hielo
+motor santo cuando cae el cielo
+código nieve, blindaje azul
+mi bajo respira dentro del hangar</textarea>
+                <div class="kinzer-meters">
+                    <span><strong id="kinzer-words">0</strong> palabras</span>
+                    <span><strong id="kinzer-lines">0</strong> líneas</span>
+                    <span><strong id="kinzer-slang-hits">0</strong> slang</span>
+                    <span><strong id="kinzer-rhyme-clusters">0</strong> rimas</span>
+                </div>
+                <div class="kinzer-actions">
+                    <button id="kinzer-spark" type="button" class="boton pequeño">Chispa</button>
+                    <button id="kinzer-save" type="button" class="boton pequeño">Guardar</button>
+                    <button id="kinzer-new" type="button" class="boton pequeño">Nueva</button>
+                </div>
+            </div>
+
+            <aside class="kinzer-side">
+                <div class="kinzer-tabs" role="tablist" aria-label="Panel Kinzer">
+                    <button class="kinzer-tab active" type="button" data-panel="rhymes">Rimas</button>
+                    <button class="kinzer-tab" type="button" data-panel="slang">Slang</button>
+                    <button class="kinzer-tab" type="button" data-panel="drafts">Letras</button>
+                </div>
+
+                <section id="kinzer-panel-rhymes" class="kinzer-panel active">
+                    <div class="kinzer-panel-heading">
+                        <h3 id="kinzer-last-word">sin palabra</h3>
+                        <span>cola fonética</span>
+                    </div>
+                    <div class="kinzer-rhyme-tools">
+                        <select id="kinzer-rhyme-mode" aria-label="Modo de rima"></select>
+                    </div>
+                    <h3>12 palabras</h3>
+                    <div id="kinzer-word-list" class="kinzer-word-grid" aria-live="polite"></div>
+                    <h3>Frases</h3>
+                    <div id="kinzer-rhyme-list" class="kinzer-list"></div>
+                    <h3>Clusters</h3>
+                    <div id="kinzer-cluster-list" class="kinzer-chips"></div>
+                    <h3>Detectado</h3>
+                    <div id="kinzer-detected-list" class="kinzer-list compact"></div>
+                </section>
+
+                <section id="kinzer-panel-slang" class="kinzer-panel">
+                    <div class="kinzer-filters">
+                        <input id="kinzer-search" type="search" placeholder="buscar: Shima Kaamo, Doom 4, cuarzo..." aria-label="Buscar slang">
+                        <select id="kinzer-category" aria-label="Familia"></select>
+                        <select id="kinzer-tone" aria-label="Tono"></select>
+                    </div>
+                    <div id="kinzer-slang-list" class="kinzer-list"></div>
+                </section>
+
+                <section id="kinzer-panel-drafts" class="kinzer-panel">
+                    <div id="kinzer-draft-list" class="kinzer-list"></div>
+                    <button id="kinzer-delete" type="button" class="boton pequeño">Borrar letra actual</button>
+                </section>
+            </aside>
+        </section>
+
+        <footer>
+            <p>
+                <a href="https://megadoll.bandcamp.com/" target="_blank" rel="noopener noreferrer">Bandcamp</a> |
+                <a href="https://www.instagram.com/thewoodengroom/" target="_blank" rel="noopener noreferrer">Instagram</a> |
+                <a href="https://www.youtube.com/@TheWoodenGroom" target="_blank" rel="noopener noreferrer">YouTube</a>
+            </p>
+        </footer>
+    </main>
+
+    <template id="kinzer-card-template">
+        <article class="kinzer-card">
+            <button type="button" class="kinzer-insert">Insertar</button>
+            <h4></h4>
+            <p></p>
+            <footer></footer>
+        </article>
+    </template>
+
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/kinzer-rhymes.js"></script>
+    <script src="assets/js/p5-background.js"></script>
+</body>
+</html>
