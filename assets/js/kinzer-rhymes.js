@@ -740,13 +740,25 @@
         });
     }
 
+    async function loadCollection(url) {
+        const response = await fetch(url);
+        const payload = await response.json();
+        if (Array.isArray(payload)) return payload;
+        if (!payload || !Array.isArray(payload.parts)) return [];
+        const chunks = await Promise.all(payload.parts.map(async (part) => {
+            const partResponse = await fetch(part.file);
+            return partResponse.json();
+        }));
+        return chunks.flat();
+    }
+
     async function boot() {
-        const [response, rhymeResponse] = await Promise.all([
-            fetch(DATA_URL),
-            fetch(RHYME_URL).catch(() => null),
+        const [entries, rhymeSuggestions] = await Promise.all([
+            loadCollection(DATA_URL),
+            loadCollection(RHYME_URL).catch(() => []),
         ]);
-        state.entries = await response.json();
-        state.rhymeSuggestions = rhymeResponse && rhymeResponse.ok ? await rhymeResponse.json() : [];
+        state.entries = entries;
+        state.rhymeSuggestions = rhymeSuggestions;
         state.wordPool = buildWordPool(state.entries, state.rhymeSuggestions);
         state.wordIndex = buildWordIndex(state.wordPool);
         state.entryIndex = buildEntryIndex(state.entries);
