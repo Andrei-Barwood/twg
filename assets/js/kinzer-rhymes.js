@@ -7,14 +7,28 @@
     const WORD_SUGGESTION_LIMIT = 36;
     const WORD_POOL_ENTRY_SEED_LIMIT = 5;
     const RHYME_SCAN_LIMIT = 5200;
+    const INITIAL_ENTRY_PARTS = 1;
+    const INITIAL_RHYME_PARTS = 1;
+    const BACKGROUND_REFRESH_WAIT = 700;
     const WORD_RE = /[A-Za-zÁÉÍÓÚÜÑáéíóúüñ0-9']+/g;
     const VOWELS = 'aeiou';
+    const PASSIVE_STATUS_STATES = new Set(['local', 'cargando', 'cargando fondo', 'listo', 'diccionario parcial', 'sin diccionario']);
     const state = {
         entries: [],
-        rhymeSuggestions: [],
         wordPool: [],
         wordIndex: null,
         entryIndex: null,
+        categories: new Set(),
+        tones: new Set(),
+        slangLookup: new Map(),
+        maxSlangWords: 1,
+        wordPoolSeen: new Set(),
+        expectedEntryCount: 0,
+        loadedEntryCount: 0,
+        expectedRhymeSuggestionCount: 0,
+        loadedRhymeSuggestionCount: 0,
+        analysisRefreshTimer: null,
+        loadingComplete: false,
         currentDraftId: null,
         rhymeMode: 'hybrid',
         selection: null,
@@ -132,7 +146,8 @@
     }
 
     function kaamoSignal(entry) {
-        const haystack = normalize([
+        if (typeof entry._kaamoSignal === 'boolean') return entry._kaamoSignal;
+        const haystack = entry._searchText || normalize([
             entry.category,
             entry.definition,
             entry.example,
@@ -142,7 +157,8 @@
     }
 
     function ghostwireSignal(entry) {
-        const haystack = normalize([
+        if (typeof entry._ghostwireSignal === 'boolean') return entry._ghostwireSignal;
+        const haystack = entry._searchText || normalize([
             entry.category,
             entry.definition,
             entry.example,
@@ -154,6 +170,42 @@
 
     function rhymeModeLabel(modeId) {
         return (RHYME_MODES.find((mode) => mode.id === modeId) || RHYME_MODES[0]).label;
+    }
+
+    function createRhymeIndex() {
+        return {
+            all: [],
+            byTail: new Map(),
+            byAssonance: new Map(),
+            byFinal: new Map(),
+        };
+    }
+
+    function formatCount(value) {
+        return Number(value || 0).toLocaleString('es-CL');
+    }
+
+    function formatProgress(loaded, total) {
+        if (total && loaded < total) return `${formatCount(loaded)} / ${formatCount(total)}`;
+        return formatCount(total || loaded);
+    }
+
+    function updateCounts() {
+        $('#kinzer-entry-count').textContent = formatProgress(state.loadedEntryCount, state.expectedEntryCount);
+        $('#kinzer-family-count').textContent = formatCount(state.categories.size);
+        $('#kinzer-mode-count').textContent = RHYME_MODES.length;
+        const rhymeSourceCount = $('#kinzer-rhyme-source-count');
+        if (rhymeSourceCount) {
+            rhymeSourceCount.textContent = formatProgress(
+                state.loadedRhymeSuggestionCount,
+                state.expectedRhymeSuggestionCount
+            );
+        }
+    }
+
+    function setPassiveStatus(text) {
+        const node = $('#kinzer-save-state');
+        if (PASSIVE_STATUS_STATES.has(node.textContent)) node.textContent = text;
     }
 
     function rhymeSignal(word, modeId) {
@@ -213,24 +265,53 @@
         return clampScore(hybridRhymeScore(a, b, at, bt, aa, ba, overlap));
     }
 
-    function searchScore(entry, query) {
-        const q = normalize(query);
-        if (!q) return 1;
-        const haystack = normalize([
+    function prepareEntry(rawEntry) {
+        const tags = Array.isArray(rawEntry.tags) ? rawEntry.tags : [];
+        const entry = {
+            term: rawEntry.term || '',
+            category: rawEntry.category || 'sin familia',
+            tone: rawEntry.tone || 'sin tono',
+            definition: rawEntry.definition || '',
+            example: rawEntry.example || '',
+            tags,
+        };
+        entry._normalizedTerm = normalize(entry.term);
+        entry._normalizedTags = tags.map((tag) => normalize(tag));
+        entry._searchText = normalize([
             entry.term,
             entry.category,
             entry.tone,
             entry.definition,
             entry.example,
-            entry.tags.join(' ')
+            tags.join(' ')
         ].join(' '));
+        entry._termWords = words(entry.term);
+        entry._lastWord = entry._termWords.slice(-1)[0] || '';
+        entry._key = cleanWord(entry._lastWord);
+        entry._tail = rhymeTail(entry._lastWord);
+        entry._assonance = assonanceTail(entry._lastWord);
+        entry._final = entry._key.slice(-3);
+        entry._kaamoSignal = entry._searchText.includes('shima')
+            || entry._searchText.includes('kaamo')
+            || entry._searchText.includes('astronauta perdido');
+        entry._ghostwireSignal = entry._searchText.includes('ghostwire')
+            || entry._searchText.includes('akito')
+            || entry._searchText.includes('hannya')
+            || entry._searchText.includes('mari')
+            || entry._searchText.includes('visitante')
+            || entry._searchText.includes('shibuya');
+        return entry;
+    }
+
+    function searchScore(entry, normalizedQuery, tokens) {
+        if (!normalizedQuery) return 1;
         let score = 0;
-        q.split(' ').forEach((token) => {
-            if (normalize(entry.term).includes(token)) score += 24;
-            if (entry.tags.some((tag) => normalize(tag).includes(token))) score += 16;
-            if (haystack.includes(token)) score += 8;
+        tokens.forEach((token) => {
+            if (entry._normalizedTerm.includes(token)) score += 24;
+            if (entry._normalizedTags.some((tag) => tag.includes(token))) score += 16;
+            if (entry._searchText.includes(token)) score += 8;
         });
-        if (haystack.includes(q)) score += 32;
+        if (entry._searchText.includes(normalizedQuery)) score += 32;
         return score;
     }
 
@@ -238,74 +319,29 @@
         const query = $('#kinzer-search').value;
         const category = $('#kinzer-category').value;
         const tone = $('#kinzer-tone').value;
-        const filtered = state.entries
-            .filter((entry) => category === 'all' || entry.category === category)
-            .filter((entry) => tone === 'all' || entry.tone === tone);
-        if (!normalize(query)) {
-            return filtered.slice(0, 80).map((entry) => ({ ...entry, score: 1 }));
+        const normalizedQuery = normalize(query);
+        const tokens = normalizedQuery ? normalizedQuery.split(' ') : [];
+        const results = [];
+        for (const entry of state.entries) {
+            if (category !== 'all' && entry.category !== category) continue;
+            if (tone !== 'all' && entry.tone !== tone) continue;
+            if (!normalizedQuery) {
+                results.push({ entry, score: 1 });
+                if (results.length >= 80) break;
+                continue;
+            }
+            const score = searchScore(entry, normalizedQuery, tokens);
+            if (score > 0) results.push({ entry, score });
         }
-        return filtered
-            .map((entry) => ({ ...entry, score: searchScore(entry, query) }))
-            .filter((entry) => !query || entry.score > 0)
-            .sort((a, b) => b.score - a.score || a.term.localeCompare(b.term, 'es'))
-            .slice(0, 80);
+        return results
+            .sort((a, b) => b.score - a.score || a.entry.term.localeCompare(b.entry.term, 'es'))
+            .slice(0, 80)
+            .map((result) => result.entry);
     }
 
     function wordAllowed(word, target) {
         const clean = cleanWord(word);
         return clean.length >= 4 && clean !== target && !WORD_BLOCKLIST.has(clean);
-    }
-
-    function buildWordPool(entries, rhymeSuggestions = []) {
-        const seen = new Set();
-        const pool = [];
-        entries.forEach((entry) => {
-            words(entry.term).slice(0, WORD_POOL_ENTRY_SEED_LIMIT).forEach((rawWord) => {
-                const key = cleanWord(rawWord);
-                if (key.length < 4 || WORD_BLOCKLIST.has(key)) return;
-                const cacheKey = `${key}|${entry.category}|${entry.tone}`;
-                if (seen.has(cacheKey)) return;
-                seen.add(cacheKey);
-                pool.push({
-                    key,
-                    text: rawWord.toLowerCase(),
-                    category: entry.category,
-                    tone: entry.tone,
-                    source: entry.term,
-                    entry,
-                    rhymeSource: false,
-                    kaamo: kaamoSignal(entry),
-                    ghostwire: ghostwireSignal(entry),
-                });
-            });
-        });
-        rhymeSuggestions.forEach((suggestion) => {
-            const key = cleanWord(suggestion.word);
-            if (key.length < 4 || WORD_BLOCKLIST.has(key)) return;
-            const entry = {
-                term: suggestion.source || suggestion.word,
-                category: suggestion.category,
-                tone: suggestion.tone,
-                definition: suggestion.example || '',
-                example: suggestion.example || '',
-                tags: suggestion.tags || [],
-            };
-            const cacheKey = `${key}|${suggestion.category}|${suggestion.tone}|${suggestion.source || ''}`;
-            if (seen.has(cacheKey)) return;
-            seen.add(cacheKey);
-            pool.push({
-                key,
-                text: suggestion.word.toLowerCase(),
-                category: suggestion.category,
-                tone: suggestion.tone,
-                source: suggestion.source || suggestion.word,
-                entry,
-                rhymeSource: true,
-                kaamo: kaamoSignal(entry),
-                ghostwire: ghostwireSignal(entry),
-            });
-        });
-        return pool;
     }
 
     function pushBucket(map, key, item) {
@@ -315,40 +351,65 @@
         map.set(key, bucket);
     }
 
-    function buildWordIndex(pool) {
-        const index = {
-            all: pool,
-            byTail: new Map(),
-            byAssonance: new Map(),
-            byFinal: new Map(),
-        };
-        pool.forEach((item) => {
-            pushBucket(index.byTail, rhymeTail(item.text), item);
-            pushBucket(index.byAssonance, assonanceTail(item.text), item);
-            pushBucket(index.byFinal, item.key.slice(-3), item);
-        });
-        return index;
+    function addWordIndexItem(item) {
+        state.wordPool.push(item);
+        state.wordIndex.all.push(item);
+        pushBucket(state.wordIndex.byTail, item.tail, item);
+        pushBucket(state.wordIndex.byAssonance, item.assonance, item);
+        pushBucket(state.wordIndex.byFinal, item.final, item);
     }
 
-    function buildEntryIndex(entries) {
-        const index = {
-            all: [],
-            byTail: new Map(),
-            byAssonance: new Map(),
-            byFinal: new Map(),
+    function addWordPoolItem(item, cacheKey) {
+        if (state.wordPoolSeen.has(cacheKey)) return;
+        state.wordPoolSeen.add(cacheKey);
+        item.tail = rhymeTail(item.text);
+        item.assonance = assonanceTail(item.text);
+        item.final = item.key.slice(-3);
+        addWordIndexItem(item);
+    }
+
+    function addEntryIndexItem(entry) {
+        if (!entry._key) return;
+        const item = {
+            entry,
+            last: entry._lastWord,
+            key: entry._key,
+            tail: entry._tail,
+            assonance: entry._assonance,
+            final: entry._final,
         };
-        entries.forEach((entry) => {
-            const termWords = words(entry.term);
-            const last = termWords.slice(-1)[0] || '';
-            const key = cleanWord(last);
-            if (!key) return;
-            const item = { entry, last, key };
-            index.all.push(item);
-            pushBucket(index.byTail, rhymeTail(last), item);
-            pushBucket(index.byAssonance, assonanceTail(last), item);
-            pushBucket(index.byFinal, key.slice(-3), item);
+        state.entryIndex.all.push(item);
+        pushBucket(state.entryIndex.byTail, item.tail, item);
+        pushBucket(state.entryIndex.byAssonance, item.assonance, item);
+        pushBucket(state.entryIndex.byFinal, item.final, item);
+    }
+
+    function addSlangLookup(entry) {
+        if (!entry._normalizedTerm) return;
+        const bucket = state.slangLookup.get(entry._normalizedTerm) || [];
+        bucket.push(entry);
+        state.slangLookup.set(entry._normalizedTerm, bucket);
+        const phraseLength = entry._normalizedTerm.split(' ').length;
+        state.maxSlangWords = Math.max(state.maxSlangWords, Math.min(phraseLength, 10));
+    }
+
+    function addEntryWordSeeds(entry) {
+        words(entry.term).slice(0, WORD_POOL_ENTRY_SEED_LIMIT).forEach((rawWord) => {
+            const key = cleanWord(rawWord);
+            if (key.length < 4 || WORD_BLOCKLIST.has(key)) return;
+            const cacheKey = `${key}|${entry.category}|${entry.tone}`;
+            addWordPoolItem({
+                key,
+                text: rawWord.toLowerCase(),
+                category: entry.category,
+                tone: entry.tone,
+                source: entry.term,
+                entry,
+                rhymeSource: false,
+                kaamo: kaamoSignal(entry),
+                ghostwire: ghostwireSignal(entry),
+            }, cacheKey);
         });
-        return index;
     }
 
     function collectIndexedItems(index, word) {
@@ -449,16 +510,15 @@
             .map((indexed) => {
                 const entry = indexed.entry;
                 const last = indexed.last;
-                const termWords = words(entry.term);
                 return {
                     text: entry.term,
                     lastWord: last,
                     category: entry.category,
                     tone: entry.tone,
                     definition: entry.definition,
-                    score: rhymeScore(word, last, state.rhymeMode, entry, termWords.length > 1),
-                    tail: rhymeTail(last),
-                    assonance: assonanceTail(last),
+                    score: rhymeScore(word, last, state.rhymeMode, entry, entry._termWords.length > 1),
+                    tail: indexed.tail,
+                    assonance: indexed.assonance,
                     modeLabel: rhymeModeLabel(state.rhymeMode),
                     signal: rhymeSignal(last, state.rhymeMode),
                     kaamo: kaamoSignal(entry),
@@ -476,10 +536,27 @@
     }
 
     function detectSlang(text) {
-        const haystack = ` ${normalize(text)} `;
-        return state.entries
-            .filter((entry) => haystack.includes(` ${normalize(entry.term)} `))
-            .slice(0, 18);
+        const normalizedText = normalize(text);
+        if (!normalizedText) return [];
+        const tokens = normalizedText.split(' ');
+        const matches = [];
+        const seen = new Set();
+        const maxLength = Math.min(state.maxSlangWords, tokens.length);
+        for (let start = 0; start < tokens.length && matches.length < 18; start += 1) {
+            let phrase = '';
+            for (let length = 1; length <= maxLength && start + length <= tokens.length; length += 1) {
+                phrase = length === 1 ? tokens[start] : `${phrase} ${tokens[start + length - 1]}`;
+                const bucket = state.slangLookup.get(phrase);
+                if (!bucket) continue;
+                for (const entry of bucket) {
+                    if (seen.has(entry.term)) continue;
+                    seen.add(entry.term);
+                    matches.push(entry);
+                    if (matches.length >= 18) break;
+                }
+            }
+        }
+        return matches;
     }
 
     function rhymeClusters(text) {
@@ -603,8 +680,9 @@
 
     const analyzeNow = debounce(renderAnalysis, 120);
 
-    function fillSelect(selector, values, label) {
+    function fillSelect(selector, values, label, selectedValue = 'all') {
         const select = $(selector);
+        const nextValue = selectedValue && values.includes(selectedValue) ? selectedValue : 'all';
         select.innerHTML = '';
         const option = document.createElement('option');
         option.value = 'all';
@@ -616,6 +694,16 @@
             child.textContent = value;
             select.appendChild(child);
         });
+        select.value = nextValue;
+    }
+
+    function syncFilterSelects() {
+        const selectedCategory = $('#kinzer-category').value;
+        const selectedTone = $('#kinzer-tone').value;
+        const categories = [...state.categories].sort((a, b) => a.localeCompare(b, 'es'));
+        const tones = [...state.tones].sort((a, b) => a.localeCompare(b, 'es'));
+        fillSelect('#kinzer-category', categories, 'todas las familias', selectedCategory);
+        fillSelect('#kinzer-tone', tones, 'todos los tonos', selectedTone);
     }
 
     function fillRhymeModes() {
@@ -719,6 +807,7 @@
     function sparkLine() {
         const baseCategories = ['brújula amable', 'beat dubstep', 'Doom 1', 'Doom 2', 'Doom 3', 'Doom 4', 'nave y puerto', 'Shima Kaamo'];
         const pool = state.entries.filter((entry) => baseCategories.includes(entry.category) || entry.category.startsWith('Ghostwire Tokyo'));
+        if (!pool.length && !state.entries.length) return;
         const pick = () => pool[Math.floor(Math.random() * pool.length)] || state.entries[0];
         const a = pick();
         const b = pick();
@@ -740,42 +829,161 @@
         });
     }
 
-    async function loadCollection(url) {
+    function appendEntries(rawEntries) {
+        rawEntries.forEach((rawEntry) => {
+            const entry = prepareEntry(rawEntry);
+            state.entries.push(entry);
+            state.categories.add(entry.category);
+            state.tones.add(entry.tone);
+            addSlangLookup(entry);
+            addEntryIndexItem(entry);
+            addEntryWordSeeds(entry);
+        });
+        state.loadedEntryCount += rawEntries.length;
+        updateCounts();
+        syncFilterSelects();
+    }
+
+    function appendRhymeSuggestions(suggestions) {
+        suggestions.forEach((suggestion) => {
+            const wordText = String(suggestion.word || '');
+            const key = cleanWord(wordText);
+            if (key.length < 4 || WORD_BLOCKLIST.has(key)) return;
+            const entry = prepareEntry({
+                term: suggestion.source || wordText,
+                category: suggestion.category,
+                tone: suggestion.tone,
+                definition: suggestion.example || '',
+                example: suggestion.example || '',
+                tags: suggestion.tags || [],
+            });
+            const cacheKey = `${key}|${entry.category}|${entry.tone}|${suggestion.source || ''}`;
+            addWordPoolItem({
+                key,
+                text: wordText.toLowerCase(),
+                category: entry.category,
+                tone: entry.tone,
+                source: suggestion.source || wordText,
+                entry,
+                rhymeSource: true,
+                kaamo: kaamoSignal(entry),
+                ghostwire: ghostwireSignal(entry),
+            }, cacheKey);
+        });
+        state.loadedRhymeSuggestionCount += suggestions.length;
+        updateCounts();
+    }
+
+    async function fetchJson(url) {
         const response = await fetch(url);
-        const payload = await response.json();
-        if (Array.isArray(payload)) return payload;
-        if (!payload || !Array.isArray(payload.parts)) return [];
-        const chunks = await Promise.all(payload.parts.map(async (part) => {
-            const partResponse = await fetch(part.file);
-            return partResponse.json();
-        }));
-        return chunks.flat();
+        if (!response.ok) throw new Error(`No se pudo cargar ${url}`);
+        return response.json();
+    }
+
+    function normalizeCollection(payload) {
+        if (Array.isArray(payload)) {
+            return { total: payload.length, parts: [], inline: payload };
+        }
+        const parts = payload && Array.isArray(payload.parts) ? payload.parts : [];
+        const total = payload && Number(payload.total)
+            ? Number(payload.total)
+            : parts.reduce((sum, part) => sum + Number(part.count || 0), 0);
+        return { total, parts, inline: null };
+    }
+
+    async function loadCollectionManifest(url) {
+        return normalizeCollection(await fetchJson(url));
+    }
+
+    function partUrl(part) {
+        return typeof part === 'string' ? part : part.file;
+    }
+
+    async function loadPart(part) {
+        return fetchJson(partUrl(part));
+    }
+
+    async function loadInitialParts(collection, count, append) {
+        if (collection.inline) {
+            append(collection.inline);
+            return collection.parts.length;
+        }
+        const end = Math.min(count, collection.parts.length);
+        for (let index = 0; index < end; index += 1) {
+            append(await loadPart(collection.parts[index]));
+        }
+        return end;
+    }
+
+    function yieldToBrowser() {
+        return new Promise((resolve) => {
+            if ('requestIdleCallback' in window) {
+                window.requestIdleCallback(resolve, { timeout: 200 });
+            } else {
+                window.setTimeout(resolve, 20);
+            }
+        });
+    }
+
+    function scheduleProgressiveRefresh() {
+        if (state.analysisRefreshTimer) return;
+        state.analysisRefreshTimer = window.setTimeout(() => {
+            state.analysisRefreshTimer = null;
+            renderAnalysis();
+            renderSlang();
+        }, BACKGROUND_REFRESH_WAIT);
+    }
+
+    async function loadRemainingParts(collection, startIndex, append) {
+        if (collection.inline) return;
+        for (let index = startIndex; index < collection.parts.length; index += 1) {
+            append(await loadPart(collection.parts[index]));
+            scheduleProgressiveRefresh();
+            await yieldToBrowser();
+        }
+    }
+
+    async function loadRemainingCollections(entryCollection, rhymeCollection, loadedEntryParts, loadedRhymeParts) {
+        try {
+            setPassiveStatus('cargando fondo');
+            await loadRemainingParts(entryCollection, loadedEntryParts, appendEntries);
+            await loadRemainingParts(rhymeCollection, loadedRhymeParts, appendRhymeSuggestions);
+            state.loadingComplete = true;
+            renderAnalysis();
+            renderSlang();
+            updateCounts();
+            setPassiveStatus('listo');
+        } catch (error) {
+            setPassiveStatus('diccionario parcial');
+        }
     }
 
     async function boot() {
-        const [entries, rhymeSuggestions] = await Promise.all([
-            loadCollection(DATA_URL),
-            loadCollection(RHYME_URL).catch(() => []),
-        ]);
-        state.entries = entries;
-        state.rhymeSuggestions = rhymeSuggestions;
-        state.wordPool = buildWordPool(state.entries, state.rhymeSuggestions);
-        state.wordIndex = buildWordIndex(state.wordPool);
-        state.entryIndex = buildEntryIndex(state.entries);
-        const categories = [...new Set(state.entries.map((entry) => entry.category))].sort((a, b) => a.localeCompare(b, 'es'));
-        const tones = [...new Set(state.entries.map((entry) => entry.tone))].sort((a, b) => a.localeCompare(b, 'es'));
-        $('#kinzer-entry-count').textContent = state.entries.length;
-        $('#kinzer-family-count').textContent = categories.length;
-        $('#kinzer-mode-count').textContent = RHYME_MODES.length;
-        const rhymeSourceCount = $('#kinzer-rhyme-source-count');
-        if (rhymeSourceCount) rhymeSourceCount.textContent = state.rhymeSuggestions.length;
-        fillSelect('#kinzer-category', categories, 'todas las familias');
-        fillSelect('#kinzer-tone', tones, 'todos los tonos');
+        state.wordIndex = createRhymeIndex();
+        state.entryIndex = createRhymeIndex();
         fillRhymeModes();
+        renderDrafts();
+        $('#kinzer-save-state').textContent = 'cargando';
+
+        const [entryCollection, rhymeCollection] = await Promise.all([
+            loadCollectionManifest(DATA_URL),
+            loadCollectionManifest(RHYME_URL).catch(() => ({ total: 0, parts: [], inline: [] })),
+        ]);
+        state.expectedEntryCount = entryCollection.total;
+        state.expectedRhymeSuggestionCount = rhymeCollection.total;
+        updateCounts();
+
+        const loadedEntryParts = await loadInitialParts(entryCollection, INITIAL_ENTRY_PARTS, appendEntries);
+        const loadedRhymeParts = await loadInitialParts(rhymeCollection, INITIAL_RHYME_PARTS, appendRhymeSuggestions);
+
         state.selection = { start: lyrics.value.length, end: lyrics.value.length };
         renderAnalysis();
         renderSlang();
-        renderDrafts();
+        $('#kinzer-save-state').textContent = 'listo';
+
+        window.setTimeout(() => {
+            loadRemainingCollections(entryCollection, rhymeCollection, loadedEntryParts, loadedRhymeParts);
+        }, 120);
     }
 
     lyrics.addEventListener('input', () => {
