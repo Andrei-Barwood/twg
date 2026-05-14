@@ -9,10 +9,8 @@
     const RHYME_SCAN_LIMIT = 5200;
     const INITIAL_ENTRY_PARTS = 1;
     const INITIAL_RHYME_PARTS = 1;
-    const BACKGROUND_REFRESH_WAIT = 700;
     const WORD_RE = /[A-Za-zÁÉÍÓÚÜÑáéíóúüñ0-9']+/g;
     const VOWELS = 'aeiou';
-    const PASSIVE_STATUS_STATES = new Set(['local', 'cargando', 'cargando fondo', 'listo', 'diccionario parcial', 'sin diccionario']);
     const state = {
         entries: [],
         wordPool: [],
@@ -27,8 +25,6 @@
         loadedEntryCount: 0,
         expectedRhymeSuggestionCount: 0,
         loadedRhymeSuggestionCount: 0,
-        analysisRefreshTimer: null,
-        loadingComplete: false,
         currentDraftId: null,
         rhymeMode: 'hybrid',
         selection: null,
@@ -201,11 +197,6 @@
                 state.expectedRhymeSuggestionCount
             );
         }
-    }
-
-    function setPassiveStatus(text) {
-        const node = $('#kinzer-save-state');
-        if (PASSIVE_STATUS_STATES.has(node.textContent)) node.textContent = text;
     }
 
     function rhymeSignal(word, modeId) {
@@ -915,49 +906,6 @@
         return end;
     }
 
-    function yieldToBrowser() {
-        return new Promise((resolve) => {
-            if ('requestIdleCallback' in window) {
-                window.requestIdleCallback(resolve, { timeout: 200 });
-            } else {
-                window.setTimeout(resolve, 20);
-            }
-        });
-    }
-
-    function scheduleProgressiveRefresh() {
-        if (state.analysisRefreshTimer) return;
-        state.analysisRefreshTimer = window.setTimeout(() => {
-            state.analysisRefreshTimer = null;
-            renderAnalysis();
-            renderSlang();
-        }, BACKGROUND_REFRESH_WAIT);
-    }
-
-    async function loadRemainingParts(collection, startIndex, append) {
-        if (collection.inline) return;
-        for (let index = startIndex; index < collection.parts.length; index += 1) {
-            append(await loadPart(collection.parts[index]));
-            scheduleProgressiveRefresh();
-            await yieldToBrowser();
-        }
-    }
-
-    async function loadRemainingCollections(entryCollection, rhymeCollection, loadedEntryParts, loadedRhymeParts) {
-        try {
-            setPassiveStatus('cargando fondo');
-            await loadRemainingParts(entryCollection, loadedEntryParts, appendEntries);
-            await loadRemainingParts(rhymeCollection, loadedRhymeParts, appendRhymeSuggestions);
-            state.loadingComplete = true;
-            renderAnalysis();
-            renderSlang();
-            updateCounts();
-            setPassiveStatus('listo');
-        } catch (error) {
-            setPassiveStatus('diccionario parcial');
-        }
-    }
-
     async function boot() {
         state.wordIndex = createRhymeIndex();
         state.entryIndex = createRhymeIndex();
@@ -973,17 +921,13 @@
         state.expectedRhymeSuggestionCount = rhymeCollection.total;
         updateCounts();
 
-        const loadedEntryParts = await loadInitialParts(entryCollection, INITIAL_ENTRY_PARTS, appendEntries);
-        const loadedRhymeParts = await loadInitialParts(rhymeCollection, INITIAL_RHYME_PARTS, appendRhymeSuggestions);
+        await loadInitialParts(entryCollection, INITIAL_ENTRY_PARTS, appendEntries);
+        await loadInitialParts(rhymeCollection, INITIAL_RHYME_PARTS, appendRhymeSuggestions);
 
         state.selection = { start: lyrics.value.length, end: lyrics.value.length };
         renderAnalysis();
         renderSlang();
-        $('#kinzer-save-state').textContent = 'listo';
-
-        window.setTimeout(() => {
-            loadRemainingCollections(entryCollection, rhymeCollection, loadedEntryParts, loadedRhymeParts);
-        }, 120);
+        $('#kinzer-save-state').textContent = 'modo ligero';
     }
 
     lyrics.addEventListener('input', () => {
