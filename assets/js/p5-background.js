@@ -1,148 +1,98 @@
 // assets/js/p5-background.js
-// Animación con glitches y cambios abruptos
+// Fondo estatico SVG: sin p5, sin canvas, sin animacion.
 
 (function() {
     'use strict';
 
-    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || window.innerWidth < 600;
-    const prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    const hasP5 = typeof window.p5 === 'function';
-    const isShowsPage = document.body.classList.contains('shows-page') || window.location.pathname.endsWith('/shows.html');
-    const NUM_CUBES = isMobile ? 20 : 50; // más cubos para más caos
-    const MAX_SIZE = isMobile ? 100 : 250;
-    const MIN_SIZE = 15;
+    const background = document.getElementById('p5-background');
+    if (!background) return;
 
-    // Colores de la paleta (se usarán para cambios abruptos)
-    const COLORS = isShowsPage
-        ? ['#ACC849', '#D2EA91', '#A4C040', '#BDD56C', '#ADD9D5', '#D6C77C', '#FAFBD8', '#B73232', '#F0575C', '#F49A43', '#FFCD60', '#7CA42A']
-        : ['#452261', '#784497', '#3C1B53', '#653A81', '#AA86C5', '#FFFFFF', '#9877B1', '#E4E4E4', '#3B7351', '#84DD92', '#3B7351', '#84DD92', '#65C092', '#275D48', '#70BD7B', '#5AA574', '#000000'];
-    const scanlineColor = isShowsPage ? [183, 50, 50, 36] : [69, 34, 97, 34];
-    const flashColor = isShowsPage ? [250, 251, 216, 26] : [132, 221, 146, 28];
+    const isShowsPage = document.body.classList.contains('shows-page')
+        || window.location.pathname.endsWith('/shows.html');
 
-    let cubes = [];
-    let glitchIntensity = 0; // 0 a 1, para efectos globales
-    let lastGlitchFrame = 0;
-    let scanlines = false;
-
-    if (isMobile || prefersReducedMotion || !hasP5) {
-        document.body.classList.add('mobile-static-background');
-        const background = document.getElementById('p5-background');
-        if (background) {
-            background.setAttribute('aria-hidden', 'true');
+    const palette = isShowsPage
+        ? {
+            base: '#FAFBD8',
+            washA: '#D2EA91',
+            washB: '#ADD9D5',
+            ink: '#B73232',
+            inkSoft: '#F0575C',
+            accent: '#FFCD60',
+            muted: '#7CA42A',
+            pale: '#D6C77C',
         }
-        return;
-    }
-
-    const sketch = (p) => {
-        p.setup = () => {
-            let canvas = p.createCanvas(p.windowWidth, p.windowHeight, p.WEBGL);
-            canvas.parent('p5-background');
-            p.frameRate(30); // para que los cambios sean más notorios
-
-            // Inicializar cubos con valores aleatorios
-            for (let i = 0; i < NUM_CUBES; i++) {
-                cubes.push({
-                    angle: p.random(p.TWO_PI),
-                    radius: p.random(150, 500),
-                    size: p.random(MIN_SIZE, MAX_SIZE),
-                    color: p.color(p.random(COLORS)),
-                    zOffset: p.random(-300, 300),
-                    glitchOffset: p.createVector(0, 0, 0),
-                    glitchTimer: 0,
-                });
-            }
+        : {
+            base: '#E4E4E4',
+            washA: '#AA86C5',
+            washB: '#84DD92',
+            ink: '#452261',
+            inkSoft: '#784497',
+            accent: '#65C092',
+            muted: '#9877B1',
+            pale: '#FFFFFF',
         };
 
-        p.draw = () => {
-            p.clear();
+    background.setAttribute('aria-hidden', 'true');
+    background.classList.add('static-polygon-background');
 
-            // Calcular centro según ratón (con algo de retraso para suavizar, pero podemos hacerlo abrupto)
-            let targetX = p.mouseX || p.width / 2;
-            let targetY = p.mouseY || p.height / 2;
-            // Movimiento abrupto si glitch activo
-            let cx = targetX - p.width / 2;
-            let cy = -(targetY - p.height / 2);
+    background.innerHTML = `
+        <svg class="static-polygon-svg" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+                <linearGradient id="twg-bg-wash" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0" stop-color="${palette.pale}" stop-opacity="0.98" />
+                    <stop offset="0.48" stop-color="${palette.base}" stop-opacity="0.92" />
+                    <stop offset="1" stop-color="${palette.washA}" stop-opacity="0.34" />
+                </linearGradient>
+                <linearGradient id="twg-poly-fill" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0" stop-color="${palette.washA}" stop-opacity="0.38" />
+                    <stop offset="0.52" stop-color="${palette.pale}" stop-opacity="0.28" />
+                    <stop offset="1" stop-color="${palette.washB}" stop-opacity="0.34" />
+                </linearGradient>
+            </defs>
 
-            // Probabilidad de glitch global (cada 30 frames aprox)
-            if (p.frameCount % 30 === 0 && p.random() < 0.3) {
-                glitchIntensity = p.random(0.5, 1);
-                lastGlitchFrame = p.frameCount;
-                scanlines = true;
-            }
-            // Desvanecer glitch después de unos frames
-            if (p.frameCount - lastGlitchFrame > 10) {
-                glitchIntensity = p.lerp(glitchIntensity, 0, 0.1);
-                if (glitchIntensity < 0.05) glitchIntensity = 0;
-                scanlines = false;
-            }
+            <rect width="1440" height="900" fill="url(#twg-bg-wash)" />
+            <path d="M-80 755 C180 620 255 720 450 570 C705 375 795 565 1055 365 C1200 255 1325 260 1520 175 L1520 940 L-80 940 Z"
+                fill="${palette.washB}" opacity="0.18" />
+            <path d="M-40 160 L355 115 L455 245 L175 310 Z" fill="${palette.washA}" opacity="0.16" />
+            <path d="M1010 45 L1505 10 L1460 285 L1060 250 Z" fill="${palette.muted}" opacity="0.14" />
 
-            // Actualizar y dibujar cubos (solo siguen al cursor, sin oscilación)
-            for (let cube of cubes) {
-                let x = cx + cube.radius * p.cos(cube.angle);
-                let y = cy + cube.radius * p.sin(cube.angle);
-                let z = cube.zOffset;
+            <g transform="translate(370 112) rotate(-4)">
+                <polygon points="210,70 505,25 685,215 585,610 105,520"
+                    fill="url(#twg-poly-fill)" stroke="${palette.ink}" stroke-width="5" stroke-linejoin="round" opacity="0.62" />
+                <polygon points="210,70 310,285 105,520"
+                    fill="${palette.pale}" opacity="0.32" stroke="${palette.ink}" stroke-width="4" stroke-linejoin="round" />
+                <polygon points="210,70 310,285 505,25"
+                    fill="${palette.washA}" opacity="0.18" stroke="${palette.ink}" stroke-width="4" stroke-linejoin="round" />
+                <polygon points="505,25 685,215 520,305"
+                    fill="${palette.washB}" opacity="0.22" stroke="${palette.ink}" stroke-width="4" stroke-linejoin="round" />
+                <polygon points="520,305 685,215 585,610"
+                    fill="${palette.pale}" opacity="0.2" stroke="${palette.ink}" stroke-width="4" stroke-linejoin="round" />
+                <polygon points="310,285 520,305 585,610 105,520"
+                    fill="${palette.washA}" opacity="0.14" stroke="${palette.ink}" stroke-width="4" stroke-linejoin="round" />
 
-                // Aplicar glitch individual (probabilidad por cubo)
-                if (p.random() < 0.01 * glitchIntensity) {
-                    // Cambio abrupto de color
-                    cube.color = p.color(p.random(COLORS));
-                }
-                if (p.random() < 0.02 * glitchIntensity) {
-                    // Desplazamiento repentino
-                    cube.glitchOffset.set(p.random(-50, 50), p.random(-50, 50), p.random(-50, 50));
-                    cube.glitchTimer = 5; // durará 5 frames
-                }
-                if (cube.glitchTimer > 0) {
-                    cube.glitchTimer--;
-                } else {
-                    cube.glitchOffset.set(0, 0, 0);
-                }
+                <path d="M210 70 L310 285 L105 520 M310 285 L520 305 M505 25 L520 305 L585 610 M505 25 L685 215"
+                    fill="none" stroke="${palette.ink}" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" />
+                <path d="M370 45 L380 560 M370 45 L520 305 M380 560 L520 305"
+                    fill="none" stroke="${palette.ink}" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="12 14" opacity="0.9" />
 
-                // Aplicar glitch global (desplazamiento)
-                let finalX = x + cube.glitchOffset.x;
-                let finalY = y + cube.glitchOffset.y;
-                let finalZ = z + cube.glitchOffset.z;
+                <circle cx="370" cy="45" r="8" fill="${palette.ink}" />
+                <circle cx="380" cy="560" r="8" fill="${palette.ink}" />
+                <circle cx="520" cy="305" r="8" fill="${palette.ink}" />
+            </g>
 
-                p.push();
-                p.translate(finalX, finalY, finalZ);
+            <g transform="translate(76 565) scale(0.52) rotate(8)" opacity="0.24">
+                <polygon points="210,70 505,25 685,215 585,610 105,520"
+                    fill="${palette.washA}" stroke="${palette.inkSoft}" stroke-width="5" stroke-linejoin="round" />
+                <path d="M210 70 L310 285 L105 520 M310 285 L520 305 M505 25 L520 305 L585 610 M505 25 L685 215 M370 45 L380 560 M370 45 L520 305 M380 560 L520 305"
+                    fill="none" stroke="${palette.inkSoft}" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" />
+            </g>
 
-                // Dibujar
-                p.fill(cube.color);
-                p.stroke(255, 255, 255, 120);
-                p.strokeWeight(1);
-                p.box(cube.size);
-
-                p.pop();
-            }
-
-            // Efecto de scanlines (líneas horizontales de ruido)
-            if (scanlines || p.random() < 0.1 * glitchIntensity) {
-                p.push();
-                p.resetMatrix(); // trabajar en 2D sobre el canvas
-                p.stroke(...scanlineColor);
-                p.strokeWeight(1);
-                for (let i = 0; i < p.height; i += 8) {
-                    if (p.random() < 0.3) {
-                        p.line(0, i, p.width, i);
-                    }
-                }
-                p.pop();
-            }
-
-            // Efecto de inversión de color momentánea (simulada con un rectángulo semitransparente)
-            if (p.random() < 0.05 * glitchIntensity) {
-                p.push();
-                p.resetMatrix();
-                p.fill(...flashColor);
-                p.rect(0, 0, p.width, p.height);
-                p.pop();
-            }
-        };
-
-        p.windowResized = () => {
-            p.resizeCanvas(p.windowWidth, p.windowHeight);
-        };
-    };
-
-    new p5(sketch);
+            <g transform="translate(1060 440) scale(0.42) rotate(-18)" opacity="0.2">
+                <polygon points="210,70 505,25 685,215 585,610 105,520"
+                    fill="${palette.accent}" stroke="${palette.ink}" stroke-width="5" stroke-linejoin="round" />
+                <path d="M210 70 L310 285 L105 520 M310 285 L520 305 M505 25 L520 305 L585 610 M505 25 L685 215 M370 45 L380 560 M370 45 L520 305 M380 560 L520 305"
+                    fill="none" stroke="${palette.ink}" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="13 12" />
+            </g>
+        </svg>
+    `;
 })();

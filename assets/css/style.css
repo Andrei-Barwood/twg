@@ -64,6 +64,11 @@
     --border-muted: var(--palette-purple-300);
     --shadow: var(--palette-purple-700);
     --shadow-deep: var(--palette-purple-950);
+    --lollipop-heart-a: var(--palette-green-300);
+    --lollipop-heart-b: var(--palette-purple-200);
+    --lollipop-heart-c: var(--palette-green-500);
+    --lollipop-heart-d: var(--palette-purple-700);
+    --lollipop-heart-outline: var(--palette-purple-950);
 }
 
 /* Reset básico */
@@ -83,7 +88,7 @@ body {
     overflow-x: hidden;
 }
 
-/* El canvas de p5.js se posiciona detrás de todo */
+/* Fondo SVG estatico */
 #p5-background {
     position: fixed;
     top: 0;
@@ -91,13 +96,14 @@ body {
     width: 100%;
     height: 100%;
     z-index: -1;
+    overflow: hidden;
     pointer-events: none; /* para que no interfiera con clics */
 }
 
-body.mobile-static-background #p5-background {
-    background:
-        linear-gradient(150deg, rgba(255, 255, 255, 0.96), rgba(228, 228, 228, 0.88) 42%, rgba(170, 134, 197, 0.34)),
-        linear-gradient(30deg, rgba(132, 221, 146, 0.16), rgba(101, 192, 146, 0.18));
+#p5-background .static-polygon-svg {
+    display: block;
+    width: 100%;
+    height: 100%;
 }
 
 /* Contenedor principal para el contenido */
@@ -109,6 +115,13 @@ body.mobile-static-background #p5-background {
     border: 2px solid var(--border-strong);
     box-shadow: 0 0 20px rgba(120, 68, 151, 0.22);
     backdrop-filter: blur(2px); /* pequeño difuminado para dar sensación de glitch */
+}
+
+@supports (-moz-appearance: none) {
+    .main-container,
+    .post-completo.theme-tim-breakcore .contenido-post .tim87-post header {
+        backdrop-filter: none !important;
+    }
 }
 
 body.index-page .main-container {
@@ -126,6 +139,58 @@ h1, h2, h3 {
 h1 { font-size: 2.5rem; }
 h2 { font-size: 2rem; }
 h3 { font-size: 1.5rem; }
+
+.main-container > header h1 a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+}
+
+.main-container > header h1 a::after {
+    content: "";
+    flex: 0 0 auto;
+    width: 5px;
+    height: 5px;
+    margin-left: 0.1rem;
+    color: var(--lollipop-heart-a);
+    background: currentColor;
+    box-shadow:
+        5px 0 0 currentColor,
+        15px 0 0 currentColor,
+        20px 0 0 currentColor,
+        -5px 5px 0 currentColor,
+        0 5px 0 currentColor,
+        5px 5px 0 currentColor,
+        10px 5px 0 currentColor,
+        15px 5px 0 currentColor,
+        20px 5px 0 currentColor,
+        25px 5px 0 currentColor,
+        0 10px 0 currentColor,
+        5px 10px 0 currentColor,
+        10px 10px 0 currentColor,
+        15px 10px 0 currentColor,
+        20px 10px 0 currentColor,
+        5px 15px 0 currentColor,
+        10px 15px 0 currentColor,
+        15px 15px 0 currentColor,
+        10px 20px 0 currentColor;
+    image-rendering: pixelated;
+    transform: translateY(-7px);
+    animation: lollipop-heart-color 6s steps(1, end) infinite;
+}
+
+@keyframes lollipop-heart-color {
+    0%, 100% { color: var(--lollipop-heart-a); }
+    25% { color: var(--lollipop-heart-b); }
+    50% { color: var(--lollipop-heart-c); }
+    75% { color: var(--lollipop-heart-d); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .main-container > header h1 a::after {
+        animation: none;
+    }
+}
 
 p {
     margin-bottom: 1rem;
@@ -941,7 +1006,7 @@ body.index-page .archive-link:hover {
         animation: none; /* o una versión más simple */
     }
 
-    /* La animación de p5.js se simplificará desde el sketch */
+    /* El fondo SVG ya no usa animacion */
     .glitch-text {
         animation: none;
     }

@@ -7,6 +7,20 @@
     const postsData = [
         ...(window.extraPosts || []),
         {
+            slug: "ojo-por-ojo",
+            title: "Ojo por Ojo",
+            date: "2026-05-14",
+            excerpt: "Liberar a Lucy de una manera muy sanguijuela para que mueran a tiros en la cara todos, literalmente todos, todos, todos los rumores.",
+            content: `
+                <p>Este es un texto base para una nueva entrada del blog. Puedes usar este primer parrafo para presentar la idea principal, contar el contexto o dejar una nota breve sobre lo que quieres desarrollar mas adelante.</p>
+
+                <p>En esta seccion puedes ampliar el tema con detalles, ejemplos, referencias o cualquier informacion que quieras guardar. La idea es que el post ya exista en el blog y puedas reemplazar este contenido cuando tengas el texto final.</p>
+
+                <h4>Notas para completar</h4>
+                <p>Agrega aqui los puntos importantes, enlaces, imagenes, musica o comentarios que quieras incluir en la version definitiva.</p>
+            `
+        },
+        {
             slug: "frayed-ends-almas-gemelas",
             title: "Frayed Ends / Almas Gemelas",
             date: "2026-04-09",
