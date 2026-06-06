@@ -188,6 +188,28 @@ body.error-page, body.shows-page {
     --shadow-deep: var(--c3);
 }
 
+/* 6. Discografía - Paleta oficial */
+body.discography-page {
+    --bg-base: #122147;
+    --bg-panel: #383F5D;
+    --bg-panel-soft: #5C3F70;
+    --bg-wash: #122147;
+    --text-main: #FFFFFF;
+    --text-soft: #B76A8E;
+    --text-strong: #FFFFFF;
+    --heading: #EA428B;
+    --link: #EA428B;
+    --link-strong: #B76A8E;
+    --accent: #EA428B;
+    --accent-soft: #B76A8E;
+    --accent-warm: #5C3F70;
+    --border: #5C3F70;
+    --border-strong: #EA428B;
+    --border-muted: #383F5D;
+    --shadow: #122147;
+    --shadow-deep: #0a1329;
+}
+
 /* Reset básico */
 * {
     margin: 0;
@@ -1160,4 +1182,129 @@ body.index-page .archive-link:hover {
     display: inline-block;
     margin-bottom: 2rem;
     color: var(--accent);
+}
+
+/* --- DISCOGRAPHY HEXAGON GRID --- */
+.hex-container {
+    padding: 2rem 0;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.hex-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+    padding-bottom: 4rem;
+}
+
+.hex-card {
+    position: relative;
+    width: 250px;
+    height: 288.67px; /* width * 1.1547 */
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+    background: var(--border-strong);
+    padding: 4px; /* for border effect */
+    transition: transform 0.3s ease;
+}
+
+.hex-card:hover {
+    transform: scale(1.05);
+    z-index: 10;
+}
+
+.hex-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+    background-color: var(--bg-panel);
+    overflow: hidden;
+}
+
+.hex-front, .hex-back {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transition: opacity 0.4s ease;
+}
+
+.hex-front {
+    background-size: cover;
+    background-position: center;
+    opacity: 1;
+}
+
+.hex-front-overlay {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(0deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0) 50%);
+}
+
+.hex-back {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    text-align: center;
+    background: rgba(10, 5, 8, 0.95);
+    opacity: 0;
+    z-index: 2;
+}
+
+.hex-card:hover .hex-front {
+    opacity: 0.3;
+    filter: blur(4px);
+}
+
+.hex-card:hover .hex-back {
+    opacity: 1;
+}
+
+.hex-back h3 {
+    font-size: 0.9rem;
+    color: var(--heading);
+    margin-bottom: 0.5rem;
+}
+
+.hex-artist {
+    font-size: 0.7rem;
+    color: var(--text-soft);
+    margin-bottom: 0.5rem;
+}
+
+.hex-tracks {
+    font-size: 0.6rem;
+    color: var(--link);
+    margin-bottom: 1rem;
+    border: 1px solid var(--link);
+    padding: 2px 6px;
+}
+
+.hex-desc {
+    font-size: 0.55rem;
+    line-height: 1.4;
+    color: var(--text-main);
+    margin-bottom: 1.5rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.hex-links {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.hex-links .boton {
+    font-size: 0.5rem !important;
+    min-height: auto;
+    padding: 0.4rem 0.6rem;
 }

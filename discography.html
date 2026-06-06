@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Discografía - The Wooden Groom</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <!-- Alpine.js -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+</head>
+<body class="discography-page">
+    <!-- Fondo estatico SVG -->
+    <div id="p5-background"></div>
+
+    <main class="main-container">
+        <header>
+            <h1><a href="index.html">back home</a></h1>
+            <nav>
+                <ul>
+                    <li><a href="music.html">MÚSICA</a></li>
+                    <li><a href="discography.html">DISCOGRAFÍA</a></li>
+                    <li><a href="shows.html">SHOWS</a></li>
+                    <li><a href="blog.html">BLOG</a></li>
+                    <li><a href="scale-generator.html">ESCALAS</a></li>
+                    <li><a href="kinzer-rhymes.html">KINZER</a></li>
+                    <li><a href="about.html">BIO</a></li>
+                    <li><a href="contact.html">CONTACTO</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <h2>DISCOGRAFÍA OFICIAL</h2>
+        <p class="hero-story" style="margin-bottom: 2rem;">El archivo maestro. Desliza sobre las figuras para explorar el lore y descargar las obras completas.</p>
+
+        <!-- Contenedor Headless de Alpine -->
+        <section x-data="discographyApp" class="hex-container" x-cloak>
+            <div class="hex-grid">
+                <template x-for="album in albums" :key="album.slug">
+                    <article class="hex-card">
+                        <div class="hex-inner">
+                            <!-- Frente: Portada -->
+                            <div class="hex-front" :style="`background-image: url('${album.coverImg}');`">
+                                <div class="hex-front-overlay"></div>
+                            </div>
+                            <!-- Dorso: Detalles -->
+                            <div class="hex-back">
+                                <h3 x-text="album.title"></h3>
+                                <p class="hex-artist" x-text="album.artist"></p>
+                                <p class="hex-tracks"><span x-text="album.trackCount"></span> Tracks</p>
+                                <p class="hex-desc" x-text="album.description"></p>
+                                <div class="hex-links">
+                                    <template x-if="album.loreLink">
+                                        <a :href="album.loreLink" class="boton pequeño">Lore</a>
+                                    </template>
+                                    <template x-if="album.archiveLink">
+                                        <a :href="album.archiveLink" target="_blank" rel="noopener noreferrer" class="boton pequeño">Descargar</a>
+                                    </template>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                </template>
+                
+                <!-- Placeholder si no hay albums -->
+                <p x-show="albums.length === 0" style="color: var(--text-soft); grid-column: 1 / -1; text-align: center;">
+                    El archivo está vacío actualmente.
+                </p>
+            </div>
+        </section>
+
+        <footer style="margin-top: 4rem;">
+            <p>
+                <a href="https://megadoll.bandcamp.com/" target="_blank" rel="noopener noreferrer">Bandcamp</a> |
+                <a href="https://www.instagram.com/thewoodengroom/" target="_blank" rel="noopener noreferrer">Instagram</a> |
+                <a href="https://www.youtube.com/@TheWoodenGroom" target="_blank" rel="noopener noreferrer">YouTube</a>
+            </p>
+        </footer>
+    </main>
+
+    <!-- Scripts -->
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/p5-background.js"></script>
+    <script src="assets/js/discography.js"></script>
+</body>
+</html>

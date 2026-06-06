@@ -1,1 +1,4 @@
 .DS_Store
+blog_editor_app.py 
+discography_editor_app.py 
+requirements.txt

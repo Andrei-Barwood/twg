@@ -1,4 +1,0 @@
-openai-whisper
-pysubs2
-rich
-numpy
