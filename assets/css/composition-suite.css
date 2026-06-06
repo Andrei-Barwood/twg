@@ -24,7 +24,7 @@ body.composition-page {
     background:
         radial-gradient(circle at top left, rgba(155, 219, 245, 0.58), transparent 30%),
         radial-gradient(circle at top right, rgba(252, 182, 223, 0.42), transparent 28%),
-        radial-gradient(circle at bottom right, rgba(93, 187, 78, 0.2), transparent 24%),
+        radial-gradient(circle at bottom right, rgba(227, 100, 74, 0.2), transparent 24%),
         linear-gradient(180deg, rgba(250, 245, 171, 0.86), rgba(255, 255, 255, 0.92) 42%, rgba(140, 199, 231, 0.56));
     color: var(--suite-ink);
 }
@@ -35,7 +35,7 @@ body.composition-page #p5-background::after {
     inset: 0;
     background:
         radial-gradient(circle at 12% 15%, rgba(27, 152, 209, 0.18), transparent 34%),
-        radial-gradient(circle at 82% 14%, rgba(217, 83, 157, 0.18), transparent 30%),
+        radial-gradient(circle at 82% 14%, rgba(225, 135, 183, 0.18), transparent 30%),
         radial-gradient(circle at 50% 100%, rgba(253, 232, 95, 0.22), transparent 30%);
     pointer-events: none;
 }
@@ -45,7 +45,7 @@ body.composition-page .main-container {
         linear-gradient(180deg, rgba(255, 255, 255, 0.94), rgba(250, 245, 171, 0.72)),
         radial-gradient(circle at top left, rgba(155, 219, 245, 0.28), transparent 40%);
     border-color: var(--suite-purple);
-    box-shadow: 0 0 30px rgba(27, 152, 209, 0.15), 10px 10px 0 rgba(188, 29, 117, 0.16);
+    box-shadow: 0 0 30px rgba(27, 152, 209, 0.15), 10px 10px 0 rgba(178, 49, 118, 0.16);
 }
 
 body.composition-page header {
@@ -64,7 +64,7 @@ body.composition-page nav ul {
 
 body.composition-page a {
     color: var(--suite-magenta);
-    border-bottom-color: rgba(188, 29, 117, 0.4);
+    border-bottom-color: rgba(178, 49, 118, 0.4);
 }
 
 body.composition-page a:hover,
@@ -101,7 +101,7 @@ body.composition-page h3 {
         radial-gradient(circle at bottom left, rgba(252, 182, 223, 0.24), transparent 42%),
         linear-gradient(135deg, rgba(255, 255, 255, 0.92), rgba(250, 245, 171, 0.88));
     border: 2px solid rgba(99, 46, 134, 0.34);
-    box-shadow: 8px 8px 0 rgba(188, 29, 117, 0.16);
+    box-shadow: 8px 8px 0 rgba(178, 49, 118, 0.16);
 }
 
 .composition-hero-copy,
@@ -144,7 +144,7 @@ body.composition-page h3 {
 .composition-note {
     margin-top: 0.95rem;
     padding: 0.95rem 1rem;
-    background: rgba(255, 255, 255, 0.68);
+    background: var(--bg-panel);
     border-left: 6px solid var(--suite-red);
 }
 
@@ -168,7 +168,7 @@ body.composition-page h3 {
 
 .composition-hero-meta span {
     padding: 0.75rem 0.8rem;
-    background: rgba(255, 255, 255, 0.72);
+    background: var(--bg-panel);
     border: 1px solid rgba(99, 46, 134, 0.18);
     color: var(--suite-ink-soft);
     font-size: 0.66rem;
@@ -230,7 +230,7 @@ body.composition-page h3 {
 .generator-radio-group {
     padding: 0.85rem;
     border: 2px solid rgba(27, 152, 209, 0.22);
-    background: rgba(255, 255, 255, 0.68);
+    background: var(--bg-panel);
 }
 
 .generator-radio-group label {
@@ -250,7 +250,7 @@ body.composition-page h3 {
     width: 100%;
     padding: 0.9rem 1rem;
     border: 2px solid rgba(27, 152, 209, 0.32);
-    background: rgba(255, 255, 255, 0.86);
+    background: var(--bg-panel);
     color: var(--suite-ink);
     font-family: inherit;
     font-size: 0.7rem;
@@ -272,7 +272,7 @@ body.composition-page h3 {
     display: grid;
     gap: 0.85rem;
     padding: 1rem;
-    background: rgba(255, 255, 255, 0.76);
+    background: var(--bg-panel);
     border: 2px solid rgba(236, 65, 65, 0.48);
     color: var(--suite-wine);
 }
@@ -285,7 +285,7 @@ body.composition-page h3 {
 
 .generator-placeholder {
     padding: 1.2rem;
-    background: rgba(255, 255, 255, 0.7);
+    background: var(--bg-panel);
     border: 2px dashed rgba(27, 152, 209, 0.34);
     color: var(--suite-ink-soft);
     font-size: 0.68rem;
@@ -332,7 +332,7 @@ body.composition-page h3 {
     align-items: center;
     min-height: 42px;
     padding: 0.55rem 0.8rem;
-    background: rgba(255, 255, 255, 0.84);
+    background: var(--bg-panel);
     border: 2px solid rgba(99, 46, 134, 0.24);
     color: var(--suite-wine);
     font-size: 0.6rem;
@@ -512,7 +512,7 @@ body.composition-page h3 {
     display: grid;
     gap: 0.45rem;
     padding: 0.8rem;
-    background: rgba(255, 255, 255, 0.78);
+    background: var(--bg-panel);
     border: 1px solid rgba(99, 46, 134, 0.16);
 }
 

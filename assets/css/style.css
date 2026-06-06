@@ -4,71 +4,188 @@
 @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 
 :root {
-    --palette-purple-950: #3C1B53;
-    --palette-purple-900: #452261;
-    --palette-purple-800: #653A81;
-    --palette-purple-700: #784497;
-    --palette-purple-300: #9877B1;
-    --palette-purple-200: #AA86C5;
-    --palette-white: #FFFFFF;
-    --palette-ice: #E4E4E4;
-    --palette-green-900: #275D48;
-    --palette-green-800: #3B7351;
-    --palette-green-600: #5AA574;
-    --palette-green-500: #65C092;
-    --palette-green-400: #70BD7B;
-    --palette-green-300: #84DD92;
-    --palette-black: #000000;
+    /* Nueva Paleta de 16 Colores */
+    --c1: #B23176;
+    --c2: #FF96CD;
+    --c3: #9F2B66;
+    --c4: #E187B7;
+    --c5: #E3644A;
+    --c6: #FF8B5E;
+    --c7: #FFD371;
+    --c8: #FFF8AC;
+    --c9: #B13B32;
+    --c10: #D35300;
+    --c11: #F4CE45;
+    --c12: #FFE03F;
+    --c13: #FFFF8D;
+    --c14: #F27A04;
+    --c15: #FADE64;
+    --c16: #FFF9DD;
 
-    --season-olive: var(--palette-purple-200);
-    --season-lime: var(--palette-ice);
-    --season-leaf: var(--palette-green-300);
-    --season-soft-leaf: var(--palette-green-500);
-    --season-aqua: var(--palette-green-400);
-    --season-white: var(--palette-white);
-    --season-wheat: var(--palette-purple-300);
-    --season-cream: var(--palette-ice);
-    --season-barn: var(--palette-purple-900);
-    --season-coral: var(--palette-green-800);
-    --season-rose: var(--palette-green-400);
-    --season-orange: var(--palette-purple-800);
-    --season-honey: var(--palette-purple-200);
-    --season-glow: var(--palette-green-300);
-    --season-sage-deep: var(--palette-purple-800);
-    --season-sage: var(--palette-purple-300);
-    --season-sage-soft: var(--palette-purple-200);
-    --season-umber: var(--palette-purple-950);
-    --season-clay: var(--palette-purple-700);
-    --season-amber: var(--palette-green-500);
-    --season-peach: var(--palette-purple-200);
-    --season-tangerine: var(--palette-green-400);
-    --season-apricot: var(--palette-ice);
-    --season-red: var(--palette-green-800);
-    --season-olive-deep: var(--palette-purple-900);
+    /* Season Variables Re-mapped (Default) */
+    --season-olive: var(--c4);
+    --season-lime: var(--c8);
+    --season-leaf: var(--c11);
+    --season-soft-leaf: var(--c7);
+    --season-aqua: var(--c2);
+    --season-white: var(--c16);
+    --season-wheat: var(--c15);
+    --season-cream: var(--c13);
+    --season-barn: var(--c9);
+    --season-coral: var(--c5);
+    --season-rose: var(--c1);
+    --season-orange: var(--c14);
+    --season-honey: var(--c12);
+    --season-glow: var(--c11);
+    --season-sage-deep: var(--c3);
+    --season-sage: var(--c4);
+    --season-sage-soft: var(--c2);
+    --season-umber: var(--c3);
+    --season-clay: var(--c10);
+    --season-amber: var(--c14);
+    --season-peach: var(--c6);
+    --season-tangerine: var(--c5);
+    --season-apricot: var(--c8);
+    --season-red: var(--c9);
+    --season-olive-deep: var(--c10);
 
-    --bg-base: var(--palette-ice);
-    --bg-panel: rgba(255, 255, 255, 0.88);
-    --bg-panel-soft: rgba(170, 134, 197, 0.3);
-    --bg-wash: rgba(132, 221, 146, 0.16);
-    --text-main: var(--palette-purple-950);
-    --text-soft: var(--palette-purple-800);
-    --text-strong: var(--palette-purple-900);
-    --heading: var(--palette-purple-900);
-    --link: var(--palette-green-800);
-    --link-strong: var(--palette-green-900);
-    --accent: var(--palette-green-800);
-    --accent-soft: var(--palette-green-300);
-    --accent-warm: var(--palette-green-500);
-    --border: var(--palette-purple-200);
-    --border-strong: var(--palette-purple-900);
-    --border-muted: var(--palette-purple-300);
-    --shadow: var(--palette-purple-700);
-    --shadow-deep: var(--palette-purple-950);
-    --lollipop-heart-a: var(--palette-green-300);
-    --lollipop-heart-b: var(--palette-purple-200);
-    --lollipop-heart-c: var(--palette-green-500);
-    --lollipop-heart-d: var(--palette-purple-700);
-    --lollipop-heart-outline: var(--palette-purple-950);
+    /* Structural Variables (Default / Fallback) */
+    --bg-base: var(--c16);
+    --bg-panel: var(--c8);
+    --bg-panel-soft: var(--c15);
+    --bg-wash: var(--c13);
+    --text-main: var(--c3);
+    --text-soft: var(--c1);
+    --text-strong: var(--c9);
+    --heading: var(--c9);
+    --link: var(--c10);
+    --link-strong: var(--c5);
+    --accent: var(--c5);
+    --accent-soft: var(--c11);
+    --accent-warm: var(--c14);
+    --border: var(--c2);
+    --border-strong: var(--c1);
+    --border-muted: var(--c4);
+    --shadow: var(--c3);
+    --shadow-deep: var(--c9);
+    
+    --lollipop-heart-a: var(--c12);
+    --lollipop-heart-b: var(--c5);
+    --lollipop-heart-c: var(--c1);
+    --lollipop-heart-d: var(--c3);
+    --lollipop-heart-outline: var(--c9);
+}
+
+/* --- OVERRIDES CREATIVOS POR PÁGINA --- */
+
+/* 1. Inicio (index) - Amarillos cálidos con acentos magenta */
+body.index-page {
+    --bg-base: var(--c11); /* Yellow */
+    --bg-panel: var(--c16); /* Very pale yellow */
+    --bg-panel-soft: var(--c15);
+    --bg-wash: var(--c13);
+    --text-main: var(--c3); /* Dark pink */
+    --text-soft: var(--c1);
+    --text-strong: var(--c9); /* Dark red */
+    --heading: var(--c3);
+    --link: var(--c1);
+    --link-strong: var(--c9);
+    --accent: var(--c10); /* Dark orange */
+    --accent-soft: var(--c7);
+    --accent-warm: var(--c14);
+    --border: var(--c14);
+    --border-strong: var(--c10);
+    --border-muted: var(--c5);
+    --shadow: var(--c9);
+    --shadow-deep: var(--c3);
+}
+
+/* 2. Música y Herramientas - Tonos rojizos oscuros con textos amarillos */
+body.music-page, body.kinzer-rhymes-page {
+    --bg-base: var(--c9); /* Dark red */
+    --bg-panel: var(--c10); /* Dark orange */
+    --bg-panel-soft: var(--c5); /* Orange red */
+    --bg-wash: var(--c1); /* Pinkish red */
+    --text-main: var(--c16); /* Very pale yellow */
+    --text-soft: var(--c15); /* Soft yellow */
+    --text-strong: var(--c13);
+    --heading: var(--c12); /* Bright yellow */
+    --link: var(--c11);
+    --link-strong: var(--c7);
+    --accent: var(--c12);
+    --accent-soft: var(--c11);
+    --accent-warm: var(--c7);
+    --border: var(--c5);
+    --border-strong: var(--c1);
+    --border-muted: var(--c3);
+    --shadow: var(--c3);
+    --shadow-deep: var(--c9);
+}
+
+/* 3. Blog y Composición - Rosas brillantes con acentos amarillos */
+body.blog-page, body.composition-page {
+    --bg-base: var(--c2); /* Light pink */
+    --bg-panel: var(--c4); /* Muted pink */
+    --bg-panel-soft: var(--c1);
+    --bg-wash: var(--c3);
+    --text-main: var(--c16); /* Very pale yellow */
+    --text-soft: var(--c8);
+    --text-strong: var(--c13);
+    --heading: var(--c11); /* Yellow */
+    --link: var(--c12);
+    --link-strong: var(--c11);
+    --accent: var(--c12);
+    --accent-soft: var(--c7);
+    --accent-warm: var(--c14);
+    --border: var(--c1);
+    --border-strong: var(--c3);
+    --border-muted: var(--c9);
+    --shadow: var(--c3);
+    --shadow-deep: var(--c9);
+}
+
+/* 4. Contacto / About - Fondos suaves con estallidos intensos */
+body.contact-page, body.about-page {
+    --bg-base: var(--c16); /* Very light yellow */
+    --bg-panel: var(--c8); /* Light yellow */
+    --bg-panel-soft: var(--c15);
+    --bg-wash: var(--c13);
+    --text-main: var(--c9); /* Dark red */
+    --text-soft: var(--c10);
+    --text-strong: var(--c3); /* Dark pink */
+    --heading: var(--c9);
+    --link: var(--c1); /* Pinkish red */
+    --link-strong: var(--c3);
+    --accent: var(--c1);
+    --accent-soft: var(--c2);
+    --accent-warm: var(--c4);
+    --border: var(--c14);
+    --border-strong: var(--c10);
+    --border-muted: var(--c6);
+    --shadow: var(--c5);
+    --shadow-deep: var(--c9);
+}
+
+/* 5. 404 / Shows / Otros - Naranjas vibrantes y rosas oscuros */
+body.error-page, body.shows-page {
+    --bg-base: var(--c14); /* Orange */
+    --bg-panel: var(--c5); /* Orange red */
+    --bg-panel-soft: var(--c6);
+    --bg-wash: var(--c10);
+    --text-main: var(--c16); /* Very light yellow */
+    --text-soft: var(--c15);
+    --text-strong: var(--c12);
+    --heading: var(--c12); /* Bright yellow */
+    --link: var(--c13);
+    --link-strong: var(--c11);
+    --accent: var(--c3); /* Dark pink */
+    --accent-soft: var(--c1);
+    --accent-warm: var(--c4);
+    --border: var(--c10);
+    --border-strong: var(--c9);
+    --border-muted: var(--c5);
+    --shadow: var(--c9);
+    --shadow-deep: var(--c3);
 }
 
 /* Reset básico */
@@ -113,7 +230,7 @@ body {
     padding: 2rem;
     background-color: var(--bg-panel);
     border: 2px solid var(--border-strong);
-    box-shadow: 0 0 20px rgba(120, 68, 151, 0.22);
+    box-shadow: 0 0 20px rgba(178, 49, 118, 0.22);
     backdrop-filter: blur(2px); /* pequeño difuminado para dar sensación de glitch */
 }
 
@@ -132,7 +249,7 @@ body.index-page .main-container {
 h1, h2, h3 {
     color: var(--heading);
     margin-bottom: 1rem;
-    text-shadow: 2px 2px 0 rgba(69, 34, 97, 0.16);
+    text-shadow: 2px 2px 0 rgba(159, 43, 102, 0.16);
     letter-spacing: -0.05em;
 }
 
@@ -220,7 +337,7 @@ body:not(.index-page) button:hover {
     color: var(--season-white) !important;
     background-color: var(--link) !important;
     border: 2px solid var(--border-strong) !important;
-    box-shadow: 0 0 15px rgba(59, 115, 81, 0.18);
+    box-shadow: 0 0 15px rgba(177, 59, 50, 0.18);
     text-decoration: line-through; /* toque glitch */
 }
 
@@ -254,7 +371,7 @@ button, .button {
     justify-content: center;
     min-height: 52px;
     padding: 0.9rem 1.4rem;
-    background: linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(170, 134, 197, 0.9));
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(225, 135, 183, 0.9));
     color: var(--heading);
     border: 2px solid var(--accent);
     border-bottom: 2px solid var(--accent);
@@ -297,11 +414,11 @@ nav a:hover {
     justify-content: center;
     gap: 1.25rem;
     background:
-        radial-gradient(circle at top right, rgba(170, 134, 197, 0.26), transparent 34%),
-        radial-gradient(circle at bottom left, rgba(101, 192, 146, 0.3), transparent 40%),
+        radial-gradient(circle at top right, rgba(225, 135, 183, 0.26), transparent 34%),
+        radial-gradient(circle at bottom left, rgba(178, 49, 118, 0.3), transparent 40%),
         linear-gradient(135deg, rgba(228, 228, 228, 0.98), rgba(255, 255, 255, 0.9));
     border: 2px solid var(--border);
-    box-shadow: 0 0 30px rgba(120, 68, 151, 0.18), inset 0 0 0 1px rgba(255, 255, 255, 0.55);
+    box-shadow: 0 0 30px rgba(178, 49, 118, 0.18), inset 0 0 0 1px rgba(255, 255, 255, 0.55);
 }
 
 .hero::before,
@@ -313,7 +430,7 @@ nav a:hover {
 
 .hero::before {
     inset: 1rem;
-    border: 1px solid rgba(69, 34, 97, 0.14);
+    border: 1px solid rgba(159, 43, 102, 0.14);
 }
 
 .hero::after {
@@ -321,7 +438,7 @@ nav a:hover {
     height: 180px;
     right: -40px;
     top: -40px;
-    background: radial-gradient(circle, rgba(59, 115, 81, 0.18), transparent 70%);
+    background: radial-gradient(circle, rgba(177, 59, 50, 0.18), transparent 70%);
     filter: blur(6px);
 }
 
@@ -343,19 +460,19 @@ nav a:hover {
     margin-bottom: 0;
     font-size: clamp(2.5rem, 7vw, 5rem);
     line-height: 1.05;
-    text-shadow: 3px 3px 0 rgba(69, 34, 97, 0.2), 0 0 18px rgba(59, 115, 81, 0.14);
+    text-shadow: 3px 3px 0 rgba(159, 43, 102, 0.2), 0 0 18px rgba(177, 59, 50, 0.14);
 }
 
 .destacado {
     max-width: 62ch;
     margin-bottom: 0;
     padding: 1rem 1.2rem;
-    background: rgba(255, 255, 255, 0.7);
+    background: var(--bg-panel);
     border-left: 4px solid var(--accent);
     color: var(--text-main);
     font-size: 0.82rem;
     line-height: 1.9;
-    box-shadow: 0 0 0 1px rgba(69, 34, 97, 0.08);
+    box-shadow: 0 0 0 1px rgba(159, 43, 102, 0.08);
 }
 
 .hero-intro,
@@ -400,7 +517,7 @@ nav a:hover {
     align-items: center;
     min-height: 42px;
     padding: 0.55rem 0.85rem;
-    background: rgba(255, 255, 255, 0.7);
+    background: var(--bg-panel);
     border: 1px solid var(--border-muted);
     color: var(--heading);
     font-size: 0.68rem;
@@ -417,7 +534,7 @@ nav a:hover {
     align-items: center;
     min-height: 38px;
     padding: 0.5rem 0.8rem;
-    background: rgba(255, 255, 255, 0.58);
+    background: var(--bg-panel);
     border: 1px dashed var(--border-strong);
     color: var(--text-main);
     font-size: 0.64rem;
@@ -439,10 +556,10 @@ nav a:hover {
     margin: 0 0 3rem;
     padding: clamp(1.4rem, 3vw, 2rem);
     background:
-        linear-gradient(135deg, rgba(255, 255, 255, 0.94), rgba(170, 134, 197, 0.84)),
-        radial-gradient(circle at top left, rgba(101, 192, 146, 0.14), transparent 48%);
+        linear-gradient(135deg, rgba(255, 255, 255, 0.94), rgba(225, 135, 183, 0.84)),
+        radial-gradient(circle at top left, rgba(178, 49, 118, 0.14), transparent 48%);
     border: 2px solid var(--border-muted);
-    box-shadow: 0 0 24px rgba(120, 68, 151, 0.18);
+    box-shadow: 0 0 24px rgba(178, 49, 118, 0.18);
 }
 
 .archive-spotlight-copy p,
@@ -478,7 +595,7 @@ nav a:hover {
     display: grid;
     gap: 0.55rem;
     padding: 1.15rem 1.25rem;
-    background: rgba(255, 255, 255, 0.74);
+    background: var(--bg-panel);
     border: 2px solid var(--accent);
     border-bottom: 2px solid var(--accent);
     box-shadow: 5px 5px 0 var(--shadow);
@@ -504,7 +621,7 @@ body.index-page .archive-link:hover {
 
 /* Tarjetas para posts del blog (blog.html) */
 .blog-post {
-    background: rgba(101, 192, 146, 0.16);
+    background: var(--accent-warm);
     border-left: 4px solid var(--accent);
     padding: 1.5rem;
     margin-bottom: 2rem;
@@ -524,9 +641,9 @@ body.index-page .archive-link:hover {
 
 .post-completo {
     padding: clamp(1.2rem, 2.5vw, 2rem);
-    background: rgba(255, 255, 255, 0.78);
+    background: var(--bg-panel);
     border: 2px solid var(--border-muted);
-    box-shadow: -6px 6px 0 rgba(69, 34, 97, 0.16);
+    box-shadow: -6px 6px 0 rgba(159, 43, 102, 0.16);
 }
 
 .fecha {
@@ -542,7 +659,7 @@ body.index-page .archive-link:hover {
     display: block;
     margin: 1.5rem 0;
     border: 2px solid var(--border);
-    box-shadow: 4px 4px 0 rgba(69, 34, 97, 0.16);
+    box-shadow: 4px 4px 0 rgba(159, 43, 102, 0.16);
 }
 
 .contenido-post {
@@ -583,9 +700,9 @@ body.index-page .archive-link:hover {
 .contenido-post blockquote {
     margin: 0;
     padding: 1rem 1.2rem;
-    background: rgba(255, 255, 255, 0.72);
+    background: var(--bg-panel);
     border-left: 4px solid var(--accent);
-    box-shadow: 0 0 0 1px rgba(69, 34, 97, 0.08);
+    box-shadow: 0 0 0 1px rgba(159, 43, 102, 0.08);
 }
 
 .contenido-post iframe,
@@ -601,8 +718,8 @@ body.index-page .archive-link:hover {
 .contenido-post th,
 .contenido-post td {
     padding: 0.7rem;
-    border: 1px solid rgba(152, 119, 177, 0.52);
-    background: rgba(255, 255, 255, 0.6);
+    border: 1px solid rgba(225, 135, 183, 0.52);
+    background: var(--bg-panel);
     text-align: left;
 }
 
@@ -616,10 +733,10 @@ body.index-page .archive-link:hover {
     gap: 0.9rem;
     padding: clamp(1.2rem, 2.4vw, 1.8rem);
     background:
-        linear-gradient(135deg, rgba(255, 255, 255, 0.94), rgba(170, 134, 197, 0.78)),
-        radial-gradient(circle at top right, rgba(101, 192, 146, 0.16), transparent 40%);
+        linear-gradient(135deg, rgba(255, 255, 255, 0.94), rgba(225, 135, 183, 0.78)),
+        radial-gradient(circle at top right, rgba(178, 49, 118, 0.16), transparent 40%);
     border: 2px solid var(--border);
-    box-shadow: 6px 6px 0 rgba(69, 34, 97, 0.16);
+    box-shadow: 6px 6px 0 rgba(159, 43, 102, 0.16);
 }
 
 .sample-diary-kicker {
@@ -639,7 +756,7 @@ body.index-page .archive-link:hover {
 .sample-diary-meta span {
     min-height: 64px;
     padding: 0.85rem 0.95rem;
-    background: rgba(255, 255, 255, 0.72);
+    background: var(--bg-panel);
     border: 1px dashed var(--border-strong);
     color: var(--heading);
     font-size: 0.62rem;
@@ -658,9 +775,9 @@ body.index-page .archive-link:hover {
     gap: 0.55rem;
     align-content: start;
     padding: 1rem 1rem 1.1rem;
-    background: rgba(255, 255, 255, 0.72);
-    border: 2px solid rgba(152, 119, 177, 0.38);
-    box-shadow: -4px 4px 0 rgba(69, 34, 97, 0.14);
+    background: var(--bg-panel);
+    border: 2px solid rgba(225, 135, 183, 0.38);
+    box-shadow: -4px 4px 0 rgba(159, 43, 102, 0.14);
 }
 
 .sample-diary-entry h3 {
@@ -678,7 +795,7 @@ body.index-page .archive-link:hover {
     gap: 0.75rem;
     margin: 0;
     padding: 1rem;
-    background: rgba(101, 192, 146, 0.12);
+    background: var(--accent-warm);
     border: 2px dashed var(--border-strong);
 }
 
@@ -696,10 +813,10 @@ body.index-page .archive-link:hover {
             135deg,
             rgba(255, 255, 255, 0.9),
             rgba(255, 255, 255, 0.9) 18px,
-            rgba(170, 134, 197, 0.82) 18px,
-            rgba(170, 134, 197, 0.82) 36px
+            rgba(225, 135, 183, 0.82) 18px,
+            rgba(225, 135, 183, 0.82) 36px
         );
-    border: 2px solid rgba(152, 119, 177, 0.36);
+    border: 2px solid rgba(225, 135, 183, 0.36);
     color: var(--heading);
     font-size: 0.74rem;
     line-height: 1.9;
@@ -710,9 +827,9 @@ body.index-page .archive-link:hover {
     display: block;
     width: 100%;
     height: auto;
-    border: 2px solid rgba(152, 119, 177, 0.36);
-    background: rgba(255, 255, 255, 0.84);
-    box-shadow: 4px 4px 0 rgba(69, 34, 97, 0.14);
+    border: 2px solid rgba(225, 135, 183, 0.36);
+    background: var(--bg-panel);
+    box-shadow: 4px 4px 0 rgba(159, 43, 102, 0.14);
 }
 
 .sample-diary-placeholder figcaption {
@@ -722,7 +839,7 @@ body.index-page .archive-link:hover {
 
 .sample-diary-note {
     padding: 1rem 1.1rem;
-    background: rgba(255, 255, 255, 0.7);
+    background: var(--bg-panel);
     border-left: 4px solid var(--accent);
 }
 
@@ -732,10 +849,10 @@ body.index-page .archive-link:hover {
     padding: clamp(1.1rem, 2.3vw, 1.6rem);
     color: #E4E4E4;
     background:
-        radial-gradient(circle at top right, rgba(59, 115, 81, 0.22), transparent 34%),
-        linear-gradient(135deg, rgba(60, 27, 83, 0.98), rgba(69, 34, 97, 0.96) 54%, rgba(120, 68, 151, 0.94));
-    border: 1px solid rgba(170, 134, 197, 0.34);
-    box-shadow: 8px 8px 0 rgba(60, 27, 83, 0.18);
+        radial-gradient(circle at top right, rgba(177, 59, 50, 0.22), transparent 34%),
+        linear-gradient(135deg, rgba(159, 43, 102, 0.98), rgba(159, 43, 102, 0.96) 54%, rgba(178, 49, 118, 0.94));
+    border: 1px solid rgba(225, 135, 183, 0.34);
+    box-shadow: 8px 8px 0 rgba(159, 43, 102, 0.18);
 }
 
 .sample-pack-custom .sample-diary-kicker {
@@ -777,7 +894,7 @@ body.index-page .archive-link:hover {
     min-height: 40px;
     padding: 0.55rem 0.85rem;
     border: 1px dashed rgba(228, 228, 228, 0.32);
-    background: rgba(228, 228, 228, 0.08);
+    background: var(--bg-wash);
     color: #E4E4E4;
     font-size: 0.66rem;
     letter-spacing: 0.06em;
@@ -788,8 +905,8 @@ body.index-page .archive-link:hover {
     display: grid;
     gap: 0.75rem;
     padding: 1rem;
-    border: 1px solid rgba(170, 134, 197, 0.22);
-    background: rgba(60, 27, 83, 0.18);
+    border: 1px solid rgba(225, 135, 183, 0.22);
+    background: rgba(159, 43, 102, 0.18);
 }
 
 .sample-pack-custom-embed {
@@ -815,8 +932,8 @@ body.index-page .archive-link:hover {
 .sample-pack-custom-meta span {
     min-height: 58px;
     padding: 0.8rem 0.9rem;
-    border: 1px solid rgba(170, 134, 197, 0.26);
-    background: rgba(228, 228, 228, 0.08);
+    border: 1px solid rgba(225, 135, 183, 0.26);
+    background: var(--bg-wash);
     color: #E4E4E4;
     font-size: 0.64rem;
     line-height: 1.8;
@@ -834,18 +951,18 @@ body.index-page .archive-link:hover {
     gap: 0.7rem;
     align-content: start;
     padding: 1rem;
-    border: 1px solid rgba(170, 134, 197, 0.22);
-    background: rgba(60, 27, 83, 0.18);
+    border: 1px solid rgba(225, 135, 183, 0.22);
+    background: rgba(159, 43, 102, 0.18);
 }
 
 .sample-pack-custom blockquote {
-    background: rgba(228, 228, 228, 0.08);
+    background: var(--bg-wash);
     border-left-color: var(--accent);
 }
 
 .post-footer {
     padding-top: 0.5rem;
-    border-top: 2px solid rgba(152, 119, 177, 0.3);
+    border-top: 2px solid rgba(225, 135, 183, 0.3);
 }
 
 .post-tags {
@@ -867,7 +984,7 @@ body.index-page .archive-link:hover {
     min-height: 34px;
     padding: 0.4rem 0.7rem;
     border: 1px solid var(--border);
-    background: rgba(255, 255, 255, 0.8);
+    background: var(--bg-panel);
     color: var(--heading);
     font-size: 0.64rem;
     line-height: 1.6;
@@ -984,7 +1101,7 @@ body.index-page .archive-link:hover {
     }
 
     .sample-diary-photo {
-        box-shadow: 3px 3px 0 rgba(69, 34, 97, 0.14);
+        box-shadow: 3px 3px 0 rgba(159, 43, 102, 0.14);
     }
 
     .sample-pack-custom-actions {
@@ -1034,7 +1151,7 @@ body.index-page .archive-link:hover {
 
 /* Estilo para el post individual */
 .single-post {
-    background: rgba(255, 255, 255, 0.88);
+    background: var(--bg-panel);
     padding: 2rem;
     border: 2px solid var(--border);
 }

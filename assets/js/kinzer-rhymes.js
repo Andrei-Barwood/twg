@@ -36,6 +36,7 @@
         { id: 'terminal', label: 'último golpe' },
         { id: 'kaamo', label: 'deriva Kaamo' },
         { id: 'ghostwire', label: 'deriva Ghostwire' },
+        { id: 'bioshock1', label: 'bioschok episodio 1' },
     ];
     const WORD_BLOCKLIST = new Set([
         'ante', 'aqui', 'alla', 'aun', 'aunque', 'bien', 'casi', 'cual',
@@ -69,7 +70,13 @@
     }
 
     function stripAccents(text) {
-        return text.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+        return String(text)
+            .replace(/ñ/g, '\u0000')
+            .replace(/Ñ/g, '\u0001')
+            .normalize('NFD')
+            .replace(/[\u0300-\u036f]/g, '')
+            .replace(/\u0000/g, 'ñ')
+            .replace(/\u0001/g, 'Ñ');
     }
 
     function normalize(text) {
@@ -164,6 +171,18 @@
             || haystack.includes('mari') || haystack.includes('visitante') || haystack.includes('shibuya');
     }
 
+    function bioshockSignal(entry) {
+        if (typeof entry._bioshockSignal === 'boolean') return entry._bioshockSignal;
+        const haystack = entry._searchText || normalize([
+            entry.category,
+            entry.definition,
+            entry.example,
+            entry.tags.join(' ')
+        ].join(' '));
+        return haystack.includes('bioshock') || haystack.includes('survivor') || haystack.includes('escasez')
+            || haystack.includes('rapture') || haystack.includes('llave inglesa') || haystack.includes('splicer');
+    }
+
     function rhymeModeLabel(modeId) {
         return (RHYME_MODES.find((mode) => mode.id === modeId) || RHYME_MODES[0]).label;
     }
@@ -253,6 +272,15 @@
             }
             return clampScore(base + shadowBonus + neonBonus);
         }
+        if (modeId === 'bioshock1') {
+            const base = hybridRhymeScore(a, b, at, bt, aa, ba, overlap);
+            const survivorBonus = entry && bioshockSignal(entry) ? 22 : 0;
+            const rustBonus = aa && ba && aa.slice(-2) === ba.slice(-2) ? 10 : 0;
+            if (!base && survivorBonus && (overlap >= 2 || rustBonus)) {
+                return clampScore(50 + survivorBonus + rustBonus + Math.min(overlap, 8));
+            }
+            return clampScore(base + survivorBonus + rustBonus);
+        }
         return clampScore(hybridRhymeScore(a, b, at, bt, aa, ba, overlap));
     }
 
@@ -291,6 +319,12 @@
             || entry._searchText.includes('mari')
             || entry._searchText.includes('visitante')
             || entry._searchText.includes('shibuya');
+        entry._bioshockSignal = entry._searchText.includes('bioshock')
+            || entry._searchText.includes('survivor')
+            || entry._searchText.includes('escasez')
+            || entry._searchText.includes('rapture')
+            || entry._searchText.includes('llave inglesa')
+            || entry._searchText.includes('splicer');
         return entry;
     }
 
@@ -399,6 +433,7 @@
                 rhymeSource: false,
                 kaamo: kaamoSignal(entry),
                 ghostwire: ghostwireSignal(entry),
+                bioshock: bioshockSignal(entry),
             }, cacheKey);
         });
     }
@@ -479,7 +514,8 @@
             if (!current || score > current.score
                 || (score === current.score && next.rhymeSource && !current.rhymeSource)
                 || (state.rhymeMode === 'kaamo' && next.kaamo && !current.kaamo)
-                || (state.rhymeMode === 'ghostwire' && next.ghostwire && !current.ghostwire)) {
+                || (state.rhymeMode === 'ghostwire' && next.ghostwire && !current.ghostwire)
+                || (state.rhymeMode === 'bioshock1' && next.bioshock && !current.bioshock)) {
                 candidates.set(candidate.key, next);
             }
         });
@@ -487,6 +523,7 @@
             b.score - a.score
             || (state.rhymeMode === 'kaamo' ? Number(b.kaamo) - Number(a.kaamo) : 0)
             || (state.rhymeMode === 'ghostwire' ? Number(b.ghostwire) - Number(a.ghostwire) : 0)
+            || (state.rhymeMode === 'bioshock1' ? Number(b.bioshock) - Number(a.bioshock) : 0)
             || Number(b.rhymeSource) - Number(a.rhymeSource)
             || a.category.localeCompare(b.category, 'es')
             || a.text.localeCompare(b.text, 'es')
@@ -514,6 +551,7 @@
                     signal: rhymeSignal(last, state.rhymeMode),
                     kaamo: kaamoSignal(entry),
                     ghostwire: ghostwireSignal(entry),
+                    bioshock: bioshockSignal(entry),
                 };
             })
             .filter((item) => item.score > 0)
@@ -521,6 +559,7 @@
                 b.score - a.score
                 || (state.rhymeMode === 'kaamo' ? Number(b.kaamo) - Number(a.kaamo) : 0)
                 || (state.rhymeMode === 'ghostwire' ? Number(b.ghostwire) - Number(a.ghostwire) : 0)
+                || (state.rhymeMode === 'bioshock1' ? Number(b.bioshock) - Number(a.bioshock) : 0)
                 || a.text.localeCompare(b.text, 'es')
             ))
             .slice(0, limit);
@@ -796,8 +835,8 @@
     }
 
     function sparkLine() {
-        const baseCategories = ['brújula amable', 'beat dubstep', 'Doom 1', 'Doom 2', 'Doom 3', 'Doom 4', 'nave y puerto', 'Shima Kaamo'];
-        const pool = state.entries.filter((entry) => baseCategories.includes(entry.category) || entry.category.startsWith('Ghostwire Tokyo'));
+        const baseCategories = ['soldado orbital', 'transportista', 'astronauta', 'hackeo', 'nave y puerto', 'emoción lírica', 'beat dubstep', 'rescate en rapture', 'bioshock episodio 1'];
+        const pool = state.entries.filter((entry) => baseCategories.includes(entry.category));
         if (!pool.length && !state.entries.length) return;
         const pick = () => pool[Math.floor(Math.random() * pool.length)] || state.entries[0];
         const a = pick();
@@ -807,6 +846,15 @@
             `Si cae la noche, activo ${a.term} y cuido ${b.term}`,
             `No vendo humo: traigo ${a.term}, ${b.term} y verdad`,
             `Entre ${a.term} y ${b.term}, mi bajo vuelve a despegar`,
+            `Mi código es claro, ${a.term} directo al portal`,
+            `Línea de choque abierta, mi ${a.term} va letal`,
+            `Lanzando ${a.term} como bengala al vacío`,
+            `Respiro ${b.term} cuando me quedo sin oxígeno`,
+            `Dejo mi ${a.term} marcado en el fuselaje`,
+            `Que suene ${a.term} sobre este bombo oxidado`,
+            `Activa ${b.term}, que se apaga la estación`,
+            `Sigo flotando, ${a.term} me sirve de ancla`,
+            `Si la ruta es de hielo, saco mi ${b.term}`
         ];
         insertText(`\n${templates[Math.floor(Math.random() * templates.length)]}\n`);
     }
@@ -859,6 +907,7 @@
                 rhymeSource: true,
                 kaamo: kaamoSignal(entry),
                 ghostwire: ghostwireSignal(entry),
+                bioshock: bioshockSignal(entry),
             }, cacheKey);
         });
         state.loadedRhymeSuggestionCount += suggestions.length;
@@ -906,6 +955,14 @@
         return end;
     }
 
+    async function loadRemainingParts(collection, startIndex, append) {
+        if (collection.inline) return;
+        for (let index = startIndex; index < collection.parts.length; index += 1) {
+            append(await loadPart(collection.parts[index]));
+            await new Promise(resolve => setTimeout(resolve, 50));
+        }
+    }
+
     async function boot() {
         state.wordIndex = createRhymeIndex();
         state.entryIndex = createRhymeIndex();
@@ -928,6 +985,13 @@
         renderAnalysis();
         renderSlang();
         $('#kinzer-save-state').textContent = 'modo ligero';
+
+        Promise.all([
+            loadRemainingParts(entryCollection, INITIAL_ENTRY_PARTS, appendEntries),
+            loadRemainingParts(rhymeCollection, INITIAL_RHYME_PARTS, appendRhymeSuggestions),
+        ]).then(() => {
+            $('#kinzer-save-state').textContent = 'diccionario completo';
+        });
     }
 
     lyrics.addEventListener('input', () => {

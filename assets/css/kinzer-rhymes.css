@@ -8,10 +8,10 @@
     gap: 1rem;
     padding: clamp(1.3rem, 3vw, 2rem);
     background:
-        linear-gradient(135deg, rgba(255, 255, 255, 0.96), rgba(170, 134, 197, 0.82)),
-        radial-gradient(circle at top right, rgba(101, 192, 146, 0.24), transparent 46%);
+        linear-gradient(135deg, rgba(255, 255, 255, 0.96), rgba(225, 135, 183, 0.82)),
+        radial-gradient(circle at top right, rgba(178, 49, 118, 0.24), transparent 46%);
     border: 2px solid var(--border-muted);
-    box-shadow: 5px 5px 0 rgba(69, 34, 97, 0.14);
+    box-shadow: 5px 5px 0 rgba(159, 43, 102, 0.14);
 }
 
 .kinzer-kicker {
@@ -51,7 +51,7 @@
     align-items: center;
     min-height: 36px;
     padding: 0.45rem 0.7rem;
-    background: rgba(255, 255, 255, 0.75);
+    background: var(--bg-panel);
     border: 1px solid var(--border);
     color: var(--text-main);
     font-size: 0.62rem;
@@ -74,9 +74,9 @@
 .kinzer-editor,
 .kinzer-side {
     min-width: 0;
-    background: rgba(255, 255, 255, 0.84);
+    background: var(--bg-panel);
     border: 2px solid var(--border-muted);
-    box-shadow: 5px 5px 0 rgba(69, 34, 97, 0.12);
+    box-shadow: 5px 5px 0 rgba(159, 43, 102, 0.12);
 }
 
 .kinzer-title-row {
@@ -84,7 +84,7 @@
     align-items: center;
     gap: 1rem;
     padding: 1rem;
-    border-bottom: 2px solid rgba(152, 119, 177, 0.32);
+    border-bottom: 2px solid rgba(225, 135, 183, 0.32);
 }
 
 .kinzer-title-input {
@@ -111,7 +111,7 @@
     border: 0;
     outline: 0;
     padding: 1.1rem;
-    background: rgba(228, 228, 228, 0.62);
+    background: var(--bg-wash);
     color: var(--text-main);
     font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
     font-size: 1rem;
@@ -120,7 +120,7 @@
 
 .kinzer-meters {
     padding: 0.85rem 1rem;
-    border-top: 2px solid rgba(152, 119, 177, 0.32);
+    border-top: 2px solid rgba(225, 135, 183, 0.32);
 }
 
 .kinzer-actions {
@@ -142,7 +142,7 @@
 
 .kinzer-tabs {
     padding: 0.85rem;
-    border-bottom: 2px solid rgba(152, 119, 177, 0.32);
+    border-bottom: 2px solid rgba(225, 135, 183, 0.32);
 }
 
 .kinzer-tab,
@@ -155,13 +155,14 @@
     min-height: 38px;
     padding: 0.55rem 0.75rem;
     border: 2px solid var(--border-muted);
-    background: rgba(255, 255, 255, 0.7);
+    background: var(--bg-panel);
     color: var(--heading);
     font-size: 0.64rem;
 }
 
 .kinzer-tab.active {
-    background: var(--season-soft-leaf);
+    background: var(--accent);
+    color: var(--bg-base);
     border-color: var(--link);
 }
 
@@ -215,8 +216,8 @@
     min-height: 54px;
     padding: 0.55rem;
     border: 1px solid var(--border);
-    background: rgba(132, 221, 146, 0.34);
-    color: var(--heading);
+    background: var(--bg-panel);
+    color: var(--text-main);
     cursor: pointer;
     font-family: 'Press Start 2P', cursive;
     line-height: 1.45;
@@ -227,7 +228,7 @@
 .kinzer-word-chip:hover,
 .kinzer-word-chip:focus-visible {
     border-color: var(--link);
-    background: rgba(170, 134, 197, 0.68);
+    background: var(--bg-base);
 }
 
 .kinzer-word-chip strong,
@@ -252,9 +253,9 @@
 .kinzer-card {
     position: relative;
     padding: 0.9rem;
-    background: rgba(255, 255, 255, 0.72);
+    background: var(--bg-panel);
     border: 1px solid var(--border);
-    box-shadow: 3px 3px 0 rgba(69, 34, 97, 0.08);
+    box-shadow: 3px 3px 0 rgba(159, 43, 102, 0.08);
 }
 
 .kinzer-card h4 {
@@ -280,7 +281,7 @@
     min-height: 30px;
     padding: 0.35rem 0.5rem;
     border: 1px solid var(--accent);
-    background: rgba(170, 134, 197, 0.82);
+    background: rgba(225, 135, 183, 0.82);
     color: var(--heading);
     font-size: 0.52rem;
 }
@@ -300,7 +301,7 @@
     width: 100%;
     min-height: 42px;
     border: 2px solid var(--border-muted);
-    background: rgba(255, 255, 255, 0.78);
+    background: var(--bg-panel);
     color: var(--text-main);
     font-family: 'Press Start 2P', cursive;
     font-size: 0.62rem;
@@ -312,7 +313,7 @@
     width: 100%;
     text-align: left;
     border: 1px solid var(--border);
-    background: rgba(255, 255, 255, 0.72);
+    background: var(--bg-panel);
     color: var(--text-main);
     font-size: 0.64rem;
     line-height: 1.7;
@@ -326,7 +327,7 @@
 
 .kinzer-draft-button.active {
     border-color: var(--link);
-    background: rgba(132, 221, 146, 0.42);
+    background: var(--accent-soft);
 }
 
 @media (max-width: 900px) {
@@ -342,7 +343,7 @@
 
 @media (max-width: 768px) {
     .kinzer-hero {
-        box-shadow: 3px 3px 0 rgba(69, 34, 97, 0.12);
+        box-shadow: 3px 3px 0 rgba(159, 43, 102, 0.12);
     }
 
     .kinzer-counts span,

@@ -206,7 +206,7 @@
 .post-completo.theme-tim-breakcore .contenido-post .tim87-post .card,
 .post-completo.theme-tim-breakcore .contenido-post .tim87-post .panel,
 .post-completo.theme-tim-breakcore .contenido-post .tim87-post .level-card {
-    background: rgba(255, 255, 255, 0.56);
+    background: var(--bg-panel);
     border: 2px solid var(--tim-line);
     box-shadow: 0 10px 30px rgba(170, 68, 0, 0.1);
     border-radius: 20px;
