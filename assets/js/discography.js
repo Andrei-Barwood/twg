@@ -1,5 +1,49 @@
 const discographyData = [
     {
+        title: `E'clere Core`,
+        slug: `e-clere-core`,
+        artist: `Mega Doll`,
+        trackCount: `4`,
+        description: `pastelería cremosita, jeon creomy`,
+        loreLink: ``,
+        archiveLink: `https://archive.org/compress/mega-doll-e-clere-core/formats=24BIT%20FLAC&file=/mega-doll-e-clere-core.zip`,
+        coverImg: `assets/images/covers/18_cover.jpg`
+    },
+
+    {
+        title: `Newbies die Audiocomic`,
+        slug: `newbies-die-audiocomic`,
+        artist: `Mega Doll`,
+        trackCount: `2`,
+        description: `mueranse malditos, mueranse yaaa!!!`,
+        loreLink: ``,
+        archiveLink: `https://archive.org/compress/mega-doll-newbies-die-audio-comic/formats=24BIT%20FLAC&file=/mega-doll-newbies-die-audio-comic.zip`,
+        coverImg: `assets/images/covers/17_cover.jpg`
+    },
+
+    {
+        title: `Vacuum`,
+        slug: `vacuum`,
+        artist: `Mega Doll`,
+        trackCount: `10`,
+        description: `ese espacio vacío que solo llena gota por gota`,
+        loreLink: ``,
+        archiveLink: `https://archive.org/compress/mega-doll-vacuum-based-on-a-crown-born-of-multiple-nightmares-from-multiple-gangbangs/formats=24BIT%20FLAC&file=/mega-doll-vacuum-based-on-a-crown-born-of-multiple-nightmares-from-multiple-gangbangs.zip`,
+        coverImg: ``
+    },
+
+    {
+        title: `Séptimo Sentido`,
+        slug: `s-ptimo-sentido`,
+        artist: `Mega Doll`,
+        trackCount: `5`,
+        description: `el té de los sentidos`,
+        loreLink: ``,
+        archiveLink: `https://archive.org/compress/mega-doll-seventh-sense/formats=24BIT%20FLAC&file=/mega-doll-seventh-sense.zip`,
+        coverImg: `assets/images/covers/15_cover.png`
+    },
+
+    {
         title: `Please Donate Blood i'm Injured`,
         slug: `please-donate-blood-i-m-injured`,
         artist: `Mega Doll`,
