@@ -9,3 +9,4 @@ requirements.txt
 !.dev.vars.example
 .env*
 !.env.example
+public/
