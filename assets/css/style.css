@@ -4,210 +4,78 @@
 @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 
 :root {
-    /* Nueva Paleta de 16 Colores */
-    --c1: #B23176;
-    --c2: #FF96CD;
-    --c3: #9F2B66;
-    --c4: #E187B7;
-    --c5: #E3644A;
-    --c6: #FF8B5E;
-    --c7: #FFD371;
-    --c8: #FFF8AC;
-    --c9: #B13B32;
-    --c10: #D35300;
-    --c11: #F4CE45;
-    --c12: #FFE03F;
-    --c13: #FFFF8D;
-    --c14: #F27A04;
-    --c15: #FADE64;
-    --c16: #FFF9DD;
+    /* Nueva Paleta de Colores (Basada en la plantilla proporcionada) */
+    --p1: #C394D7;
+    --p2: #F2C7F8;
+    --p3: #AC7DC9;
+    --p4: #DAB0E9;
+    --p5: #562875;
+    --p6: #69328F;
+    --p7: #8640B4;
+    --p8: #9BE9D8;
+    --p9: #5F2D7F;
+    --p10: #241A7C;
+    --p11: #98A2EF;
+    --p12: #8587EC;
+    --p13: #B9BAFC;
+    --p14: #B765B8;
+    --p15: #FFFFF0;
+    --p16: #08BAB7;
+    --p17: #9BE9D8;
+    --p18: #696969;
+    --p19: #9BE9D8;
+    --p20: #036785;
+    --p21: #08BAB7;
 
-    /* Season Variables Re-mapped (Default) */
-    --season-olive: var(--c4);
-    --season-lime: var(--c8);
-    --season-leaf: var(--c11);
-    --season-soft-leaf: var(--c7);
-    --season-aqua: var(--c2);
-    --season-white: var(--c16);
-    --season-wheat: var(--c15);
-    --season-cream: var(--c13);
-    --season-barn: var(--c9);
-    --season-coral: var(--c5);
-    --season-rose: var(--c1);
-    --season-orange: var(--c14);
-    --season-honey: var(--c12);
-    --season-glow: var(--c11);
-    --season-sage-deep: var(--c3);
-    --season-sage: var(--c4);
-    --season-sage-soft: var(--c2);
-    --season-umber: var(--c3);
-    --season-clay: var(--c10);
-    --season-amber: var(--c14);
-    --season-peach: var(--c6);
-    --season-tangerine: var(--c5);
-    --season-apricot: var(--c8);
-    --season-red: var(--c9);
-    --season-olive-deep: var(--c10);
-
-    /* Structural Variables (Default / Fallback) */
-    --bg-base: var(--c16);
-    --bg-panel: var(--c8);
-    --bg-panel-soft: var(--c15);
-    --bg-wash: var(--c13);
-    --text-main: var(--c3);
-    --text-soft: var(--c1);
-    --text-strong: var(--c9);
-    --heading: var(--c9);
-    --link: var(--c10);
-    --link-strong: var(--c5);
-    --accent: var(--c5);
-    --accent-soft: var(--c11);
-    --accent-warm: var(--c14);
-    --border: var(--c2);
-    --border-strong: var(--c1);
-    --border-muted: var(--c4);
-    --shadow: var(--c3);
-    --shadow-deep: var(--c9);
+    /* Structural Variables (Unified Palette) */
+    --bg-base: #241A7C; /* Very dark blue/purple */
+    --bg-panel: #5F2D7F; /* Dark purple */
+    --bg-panel-soft: #562875; /* Dark purple */
+    --bg-wash: #69328F; /* Dark purple */
+    --text-main: #FFFFF0; /* Ivory */
+    --text-soft: #F2C7F8; /* Light pink/purple */
+    --text-strong: #9BE9D8; /* Light teal */
+    --heading: #9BE9D8; /* Light teal */
+    --link: #08BAB7; /* Medium teal */
+    --link-strong: #036785; /* Dark teal/blue */
+    --accent: #B765B8; /* Magenta/purple */
+    --accent-soft: #DAB0E9; /* Light purple */
+    --accent-warm: #8640B4; /* Medium dark purple */
+    --border: #8587EC; /* Medium blue/purple */
+    --border-strong: #98A2EF; /* Light blue/purple */
+    --border-muted: #AC7DC9; /* Medium purple */
+    --shadow: #036785; /* Dark teal */
+    --shadow-deep: #241A7C; /* Very dark */
     
-    --lollipop-heart-a: var(--c12);
-    --lollipop-heart-b: var(--c5);
-    --lollipop-heart-c: var(--c1);
-    --lollipop-heart-d: var(--c3);
-    --lollipop-heart-outline: var(--c9);
+    --lollipop-heart-a: #F2C7F8;
+    --lollipop-heart-b: #C394D7;
+    --lollipop-heart-c: #B765B8;
+    --lollipop-heart-d: #8640B4;
+    --lollipop-heart-outline: #241A7C;
 }
 
 /* --- OVERRIDES CREATIVOS POR PÁGINA --- */
 
-/* 1. Inicio (index) - Amarillos cálidos con acentos magenta */
-body.index-page {
-    --bg-base: var(--c11); /* Yellow */
-    --bg-panel: var(--c16); /* Very pale yellow */
-    --bg-panel-soft: var(--c15);
-    --bg-wash: var(--c13);
-    --text-main: var(--c3); /* Dark pink */
-    --text-soft: var(--c1);
-    --text-strong: var(--c9); /* Dark red */
-    --heading: var(--c3);
-    --link: var(--c1);
-    --link-strong: var(--c9);
-    --accent: var(--c10); /* Dark orange */
-    --accent-soft: var(--c7);
-    --accent-warm: var(--c14);
-    --border: var(--c14);
-    --border-strong: var(--c10);
-    --border-muted: var(--c5);
-    --shadow: var(--c9);
-    --shadow-deep: var(--c3);
-}
-
-/* 2. Música y Herramientas - Tonos rojizos oscuros con textos amarillos */
-body.music-page, body.kinzer-rhymes-page {
-    --bg-base: var(--c9); /* Dark red */
-    --bg-panel: var(--c10); /* Dark orange */
-    --bg-panel-soft: var(--c5); /* Orange red */
-    --bg-wash: var(--c1); /* Pinkish red */
-    --text-main: var(--c16); /* Very pale yellow */
-    --text-soft: var(--c15); /* Soft yellow */
-    --text-strong: var(--c13);
-    --heading: var(--c12); /* Bright yellow */
-    --link: var(--c11);
-    --link-strong: var(--c7);
-    --accent: var(--c12);
-    --accent-soft: var(--c11);
-    --accent-warm: var(--c7);
-    --border: var(--c5);
-    --border-strong: var(--c1);
-    --border-muted: var(--c3);
-    --shadow: var(--c3);
-    --shadow-deep: var(--c9);
-}
-
-/* 3. Blog y Composición - Rosas brillantes con acentos amarillos */
-body.blog-page, body.composition-page {
-    --bg-base: var(--c2); /* Light pink */
-    --bg-panel: var(--c4); /* Muted pink */
-    --bg-panel-soft: var(--c1);
-    --bg-wash: var(--c3);
-    --text-main: var(--c16); /* Very pale yellow */
-    --text-soft: var(--c8);
-    --text-strong: var(--c13);
-    --heading: var(--c11); /* Yellow */
-    --link: var(--c12);
-    --link-strong: var(--c11);
-    --accent: var(--c12);
-    --accent-soft: var(--c7);
-    --accent-warm: var(--c14);
-    --border: var(--c1);
-    --border-strong: var(--c3);
-    --border-muted: var(--c9);
-    --shadow: var(--c3);
-    --shadow-deep: var(--c9);
-}
-
-/* 4. Contacto / About - Fondos suaves con estallidos intensos */
-body.contact-page, body.about-page {
-    --bg-base: var(--c16); /* Very light yellow */
-    --bg-panel: var(--c8); /* Light yellow */
-    --bg-panel-soft: var(--c15);
-    --bg-wash: var(--c13);
-    --text-main: var(--c9); /* Dark red */
-    --text-soft: var(--c10);
-    --text-strong: var(--c3); /* Dark pink */
-    --heading: var(--c9);
-    --link: var(--c1); /* Pinkish red */
-    --link-strong: var(--c3);
-    --accent: var(--c1);
-    --accent-soft: var(--c2);
-    --accent-warm: var(--c4);
-    --border: var(--c14);
-    --border-strong: var(--c10);
-    --border-muted: var(--c6);
-    --shadow: var(--c5);
-    --shadow-deep: var(--c9);
-}
-
-/* 5. 404 / Shows / Otros - Naranjas vibrantes y rosas oscuros */
-body.error-page, body.shows-page {
-    --bg-base: var(--c14); /* Orange */
-    --bg-panel: var(--c5); /* Orange red */
-    --bg-panel-soft: var(--c6);
-    --bg-wash: var(--c10);
-    --text-main: var(--c16); /* Very light yellow */
-    --text-soft: var(--c15);
-    --text-strong: var(--c12);
-    --heading: var(--c12); /* Bright yellow */
-    --link: var(--c13);
-    --link-strong: var(--c11);
-    --accent: var(--c3); /* Dark pink */
-    --accent-soft: var(--c1);
-    --accent-warm: var(--c4);
-    --border: var(--c10);
-    --border-strong: var(--c9);
-    --border-muted: var(--c5);
-    --shadow: var(--c9);
-    --shadow-deep: var(--c3);
-}
-
-/* 6. Discografía - Paleta oficial */
-body.discography-page {
-    --bg-base: #122147;
-    --bg-panel: #383F5D;
-    --bg-panel-soft: #5C3F70;
-    --bg-wash: #122147;
-    --text-main: #FFFFFF;
-    --text-soft: #B76A8E;
-    --text-strong: #FFFFFF;
-    --heading: #EA428B;
-    --link: #EA428B;
-    --link-strong: #B76A8E;
-    --accent: #EA428B;
-    --accent-soft: #B76A8E;
-    --accent-warm: #5C3F70;
-    --border: #5C3F70;
-    --border-strong: #EA428B;
-    --border-muted: #383F5D;
-    --shadow: #122147;
-    --shadow-deep: #0a1329;
+/* 5. Shows - Preservado según solicitud */
+body.shows-page {
+    --bg-base: #F27A04; /* Orange */
+    --bg-panel: #E3644A; /* Orange red */
+    --bg-panel-soft: #FF8B5E;
+    --bg-wash: #D35300;
+    --text-main: #FFF9DD; /* Very light yellow */
+    --text-soft: #FADE64;
+    --text-strong: #FFE03F;
+    --heading: #FFE03F; /* Bright yellow */
+    --link: #FFFF8D;
+    --link-strong: #F4CE45;
+    --accent: #9F2B66; /* Dark pink */
+    --accent-soft: #B23176;
+    --accent-warm: #E187B7;
+    --border: #D35300;
+    --border-strong: #B13B32;
+    --border-muted: #E3644A;
+    --shadow: #B13B32;
+    --shadow-deep: #9F2B66;
 }
 
 /* Reset básico */
