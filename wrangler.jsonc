@@ -8,6 +8,9 @@
   "assets": {
     "directory": "public"
   },
+  "build": {
+    "command": "mkdir -p public && cp *.html public/ && cp -r assets public/"
+  },
   "compatibility_flags": [
     "nodejs_compat"
   ]
